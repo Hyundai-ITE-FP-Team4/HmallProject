@@ -24,6 +24,11 @@
 	        }
 	    });
 	});
+	
+	
+	
+	
+	<!-- 추추추추가가가가-->
 				<!--HPAY임대진 추가 -->
 					function openHPayTag(pathVal) {
 						var url = "http://" + location.host
