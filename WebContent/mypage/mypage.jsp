@@ -25,7 +25,6 @@
 	    });
 	});
 	
-	
 
 				<!--HPAY임대진 추가 -->
 					function openHPayTag(pathVal) {
