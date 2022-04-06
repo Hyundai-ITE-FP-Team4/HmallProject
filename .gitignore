@@ -1,0 +1,7 @@
+# Eclipse Core
+.project
+.classpath
+
+
+# context.xml
+/WebContent/META-INF/context.xml
