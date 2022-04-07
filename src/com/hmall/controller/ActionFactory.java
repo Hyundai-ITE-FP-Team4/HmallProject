@@ -2,15 +2,17 @@ package com.hmall.controller;
 
 import com.hmall.controller.action.Action;
 import com.hmall.controller.action.IndexAction;
+import com.hmall.controller.action.MyPageAction;
+import com.hmall.controller.action.QnaBoradAction;
 
 /*
- * HmallServlet¿¡¼­ Àü´Þ¹ÞÀº command¿¡ µû¶ó Action ¹ÝÈ¯
+ * HmallServletï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ commandï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Action ï¿½ï¿½È¯
  * 
  * */
 public class ActionFactory {
 	
 	private static ActionFactory instance = new ActionFactory();
-	private ActionFactory() {	// ½Ì±ÛÅæ Ã³¸®
+	private ActionFactory() {	// ï¿½Ì±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		super();
 	}
 	public static ActionFactory getInstance() {
@@ -21,9 +23,15 @@ public class ActionFactory {
 		Action action = null;
 		System.out.println("ActionFactory : " + command);
 		
-		// ¸ÞÀÎ È­¸é
+		// ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½
 		if(command.equals("index")) {
 			action = new IndexAction();
+		}
+		else if (command.equals("mypage")) {
+			action = new MyPageAction();
+		}
+		else if (command.equals("qnaboard")) {
+			action = new QnaBoradAction();
 		}
 		
 		return action;
