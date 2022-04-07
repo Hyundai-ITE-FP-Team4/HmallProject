@@ -5,6 +5,6 @@
            type="javax.sql.DataSource"
            driverClassName="oracle.jdbc.OracleDriver"
            url="jdbc:oracle:thin:@iteproject1_high?TNS_ADMIN=C:\\dev\\OracleWallet\\Wallet_iteproject1"
-           username="ace" password="me" maxTotal="20"
+           username="kimsh" password="xxxxxxAt21cc" maxTotal="20"
            maxIdle="10" maxWaitMillis="-1"/>
 </Context>

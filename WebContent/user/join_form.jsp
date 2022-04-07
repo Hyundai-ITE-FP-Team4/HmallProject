@@ -27,7 +27,7 @@
             	$("form[name='registMemberFormNew']").submit();
         	}
 			function go_next(){
-				$("form[name='registMemberFormNew']").submit();
+				
 				alert("test");
 				
 			}

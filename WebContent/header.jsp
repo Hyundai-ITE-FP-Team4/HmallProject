@@ -1031,7 +1031,7 @@
 					<!-- 로그인 전 -->
 					<ul>
 						<li><a ga-category="헤더" ga-action="로그아웃"
-							href="javascript:bizSpringTag('http://www.hmall.com/p/cob/logout.do','^헤더^로그아웃');">{로그인상태}</a></li>
+							href="HmallServlet?command=select">{로그인상태}</a></li>
 						<li><a
 							href="HmallServlet?command=join_menu">회원가입</a></li>
 

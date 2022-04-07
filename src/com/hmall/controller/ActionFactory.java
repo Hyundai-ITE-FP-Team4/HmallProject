@@ -2,6 +2,7 @@ package com.hmall.controller;
 
 import com.hmall.controller.action.Action;
 import com.hmall.controller.action.IndexAction;
+import com.hmall.controller.action.JoinAction;
 import com.hmall.controller.action.JoinFormAction;
 import com.hmall.controller.action.JoinMenuAction;
 import com.hmall.controller.action.MyPageAction;
@@ -44,6 +45,9 @@ public class ActionFactory {
 		//È¸¿ø°¡ÀÔ Æû
 		else if (command.equals("join_form")) {
 			action = new JoinFormAction();
+		}
+		else if (command.equals("select")) {
+			action = new JoinAction();
 		}
 		return action;
 	}
