@@ -27,38 +27,37 @@ public class JoinAction implements Action {
 	      
 	    PrintWriter out=response.getWriter();
 	    //<input  type="hidden" name="command"
-	    String command=request.getParameter("command");
-	    //
-	    if(command!= null && command.equals("addMember")){
-	    	String user_id = request.getParameter("user_id");
-			String user_pw = request.getParameter("user_pw");
-			String user_name = request.getParameter("user_name");
-			String email = request.getParameter("email");
-			String phone_number = request.getParameter("phone_number");
-			String birth = request.getParameter("birth");
-			String address = request.getParameter("address");
-			String user_point = request.getParameter("user_point");
-			String grade = request.getParameter("grade");
+	    
+	
+	    String user_id = request.getParameter("user_id");
+		String user_pw = request.getParameter("user_pw");
+		String user_name = request.getParameter("user_name");
+		String email = request.getParameter("email");
+		String phone_number = request.getParameter("phone_number");
+		String birth = request.getParameter("birth");
+		String address = request.getParameter("address");
+		String user_point = request.getParameter("user_point");
+		String grade = request.getParameter("grade");
 			 
-			UserVO vo=new UserVO();
-			vo.setUser_id(user_id);
-			vo.setUser_pw(user_pw);
-			vo.setUser_name(user_name);
-			vo.setEmail(email);
-			//vo.setUser_point(user_point.int);
+		UserVO vo=new UserVO();
+		vo.setUser_id(user_id);
+		vo.setUser_pw(user_pw);
+		vo.setUser_name(user_name);
+		vo.setEmail(email);
+		vo.setPhone_number(phone_number);
+		vo.setBirth(Integer.parseInt(birth));
+		vo.setAddress(address);
+		vo.setUser_point(Integer.parseInt(user_point));
+		vo.setGrade(grade);
 			
-			//디비 입력
-		    dao.insertUser(vo);
-	     }else if(command!= null && command.equals("delMember")) {
-	    	 String id = request.getParameter("id");
-	    	 //dao.delMember(id);
-	     }//end if
+		//디비 입력
+		dao.insertUser(vo);
 	   
 		//조회
 	    List list = dao.listMember();
 		for (int i = 0; i<list.size(); i++) {
 			UserVO userVO = (UserVO)list.get(i);
-			String user_id = userVO.getUser_id();
+			user_id = userVO.getUser_id();
 			
 			System.out.println(user_id);
 		}

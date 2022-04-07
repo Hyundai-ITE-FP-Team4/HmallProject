@@ -12,27 +12,22 @@
 		<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/jquery-ui.css">
 		<!-- favicon -->
    		<link rel="shortcut icon" type="image/x-icon" href="//image.hmall.com/p/img/co/favicon/favicon.ico">
+<!--    		http://localhost:8090/HmallProject/resource/js/jquery-3.4.1.min.js -->
+   		
+   		<script type="text/javascript" src="/HmallProject/resource/js/jquery-3.4.1.min.js"></script>
+   		<script>
+   		var 
+   		alert("sdalfknsafknsaflsa");
+   		</script>
 	</head>
 	<body class = "cbody">
 	
 	<script>
-			function registMember(){
-            	//네이버 가입일 경우 비밀번호 난수 설정
-            	var randomNumber = Math.random().toString(36).substr(2,11);
-            	$("input[name='passwd']").val(randomNumber);
-            	//sns 회원가입의 경우 ID를 email로 설정
-            	$("input[name='email']").val($("#uIdName").val());
-
-            	$("input[name='id']").prop('disabled', false);
-            	$("form[name='registMemberFormNew']").submit();
-        	}
 			function go_next(){
-				
-				alert("test");
+				$("#registMemberFormNew").attr("action", "/HmallProject/HmallServlet?command=join_menu"); // attr : element 속성들 control 가능
+				$("#registMemberFormNew").submit();
 				
 			}
-			
-			
 	</script>
 		
 	 <div class="wrap join-naver">
@@ -48,15 +43,16 @@
                             </a>
                         </h1>
                     </div>
-					<form name = "registMemberFormNew" method ="post">
+					<form id = "registMemberFormNew" name = "registMemberFormNew" method ="post">
 						<div class = "join-notibox naver">
 							<i class = "icon"></i>
 							<p>네이버로 회원가입 시 이메일 주소가 아이디로 사용됩니다.</p>
 						</div>
 						<p class = "form-tit"> 필수 항목 </p>
 						<div class="inputbox">
-                            <label class="inplabel"><input type="text" id="uName" name="name" value="" placeholder="이름"></label>
+                            <label class="inplabel"><input onblur="alert(122);" type="text" id="uName" name="name" value="" placeholder="이름"></label>
                         </div>
+                        
                        	<p class="failed-msg" id="alertName" style="display: none">
                             <i class="icon error"></i>
                             <span>이름을 입력해 주세요.</span>
