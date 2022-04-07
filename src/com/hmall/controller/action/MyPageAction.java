@@ -7,17 +7,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*
- * index.jsp로 이동시키는 Action
- * 
- * */
-public class IndexAction implements Action {
+public class MyPageAction implements Action{
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  
-		String url = "/index.jsp";
+		// TODO Auto-generated method stub
+		  //마이페이지로 이동할 url
+		String url = "/mypage/mypage.jsp";
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
-} // end class
+	
+
+}

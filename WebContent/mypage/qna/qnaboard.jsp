@@ -1,42 +1,41 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+
+<!-- 사이드바 내 '1:1상담' -->
 
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
 <meta name="HandheldFriendly" content="true">
-<meta name="format-detection"
-	content="telephone=no, email=no, address=no">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
 <meta name="apple-mobile-web-app-capable" content=" yes">
 <meta name="robots" content="index,follow">
 <meta name="title" content="https://hmall.com">
 <meta name="author" content="@Hmall">
-<meta name="description"
-	content="백화점, 브랜드, 홈쇼핑까지- 당신의 모든 취향을 읽다. Korean Online Shopping Mall, Worldwide Shipping available, Hyundai Department Store Group in Korea. 韩国现代百货店的线上购物网站正品保障, 海外配送.">
+<meta name="description" content="백화점, 브랜드, 홈쇼핑까지- 당신의 모든 취향을 읽다. Korean Online Shopping Mall, Worldwide Shipping available, Hyundai Department Store Group in Korea. 韩国现代百货店的线上购物网站正品保障, 海外配送.">
 <meta name="keywords" content="">
 <meta http-equiv="imagetoolbar" content="no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>마이페이지 - 현대Hmall</title>
-
+<title>1:1 상담 - 현대Hmall</title>
+ 
 <!-- includeScript -->
-<script src="https://www.googleoptimize.com/optimize.js?id=OPT-NBGRL7P"></script>
+
+
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/plugins/ua/ec.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MZFFDJ8"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script src="https://connect.facebook.net/signals/config/307742333494098?v=2.9.57&amp;r=stable" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script src="https://connect.facebook.net/en_US/sdk.js?hash=27f3f5c9d6408c26328525b89267d1da" async="" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-937000404&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script><script src="https://www.googleoptimize.com/optimize.js?id=OPT-NBGRL7P"></script>
 
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
 <meta name="HandheldFriendly" content="true">
-<meta name="format-detection"
-	content="telephone=no, email=no, address=no">
+<meta name="format-detection" content="telephone=no, email=no, address=no"> 
 <meta name="apple-mobile-web-app-capable" content=" yes">
 <meta name="robots" content="index,follow">
 <meta name="author" content="@Hmall">
 <meta http-equiv="imagetoolbar" content="no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 
 <script type="application/ld+json">
 {
@@ -55,991 +54,740 @@
 }
 </script>
 
-<link rel="shortcut icon" href="https://www.hmall.com/favicon.ico" />
+<link rel="shortcut icon" href="https://www.hmall.com/favicon.ico">
 <!-- UI/UX Style -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/common.css">
-<!-- 공통 css -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/layout.css">
-<!-- 공통 Layout css -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/popup.css">
-<!-- 공통 Popup css -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/jquery-ui.css">
-<!-- jQuery UI css -->
+<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/common.css"><!-- 공통 css -->
+<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/layout.css"><!-- 공통 Layout css -->
+<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/popup.css"><!-- 공통 Popup css -->
+<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/jquery-ui.css"><!-- jQuery UI css -->
 <style>
-.hidden {
-	display: none !important;
-}
+.hidden {display:none !important;}
 </style>
-<script src="//image.hmall.com/p/js/co/jquery-3.4.1.min.js"></script>
-<!-- jQuery Plugin -->
-<script src="//image.hmall.com/p/js/co/jquery.easing.min.js"></script>
-<!-- jQuery UI Effect -->
-<script src="//image.hmall.com/p/js/co/jquery-ui.1.12.1.min.js"></script>
-<!-- jQuery UI js -->
-<script src="//image.hmall.com/p/js/co/ukDetect.min.js"></script>
-<!-- UI에 사용하는 Detect -->
-<script src="//image.hmall.com/p/js/co/slick.min.js"></script>
-<!-- 공통 Slide 플러그인 -->
-<script src="//image.hmall.com/p/js/co/common.js"></script>
-<!-- UI에 사용하는 기본 js  -->
-<script src="//image.hmall.com/p/js/co/co.js"></script>
-<!-- UI에 사용하는 기본 js  -->
+<script src="//image.hmall.com/p/js/co/jquery-3.4.1.min.js"></script><!-- jQuery Plugin -->
+<script src="//image.hmall.com/p/js/co/jquery.easing.min.js"></script><!-- jQuery UI Effect -->
+<script src="//image.hmall.com/p/js/co/jquery-ui.1.12.1.min.js"></script><!-- jQuery UI js -->
+<script src="//image.hmall.com/p/js/co/ukDetect.min.js"></script><!-- UI에 사용하는 Detect -->
+<script src="//image.hmall.com/p/js/co/slick.min.js"></script><!-- 공통 Slide 플러그인 -->
+<script src="//image.hmall.com/p/js/co/common.js"></script><!-- UI에 사용하는 기본 js  -->
+<script src="//image.hmall.com/p/js/co/co.js"></script><!-- UI에 사용하는 기본 js  -->
 <script src="//image.hmall.com/p/js/co/jquery.cookie.js"></script>
-<script src="//image.hmall.com/p/js/co/commonFunction.js"></script>
-<!-- as-is common.js 상속  -->
-<script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script>
-<!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
+<script src="//image.hmall.com/p/js/co/commonFunction.js"></script><!-- as-is common.js 상속  -->
+<script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script><!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
 
 <!-- Google analytics -->
-<script type="text/javascript"
-	src="//image.hmall.com/p/js/co/GoogleAnalyticsBuilder.js?ver=040514"></script>
-<script type="text/javascript"
-	src="//image.hmall.com/p/js/co/ScreenNameObj.js?ver=040514"></script>
+<script type="text/javascript" src="//image.hmall.com/p/js/co/GoogleAnalyticsBuilder.js?ver=040709"></script>
+<script type="text/javascript" src="//image.hmall.com/p/js/co/ScreenNameObj.js?ver=040709"></script>
+
+
 
 <script type="text/javascript">
-	var oneClickFlag = 0;
-	function setDimension() {
 
-		if (oneClickFlag != 0) {
-			return false;
-		}
 
-		oneClickFlag = 1;
+var oneClickFlag = 0;
+function setDimension(){
+	
+	if(oneClickFlag != 0){
+        return false;
+    }
+	
+	oneClickFlag = 1;
+    
+    if(location.pathname.indexOf("/p/cob/memberLogin.do") > -1){
+        return;
+    }
+	var GA_info = {};
+	
+	
+	GA_info = setDimenData(GA_info);
 
-		if (location.pathname.indexOf("/p/cob/memberLogin.do") > -1) {
-			return;
-		}
-		var GA_info = {};
+	
+	GA_Init(GA_info);
 
-		GA_info = setDimenData(GA_info);
+    
+    if(location.pathname.replace("//", "/") == '/m/pda/smItemDetailR.do' || location.pathname.replace("//", "/") == '/p/pda/itemPtc.do' && pdaItemPtcCnt == 0){
+    	pdaItemPtcCnt = 1;
+        var	product_array = [];
+        product_array.push(
+            {
+                'id':'',
+                'name':'',
+                'brand': '',
+                'category' : '',
+                'dimension51': 'default',
+                'dimension52':'',
+                'dimension53':'',
+                'dimension54':'',
+                'dimension55':'',
+                'dimension56':'',
+                'dimension57':'',
+                'dimension58':'',
+                'dimension59':'',
+                'dimension60':'',
+                
+                'dimension62':'',
+                'dimension63':'',
+                'dimension64':''
+            }
+        );
 
-		GA_Init(GA_info);
+        var ecommerce_hit = new Object();
+        ecommerce_hit[GAHitKey.NonInteraction] = '1';
+        var action_obj = new Object();
 
-		if (location.pathname.replace("//", "/") == '/m/pda/smItemDetailR.do'
-				|| location.pathname.replace("//", "/") == '/p/pda/itemPtc.do'
-				&& pdaItemPtcCnt == 0) {
-			pdaItemPtcCnt = 1;
-			var product_array = [];
-			product_array.push({
-				'id' : '',
-				'name' : '',
-				'brand' : '',
-				'category' : '',
-				'dimension51' : 'default',
-				'dimension52' : '',
-				'dimension53' : '',
-				'dimension54' : '',
-				'dimension55' : '',
-				'dimension56' : '',
-				'dimension57' : '',
-				'dimension58' : '',
-				'dimension59' : '',
-				'dimension60' : '',
+        
+        GADataSend_Ecommerce(GAEcommerceStepKey.Detail, action_obj, product_array, ecommerce_hit);
 
-				'dimension62' : '',
-				'dimension63' : '',
-				'dimension64' : ''
-			});
+    }else if(location.pathname == '/p/oda/orderComplete.do' && ordCompleteCnt == 0){
+    	ordCompleteCnt = 1;
+        var	product_array = [];
+        
+        
 
-			var ecommerce_hit = new Object();
-			ecommerce_hit[GAHitKey.NonInteraction] = '1';
-			var action_obj = new Object();
+        var ecommerce_hit = new Object();
+        ecommerce_hit[GAHitKey.NonInteraction] = '1';
+        ecommerce_hit[GAHitKey.currencyCode] = 'KRW';
+        
+        
 
-			GADataSend_Ecommerce(GAEcommerceStepKey.Detail, action_obj,
-					product_array, ecommerce_hit);
+        ecommerce_hit[GACustomKey.Metric1] = 0;
+        
+        ecommerce_hit[GACustomKey.Metric2] = 0;
+        
+        
+        ecommerce_hit['dimension74'] = '';
+        ecommerce_hit['dimension75'] = '';
 
-		} else if (location.pathname == '/p/oda/orderComplete.do'
-				&& ordCompleteCnt == 0) {
-			ordCompleteCnt = 1;
-			var product_array = [];
 
-			var ecommerce_hit = new Object();
-			ecommerce_hit[GAHitKey.NonInteraction] = '1';
-			ecommerce_hit[GAHitKey.currencyCode] = 'KRW';
 
-			ecommerce_hit[GACustomKey.Metric1] = 0;
+        var action_obj = new Object();
+        action_obj[GAActionFieldKey.TransactionID]='';
+        action_obj[GAActionFieldKey.TransactionRevenue]='0';
+        action_obj[GAActionFieldKey.TransactionShipping]='0';
+        
+        action_obj[GAActionFieldKey.TransactionCouponCode]='';
 
-			ecommerce_hit[GACustomKey.Metric2] = 0;
 
-			ecommerce_hit['dimension74'] = '';
-			ecommerce_hit['dimension75'] = '';
 
-			var action_obj = new Object();
-			action_obj[GAActionFieldKey.TransactionID] = '';
-			action_obj[GAActionFieldKey.TransactionRevenue] = '0';
-			action_obj[GAActionFieldKey.TransactionShipping] = '0';
 
-			action_obj[GAActionFieldKey.TransactionCouponCode] = '';
 
-			GADataSend_Ecommerce(GAEcommerceStepKey.Purchase, action_obj,
-					product_array, ecommerce_hit);
-			oneClickFlag = 0;
-		}
+
+        
+        GADataSend_Ecommerce(GAEcommerceStepKey.Purchase, action_obj, product_array, ecommerce_hit);
+        oneClickFlag = 0;
+    }
+}
+
+
+function setDimenData(GA_info){
+	var _ga = getCookieGA('_ga');
+	if(_ga != null){
+		GA_info[GACustomKey.Dimension1] = _ga;
 	}
 
-	function setDimenData(GA_info) {
-		var _ga = getCookieGA('_ga');
-		if (_ga != null) {
-			GA_info[GACustomKey.Dimension1] = _ga;
-		}
+	var uid = "";
+    if(getCookieGA('ENCEHCustNO') != null && getCookieGA('ENCEHCustNO') != ""){
+    	uid = getCookieGA('ENCEHCustNO');
+    }
+	
+	if(uid == "" || uid.length != 32){
+        
+    }else{
+		GA_info[GACustomKey.Dimension2] = uid;
+        GA_info[GAHitKey.UserId] = uid;
 
-		var uid = "";
-		if (getCookieGA('ENCEHCustNO') != null
-				&& getCookieGA('ENCEHCustNO') != "") {
-			uid = getCookieGA('ENCEHCustNO');
-		}
-
-		if (uid == "" || uid.length != 32) {
-
-		} else {
-			GA_info[GACustomKey.Dimension2] = uid;
-			GA_info[GAHitKey.UserId] = uid;
-
-			$.ajax({
-				type : "post",
-				url : "/p/GA_getDimension.do",
-				data : "",
-				dataType : "json",
-				async : true,
-				success : function(data) {
-					console.log("ajax Return");
-				}
-			});
-
-		}
-
-		var _gaid = getCookieGA('GAID');
-		if (_gaid != null) {
-			GA_info[GACustomKey.Dimension11] = _gaid;
-		}
-
-		GA_info[GACustomKey.Dimension12] = "N";
-
-		if (location.pathname == '/p/pde/search.do') {
-
-			GA_info[GACustomKey.Dimension19] = "N";
-
-		}
-
-		GA_info[GACustomKey.Dimension16] = "PCWEB";
-
-		GA_info[GACustomKey.Dimension35] = location.href.replace("http://", "")
-				.replace("https://", "");
-
-		return GA_info;
+        
 	}
 
-	function setGaDataSend_Event(evntType, product_array) {
-		/* var product_array = [];
-		if(product_array_param != null && product_array_param != undefined){
-			product_array = product_array_param;
-		} */
-		var ecommerce_hit = new Object();
-		var action_obj = new Object();
+     GA_info[GACustomKey.Dimension3] = "20201119"; 
+     GA_info[GACustomKey.Dimension4] = "일반"; 
+     GA_info[GACustomKey.Dimension5] = "0eb00191b11cfa7666ed2d0ff76f0334"; 
+    	GA_info[GACustomKey.Dimension6] = "Y"; 
+     GA_info[GACustomKey.Dimension7] = "Y"; 
+     GA_info[GACustomKey.Dimension8] = "20220116"; 
+     GA_info[GACustomKey.Dimension9] = "20220407"; 
+    
+    var _gaid = getCookieGA('GAID');
+    if(_gaid != null){GA_info[GACustomKey.Dimension11] = _gaid;}
+    
+        GA_info[GACustomKey.Dimension12] = "Y";
+        GA_info[GACustomKey.Dimension24] = "1";
+    
+    
+     GA_info[GACustomKey.Dimension13] = "M"; 
+     GA_info[GACustomKey.Dimension14] = "2"; 
+     GA_info[GACustomKey.Dimension15] = "실버"; 
 
-		if (location.pathname == '/m/pda/smItemDetailR.do'
-				|| location.pathname == '/p/pda/itemPtc.do') {
+     GA_info[GACustomKey.Dimension22] = "동시가입"; 
+     GA_info[GACustomKey.Dimension23] = "20201119"; 
+     GA_info[GACustomKey.Dimension25] = "20201119"; 
+     GA_info[GACustomKey.Dimension26] = "20220203"; 
+     GA_info[GACustomKey.Dimension27] = "20201119"; 
+     GA_info[GACustomKey.Dimension28] = "20220203"; 
+     GA_info[GACustomKey.Dimension29] = "20220203"; 
+     GA_info[GACustomKey.Dimension30] = "N"; 
+     GA_info[GACustomKey.Dimension36] = "1천P이상"; 
+     GA_info[GACustomKey.Dimension37] = "0"; 
+     GA_info[GACustomKey.Dimension38] = "N"; 
+     GA_info[GACustomKey.Dimension39] = "종합(방송+일반)"; 
+     GA_info[GACustomKey.Dimension40] = "상담원"; 
+     GA_info[GACustomKey.Dimension41] = "PCWEB"; 
+     GA_info[GACustomKey.Dimension47] = "N"; 
+     GA_info[GACustomKey.Dimension78] = "KrOjwEoXHxMwNBSZSW04/w=="; 
 
-			if (evntType == GAEcommerceStepKey.Checkout) {
-				action_obj[GAActionFieldKey.CheckoutStep] = '1';
-				GADataSend_Ecommerce(evntType, action_obj, product_array,
-						ecommerce_hit);
-			} else {
-				ecommerce_hit[GAHitKey.NonInteraction] = '1';
-				GADataSend_Ecommerce(evntType, action_obj, product_array,
-						ecommerce_hit);
-			}
+    if(location.pathname == '/p/pde/search.do'){
+        
+        
+        
+        
+        
+        GA_info[GACustomKey.Dimension19] = "N";
+        
+        
+    }
 
-		} else if (location.pathname == '/p/oda/order.do') {
+	GA_info[GACustomKey.Dimension16] = "PCWEB";
+	
+	GA_info[GACustomKey.Dimension35] = location.href.replace("http://", "").replace("https://", "");
 
-			try {
-				var itemGbcd = ""; // 무형상품체크, 유/무형 상품 같이 구매 불가하므로..
+	return GA_info;
+}
 
-			} catch (e) {
 
-			}
 
-			if (evntType == GAEcommerceStepKey.Checkout) {
-				var ecommerce_hit = new Object();
-				var action_obj = new Object();
-				action_obj[GAActionFieldKey.CheckoutStep] = '2';
+function setGaDataSend_Event(evntType,product_array){
+	/* var product_array = [];
+	if(product_array_param != null && product_array_param != undefined){
+		product_array = product_array_param;
+	} */
+    var ecommerce_hit = new Object();
+    var action_obj = new Object();
+	
+    
+    if(location.pathname == '/m/pda/smItemDetailR.do' || location.pathname == '/p/pda/itemPtc.do'){
+        
+        if(evntType == GAEcommerceStepKey.Checkout){
+            action_obj[GAActionFieldKey.CheckoutStep] = '1';
+            GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
+        }else{
+            ecommerce_hit[GAHitKey.NonInteraction] = '1';
+            GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
+        }
+        
+    }else if(location.pathname == '/p/oda/order.do'){
+        
+        try {
+        	var itemGbcd = ""; // 무형상품체크, 유/무형 상품 같이 구매 불가하므로..
+            
+        } catch (e) {
+           
+        }
 
-				var selOrderType = $("input[name='payType']:checked").val();
+        if(evntType == GAEcommerceStepKey.Checkout){
+        	var ecommerce_hit = new Object();
+            var action_obj = new Object();
+            action_obj[GAActionFieldKey.CheckoutStep] = '2';
 
-				if (selOrderType == '10') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '01 카드';
-					ecommerce_hit['dimension75'] = '01 카드';
-				} else if (selOrderType == '20') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '02 현금';
-					ecommerce_hit['dimension75'] = '02 현금';
-				} else if (selOrderType == '40') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '12 휴대폰결제';
-					ecommerce_hit['dimension75'] = '12 휴대폰결제';
-				} else if (selOrderType == '91') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '15 페이코';
-					ecommerce_hit['dimension75'] = '15 페이코';
-				} else if (selOrderType == '30') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '20 현금(실시간)';
-					ecommerce_hit['dimension75'] = '20 현금(실시간)';
-				} else if (selOrderType == '95') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '21 네이버페이';
-					ecommerce_hit['dimension75'] = '21 네이버페이';
-				} else if (selOrderType == '96') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '22 스마일페이';
-					ecommerce_hit['dimension75'] = '22 스마일페이';
-				} else if (selOrderType == '97') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '23 카카오페이';
-					ecommerce_hit['dimension75'] = '23 카카오페이';
-				} else if (selOrderType == '81') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '25 토스';
-					ecommerce_hit['dimension75'] = '25 토스';
-				} else if (selOrderType == '99') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '24 현금간편결제';
-					ecommerce_hit['dimension75'] = '24 현금간편결제';
-				} else if (selOrderType == '50') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '98 카드+현금';
-					ecommerce_hit['dimension75'] = '98 카드+현금';
-				} else if (selOrderType == '93') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '99 삼성페이';
-					ecommerce_hit['dimension75'] = '99 삼성페이';
-				} else {
-					action_obj[GAActionFieldKey.CheckoutOptions] = 'default';
-					ecommerce_hit['dimension75'] = 'default';
-				}
+            var selOrderType = $("input[name='payType']:checked").val();
 
-				// 무형상품이면 고정 - 이호정선임요청 2021.01.28 김기호
-				if (itemGbcd == "04") {
-					console.log("무형상품이므로 Dimension75:무형상품");
-					action_obj[GAActionFieldKey.CheckoutOptions] = '무형상품';
-					ecommerce_hit[GACustomKey.Dimension75] = '무형상품';
-				} else {
+            if(selOrderType == '10'  ){
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '01 카드';
+                ecommerce_hit['dimension75'] = '01 카드';
+            }else if(selOrderType == '20'){
+                action_obj[GAActionFieldKey.CheckoutOptions] = '02 현금';
+                ecommerce_hit['dimension75'] = '02 현금';
+            }else if(selOrderType == '40'){
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '12 휴대폰결제';
+                ecommerce_hit['dimension75'] = '12 휴대폰결제';
+            }else if(selOrderType == '91'){
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '15 페이코';
+                ecommerce_hit['dimension75'] = '15 페이코';
+            }else if(selOrderType == '30'){
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '20 현금(실시간)';
+                ecommerce_hit['dimension75'] = '20 현금(실시간)';
+            }else if(selOrderType == '95'){
+                action_obj[GAActionFieldKey.CheckoutOptions] = '21 네이버페이';
+                ecommerce_hit['dimension75'] = '21 네이버페이';
+            }else if(selOrderType == '96'){
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '22 스마일페이';
+                ecommerce_hit['dimension75'] = '22 스마일페이';
+            }else if(selOrderType == '97'){
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '23 카카오페이';
+                ecommerce_hit['dimension75'] = '23 카카오페이';
+            }else if(selOrderType == '81'){
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '25 토스';
+                ecommerce_hit['dimension75'] = '25 토스';
+            }else if(selOrderType == '99') {
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '24 현금간편결제';
+                ecommerce_hit['dimension75'] = '24 현금간편결제';
+            }else if(selOrderType == '50') {
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '98 카드+현금';
+                ecommerce_hit['dimension75'] = '98 카드+현금';
+            }else if(selOrderType == '93') {
+                action_obj[GAActionFieldKey.CheckoutOptions]  = '99 삼성페이';
+                ecommerce_hit['dimension75'] = '99 삼성페이';
+            }else {
+                action_obj[GAActionFieldKey.CheckoutOptions]  = 'default';
+                ecommerce_hit['dimension75'] = 'default';
+            }
+            
+            // 무형상품이면 고정 - 이호정선임요청 2021.01.28 김기호
+            if (itemGbcd == "04") {
+                console.log("무형상품이므로 Dimension75:무형상품");
+                action_obj[GAActionFieldKey.CheckoutOptions] = '무형상품';
+                ecommerce_hit[GACustomKey.Dimension75] = '무형상품';
+            } else {
+                
+                ecommerce_hit[GACustomKey.Dimension74] = '일반구매';
+                
+            }
+            GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
+        }
+    }else{
+        GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
+    }
 
-					ecommerce_hit[GACustomKey.Dimension74] = '일반구매';
+}
 
-				}
-				GADataSend_Ecommerce(evntType, action_obj, product_array,
-						ecommerce_hit);
-			}
-		} else {
-			GADataSend_Ecommerce(evntType, action_obj, product_array,
-					ecommerce_hit);
-		}
 
+
+function sendSlitmClick(slitmNm, slitmCd, tabNm){
+
+    if(slitmNm == "" || slitmCd == "" || tabNm == "")
+        return;
+
+    var product_array = [];
+    product_array.push({'id': slitmCd, 'name': slitmNm});
+
+    var action_obj = new Object();
+    action_obj[GAActionFieldKey.ProductActionList] = tabNm;
+
+    var ecommerce_hit = new Object();
+    GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj, product_array, ecommerce_hit);
+}
+
+
+
+function getParameterByName(url, name) {
+	if(url == "" || name == "" || url == undefined || name == undefined){
+		return;
 	}
+	
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(url);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
-	function sendSlitmClick(slitmNm, slitmCd, tabNm) {
+function setGaPromotion(title, name, position, creative, id){
+	var action_obj = new Object();
+    var ecommerce_hit = new Object();
+    var tabNm = title;
+    if (tabNm.length > 0) { 
+        tabNm = tabNm.substring(tabNm.indexOf(">")+1, tabNm.length);
+    }
+    
+    ecommerce_hit[GAHitKey.Title] = title;
+    
+    action_obj["promo1"] = {};
+    action_obj["promo1"][GAActionFieldKey.PromotionName] = name;
+    action_obj["promo1"][GAActionFieldKey.PromotionPosition] = position;
+    action_obj["promo1"][GAActionFieldKey.PromotionCreative] = creative;
+    action_obj["promo1"][GAActionFieldKey.PromotionID] = id;
+    
+    if(name.substring(0, name.indexOf("_")) == "메인"){
+    	console.log("setGaPromotion()................4");
+    	ecommerce_hit[GACustomKey.Dimension31] = '메인';
+    	ecommerce_hit[GACustomKey.Dimension32] = '메인>'+ tabNm;
+    	ecommerce_hit[GACustomKey.Dimension33] = '메인>'+ tabNm;
+    	ecommerce_hit[GACustomKey.Dimension34] = '메인>'+ tabNm;	
+    }
+    
+    GADataSend_Ecommerce(GAEcommerceStepKey.PromotionClick, action_obj, null, ecommerce_hit);
+}
 
-		if (slitmNm == "" || slitmCd == "" || tabNm == "")
-			return;
+function getCookieGA(name) {
+    var cname = name + "=";
+    var dc = document.cookie;
+    if (dc.length > 0) {
+        begin = dc.indexOf(cname);
+        if (begin != -1) {
+            begin += cname.length;
+            end = dc.indexOf(";", begin);
+            if (end == -1) end = dc.length;
+            if ( "EHCustName" == name || "LAST_SECT" == name) {
+                return decodeURIComponent(dc.substring(begin, end));
+            }
+            else {
+                return unescape(dc.substring(begin, end)).replace('GA1.2.','');
+            }
+        }
+    }
+    return null;
+}
 
-		var product_array = [];
-		product_array.push({
-			'id' : slitmCd,
-			'name' : slitmNm
-		});
+function sendSlitmClickGo(slitmNm, slitmCd, tabNm,url){
 
-		var action_obj = new Object();
-		action_obj[GAActionFieldKey.ProductActionList] = tabNm;
+    if(slitmNm == "" || slitmCd == "" || tabNm == "" || url =="")
+        return;
 
-		var ecommerce_hit = new Object();
-		GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj,
-				product_array, ecommerce_hit);
-	}
+    var product_array = [];
+    product_array.push({'id': slitmCd, 'name': slitmNm});
 
-	function getParameterByName(url, name) {
-		if (url == "" || name == "" || url == undefined || name == undefined) {
-			return;
-		}
+    var action_obj = new Object();
+    action_obj[GAActionFieldKey.ProductActionList] = tabNm;
 
-		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex
-				.exec(url);
-		return results === null ? "" : decodeURIComponent(results[1].replace(
-				/\+/g, " "));
-	}
+    var ecommerce_hit = new Object();
+    GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj, product_array, ecommerce_hit);
 
-	function setGaPromotion(title, name, position, creative, id) {
-		var action_obj = new Object();
-		var ecommerce_hit = new Object();
-		var tabNm = title;
-		if (tabNm.length > 0) {
-			tabNm = tabNm.substring(tabNm.indexOf(">") + 1, tabNm.length);
-		}
+    document.location.href = url;
+}
+function sendSlitmClickNewWin(slitmNm, slitmCd, tabNm, url){
 
-		ecommerce_hit[GAHitKey.Title] = title;
+    if(slitmNm == "" || slitmCd == "" || tabNm == "" || url =="")
+        return;
 
-		action_obj["promo1"] = {};
-		action_obj["promo1"][GAActionFieldKey.PromotionName] = name;
-		action_obj["promo1"][GAActionFieldKey.PromotionPosition] = position;
-		action_obj["promo1"][GAActionFieldKey.PromotionCreative] = creative;
-		action_obj["promo1"][GAActionFieldKey.PromotionID] = id;
+    var product_array = [];
+    product_array.push({'id': slitmCd, 'name': slitmNm});
 
-		if (name.substring(0, name.indexOf("_")) == "메인") {
-			console.log("setGaPromotion()................4");
-			ecommerce_hit[GACustomKey.Dimension31] = '메인';
-			ecommerce_hit[GACustomKey.Dimension32] = '메인>' + tabNm;
-			ecommerce_hit[GACustomKey.Dimension33] = '메인>' + tabNm;
-			ecommerce_hit[GACustomKey.Dimension34] = '메인>' + tabNm;
-		}
+    var action_obj = new Object();
+    action_obj[GAActionFieldKey.ProductActionList] = tabNm;
 
-		GADataSend_Ecommerce(GAEcommerceStepKey.PromotionClick, action_obj,
-				null, ecommerce_hit);
-	}
+    var ecommerce_hit = new Object();
+    GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj, product_array, ecommerce_hit);
 
-	function getCookieGA(name) {
-		var cname = name + "=";
-		var dc = document.cookie;
-		if (dc.length > 0) {
-			begin = dc.indexOf(cname);
-			if (begin != -1) {
-				begin += cname.length;
-				end = dc.indexOf(";", begin);
-				if (end == -1)
-					end = dc.length;
-				if ("EHCustName" == name || "LAST_SECT" == name) {
-					return decodeURIComponent(dc.substring(begin, end));
-				} else {
-					return unescape(dc.substring(begin, end)).replace('GA1.2.',
-							'');
-				}
-			}
-		}
-		return null;
-	}
+    try {
+        _trk_flashEnvView('_TRK_PI=LYRNWN');
+    } catch(e) {}
 
-	function sendSlitmClickGo(slitmNm, slitmCd, tabNm, url) {
+    try {
+        _trk_clickTrace("EVT", "상품리스트_새창");
+    } catch (e) {}
+    window.open(url, '_blank');
+}
 
-		if (slitmNm == "" || slitmCd == "" || tabNm == "" || url == "")
-			return;
+function bizSpringTagForHome(url, tag, pathVal){
+    
+	location.href = url
+}
 
-		var product_array = [];
-		product_array.push({
-			'id' : slitmCd,
-			'name' : slitmNm
-		});
+function gaTagging(obj_GA, msg1, msg2, msg3){
+    console.log("gaTagging()................");
+    var title =     $(obj_GA).attr("ga-custom-title") == undefined ? "" : $(obj_GA).attr("ga-custom-title");            
+    var name =      $(obj_GA).attr("ga-custom-name") == undefined ? "" : $(obj_GA).attr("ga-custom-name");  
+    var position =  $(obj_GA).attr("ga-custom-position") == undefined ? "" : $(obj_GA).attr("ga-custom-position");
+    var creative =  $(obj_GA).attr("ga-custom-creative") == undefined ? "" : $(obj_GA).attr("ga-custom-creative");
+    var id =        $(obj_GA).attr("ga-custom-id") == undefined ? "" : $(obj_GA).attr("ga-custom-id");
+    var etc =       $(obj_GA).attr("ga-custom-etc") == undefined ? "" : $(obj_GA).attr("ga-custom-etc");
+    var etc2 =      $(obj_GA).attr("ga-custom-etc2") == undefined ? "" : $(obj_GA).attr("ga-custom-etc2");
+    
+    setGaPromotion(title, name, position, creative, id);
+    //마케팅플랫폼 전용 >>> 마케팅 플랫폼은 Tab명이 다르기 때문에 if문 처리
+    /*
+    if(gaForTabNm != "" && gaForTabNm != null && gaForTabNm != undefined && etc2 == "Y"){
+        title = "메인>"+gaForTabNm;
+        name = "메인_"+gaForTabNm+"탭";
+    }
+    
+    if(etc2 == "N"){//마케팅플랫폼 전용 >>> 마케팅플랫폼 jsp가 기획전에도 쓰이기 때문에 if문 처리.(mainTabYn)
+        //추후 이곳에 마케팅플랫폼 기획전일 경우 분기분 넣는다...
+        
+    }else{
+        console.log("setGaPromotion()................1");
+        setGaPromotion(title, name, position, creative, id);    
+    }
+*/
 
-		var action_obj = new Object();
-		action_obj[GAActionFieldKey.ProductActionList] = tabNm;
+    if (etc == "home"){
+        bizSpringTagForHome(msg1, msg2, msg3);
+    } else {
+    	if (msg1 != null && msg1 != "" && msg1.length > 0) {
+            location.href = msg1;
+    	}
+    }
+}
 
-		var ecommerce_hit = new Object();
-		GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj,
-				product_array, ecommerce_hit);
 
-		document.location.href = url;
-	}
-	function sendSlitmClickNewWin(slitmNm, slitmCd, tabNm, url) {
 
-		if (slitmNm == "" || slitmCd == "" || tabNm == "" || url == "")
-			return;
-
-		var product_array = [];
-		product_array.push({
-			'id' : slitmCd,
-			'name' : slitmNm
-		});
-
-		var action_obj = new Object();
-		action_obj[GAActionFieldKey.ProductActionList] = tabNm;
-
-		var ecommerce_hit = new Object();
-		GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj,
-				product_array, ecommerce_hit);
-
-		try {
-			_trk_flashEnvView('_TRK_PI=LYRNWN');
-		} catch (e) {
-		}
-
-		try {
-			_trk_clickTrace("EVT", "상품리스트_새창");
-		} catch (e) {
-		}
-		window.open(url, '_blank');
-	}
-
-	function bizSpringTagForHome(url, tag, pathVal) {
-
-		location.href = url
-	}
-
-	function gaTagging(obj_GA, msg1, msg2, msg3) {
-		console.log("gaTagging()................");
-		var title = $(obj_GA).attr("ga-custom-title") == undefined ? "" : $(
-				obj_GA).attr("ga-custom-title");
-		var name = $(obj_GA).attr("ga-custom-name") == undefined ? "" : $(
-				obj_GA).attr("ga-custom-name");
-		var position = $(obj_GA).attr("ga-custom-position") == undefined ? ""
-				: $(obj_GA).attr("ga-custom-position");
-		var creative = $(obj_GA).attr("ga-custom-creative") == undefined ? ""
-				: $(obj_GA).attr("ga-custom-creative");
-		var id = $(obj_GA).attr("ga-custom-id") == undefined ? "" : $(obj_GA)
-				.attr("ga-custom-id");
-		var etc = $(obj_GA).attr("ga-custom-etc") == undefined ? "" : $(obj_GA)
-				.attr("ga-custom-etc");
-		var etc2 = $(obj_GA).attr("ga-custom-etc2") == undefined ? "" : $(
-				obj_GA).attr("ga-custom-etc2");
-
-		setGaPromotion(title, name, position, creative, id);
-		//마케팅플랫폼 전용 >>> 마케팅 플랫폼은 Tab명이 다르기 때문에 if문 처리
-		/*
-		if(gaForTabNm != "" && gaForTabNm != null && gaForTabNm != undefined && etc2 == "Y"){
-		    title = "메인>"+gaForTabNm;
-		    name = "메인_"+gaForTabNm+"탭";
-		}
-		
-		if(etc2 == "N"){//마케팅플랫폼 전용 >>> 마케팅플랫폼 jsp가 기획전에도 쓰이기 때문에 if문 처리.(mainTabYn)
-		    //추후 이곳에 마케팅플랫폼 기획전일 경우 분기분 넣는다...
-		    
-		}else{
-		    console.log("setGaPromotion()................1");
-		    setGaPromotion(title, name, position, creative, id);    
-		}
-		 */
-
-		if (etc == "home") {
-			bizSpringTagForHome(msg1, msg2, msg3);
-		} else {
-			if (msg1 != null && msg1 != "" && msg1.length > 0) {
-				location.href = msg1;
-			}
-		}
-	}
-</script>
-<!-- GA Custum lib -->
-<script async
-	src="https://www.googletagmanager.com/gtag/js?id=AW-1066206974"></script>
+</script> <!-- GA Custum lib -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-1066206974"></script>
 <!-- Google analytics end -->
 
 <script>
+	
 	$.fn.size = function() {
-		return this.length;
+	    return this.length;
 	}
 
-	/**
-	 * 팝업 관련  함수(아래 링크를 참고하고 있음)
-	 * as-is https://image.hmall.com/pc/js/hmall/co/common.js
-	 * serverHost indexof local이 없어 추가-> 추후 as-is js 생성 필요
-	 * 2020.09.21 http -> https 로 던지도록 변경
-	 */
-	document.domain = "hmall.com";
-	var locationHref = document.location.href;
-	var imageServer = "https://image.hmall.com";
-	var serverHost = (location.href.indexOf("final") > 0
-			|| location.href.indexOf("stg") > 0
-			|| location.href.indexOf("dev") > 0 || location.href
-			.indexOf("local") > 0) ? "https://" + location.host
-			: "https://www.hmall.com";
-	var serverHostForSSL = (location.href.indexOf("final") > 0
-			|| location.href.indexOf("stg") > 0
-			|| location.href.indexOf("dev") > 0 || location.href
-			.indexOf("local") > 0) ? "https://" + location.host
-			: "https://www.hmall.com";
-	var switch_serverHost;
+    /**
+     * 팝업 관련  함수(아래 링크를 참고하고 있음)
+     * as-is https://image.hmall.com/pc/js/hmall/co/common.js
+     * serverHost indexof local이 없어 추가-> 추후 as-is js 생성 필요
+     * 2020.09.21 http -> https 로 던지도록 변경
+     */
+    document.domain = "hmall.com";
+    var locationHref = document.location.href;
+    var imageServer = "https://image.hmall.com";
+    var serverHost = (location.href.indexOf("final") > 0 || location.href.indexOf("stg") > 0 || location.href.indexOf("dev") > 0 || location.href.indexOf("local") > 0) ? "https://" + location.host : "https://www.hmall.com";
+    var serverHostForSSL = (location.href.indexOf("final") > 0 || location.href.indexOf("stg") > 0 || location.href.indexOf("dev") > 0 || location.href.indexOf("local")>0) ? "https://" + location.host : "https://www.hmall.com";
+    var switch_serverHost;
 
-	if (locationHref.indexOf("https") > -1) {
-		switch_serverHost = serverHostForSSL;
-		imageServer = "https://image.hmall.com";
-	} else if (locationHref.indexOf("http") > -1) {
-		switch_serverHost = serverHost;
-		imageServer = "https://image.hmall.com";
-	}
+    if (locationHref.indexOf("https") > -1) {
+        switch_serverHost = serverHostForSSL;
+        imageServer = "https://image.hmall.com";
+    } else if (locationHref.indexOf("http") > -1) {
+        switch_serverHost = serverHost;
+        imageServer = "https://image.hmall.com";
+    }
 
-	try {
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'AW-1066206974');
-		gtag('config', 'AW-937000404');
-	} catch (e) {
-	}
 
-	//Google Analytics
-	var init_Obj = new Object();
 
-	$(window).on("load", function() {
-		// $("body").prepend('hello new UI');
+    try{
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066206974');
+      gtag('config', 'AW-937000404');
+  }catch(e){}
 
-		//GA 맞춤측정 데이터 전송 및 클릭이벤트 초기화
-		console.log("setDimension and useWindload 호출");
-		setDimension();
-		useWinload();
+  //Google Analytics
+  var init_Obj = new Object();
 
-	});
+  $(window).on("load",function() {
+      // $("body").prepend('hello new UI');
 
-	// GNB - 바로가기 링크
-	function setQuicklink(jsonData) {
-		var _data = jsonData;
-		var _html = "";
+      //GA 맞춤측정 데이터 전송 및 클릭이벤트 초기화
+      console.log("setDimension and useWindload 호출");
+      setDimension();
+      useWinload();
+      
+  });
 
-		$(_data)
-				.each(
-						function(_idx) {
-							var _label = this.dispNm.toString();
-							var _dispUrl = this.dispUrl.toString();
-							var _item = "";
 
-							if (_idx == 0)
-								_item = "<li class='first'>";
-							else
-								_item = "<li>";
+    // GNB - 바로가기 링크
+    function setQuicklink(jsonData){
+        var _data = jsonData;
+        var _html = "";
 
-							var _bizParam = _dispUrl.indexOf("?") >= 0 ? "&_IC_=tab"
-									+ (_idx + 1)
-									: "?_IC_=tab" + (_idx + 1);
+        $(_data).each(function(_idx){
+            var _label = this.dispNm.toString();
+            var _dispUrl = this.dispUrl.toString();
+            var _item = "";
 
-							_item += "<a href='" + _dispUrl + _bizParam + "' class='gp_className' ga-category='메인 홈' ga-action='상단탭' ga-label='" + _label + "'>"
-									+ _label + "</a>" + "</li>";
+            if(_idx == 0) _item = "<li class='first'>";
+            else _item = "<li>";
 
-							_html += _item;
-						});
+            var _bizParam = _dispUrl.indexOf("?") >= 0 ? "&_IC_=tab"+(_idx+1) : "?_IC_=tab"+(_idx+1);
 
-		$('.quicklink.ql-left').empty().append(_html);
-	}
-	/*    
-	 function gaTagging(obj_GA, msg1, msg2, msg3){
-	 location.href = msg1;    	
-	 }
-	 */
-	function getClickUrl(url) {
-		if (url == '') {
-			return false;
-		} else {
-			document.location.href = url;
+            _item += "<a href='" + _dispUrl + _bizParam + "' class='gp_className' ga-category='메인 홈' ga-action='상단탭' ga-label='" + _label + "'>" + _label + "</a>" + "</li>";
 
-		}
-	}
+            _html += _item;
+        });
+
+        $('.quicklink.ql-left').empty().append(_html);
+    }
+/*    
+    function gaTagging(obj_GA, msg1, msg2, msg3){
+    	location.href = msg1;    	
+    }
+*/
+    function getClickUrl(url){
+        if(url == ''){
+            return false;       
+        }else{
+            document.location.href = url;
+            
+        }
+    }
+
 </script>
 
 <!-- includeScript -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/mp/mypage.css">
+<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/mp/mypage.css">
 <script type="text/javascript">
-	var gaMktgUrl = "";
-	var gaMktg3 = "";
-	// 내부 팝업에서 데이터 수정후 호출
-	function fnRefresh() {
-		location.href = "/p/mpf/selectMyPageMain.do";
+
+jQuery(function($) {
+	setYearBox();
+    var paramMCnslCsfCd = '';
+    var paramCnslCsfCd = '';
+
+    
+    $("select[name='mCnslCsfCd']").change(function(){
+        var mCnslCsfCd = $(this).val();
+        doFormSubmit();
+    });
+
+});
+
+function setYearBox(){
+	var dt = new Date();
+	var year = "";
+	var com_year = dt.getFullYear();
+	//var ordPeriodVal = $("#ordPeriodVal").val();
+	for(var i=1; i<4; i++){
+		var idx=i+3;
+		$("label[for='order0"+idx+"']").text(com_year+"년");
+		$("label[for='order0"+idx+"']").val(com_year);
+		$("#order0"+idx).val(com_year);
+		com_year--;
 	}
+}
 
-	jQuery(function($) {
-		$(".myShoping > dl[class='type1']")
-				.click(
-						function() {
-							location.href = "http://www.hmall.com/p/mpc/selectRecentItemList.do";
-						});
+function setWeekPeriod(divIdx) {
+	var d = new Date();
+	var endDateStr = getDateStr(d);
+	var dt = new Date(d.setDate(d.getDate() - 14));
+	var startDateStr = getDateStr(dt);
+	
+    $("#condPeriod").val("2");
+    $("#strtDt").val(startDateStr);
+    $("#endDt").val(endDateStr);  
 
-		$(".myShoping > dl[class='type3']").click(function() {
-			location.href = "/p/mpc/bitmAlrimList.do";
-		});
-		$(".myShoping > dl[class='type4']").click(function() {
-			location.href = "/p/mpc/sltdItemList.do?SkyscraperGroup=WishList";
-		});
-		$(".myShoping > dl[class='type5']").click(function() {
-			location.href = "/p/odb/basktList.do?GnbGroup=Basket";
-		});
+    doFormSubmit();
+}
 
-		rcmmItem();
-	});
+function setMonthPeriod(divIdx,period) {
+	var d = new Date();
+	var endDateStr = getDateStr(d);
+	var dt = new Date(d.setMonth(d.getMonth() - period));
+	var startDateStr = getDateStr(dt);
 
-	$(document).ready(function() {
-		bannerOpen();
-	});
+	switch (period) {
+        case 3 :
+        	$("#condPeriod").val("3");
+            break;
+        case 6 :
+        	$("#condPeriod").val("6");
+            break;
+    }
 
-	// 상품속성변경레이어 오픈
-	function openUitmLayer(slitmCd, bsitmCd, ordNo, ordPtcSeq, uitmCd) {
-		$("#uitmPupLayer iframe").attr(
-				"src",
-				"/p/mpa/selectOrdUitmPup.do?slitmCd=" + slitmCd + "&bsitmCd="
-						+ bsitmCd + "&ordNo=" + ordNo + "&ordPtcSeq="
-						+ ordPtcSeq + "&uitmCd=" + uitmCd);
+	$("#condPeriod").val(period);	
+    $("#strtDt").val(startDateStr);
+    $("#endDt").val(endDateStr);
+    
+    doFormSubmit();
+}
+
+function setYearPeriod(divIdx,val) {
+	var period = val;
+	var d = new Date();
+	d.setFullYear(new Date().getFullYear() + period);
+	var startDateStr = getDateStr(d);
+	startDateStr = startDateStr.substr(0,4)+"0101";
+	var endDateStr = startDateStr.substr(0,4)+"1231";
+	
+	$("#condPeriod").val(period);	
+    $("#strtDt").val(startDateStr);
+    $("#endDt").val(endDateStr);
+    
+    doFormSubmit();
+}
+
+function setAllPeriod(divIdx) {
+	var d = new Date();
+	var startDateStr = getDateStr(d);
+	var endDateStr = startDateStr.substr(0,4)+"1231";
+	
+   	$("#condPeriod").val("-3");	
+    $("#strtDt").val("19000101");
+    $("#endDt").val(endDateStr);
+    
+    doFormSubmit();
+}
+
+function getDateStr(dt){
+	var year = dt.getFullYear();
+	var month = dt.getMonth();
+	month++;
+	if( month < 10 ){
+		month = "0" + month;
 	}
-
-	function bannerOpen() {
-		var itntId = '';
-		var grdGbCdNm = "SILVER";
-
-		$.ajax({
-			type : "post",
-			data : {
-				itntId : itntId,
-				grdGbCdNm : grdGbCdNm
-			},
-			url : "/p/mpf/bannerOpen.do",
-			success : function(data) {
-				if (data.actorError == "true") {
-					$("#bannerWrap").hide();
-				} else {
-					$("#mktgBanner").show();
-					var rank = data.rank;
-					if (rank == "1" || rank == "2" || rank == "3"
-							|| rank == "4" || rank == "5" || rank == "6") {
-						$("#sogu1").html(data.sogu1);
-						$("#sogu2").html(data.sogu2);
-						//var url = imageServer + data.img;
-						var url = imageServer + data.img;
-
-						$("#bannerImg").append("<img src=" + url+ ">");
-						//document.getElementById('bannerWrap').style.background = "#"+data.bgColor ; 
-						gaMktg3 = data.sogu1;
-						gaMktgUrl = data.linkUrl;
-						//document.getElementById('mktgBanner').href = data.linkUrl ; 
-
-					} else {
-						$("#bannerWrap").hide();
-					}
-				}
-			},
-			error : function(data) {
-				console.log("마케팅 동의에 실패하였습니다.");
-			}
-
-		});
+	var date = dt.getDate();
+	if( date < 10){
+		date = "0" + date;
 	}
-	// 모바일 전송확인
-	function openMblConSendPupLayer(ordNo, ordPtcSeq, slitmCd) {
-		var left = ($(window).scrollLeft() + $(window).width()) / 2 + "px";
-		var top = ($(window).scrollTop() + ($(window).height() / 2)) + "px";
-		showLoadingBar(left, top);
-		$.ajax({
-			type : "post",
-			url : "/p/mpf/selectMblConSendPup.do",
-			data : {
-				ordNo : ordNo,
-				ordPtcSeq : ordPtcSeq,
-				slitmCd : slitmCd
-			},
-			success : function(data) {
-				$("#mblConSendPupLayer").html(data).modal().show();
-				hideLoadingBar();
-			},
-			error : function(data) {
-			}
-		});
+	return year + "" +  month + "" + date;
+}
+
+function doFormSubmit(){
+
+    var strtDt = $("#strtDt").val();
+    var endDt  = $("#endDt").val();
+
+    if(parseInt(strtDt) > parseInt(endDt)){
+        alert("조회날짜를 확인해주세요.");
+        return false;
+    }
+
+    $("form[name='myOrdReqSearchForm']").submit();
+}
+
+function doOpenCnslDtlPup(no, seq){
+	$.ajax({
+        type: "post"
+        ,url: "/p/ccd/selectCnslDtlPup.do"
+        ,data: {cnslAcptNo:no, cnslAcptSeq:seq}
+        ,dataType: "html"
+        ,async: false
+        ,success : function(data) {
+            $("#cnslDtlPup").html("");
+            $("#cnslDtlPup").html(data);
+            $('body').commonUi('initLibrary');
+        }
+    });
+
+}
+
+
+function cnslAcptCncl(cnslAcptNo, cnslAcptSeq){
+    if(confirm('문의를 취소하시겠습니까?')){
+        $.ajax({
+            type: "post"
+            ,url: "/p/ccd/cnclCnslAcpt.do"
+            ,data: {cnslAcptNo:cnslAcptNo, cnslAcptSeq:cnslAcptSeq}
+            ,dataType: "json"
+            ,success : function(data) {
+                if(data.save){
+                	alert("문의가 취소되었습니다.");
+                    location.reload();
+                }
+            }
+        });
+    }
+}
+
+function moveCancleCall(){
+    var url = "/p/ccd/selectCnslAcptPup.do";
+    var popName = "selectCnslAcptPup";
+    var popOption = "height=316, width=800, fullscreen=no, location=no, scrollbars=yes, menubar=no, toolbar=no, titlebar=no, directories=no, resizable=no";
+    window.open(url,popName,popOption);
+}
+
+function srchKwd(){
+	var srchKwd = $("#srchKwd").val();
+	if(isEmpty(srchKwd)){
+		alert("검색어를 입력 해 주세요.");
+	}else{
+		$("#kwd").val(srchKwd);
+		doFormSubmit();
 	}
-
-	// 모바일 상품권 재전송 Mute:M12 재전송 결과 메시지 정상처리. 
-	// 기존은 무조건 '전송을 요청중입니다'를 찍고 창닫음.
-	function mblConReSend(ordNo, ordPtcSeq) {
-		$.ajax({
-			type : "post",
-			url : "/p/mpf/updateMblConSendPup.do",
-			data : {
-				ordNo : ordNo,
-				ordPtcSeq : ordPtcSeq
-			},
-			success : function(data) {
-				if (data.errorMessages.length > 0) { // Mute:M12 에러 메시지 처리.
-					alert(data.errorMessages[0]);
-				} else {
-					alert("재전송 요청을 완료하였습니다.");
-				}
-				$("#mblConSendPupLayer .btn-close").click();
-			},
-			error : function(data) {
-			}
-		});
-	}
-
-	//온라인 공연 상품 발송(2128299062 1회성 발송으로 하드코딩 작업, 추후 신규상품유형 추가)
-	function mblSmsReSend(ordNo) {
-		$
-				.ajax({
-					type : "post",
-					url : "/p/mpf/insertSmsReSendInf.do",
-					data : {
-						ordNo : ordNo
-					},
-					success : function(data) {
-						if (data.errorMessages == null
-								|| data.errorMessages.length > 0) {
-							alert(data.errorMessages[0]);
-						} else {
-							alert("재전송 요청을 완료하였습니다.");
-						}
-						$("#mblConSendPupLayer .btn-close").click();
-					},
-					error : function(data) {
-						alert("재발송에 실패하였습니다.");
-					}
-				});
-	}
-
-	function faqSrch() {
-		location.href = "http://www.hmall.com/p/ccc/faqList.do?ancmCntn="
-				+ $("#ancmCntn").val();
-	}
-
-	//배송지변경 팝업
-	function openOrdDstnPup(ordNo, dstnSeq) {
-		openPopup("/p/mpa/selectOrdDstnPup.do?ordNo=" + ordNo + "&dstnSeq="
-				+ dstnSeq + "", "selectOrdDstnPup", 820, 930, "yes", $(window)
-				.width(), $(window).height());
-	}
-
-	//재결제 팝업
-	function openRePaymentPup(ordNo) {
-		openPopup("/p/mpa/selectReOrderPup.do?ordNo=" + ordNo + "",
-				"popupOpenRePayment", 836, 685, "yes", $(window).width(), $(
-						window).height());
-	}
-
-	function openDlvTrcUrlPup(ordNo, ordPtcSeq) {
-		window
-				.open("/p/mpa/selectDlvTrcUrl.do?ordNo=" + ordNo
-						+ "&ordPtcSeq=" + ordPtcSeq + "", "openDlvTrcUrlPup",
-						"toolbar=no, menubar=no, width=510, height=680, scrollbars=yes, resizable=yes");
-	}
-
-	function dlvSearch(ordNo, ordPtcSeqNew, ordItemNm) {
-
-		$.ajax({
-			type : "post",
-			url : "/p/rtpDlvSearch.do",
-			data : {
-				ordNo : ordNo,
-				ordPtcSeqNew : ordPtcSeqNew
-			},
-			dataType : "json",
-			success : function(data) {
-				if (data.isLogout) {
-				}
-
-				var list = data.dlvcoVO.split("^");
-
-				for (i in list) {
-					var wbno = list[0];
-					var delygb = list[1];
-					var codename = list[2];
-					var remark = list[3];
-
-					openDlvTrcUrlPup(ordNo, ordPtcSeqNew);
-				}
-			},
-			error : function(data) {
-				console.log("json error");
-			}
-		});
-	}
-
-	//20170404 박승택 추가
-	function doSearchUPntMainPop() {
-		//2019.04.03 HPoint마케팅개선 : H.Point 탭으로 이동
-		/* var form = $("form[name='upntForm']")[0];
-		form.setAttribute("action", "https://www.h-point.co.kr/cu/myh/myPnt.shd");   
-		window.open("",'uPnt','width=900,height=650,scrollbars=yes');
-		form.submit(); */
-
-		window.location.href = "https://www.hmall.com/p/mpe/selectUPntTabPage.do";
-	}
-
-	//주문제작인경우 상품준비(주문접수완료)단계인 경우에는 즉시취소 시 1:1상담 팝업 오픈
-	function openOrdMakeItemCnclPup(ordNo, ordPtcSeq) {
-		if (confirm("해당 상품은 주문제작 건으로 즉시취소가 불가합니다.\n1:1 상담신청으로 이동하시겠습니까?")) {
-			window
-					.open("/p/mpa/selectOrdCnclRtpExchAsReqPup.do?ordNo="
-							+ ordNo + "&ordPtcSeq=" + ordPtcSeq + "",
-							"openOrdMakeItemCnclPup",
-							"toolbar=no, menubar=no, width=820, height=685, scrollbars=yes, resizable=yes");
-		}
-	}
-
-	//1:1 상담
-	function openCnslAcptPup(ordNo, ordPtcSeq, gubun) {
-		var url;
-		if (isLogin() == 'true') {
-			if (gubun == "rtp") {
-				if (confirm("해당 상품은 제품 특성상 즉시 반품신청이 불가합니다.\n1:1 상담신청으로 이동하시겠습니까?")) {
-					url = "/p/ccd/selectCnslAcptPup.do?ordNo=" + ordNo
-							+ "&ordPtcSeq=" + ordPtcSeq + "&claimDiv=return";
-				} else {
-					return;
-				}
-			} else if (gubun == "rtp7") {
-				if (confirm("구매 후 7일이 경과한 경우 반품신청이 불가합니다.\n1:1 상담신청으로 이동하시겠습니까?")) {
-					url = "/p/ccd/selectCnslAcptPup.do?ordNo=" + ordNo
-							+ "&ordPtcSeq=" + ordPtcSeq + "&claimDiv=return";
-				} else {
-					return;
-				}
-			} else if (gubun == "exch") {
-				if (confirm("해당 상품은 제품 특성상 즉시 교환신청이 불가합니다.\n1:1 상담신청으로 이동하시겠습니까?")) {
-					url = "/p/ccd/selectCnslAcptPup.do?ordNo=" + ordNo
-							+ "&ordPtcSeq=" + ordPtcSeq + "&claimDiv=change";
-				} else {
-					return;
-				}
-			} else if (gubun == "cncl") {
-				if (confirm("해당 상품은 제품 특성상 즉시 취소신청이 불가합니다.\n1:1 상담신청으로 이동하시겠습니까?")) {
-					url = "/p/ccd/selectCnslAcptPup.do?ordNo=" + ordNo
-							+ "&ordPtcSeq=" + ordPtcSeq + "&claimDiv=cancle";
-				} else {
-					return;
-				}
-			}
-
-			/* var url = "/p/ccd/selectCnslAcptPup.do?cnslCsfCd=" + obj;
-			if(isEmpty(obj)){
-			    url = "/p/ccd/selectCnslAcptPup.do";
-			} */
-			var popName = "selectCnslAcptPup";
-			var popOption = "height=660, width=650, fullscreen=no, location=no, scrollbars=yes, menubar=no, toolbar=no, titlebar=no, directories=no, resizable=no";
-			window.open(url, popName, popOption);
-		} else {
-			openLoginPopup();
-		}
-	}
-
-	function changeApply(ordNo, ordPtcSeq, claimDiv) {
-		if (confirm("교환은 1:1 상담신청을 통해 신청 가능합니다.\n1:1 상담신청으로 이동합니다.")) {
-			location.href = "/p/ccd/selectCnslAcptPup.do?ordNo=" + ordNo
-					+ "&ordPtcSeq=" + ordPtcSeq + "&claimDiv=change";
-		}
-	}
-
-	function bannerClick() {
-		var gaLabel = "'" + gaMktg3 + "'";
-		GA_Event('마이페이지', '개인화 배너', gaLabel);
-		location.href = gaMktgUrl;
-	}
-
-	//스토어픽 교환권 레이어팝업
-	function openStpicExchTcktPupLayer(ordNo, ordPtcSeq) {
-		var left = ($(window).scrollLeft() + $(window).width()) / 2 + "px";
-		var top = ($(window).scrollTop() + ($(window).height() / 2)) + "px";
-		showLoadingBar(left, top);
-		$.ajax({
-			type : "post",
-			url : "/p/mpf/selectStpicExchTcktPup.do",
-			data : {
-				ordNo : ordNo,
-				ordPtcSeq : ordPtcSeq
-			},
-			success : function(data) {
-				$("#stpicExchTcktPupLayer").html(data);
-				hideLoadingBar();
-			},
-			error : function(data) {
-			}
-		});
-	}
-
-	//엄지펀딩 상품의 경우 주문상태가 접수,결제완료상태가 지난경우 주문취소가 안됨
-	function openOrdMakeItemCncl(ordNo, ordPtcSeq) {
-		if (alert("엄지펀딩 상품의 경우 펀딩종료 후 주문 취소가 불가합니다. \n자세한 내용은 고객센터로 문의바랍니다.")) {
-			window
-					.open("/p/mpa/selectOrdCnclRtpExchAsReqPup.do?ordNo="
-							+ ordNo + "&ordPtcSeq=" + ordPtcSeq + "",
-							"openOrdMakeItemCncl",
-							"toolbar=no, menubar=no, width=820, height=685, scrollbars=yes, resizable=yes");
-		}
-	}
-
-	//교환접수
-	function fnOpenExchPup(ordNo, ordPtcSeq) {
-		var exchFlag = false;
-		$.ajax({
-			type : "post",
-			url : "/p/mpa/selectOrdExchChk.do",
-			data : {
-				ordNo : ordNo,
-				ordPtcSeq : ordPtcSeq
-			},
-			async : false,
-			success : function(data) {
-				if (data.ordExchFlag) {
-					//교환가능
-					exchFlag = data.ordExchFlag;
-					location.href = "/p/mpa/selectOrdExchPup.do?ordNo=" + ordNo
-							+ "&ordPtcSeq=" + ordPtcSeq + "&chkOrdPtcSeq="
-							+ ordPtcSeq + "";
-				}
-			},
-			error : function(data) {
-
-			}
-		});
-
-		if (!exchFlag) {
-			if (confirm("해당 상품은 제품 특정상 즉시 교환신청이 불가합니다.\n1:1 상담신청으로 이동하시겠습니까?")) {
-				window
-						.open("/p/mpa/selectOrdCnclRtpExchAsReqPup.do?ordNo="
-								+ ordNo + "&ordPtcSeq=" + ordPtcSeq + "",
-								"openOrdMakeItemCnclPup",
-								"toolbar=no, menubar=no, width=820, height=685, scrollbars=yes, resizable=yes");
-			}
-		}
-	}
-
-	//스토어픽 교환권 레이어팝업
-	function openStpicExchTcktPupLayer(ordNo, ordPtcSeq) {
-		var left = ($(window).scrollLeft() + $(window).width()) / 2 + "px";
-		var top = ($(window).scrollTop() + ($(window).height() / 2)) + "px";
-		showLoadingBar(left, top);
-		$.ajax({
-			type : "post",
-			url : "/p/mpf/selectStpicExchTcktPup.do",
-			data : {
-				ordNo : ordNo,
-				ordPtcSeq : ordPtcSeq
-			},
-			success : function(data) {
-				$("#stpicExchTcktPupLayer").html(data).modal().show();
-				hideLoadingBar();
-			}
-		});
-	}
-
-	function openWindow(url) {
-		window.open(url, "_blank");
-	}
-	_TRK_PI_ = "MYPAGE";
-
-	/* 상품추천 */
-	function rcmmItem() {
-
-		var slitmCdArray = new Array();
-		;
-		$("input[name='slitmCd']").each(function() {
-			slitmCdArray.push($(this).val());
-		});
-
-		$.ajaxSettings.traditional = true;
-		$
-				.ajax({
-					type : "get",
-					url : "/p/coe/listRcmmSrvHtml.do?trtyNo=55&uiType=slide&rowCnt=5&pageSize=4" // 영역번호
-					,
-					dataType : "html",
-					data : {
-						slitmCdArray : slitmCdArray
-					},
-					success : function(data) {
-						if ($(data).find(".pdthumb").length > 0) {
-							$("#rcmmSectArea").append(data); // 삽입할 div
-							$("#divRcmmItem").show();
-							$('body').commonUi('initLibrary'); //PC인경우
-						}
-					},
-					error : function() {
-					}
-				});
-
-	}
-
-	// 분할결제 2차결제 팝업 호출
-	function openSplitPayPup(ordNo) {
-		openPopup("/p/mpa/selectSplitPay.do?ordNo=" + ordNo + "",
-				"selectSplitPayPup", 948, 818, "yes", $(window).width(), $(
-						window).height());
-	}
+}
+ 
+function srchKwdEventKey(){
+	if(window.event.keyCode == 13){
+		srchKwd();
+	}	
+}
 </script>
+<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}
+</style>
 </head>
+
+
+
+
 
 <body>
 <div class="wrap consult-main"><!-- wing banner 미노출 시 : wing-none 클래스 추가 -->
@@ -2942,182 +2690,246 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 
 </script>
 
-<%@ include file="../header.jsp"%>
+<%@ include file="../../header.jsp"%>
 
-	<main class="cmain mypage" role="main" id="mainContents">
-		<!-- 마이페이지 'mypage' 클래스 추가 -->
-		<div class="container">
-			<div class="gird-l2x">
-				<script type="text/javascript">
+
+	<main class="cmain mypage" role="main" id="mainContents"><!-- 마이페이지 'mypage' 클래스 추가 -->
+        <div class="container">
+            <div class="gird-l2x">
+	        
+
+
+
+
+
+
+<script type="text/javascript">
     var upntCustYn = "N";
-	$(document).ready(function() {
-	    $.ajax({
-	        type: "get"
-	        ,url: "/p/mpf/chkUpntCustYn.do"
-	        ,dataType: "json"
-	        ,async: false
-	        ,success : function(data) {
-	            upntCustYn = data.upntCustYn;
-	        }
-	        , error: function (data) {
-	            console.log("chkUpntCustYn_error", data);
-	        }
-	    });
-	});
-	
-				<!--HPAY임대진 추가 -->
-					function openHPayTag(pathVal) {
-						var url = "http://" + location.host
-								+ "/p/mpf/hpayManage.do";
-						try {
-							_trk_flashEnvView('_TRK_CP=' + pathVal);
-						} catch (e) {
-						}
+$(document).ready(function() {
+    $.ajax({
+        type: "get"
+        ,url: "/p/mpf/chkUpntCustYn.do"
+        ,dataType: "json"
+        ,async: false
+        ,success : function(data) {
+            upntCustYn = data.upntCustYn;
+        }
+        , error: function (data) {
+            console.log("chkUpntCustYn_error", data);
+        }
+    });
+});
 
-						openPopup(url, "loginPup", 640, 600, "no", $(window)
-								.width(), $(window).height());
-					}
+<!--HPAY임대진 추가 -->
+function openHPayTag(pathVal) {
+    var url = "http://" + location.host + "/p/mpf/hpayManage.do";
+    try {
+        _trk_flashEnvView('_TRK_CP=' + pathVal);
+    } catch(e){}
+    
+    openPopup(url, "loginPup", 640, 600, "no", $(window).width(), $(window).height());
+}
 
-					//H.Point Pay 관리 통합회원 확인 후 후 화면 분기
-					function fn_HppManage() {
-						if (upntCustYn == "Y") {
-							location.href = "https://www.hmall.com/p/mpd/hhpPmntManage.do";
-						} else {
-							$("#pec001-01").modal().show();
-						}
-					}
+//H.Point Pay 관리 통합회원 확인 후 후 화면 분기
+function fn_HppManage(){
+    if(upntCustYn == "Y"){
+        location.href = "https://www.hmall.com/p/mpd/hhpPmntManage.do";
+    }else{
+        $("#pec001-01").modal().show();
+    }
+}
 
-					function fn_upntPopupOpen() {
-						location.href = '/p/cua/registUpnt.do';
-					}
+function fn_upntPopupOpen(){
+    location.href='/p/cua/registUpnt.do';
+}
 
-					function fn_upntPopupClose() {
-						$("#pec001-01").modal().hide();
-					}
-				</script>
-				<!--20170816 박승택 추가 -->
-				<form name="upntLeftForm" method="post" target="uPnt">
-					<input type="hidden" name="mcustNo"
-						value="bm5pU0VSSFRXVnRiRE5VVjNCQ1pWVXhjVkZVUWs1U1JscFdWbXhhUzFFeGNFVlJWRlpUVm01Qk1sVXljelZpUjBwSVl6Tm9WMUp0YUhGVU1WcERWakZTYzFWc1ZtdGxha0Ux">
-				</form>
-				
-				<%@ include file="sidebar.jsp"%>
+function fn_upntPopupClose(){
+    $("#pec001-01").modal().hide();
+}
+</script>
+<!--20170816 박승택 추가 -->
+<form name="upntLeftForm" method="post" target="uPnt">
+    <input type="hidden" name="mcustNo" value="aG9yU0VSSFRXUnVWbkpVVjNCQ1pWVXhjVkZVUWs1U1IxSldWbXhhUzFFeGNFVlJWRlpUVm01Qk1sVXljelZpUjBwSVl6Tm9WMUp0YUhGVU1WcERWakZTYzFWc1ZtdGxha0Ux">
+</form>
+<div class="side-content">
+    <h3 class="side-menu-title"><a href="https://www.hmall.com/p/mpf/selectMyPageMain.do">마이페이지</a></h3>
+    <div class="side-menu-list">
+        <ul>
+            <li>
+                <a href="javascript:;">주문현황</a>
+                <ul class="sub-list">
+	                
+	                    
+	                    
+	                        <li><a href="https://www.hmall.com/p/mpa/selectOrdDlvCrst.do?pageType=ALL">주문/배송현황</a></li>
+	                    
+	                
+                    <li><a href="https://www.hmall.com/p/mpa/selectOrdDlvCrst.do?pageType=D2">취소/반품/교환/AS현황</a></li>
+                    <li><a href="https://www.hmall.com/p/mpa/selectCashTabMainPage.do">영수증/세금계산서</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">쇼핑통장</a>
+                <ul class="sub-list">
+                    <li><a href="https://www.hmall.com/p/mpe/selectCopnList.do">쿠폰</a></li>
+                    <li><a href="https://www.hmall.com/p/mpe/selectUPntTabPage.do">포인트</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">나의 활동</a>
+                <ul class="sub-list">
+                    <li><a href="https://www.hmall.com/p/mpc/sltdItemList.do">찜</a></li>
+                    <li><a href="https://www.hmall.com/p/mpc/bitmAlrimList.do">방송알리미</a></li>
+                    <li><a href="https://www.hmall.com/p/mpe/evntEntryDtl.do">참여이벤트</a></li>
+                    <li><a href="https://www.hmall.com/p/mpb/selectItemEvalAtclListPagingByCondtion.do">나의 상품평</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">회원정보</a>
+                <ul class="sub-list">
+	                
+	                	
+	                	
+	                		<li><a href="https://www.hmall.com/p/mpd/changeMemberInfoForm.do">회원정보관리</a></li><li>
+	                	
+	                                
+                    </li><li><a href="https://www.hmall.com/p/mpd/selectMemberDstnAdr.do">배송지관리</a></li>
+                    <li><a href="javascript:;" onclick="fn_HppManage();">H.Point Pay 관리</a></li>
+                    <li><a href="https://www.hmall.com/p/mpd/selectMemberUseInfo.do">개인정보 이용현황</a></li>
+	                
+	                	
+	                	
+		                	<li><a href="https://www.hmall.com/p/mpd/leaveMemberForm.do">회원탈퇴</a></li>
+		                
+	                
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">고객센터</a>
+                <ul class="sub-list">
+                    <li><a href="https://www.hmall.com/p/ccd/selectCnslOrdReqDtl.do">1:1 상담</a></li>
+                    <li><a href="https://www.hmall.com/p/mpb/selectItemQNAPagingByCondition.do">상품 Q&amp;A</a></li>
+                </ul>
+            </li>
+            
+			
+			    
+			    
+		    	
+			
+        </ul>
+    </div>
+</div>
 
-				<div class="contents">
-					<div class="mypage-order-wrap zzim">
-						<!-- 
-                    * 회원등급 지정 클래스
-                        - TOP CLASS 등급 : topclass-lv
-                        - DIAMOND 등급 : diamond-lv
-                        - PLATINUM 등급 : platinum-lv
-                        - GOLD 등급 : gold-lv
-                        - SILVER 등급 : silver-lv
-                    -->
 
-						<!-- (수정필요)회원 등급별 배경색 변경 -->
-						<div
-							class="myinfo-area  
-		                                gold-lv
-                    ">
-							<div>
-								<p class="myname">
-									<a href="/p/mpd/changeMemberInfoForm.do" class="btn-link"><em>{고객명}님</em></a>
-								</p>
-								<div class="rating">
-									<span class="silver-lv"><i class="icon"></i><em>{등급}</em></span>
-									<div class="btngroup">
-										<a href="https://www.hmall.com/pevent/eva/evntFamilyZoneMain.do"
-											class="btn btn-benefit sm"><span>혜택보기</span></a>
-									</div>
-								</div>
-								<!-- //.rating -->
-							</div>
-							<ul class="infowrap">
-								<li><a href="do_not.html"> <span
-										class="link"><b>{수량}</b>장</span> <span class="txt">보유 쿠폰</span>
-								</a></li>
-								<li><a href="javascript://" onclick="doSearchUPntMainPop()">
-										<span class="link"> <b>{포인트}</b>P
-									</span> <span class="txt">포인트</span>
-								</a></li>
-								<li><a
-									href="do_not.html">
-										<span class="link"><b>{수량}</b>건</span> <span class="txt">작성 가능한 상품평</span>
-								</a></li>
-								<li><a href="do_not.html">
-										<span class="link"><b>{수량}</b>건</span> <span class="txt">참여한 이벤트</span>
-								</a></li>
-							</ul>
-							<!-- //.infowrap -->
+                <div class="contents">
+                    <div class="mypage-consult-wrap">
+                        <h3 class="title22">1:1 상담</h3>
+                        <div class="border-gray-box">
+                            <p class="ctypo15">고객님의 궁금한 사항을 친절히 해결해 드립니다.</p>
+                            <div class="btngroup inline-block">
+                            	<!-- 게시판 상담하기 버튼 수정 필요(황명하) -->
+                                <button class="btn btn-linelgray small34" type="button" onclick="window.open('mypage/qna/qnapopup.jsp','1:1 상담하기','width=430,height=500,location=no,status=no,scrollbars=yes');"><i class="icon write"></i><span>게시판 상담하기</span></button>
+                            </div>
+                        </div>
 
-						</div>
-						<!-- //.myinfo-area -->
-
-						<div id="bannerWrap" class="banner-template">
-							<!--배너의 경우 관리자에서 등록 // bg칼러와 이미지가 들어간 배너만 등록-->
-							<a href="javascript:;"
-								data-background="#F2EDF8|#EFF6FC|#F8F8EA|#F9F2ED|#FFF2F4|#F3EBEA|#F0F6EA"
-								style="background: rgb(243, 235, 234);" id="mktgBanner"
-								onclick="bannerClick()">
-								<div class="banner" id="bannerImg">
-									<img
-										src="https://image.hmall.com/HM/HM026/20220330/155223/welcome.jpg">
-								</div>
-								<div class="banner-txt">
-									<p class="tit" id="sogu1">환영합니다! 첫 구매 고객님♡</p>
-									<p class="txt" id="sogu2">첫 구매 고객 전용 3만원 쿠폰팩~!</p>
-								</div>
-							</a>
-						</div>
-
-						<h3 class="title22">
-							최근 주문/배송 현황
-							<!-- 주문/배송현황 페이지로 이동 -->
-							<div class="btngroup abs">
-								<a href="/p/mpa/selectOrdDlvCrst.do" class="btn atext"><span>전체보기</span><i
-									class="arrow right"></i></a>
-							</div>
-						</h3>
-						<!-- 추후 상품전시 레이아웃 마크업으로 변경 필요 -->
-
-						<div class="order-list">
-
-							<div class="nodata">
-								<span class="bgcircle"><i class="icon nodata-type7"></i></span>
-								<p>최근 14일간의 주문한 상품이 없습니다.</p>
-							</div>
-						</div>
-
-						<h3 class="title22">
-							찜
-							<div class="btngroup abs">
-								<a href="/p/mpc/sltdItemList.do" class="btn atext"
-									onclick="gaTagging(this, '', '', '');" ga-custom-name="마이페이지"
-									ga-custom-position="찜한 상품" ga-custom-creative="전체보기"
-									ga-custom-title="마이페이지>메인" ga-custom-etc="urlAction"><span>전체보기</span><i
-									class="arrow right"></i></a>
-							</div>
-						</h3>
-						<div class="pdlist-wrap col4">
-							<!--// 4xn class="col4" 추가 -->
-							<!-- [12/08]_수정(위키 342 관련 내용 수정 - 찜한 상품이 없을 경우 추가) -->
-							<div class="nodata">
-								<p>찜한 상품이 없습니다.</p>
-							</div>
-						</div>
-						<!-- 
-					<div id="divRcmmItem" class="product-wrap pdslide">
-					</div>
-					                     -->
-						<div class="list-head" id="divRcmmItem" style="display: none;">
-							<h3 class="title22">Hmall 추천상품</h3>
-						</div>
-						<div id="rcmmSectArea" class="pdlist-wrap col4"></div>
-					</div>
-				</div>
-				<!-- // .contents -->
+                        <ul class="ui-tab type-line" role="tablist"> 
+                            <li role="presentation" class="ui-active"><a href="#board" onclick="javascript:location.replace('/p/ccd/selectCnslOrdReqDtl.do')" aria-controls="board" role="tab" data-modules-tab="">게시판 상담</a></li>
+                            <li role="presentation"><a href="#chat" onclick="javascript:location.replace('/p/ccd/selectCnslChatReqDtl.do')" aria-controls="chat" role="tab" data-modules-tab="">채팅상담</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane ui-active" id="board">
+                                <div class="consult-list">
+                                    <div class="filter-box bg-none">
+                           				<form action="/p/ccd/selectCnslOrdReqDtl.do" method="post" name="myOrdReqSearchForm">
+	                                        <input type="hidden" id="condPeriod" name="condPeriod" value="2">
+	                                        <input type="hidden" name="strtDt" id="strtDt" maxlength="8" value="">
+	                                      	<input type="hidden" name="endDt" id="endDt" maxlength="8" value="">
+	                                      	<input type="hidden" name="kwd" id="kwd" value="">   
+	                                    </form>                      				
+                                        <div class="search-filter">
+                                            <ul class="radiolist">
+                                                <li>
+                                                    <input type="radio" name="order" id="order01" aria-checked="&quot;true&quot;" checked="&quot;&quot;">
+                                                    <label for="order01" onclick="setWeekPeriod(0);">최근 14일</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="order" id="order02" aria-checked="&quot;false&quot;">
+                                                    <label for="order02" onclick="setMonthPeriod(0,3);">최근 3개월</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="order" id="order03" aria-checked="&quot;false&quot;">
+                                                    <label for="order03" onclick="setMonthPeriod(0,6);">최근 6개월</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="order" id="order04" aria-checked="&quot;false&quot;" value="2022">
+                                                    <label for="order04" onclick="setYearPeriod(0,0);">2022년</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="order" id="order05" aria-checked="&quot;false&quot;" value="2021">
+                                                    <label for="order05" onclick="setYearPeriod(0,-1);">2021년</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="order" id="order06" aria-checked="&quot;false&quot;" value="2020">
+                                                    <label for="order06" onclick="setYearPeriod(0,-2);">2020년</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="order" id="order07" aria-checked="&quot;false&quot;">
+                                                    <label for="order07" onclick="setAllPeriod(0);">전체</label>
+                                                </li>
+                                            </ul>
+											<div class="inputbox">
+                                                <label class="inplabel icon-find"><input type="text" onkeyup="srchKwdEventKey();" id="srchKwd" value="" placeholder="상품명 검색"></label>
+                                                <button class="btn btn-find" onclick="srchKwd();"><i class="icon find"></i><span class="hiding">검색</span></button>
+                                                <button class="btn ico-clearabled"><i class="icon"></i><span class="hiding">지우기</span></button>
+                                           	</div>												
+											<!--  UX-277 해피톡 고도화 : 상담유형  비노출  
+                                            <div class="custom-selectbox sm" data-modules-selectbox>
+	                                        <select name="mCnslCsfCd">
+	                                            <option value="" selected='selected'>상담유형</option>
+	                                            
+	                                                <option value="0302" >입금</option>
+	                                            
+	                                                <option value="0303" >환불</option>
+	                                            
+	                                                <option value="0401" >AS </option>
+	                                            
+	                                                <option value="0402" >교환</option>
+	                                            
+	                                                <option value="0404" >반품</option>
+	                                            
+	                                                <option value="0405" >취소</option>
+	                                            
+	                                                <option value="0501" >배송</option>
+	                                            
+	                                                <option value="0701" >서비스문의</option>
+	                                            
+	                                                <option value="0712" >시스템오류</option>
+	                                            
+	                                        </select>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                        <div>
+	                                        <div class="nodata">
+		                                        <span class="bgcircle"><i class="icon nodata-type12"></i></span>
+		                                        <p>상담 내역이 없습니다.</p>
+		                                    </div>
+	                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // .contents -->    
 			</div>
 		</div>
 	</main>
-	
-<%@ include file="../footer.jsp"%>
+
+<%@ include file="../../footer.jsp"%>
+</body>
+</html>
