@@ -1033,7 +1033,7 @@
 						<li><a ga-category="헤더" ga-action="로그아웃"
 							href="javascript:bizSpringTag('http://www.hmall.com/p/cob/logout.do','^헤더^로그아웃');">{로그인상태}</a></li>
 						<li><a
-							href="javascript:bizSpringTag('/pevent/eva/evntFamilyZoneMain.do','^헤더^마이페이지 레이어^멤버십존');">멤버십존</a></li>
+							href="HmallServlet?command=join_menu">회원가입</a></li>
 
 						<li><a ga-category="헤더" ga-action="고객센터"
 							href="javascript:bizSpringTag('/p/cca/main.do','^헤더^고객센터');">고객센터</a></li>

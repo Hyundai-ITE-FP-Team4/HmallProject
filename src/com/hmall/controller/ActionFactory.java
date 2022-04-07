@@ -2,6 +2,8 @@ package com.hmall.controller;
 
 import com.hmall.controller.action.Action;
 import com.hmall.controller.action.IndexAction;
+import com.hmall.controller.action.JoinFormAction;
+import com.hmall.controller.action.JoinMenuAction;
 import com.hmall.controller.action.MyPageAction;
 import com.hmall.controller.action.QnaBoradAction;
 
@@ -35,7 +37,14 @@ public class ActionFactory {
 		else if (command.equals("qnaboard")) {
 			action = new QnaBoradAction();
 		}
-		
+		//회원가입 메뉴
+		else if (command.equals("join_menu")) {
+			action = new JoinMenuAction();
+		}
+		//회원가입 폼
+		else if (command.equals("join_form")) {
+			action = new JoinFormAction();
+		}
 		return action;
 	}
 } // end class
