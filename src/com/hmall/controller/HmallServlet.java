@@ -25,6 +25,7 @@ public class HmallServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String command = request.getParameter("command");
 		System.out.println("HmallServlet : " + command);
 
@@ -49,8 +50,9 @@ public class HmallServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
-		//post check
+		//파라미터 무엇이 들어오나 check
 //		Enumeration e = request.getParameterNames();
 //		while (e.hasMoreElements()) {
 //			String name = (String) e.nextElement();
@@ -59,7 +61,8 @@ public class HmallServlet extends HttpServlet {
 //				System.out.println("name=" + name + ",value=" + value);
 //			}
 //		}
-	
+		
+		// 파라미터 가져오기 전에 UTF-8 설정
 		request.setCharacterEncoding("UTF-8");
 		
 		String command = request.getParameter("command");
@@ -72,7 +75,7 @@ public class HmallServlet extends HttpServlet {
 			action.execute(request, response);
 		}
 		
-		doGet(request, response);
+		//doGet(request, response);
 	}
 
 } // end class

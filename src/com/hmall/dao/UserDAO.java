@@ -20,7 +20,7 @@ public class UserDAO {
 	
 	public void insertUser(UserVO userVO) {
 	    int result = 0;
-	    String sql = "insert into member(user_id, user_pw, user_name, email, phone_number, birth, address, user_point, grade) "
+	    String sql = "insert into user_info(user_id, user_pw, user_name, email, phone_number, birth, address, user_point, grade) "
 	    		+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 	    Connection conn = null;
 	    PreparedStatement pstmt = null;	    
@@ -37,7 +37,6 @@ public class UserDAO {
 	      pstmt.setInt(8, userVO.getUser_point());
 	      pstmt.setString(9, userVO.getGrade());
 	      result = pstmt.executeUpdate();
-	      pstmt.close();
 	    } catch (Exception e) {
 	      e.printStackTrace();
 	    } finally {

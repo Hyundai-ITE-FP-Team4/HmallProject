@@ -65,6 +65,4 @@ public class UserVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	
-	
 }

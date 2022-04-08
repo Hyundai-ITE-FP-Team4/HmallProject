@@ -46,7 +46,7 @@ public class ActionFactory {
 		else if (command.equals("join_form")) {
 			action = new JoinFormAction();
 		}
-		else if (command.equals("select")) {
+		else if (command.equals("join_action")) {
 			action = new JoinAction();
 		}
 		return action;
