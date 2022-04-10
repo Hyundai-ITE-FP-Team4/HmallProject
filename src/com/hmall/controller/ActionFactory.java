@@ -1,11 +1,14 @@
 package com.hmall.controller;
 
 import com.hmall.controller.action.Action;
+import com.hmall.controller.action.CategoryAction;
+import com.hmall.controller.action.CategoryTopAction;
 import com.hmall.controller.action.IndexAction;
 import com.hmall.controller.action.JoinAction;
 import com.hmall.controller.action.JoinFormAction;
 import com.hmall.controller.action.JoinMenuAction;
 import com.hmall.controller.action.MyPageAction;
+import com.hmall.controller.action.ProductDetailAction;
 import com.hmall.controller.action.QnaBoradAction;
 
 /*
@@ -13,41 +16,54 @@ import com.hmall.controller.action.QnaBoradAction;
  * 
  * */
 public class ActionFactory {
-	
+
 	private static ActionFactory instance = new ActionFactory();
-	private ActionFactory() {	// 占싱깍옙占쏙옙 처占쏙옙
+
+	private ActionFactory() { // 占싱깍옙占쏙옙 처占쏙옙
 		super();
 	}
+
 	public static ActionFactory getInstance() {
 		return instance;
 	}
-	
+
 	public Action getAction(String command) {
 		Action action = null;
 		System.out.println("ActionFactory : " + command);
-		
-		//홈페이지 이동
-		if(command.equals("index")) {
+
+		// 홈페이지 이동
+		if (command.equals("index")) {
 			action = new IndexAction();
 		}
-		//마이페이지 이동
+		// 마이페이지 이동
 		else if (command.equals("mypage")) {
 			action = new MyPageAction();
 		}
-		//사이드바 내 1:1상담 이동
+		// 사이드바 내 1:1상담 이동
 		else if (command.equals("qnaboard")) {
 			action = new QnaBoradAction();
 		}
-		//회원가입 메뉴
+		// 회원가입 메뉴
 		else if (command.equals("join_menu")) {
 			action = new JoinMenuAction();
 		}
-		//회원가입 폼
+		// 회원가입 폼
 		else if (command.equals("join_form")) {
 			action = new JoinFormAction();
-		}
-		else if (command.equals("join_action")) {
+		} else if (command.equals("join_action")) {
 			action = new JoinAction();
+		}
+		// 카테고리 중분류별 페이지
+		else if (command.equals("categoryTop")) {
+			action = new CategoryTopAction();
+		}
+		// 카테고리 소분류별 페이지
+		else if (command.equals("category")) {
+			action = new CategoryAction();
+		}
+		// 상품 상세페이지
+		else if (command.equals("product_detail")) {
+			action = new ProductDetailAction();
 		}
 		return action;
 	}
