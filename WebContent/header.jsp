@@ -1,8 +1,31 @@
+<%@page import="com.hmall.dto.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<%
+	String strLogin = "";
+	int i = 0;
+	if(session.getAttribute("user_vo")!=null){
+		strLogin = "로그아웃";
+	}
+	else{
+		strLogin = "로그인";
+	}
+%>
+
+<body>
+	<script>
+	
+		// 로그인 팝업창 띄우기	
+		$(function(){
+			$("#go_login_popup").on('click', function(){
+				window.open("/HmallProject/user/login_popup.jsp", "PopupWin", "width=540,height=720");		
+			});
+		});
+	</script>
+	
 	<header class="header">
 
 		<div class="header-top">
@@ -156,6 +179,8 @@
 						$keyword.val(gv_gnbHomeBnnrTitl);
 					}
 				});
+				
+				
 			</script>
 
 			<!-- 개인화 메뉴 -->
@@ -625,28 +650,14 @@
 					</div>
 
 				</div>
-				<!-- // 퀵메뉴-->
-				<script>
-					/*function setTitle() {
-					    if($('.quick-menu-list .current a').length < 1) {
-					        return;
-					    }
-					    var tabname = $('.quick-menu-list .current a').first().text();
-					    document.title = tabname + " - 현대Hmall";
-					    
-					    if(tabname == '홈' || tabname == 'HMALL') {
-					        document.title = '당신의 모든 취향을 읽다 - 현대Hmall';
-					    }
-					}
-					setTitle();*/
-				</script>
+				
 				<!-- 유틸메뉴 -->
 				<div class="header-util">
 					<h2 class="hiding">유틸메뉴</h2>
 					<!-- 로그인 전 -->
 					<ul>
-						<li><a ga-category="헤더" ga-action="로그아웃"
-							href="HmallServlet?command=select">{로그인상태}</a></li>
+						<li><a ga-category="헤더" ga-action="로그인"
+							href="javascript:void(0);" id = "go_login_popup">로그인</a></li>
 						<li><a
 							href="HmallServlet?command=join_menu">회원가입</a></li>
 
@@ -659,3 +670,4 @@
 
 		</div>
 	</header>
+</body>

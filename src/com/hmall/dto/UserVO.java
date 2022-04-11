@@ -4,12 +4,13 @@ public class UserVO {
 	private String user_id;
 	private String user_pw;
 	private String user_name;
-	private String email;
+//	private String email;
 	private String phone_number;
 	private int birth;
 	private String address;
 	private int user_point;
 	private String grade;
+	private String cnt;
 	
 	public String getUser_id() {
 		return user_id;
@@ -29,12 +30,12 @@ public class UserVO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 	public String getPhone_number() {
 		return phone_number;
 	}
@@ -65,4 +66,12 @@ public class UserVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	public String getCnt() {
+		return cnt;
+	}
+	public void setCnt(String cnt) {
+		this.cnt = cnt;
+	}
+	
+	
 }

@@ -32,30 +32,29 @@ public class JoinAction implements Action {
 	    String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		String user_name = request.getParameter("user_name");
-		String email = request.getParameter("email");
+		// String email = request.getParameter("email"); //삭제 (아이디, 이메일 통합)
 		String phone_number = request.getParameter("phone_number");
 		int birth = Integer.parseInt(request.getParameter("birth"));
 		String address = request.getParameter("address");
 		int user_point = Integer.parseInt(request.getParameter("user_point"));
 		String grade = request.getParameter("grade");
 		
-		out.println(user_id);
-		out.println(user_pw);
-		out.println(user_name);
-		out.println(email);
-		out.println(phone_number);
-		out.println(birth);
-		out.println(address);
-		out.println(user_point);
-		out.println(grade);
+//		out.println(user_id);
+//		out.println(user_pw);
+//		out.println(user_name);
+//		//out.println(email);
+//		out.println(phone_number);
+//		out.println(birth);
+//		out.println(address);
+//		out.println(user_point);
+//		out.println(grade);
 		
-		
-			 
+
 		UserVO vo=new UserVO();
 		vo.setUser_id(user_id);
 		vo.setUser_pw(user_pw);
 		vo.setUser_name(user_name);
-		vo.setEmail(email);
+		//vo.setEmail(email);
 		vo.setPhone_number(phone_number);
 		vo.setBirth(birth);
 		vo.setAddress(address);

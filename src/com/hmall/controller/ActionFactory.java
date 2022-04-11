@@ -3,10 +3,12 @@ package com.hmall.controller;
 import com.hmall.controller.action.Action;
 import com.hmall.controller.action.CategoryAction;
 import com.hmall.controller.action.CategoryTopAction;
+import com.hmall.controller.action.IdCheckAction;
 import com.hmall.controller.action.IndexAction;
 import com.hmall.controller.action.JoinAction;
 import com.hmall.controller.action.JoinFormAction;
 import com.hmall.controller.action.JoinMenuAction;
+import com.hmall.controller.action.LoginAction;
 import com.hmall.controller.action.MyPageAction;
 import com.hmall.controller.action.ProductDetailAction;
 import com.hmall.controller.action.QnaBoradAction;
@@ -52,6 +54,14 @@ public class ActionFactory {
 			action = new JoinFormAction();
 		} else if (command.equals("join_action")) {
 			action = new JoinAction();
+		}
+		// 로그인 폼
+		else if (command.equals("login_action")) {
+			action = new LoginAction();
+		}
+		// 아이디 체크
+		else if (command.equals("id_check")) {
+			action = new IdCheckAction();
 		}
 		// 카테고리 중분류별 페이지
 		else if (command.equals("categoryTop")) {

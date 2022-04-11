@@ -1,10 +1,6 @@
+<%@page import="com.hmall.dto.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -45,12 +41,6 @@
 
 
 
-    
-		
-    
-    
-
-
 <script type="application/ld+json">
 {
 "@context": "http://schema.org",
@@ -87,7 +77,6 @@
 <script src="//image.hmall.com/p/js/co/jquery.cookie.js"></script>
 <script src="//image.hmall.com/p/js/co/commonFunction.js"></script><!-- as-is common.js 상속  -->
 <script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script><!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
-
 
 
 <script>
@@ -155,9 +144,45 @@
         }
     </script>
 </head>
-<body onload="javascript:loadAction();">
+<body>
 <!-- 윈도우 팝업 클래스 popup-win : width:540px , height:702px -->
 
+<script type="text/javascript">
+	function go_login(){
+// 		$("#memberLoginForm").attr("action", "/HmallProject/HmallServlet?command=login_action"); // action 속성 control //attr : element 속성들 control 가능
+// 		$("#memberLoginForm").submit(); // 해당 form이 submit 했을 때
+
+		var formData = $("#memberLoginForm").serialize();
+		
+		$("#memberLoginForm").submit(function(){
+			$.ajax({
+				url : 'http://localhost:8090/HmallProject/HmallServlet?command=login_action',
+				type : 'post',
+				dataType : 'json',
+				data : formData,
+				success:function(res){
+					console.log('success');
+					console.log(res);
+					if(res.login_check == 'success') {
+						console.log('성공');
+						console.log(res);
+						self.close();
+					}else {
+						console.log('실패');
+						console.log(res);
+						alert("로그인 실패");
+						
+					}
+				},
+				error : function(data, textStatus){
+					console.log('error');
+					console.log(data);
+				}
+			});
+		});
+		
+	}
+</script>
 
 <div class="popup-win wp-log-hmall">
     <div class="pop-wrap" tabindex="0">
@@ -174,13 +199,13 @@
                     </div>
                     <div class="tab-content">
                     <div role="tabpanel" class="tab-pane ui-active" id="hmallLogin">
-                        <form name="memberLoginForm" method="post" action="">
-                            <input type="hidden" name="popupYn" value="Y"/>
+                        <form id = "memberLoginForm" name="memberLoginForm" method="post">
+                           <!--  <input type="hidden" name="popupYn" value="Y"/>
                             <input type="hidden" name="redirectUrl" value="https://www.hmall.com/p/index.do"/>
                             <input type="hidden" name="errorMessage" value=""/>
                             <input type="hidden" name="loginPupYn" value ="Y"/>
                             <input type="hidden" name="autoCheck" value ="F8494C61A45003157469541D54745563"/>
-                            <input type="hidden" name="august" value ="A891FAC63306538A727CC3D25EBDD87B"/>
+                            <input type="hidden" name="august" value ="A891FAC63306538A727CC3D25EBDD87B"/> -->
 
                             
                             <div role="tabpanel" class="tab-pane ui-active" id="hmall">
@@ -194,13 +219,13 @@
                                         -->
                                     <div class="inputbox xl">
                                         <label class="inplabel">
-                                                <input type="text" maxlength='30' tabindex="1" name="id" placeholder="아이디 또는 이메일 주소 입력" title="아이디 또는 이메일 주소 입력">
+                                                <input type="text" maxlength='30' tabindex="1" name="user_id" placeholder="아이디 또는 이메일 주소 입력" title="아이디 또는 이메일 주소 입력">
                                         </label>
                                         <i class="icon person"></i>
                                     </div>
                                     <div class="inputbox xl">
                                         <label class="inplabel">
-                                            <input type="password" tabindex="2" size='30' maxlength='30' name="pwd"  onkeypress="javascript:capslock(event);" placeholder="비밀번호" title="비밀번호 입력"
+                                            <input type="text" tabindex="2" size='30' maxlength='30' name="user_pw"  onkeypress="javascript:capslock(event);" placeholder="비밀번호" title="비밀번호 입력"
                                                    onkeydown="javascript:if(event.keyCode==13){$('#loginCheck').click(); return false;}">
                                         </label>
                                         <i class="icon lock"></i>
@@ -239,13 +264,13 @@
                                 </div>
                                 <!-- //.login-relate -->
                                 <!-- <div class="btngroup btnlen1"> -->
-                                <button id="loginCheck" class="btn btn-login btn-default" onclick="memberLogin('ajax');return false;" tabindex="3"><span>로그인</span></button>
+                                <button id="loginCheck" class="btn btn-login btn-default" onclick="go_login()" tabindex="3"><span>로그인</span></button>
                                 <!-- </div> -->
 
                                 <ul class="login-find">
                                     <li><a href="javascript:;" onclick="findId(); return false;">아이디 찾기</a></li>
                                     <li><a href="javascript:;" onclick="findPwd(); return false;">비밀번호 찾기</a></li>
-                                    <li><a href="javascript:;" onclick="goRegistMember()">회원가입</a></li>
+                                    <li><a href="../HmallServlet?command=join_menu">회원가입</a></li>
                                 </ul>
 
                                 <!-- Hmall 아이디 로그인에서만 노출 -->

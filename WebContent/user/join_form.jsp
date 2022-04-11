@@ -5,50 +5,175 @@
 <html>
 	<head>
 		<title> 회원가입 - 현대Hmall</title>
-		<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/common.css">
-		<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/layout.css">
-		<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/popup.css">
-		<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/cu/member.css">
-		<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/jquery-ui.css">
-		<!-- favicon -->
-   		<link rel="shortcut icon" type="image/x-icon" href="//image.hmall.com/p/img/co/favicon/favicon.ico">
-<!--    		http://localhost:8090/HmallProject/resource/js/jquery-3.4.1.min.js -->
-   		
-   		<script type="text/javascript" src="/HmallProject/resource/js/jquery-3.4.1.min.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/co.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/common.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/commonFuction.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/jquery.cookie.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/jquery.easing.min.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/jquery-ui.1.12.1.min.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/reDirectExceptUrlList.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/slick.min.js"></script>
-   		<script type="text/javascript" src="/HmallProject/resource/js/ukDetect.min.js"></script>
-   		
-   		<!-- <script type="text/css" src = "/HmallProject/resource/css/common.css"></script>
-   		<script type="text/css" src = "/HmallProject/resource/css/jquery-ui.css"></script>
-   		<script type="text/css" src = "/HmallProject/resource/css/layout.css"></script>
-   		<script type="text/css" src = "/HmallProject/resource/css/popup.css"></script> -->
-   		<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/cu/member.css">
+	
+	<%@include file = "/component/script.jsp" %>
    		
    		
    		<script>
-   		var 
-   		alert("sdalfknsafknsaflsa");
+
    		</script>
 	</head>
 	<body class = "cbody">
 	
 	<script>
-			function go_join(){
-				$("#registMemberFormNew").attr("action", "/HmallProject/HmallServlet?command=join_action"); // attr : element 속성들 control 가능
-				$("#registMemberFormNew").submit();
-			}
-			$('#uName').blur(function(){
-				if(!this.value){
-					alert("test");
+			var check_dup = false;
+			function go_submit(){
+				var test;
+				if( $('#birthday').val().length == 0){ //생년월일 선택사항, 비어있으면 0 기본값으로 회원가입
+					$('#birthday').attr("value", 0);
 				}
+				$("#registMemberFormNew").attr("action", "/HmallProject/HmallServlet?command=join_action"); // attr : element 속성들 control 가능
+				$("#registMemberFormNew").submit(); // 해당 form이 submit 했을 때
+				
+				return true;
+			}
+			
+			//회원가입 함수
+			function go_join(){
+				
+				if(!check_input()){
+					alert("비어있는칸 확인!");
+					return
+				}
+				else if(!check_dup){
+					alert("아이디 중복 확인하세요.");
+					return
+				}
+				
+								
+				//체크박스 체크 되어 있는지 확인
+				if (checkBox()){ // 체크된 상태
+					if(go_submit()){
+						location.href = "/HmallProject/index.jsp"
+					}
+				}
+				else{ // 체크 안 된 상태
+					if(confirm("이용약관 및 개인정보 수집 동의하셔야" + "\n" + "회원가입이 완료됩니다." + "\n" + "동의하시겠습니까?") == true){
+						if(go_submit()){
+							location.href = "/HmallProject/index.jsp"
+						}
+					}
+				} // end if-else
+			}
+			
+			function check_input(){
+				theForm = document.registMemberFormNew;
+				if($("#user_id").val().length==0 || $("#user_pw").val().length==0 || $("#user_pw_check").val().length==0 || $("#user_pw_check").val().length==0){
+					return false;
+				}
+				return true;
+			}
+			
+			// 입력 칸이 비어있으면 경고문 띄어주기
+			$(function(){ //document ready
+				$('#user_name').on('blur', function(){
+					if(!this.value){
+						$('#alertName').css('display', 'block');
+					}
+					else{
+						$('#alertName').css('display', 'none');
+					}
+				});
+				
+				$('#user_id').on('blur', function(){
+					if(!this.value){
+						$('#alertId').css('display', 'block');
+					}
+					else{
+						$('#alertId').css('display', 'none');
+					}
+				});
+				
+				$('#user_pw').on('blur', function(){
+					if(!this.value){
+						$('#alertPw').css('display', 'block');
+					}
+					else{
+						$('#alertPw').css('display', 'none');
+					}
+				});
+				
+				$('#user_pw_check').on('blur', function(){
+					if(!this.value){
+						$('#alertPwCheck').css('display', 'block');
+					}
+					else{
+						$('#alertPwCheck').css('display', 'none');
+					}
+				});
+				
+				$('#phone_number').on('blur', function(){
+					if(!this.value){
+						$('#alertMobile').css('display', 'block');
+					}
+					else{
+						$('#alertMobile').css('display', 'none');
+					}
+				});
+				
+				//생일 입력 오류 체크
+				$('#birthday').on('blur', function(){
+					if(!this.value){
+						$('#alertBirthday').css('display', 'block');
+					}
+					else{
+						$('#alertBirthday').css('display', 'none');
+					}
+				});
+				
+				//아이디 중복 확인하기
+				$('#id_check').on('click', function(){
+					var param = {
+						user_id : $('#user_id').val()
+					}
+					console.log(param);
+					
+					$.ajax({
+						url : 'http://localhost:8090/HmallProject/HmallServlet?command=id_check',
+						type : 'post',
+						dataType : 'json',
+						data : param,
+						success:function(res){
+							console.log('success');
+							console.log(res);
+							if(res.cnt > 0) {
+								alert("아이디가 중복 입니다.")
+							}else {
+								check_dup = true;
+								alert("아이디 중복 아닙니다.")
+							}
+						},
+						error : function(data, textStatus){
+							console.log('error');
+							console.log(data);
+						}
+					});
+				});
+				
+				//비밀번호 입력칸, 비밀번호 확인 입력칸 동일한지 확인
+				$('#user_pw_check').blur(function(){
+					if($('#user_pw').val() != $('#user_pw_check').val()){
+						alert("no 일치");
+					}
+				});
+				
 			});
+			
+			// 아이디 입력 오류 체크 (validation)
+			
+			// 비밀번호 입력 오류 체크 (validation)
+			
+			// 휴대폰 입력 오류 체크 (validation)
+			
+			// 필수 동의 했는지 여부 체크
+			function checkBox(){
+				var check = false;
+				if($("#chocAgrYn").is(":checked")){
+					check = true
+				}
+				return check;
+			}
+			
 	</script>
 		
 	 <div class="wrap join-naver">
@@ -73,25 +198,45 @@
 						
 						<!-- 이름 -->
 						<div class="inputbox">
-                            <label class="inplabel"><input type="text" id="uName" name="user_name" value="" placeholder="이름"></label>
+                            <label class="inplabel"><input type="text" id="user_name" name="user_name" value="" placeholder="이름"></label>
                         </div>
                        	<p class="failed-msg" id="alertName" style="display: none">
                             <i class="icon error"></i>
                             <span>이름을 입력해 주세요.</span>
                         </p>
                         
-                        <!-- 이메일 -->
+                        <!-- 이메일 (아이디) -->
 						<div class="inputbox _active" id="divId">
-                            <label class="inplabel"><input type="text" id="uIdName" name="email" value="test@naver.com" placeholder="아이디 또는 이메일 (영문,숫자 4~30자리)" class="ui-autocomplete-input" autocomplete="off"></label>
+                            <label class="inplabel"><input type="text" id="user_id" name="user_id" placeholder="아이디 또는 이메일 (영문,숫자 4~30자리)" class="ui-autocomplete-input" autocomplete="off"></label>
+                        	<button class="btn btn-linered small" type = "button" id = "id_check" name = "id_check">중복 확인</button>
                         </div>
                         <p class="failed-msg" id="alertId" style="display: none">
                         	<i class="icon error"></i>
                         	<span> 아이디를 입력해 주세요. </span>
                         </p>
                         
+                        
+                        <!-- 비밀번호 -->
+						<div class="inputbox _active" id="divId">
+                            <label class="inplabel"><input type="password" id="user_pw" name="user_pw"  placeholder="비밀번호" class="ui-autocomplete-input" autocomplete="off"></label>
+                        </div>
+                        <p class="failed-msg" id="alertPw" style="display: none">
+                        	<i class="icon error"></i>
+                        	<span> 비밀번호 입력해 주세요. </span>
+                        </p>
+                        
+                        <!-- 비밀번호 확인 -->
+						<div class="inputbox _active" id="divId">
+                            <label class="inplabel"><input type="password" id="user_pw_check" name="user_pw_check"  placeholder="비밀번호 확인" class="ui-autocomplete-input" autocomplete="off"></label>
+                        </div>
+                        <p class="failed-msg" id="alertPwCheck" style="display: none">
+                        	<i class="icon error"></i>
+                        	<span> 비밀번호 확인 입력해 주세요. </span>
+                        </p>
+                        
                         <!-- 휴대폰 번호 -->
 						<div class="inputbox" id="divMobile">
-                            <label class="inplabel"><input type="text" id="mobile" name="phone_number" value="" placeholder="휴대폰 번호 (예 : 01012345678)"></label>
+                            <label class="inplabel"><input type="text" id="phone_number" name="phone_number" value="" placeholder="휴대폰 번호 (예 : 01012345678)"></label>
                         </div>
                         <p class="failed-msg" id="alertMobile" style="display: none;">
                             <i class="icon error"></i>
@@ -111,8 +256,6 @@
                         </p>
                         
                         <!-- 히든 입력 -->
-                        <input type="hidden" name = "user_id" value = "test 아이디">
-                        <input type="hidden" name = "user_pw" value = "testpw">
                         <input type="hidden" name = "address" value = "test">
                         <input type="hidden" name = "user_point" value = "500">
                         <input type="hidden" name = "grade" value = "test">
