@@ -8188,7 +8188,7 @@ _TRK_PNG="2731484";
 															style="width: 520px;" tabindex="-1">
 															<div>
 																<div class="item" data-item=""
-																	data-outputsrc="http://image.hmall.com/static/3/7/31/37/2137317374_5.jpg?RS=1400x1400&amp;AR=0"
+																	data-outputsrc="product_images/${ productVO.productImg }.jpg?RS=1400x1400&amp;AR=0"
 																	onerror="this.src='https://image.hmall.com/hmall/pd/no_image_600x600.jpg'"
 																	style="width: 100%; display: inline-block; vertical-align: top;">
 																	<a href="javascript:;"
@@ -8626,18 +8626,8 @@ _TRK_PNG="2731484";
 															<td><c:forEach var="img"
 																	items="${ productImageVO.imgs }">
 																	<img src="product_images/${ img }.jpg" />
-																</c:forEach></td>
-															<!-- <img
-																src="https://wwsports.hgodo.com/NIKE/notice/auth.jpg"><br>
-															<img src="https://wwsports.hgodo.com/NIKE/size/shoes.jpg"><img
-																src="https://wwsports.hgodo.com/NIKE/product/CZ1645-100/default_0.jpg"><img
-																src="https://wwsports.hgodo.com/NIKE/product/CZ1645-100/default_1.jpg"><img
-																src="https://wwsports.hgodo.com/NIKE/product/CZ1645-100/default_2.jpg"><img
-																src="https://wwsports.hgodo.com/NIKE/product/CZ1645-100/default_3.jpg"><img
-																src="https://wwsports.hgodo.com/NIKE/product/CZ1645-100/default_4.jpg"><img
-																src="https://wwsports.hgodo.com/NIKE/product/CZ1645-100/default_5.jpg"><img
-																src="http://wwsports.hgodo.com/NIKE/notice/packing.jpg">
-															</td> -->
+																</c:forEach>
+															</td>
 														</tr>
 													</tbody>
 												</table>

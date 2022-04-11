@@ -27,6 +27,8 @@ public class CategoryAction implements Action {
 		
 		// category_code로 카테고리 정보 SELECT
 		CategoryVO categoryVO = categoryDAO.getCategory(cCode);
+		
+		// parent_code로 상위 카테고리, 같은 레벨 카테고리 리스트 SELECT
 		String parentCode = categoryVO.getParentCode();
 		CategoryVO parentCategoryVO = categoryDAO.getCategory(parentCode);
 		ArrayList<CategoryVO> categoryList = categoryDAO.getChildCategorys(parentCode);
@@ -43,6 +45,7 @@ public class CategoryAction implements Action {
 		request.setAttribute("parentCategoryVO", parentCategoryVO);
 		// 같은 레벨 카테고리들 리스트
 		request.setAttribute("categoryList", categoryList);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		

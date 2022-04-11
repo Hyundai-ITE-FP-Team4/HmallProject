@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 
 <head>
-<title>여성의류 - 현대Hmall</title>
+<title>${ categoryVO.categoryName } - 현대Hmall</title>
 
 
 
@@ -16,12 +16,12 @@
 
 
 
-<meta name="title" content="여성의류 - 현대Hmall">
+<meta name="title" content="${ categoryVO.categoryName } - 현대Hmall">
 
 
 
-<meta name="description" content="Hmall > Hmall 신규매장 > 여성의류">
-<meta name="keywords" content="Hmall > Hmall 신규매장 > 여성의류">
+<meta name="description" content="Hmall > ${ categoryVO.categoryName }">
+<meta name="keywords" content="Hmall > ${ categoryVO.categoryName }">
 
 
 
@@ -935,7 +935,7 @@
 									<label class="inplabel icon-find"><input type="text"
 										id="sect-search" name="searchTerm" value=""
 										onkeydown="javascript:if(event.keyCode==13){searchSect();}"
-										placeholder="여성의류 상품 검색"></label>
+										placeholder="${ categoryVO.categoryName } 상품 검색"></label>
 									<button class="btn btn-find" onclick="javascript:searchSect();">
 										<i class="icon find"></i><span class="hiding">검색</span>
 									</button>
@@ -1121,19 +1121,31 @@
 														<div class="item"
 															style="width: 100%; display: inline-block; vertical-align: top;">
 															<ul class="depth2-top-slick">
-																<li><a
+																<li>
+																<a
 																	href="/p/dpa/searchSpexSectItem.do?sectId=2724624"
 																	tabindex="0">
 																		<figure>
 																			<!-- 기획전배너 : 1.리뉴얼용배너 2.기획전에 구성된 상품이미지 3.noImg -->
+																			<c:if test="${ categoryVO.categoryCode == 'A01B01'}">
 																			<img
 																				src="//image.hmall.com/static/image/sect/mblbnnr2724624.jpg"
 																				alt="POLO RALPH LAUREN WOMAN "
 																				onerror="noImage(this, '//image.hmall.com/p/img/co/noimg-thumb.png')">
-																			<figcaption>
-																				<strong>POLO RALPH LAUREN WOMAN </strong> New
-																				Arrivals 최대 15% 다운쿠폰
-																			</figcaption>
+																				<figcaption>
+																					<strong>POLO RALPH LAUREN WOMAN </strong> New
+																					Arrivals 최대 15% 다운쿠폰
+																				</figcaption>
+																				
+																			</c:if>
+																			<c:if test="${ categoryVO.categoryCode == 'A02B02'}">
+																				<img src="//image.hmall.com/static/image/sect/mblbnnr2213470.jpg" 
+																				alt="얼리썸머슈즈대전" onerror="noImage(this, '//image.hmall.com/p/img/co/noimg-thumb.png')">
+																				<figcaption>
+															                         <strong>얼리썸머슈즈대전</strong>
+															                                       	바로사용쿠폰 + 카드즉시할인
+															                         </figcaption>
+																			</c:if>
 																		</figure>
 																</a></li>
 																<li><a
@@ -1141,13 +1153,24 @@
 																	tabindex="0">
 																		<figure>
 																			<!-- 기획전배너 : 1.리뉴얼용배너 2.기획전에 구성된 상품이미지 3.noImg -->
-																			<img
+																			<c:if test="${ categoryVO.categoryCode == 'A01B01'}">
+																				<img
 																				src="//image.hmall.com/static/image/sect/mblbnnr2332810.jpg"
 																				alt="빈폴레이디스 22SS신상입고"
 																				onerror="noImage(this, '//image.hmall.com/p/img/co/noimg-thumb.png')">
-																			<figcaption>
-																				<strong>빈폴레이디스 22SS신상입고</strong> + 추가 쿠폰 혜택
-																			</figcaption>
+																				<figcaption>
+																					<strong>빈폴레이디스 22SS신상입고</strong> + 추가 쿠폰 혜택
+																				</figcaption>
+																			</c:if>
+																			<c:if test="${ categoryVO.categoryCode == 'A02B02'}">
+																				<img src="//image.hmall.com/static/image/sect/mblbnnr2726937.jpg" 
+																				alt="22SS 신상 스니커즈/샌들/슬리퍼 특가" onerror="noImage(this, '//image.hmall.com/p/img/co/noimg-thumb.png')">
+																				<figcaption>
+																					<strong>POLO RALPH LAUREN WOMAN </strong> New
+																					Arrivals 최대 15% 다운쿠폰
+																				</figcaption>
+																			</c:if>
+																			
 																		</figure>
 																</a></li>
 															</ul>
@@ -1363,7 +1386,7 @@
 								<div class="customerView">
 
 									<div class="titArea">
-										<h3>이 카테고리를 본 고객님들이 본 상품</h3>
+										<h3>이 달의 추천 상품</h3>
 									</div>
 
 									<!-- pdlist-wrap -->

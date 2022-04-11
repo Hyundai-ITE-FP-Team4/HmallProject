@@ -1,5 +1,6 @@
 package com.hmall.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,18 +23,19 @@ public class ProductDAO {
 	}
 
 	// 상품 상세 정보 조회
+	// Pipelined Table Functions 사용
 	public ProductVO getProduct(int product_code) {
 		ProductVO product = null;
-		String sql = "select * from juyoung.product where product_code=?";
+		String sql = "SELECT * FROM TABLE(pkg_product.fn_get_product(?))";
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
 
 		try {
 			con = DBManager.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, product_code);
-			rs = pstmt.executeQuery();
+			cstmt = con.prepareCall(sql);
+			cstmt.setInt(1, product_code);
+			rs = cstmt.executeQuery();
 			if (rs.next()) {
 				product = new ProductVO();
 				product.setProductCode(rs.getInt("product_code"));
@@ -49,25 +51,26 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManager.close(con, cstmt, rs);
 		}
 
 		return product;
 	}
 	
 	// 상품 상세이미지 조회
+	// Pipelined Table Functions 사용
 	public ProductImageVO getProductImages(int product_code) {
 		ProductImageVO productImages = null;
-		String sql = "select * from juyoung.product_image where product_code=?";
+		String sql = "SELECT * FROM TABLE(pkg_product.fn_get_productImg(?))";
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
 
 		try {
 			con = DBManager.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, product_code);
-			rs = pstmt.executeQuery();
+			cstmt = con.prepareCall(sql);
+			cstmt.setInt(1, product_code);
+			rs = cstmt.executeQuery();
 			if (rs.next()) {
 				productImages = new ProductImageVO();
 				productImages.setImgNo(rs.getInt("img_no"));
@@ -75,7 +78,12 @@ public class ProductDAO {
 				ArrayList<String> imgs = new ArrayList<String>();
 				for(int i = 1; i <= 10; i++) {
 					String str = "img" + i;
-					imgs.add(rs.getString(str));
+					String img = rs.getString(str);
+					if(img == null) {
+						break;
+					} else {
+						imgs.add(img);
+					}	
 				}
 				productImages.setImgs(imgs);
 				
@@ -83,7 +91,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManager.close(con, cstmt, rs);
 		}
 
 		return productImages;

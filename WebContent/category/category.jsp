@@ -5,12 +5,12 @@
 
 <html lang="ko" class="desktop winos chrome x64 tablet">
 <head>
-<meta name="title" content="티셔츠 - 현대Hmall">
+<meta name="title" content="${ categoryVO.categoryName } - 현대Hmall">
 
 
 
-<meta name="description" content="Hmall > Hmall 신규매장 > 여성의류 > 티셔츠">
-<meta name="keywords" content="Hmall > Hmall 신규매장 > 여성의류 > 티셔츠">
+<meta name="description" content="Hmall > ${ parentCategoryVO.categoryName } > ${ categoryVO.categoryName }">
+<meta name="keywords" content="Hmall > Hmall > ${ parentCategoryVO.categoryName } > ${ categoryVO.categoryName }">
 
 
 
@@ -55,6 +55,11 @@
 <meta http-equiv="imagetoolbar" content="no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+
+
 
 
 
@@ -1216,7 +1221,7 @@ function DirectCopnDownload(prmoNo){
 <link rel="stylesheet" type="text/css"
 	href="//image.hmall.com/p/css/dp/display.css">
 
-<title>티셔츠 - 현대Hmall</title>
+<title>${ categoryVO.categoryName } - 현대Hmall</title>
 
 <script type="text/javascript"
 	src="https://image.hmall.com/pc/js/hmall/co/jquery.form.js"></script>
@@ -6818,7 +6823,7 @@ function fnBranChoice(brndCd, brndNm, event){
 								<label class="inplabel icon-find"><input type="text"
 									id="sect-search" name="searchTerm" value=""
 									onkeydown="javascript:if(event.keyCode==13){searchSect();}"
-									placeholder="여성의류 상품 검색"></label>
+									placeholder="${ categoryVO.categoryName } 상품 검색"></label>
 								<button class="btn btn-find" onclick="javascript:searchSect();">
 									<i class="icon find"></i><span class="hiding">검색</span>
 								</button>
@@ -6969,71 +6974,12 @@ function fnBranChoice(brndCd, brndNm, event){
 								<div class="paging">
 
 
-
-
-
+									<!-- 페이지 선택 -->
 									<div class="page-prevarea">
 
-
-
-
-
-
-
-
-										<strong aria-label="현재 선택페이지">1</strong> <a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=2&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">2</a>
-
-
-
-
 										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=3&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">3</a>
-
-
-
-
-										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=4&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">4</a>
-
-
-
-
-										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=5&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">5</a>
-
-
-
-
-										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=6&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">6</a>
-
-
-
-
-										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=7&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">7</a>
-
-
-
-
-										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=8&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">8</a>
-
-
-
-
-										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=9&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">9</a>
-
-
-
-
-										<a
-											href="/p/dpa/searchSectItem.do?sectId=2731740&amp;page=10&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">10</a>
-
-
-
+											href="HmallServlet?command=category&cCode=${ categoryVO.categoryCode }&amp;sPrice=&amp;ePrice=&amp;minSellPrc=900&amp;maxSellPrc=134900&amp;sectDispGbcd=01&amp;itemListType=type1&amp;sort=REG_DTM%40DESC&amp;areaType2Flag=false&amp;listSize=60&amp;autoCate=&amp;csfLCat=&amp;csfMCat=&amp;csfSCat=&amp;csfDCat=&amp;csfNameCode=&amp;csfDepth=A&amp;threeDepthSrchYn=Y&amp;searchTerm=A">
+											<strong aria-label="현재 선택페이지">1</strong></a>
 
 
 										<a
