@@ -22,7 +22,7 @@ public class UserDAO {
 
 	public void insertUser(UserVO userVO) {
 		int result = 0;
-		String sql = "insert into user_info(user_id, user_pw, user_name, phone_number, birth, address, user_point, grade) "
+		String sql = "insert into kimsh.user_info(user_id, user_pw, user_name, phone_number, birth, address, user_point, grade) "
 				+ "values(?, ?, ?, ?, ?, ?, ?, ?) ";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -50,7 +50,7 @@ public class UserDAO {
 	public UserVO checkIdPw(String user_id, String user_pw) {
 		int result = -1;
 		UserVO userVO = null;
-		String sql = "select * from user_info where user_id=? and user_pw = ?";
+		String sql = "select * from kimsh.user_info where user_id=? and user_pw = ?";
 		Connection connn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -71,9 +71,7 @@ public class UserDAO {
 				userVO.setAddress(rs.getString("address"));
 				userVO.setUser_point(rs.getInt("user_point"));
 				userVO.setGrade(rs.getString("grade"));
-				result = 1;
 			} else {
-				result = -1;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

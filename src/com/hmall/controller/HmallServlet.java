@@ -34,12 +34,12 @@ public class HmallServlet extends HttpServlet {
 		System.out.println("HmallServlet : " + command);
 
 		// 로그인 세션
-//		HttpSession session = request.getSession(true);
-//		session.setMaxInactiveInterval(3600);
-//		UserVO userVO = new UserVO();
-//		if (session.getAttribute("user_vo") != null) {
-//			userVO = (UserVO) session.getAttribute("user_vo");
-//		}
+		HttpSession session = request.getSession(true);
+		session.setMaxInactiveInterval(3600);
+		UserVO userVO = new UserVO();
+		if (session.getAttribute("user_vo") != null) {
+			userVO = (UserVO) session.getAttribute("user_vo");
+		}
 		
 		// action
 		ActionFactory af = ActionFactory.getInstance();
@@ -55,8 +55,8 @@ public class HmallServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// 로그인 세션
-//		HttpSession session = request.getSession(true);
-//		session.setMaxInactiveInterval(3600);
+		HttpSession session = request.getSession(true);
+		session.setMaxInactiveInterval(3600);
 
 		// 파라미터 무엇이 들어오나 check
 		Enumeration e = request.getParameterNames();

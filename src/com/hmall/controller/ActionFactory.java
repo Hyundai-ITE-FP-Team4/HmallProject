@@ -9,6 +9,7 @@ import com.hmall.controller.action.JoinAction;
 import com.hmall.controller.action.JoinFormAction;
 import com.hmall.controller.action.JoinMenuAction;
 import com.hmall.controller.action.LoginAction;
+import com.hmall.controller.action.LogoutAction;
 import com.hmall.controller.action.MyPageAction;
 import com.hmall.controller.action.ProductDetailAction;
 import com.hmall.controller.action.QnaBoradAction;
@@ -62,6 +63,9 @@ public class ActionFactory {
 		// 아이디 체크
 		else if (command.equals("id_check")) {
 			action = new IdCheckAction();
+		}
+		else if (command.equals("logout")) {
+			action = new LogoutAction();
 		}
 		// 카테고리 중분류별 페이지
 		else if (command.equals("categoryTop")) {

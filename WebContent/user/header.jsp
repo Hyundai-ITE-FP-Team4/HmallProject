@@ -70,30 +70,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
-
-    
-		
-    
-    
-
-
-<script type="application/ld+json">
-{
-"@context": "http://schema.org",
-"@type": "Organization",
-"name": "hmall",
-"url": "https://www.hmall.com",
-"sameAs": [
-"https://www.facebook.com/hyundaiHmall",
-"https://www.youtube.com/c/%ED%9B%85%ED%8B%B0%EB%B9%84",
-"https://www.instagram.com/hyundai.homeshopping/",
-"https://itunes.apple.com/kr/app/id870397981",
-"https://play.google.com/store/apps/details?id=com.hmallapp&hl=ko",
-"http://myhmall.tistory.com"
-]
-}
-</script>
-
 <link rel="shortcut icon" href="https://www.hmall.com/favicon.ico">
 <!-- UI/UX Style -->
 <link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/common.css"><!-- 공통 css -->

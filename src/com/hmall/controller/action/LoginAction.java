@@ -26,24 +26,24 @@ public class LoginAction implements Action{
 	    
 	    String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
-		int result = 1;
 		
 		//로그인 되었는지 확인
 		UserVO userVO = dao.checkIdPw(user_id, user_pw);
 		
 		response.setContentType("application/json");
 
+		Gson gson = new Gson();
+        String str = gson.toJson(userVO);
         PrintWriter out = response.getWriter();
-		
-		
-		
+	
 		if(userVO != null) {
 			System.out.println("로그인 되었습니다.");
-			
 			HttpSession session =request.getSession(true);
 			session.setMaxInactiveInterval(3600);
 			session.setAttribute("user_vo", userVO);
-			out.print("{\"login_check\":\"success\"}");
+			out.print(str);
+			System.out.println(str);
+
 		}
 		else {
 			System.out.println("로그인 실패하였습니다.");

@@ -1,4 +1,3 @@
-document.domain = "hmall.com";
 var locationHref = document.location.href;
 var imageServer = "http://image.hmall.com";
 var serverHost = (location.href.indexOf("final") > 0 || location.href.indexOf("stg") > 0 || location.href.indexOf("dev") > 0) ? "http://" + location.host : "http://www.hmall.com";

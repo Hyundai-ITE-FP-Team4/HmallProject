@@ -4,16 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%
-	String strLogin = "";
-	int i = 0;
-	if(session.getAttribute("user_vo")!=null){
-		strLogin = "로그아웃";
-	}
-	else{
-		strLogin = "로그인";
-	}
-%>
 
 <body>
 	<script>
@@ -22,6 +12,32 @@
 		$(function(){
 			$("#go_login_popup").on('click', function(){
 				window.open("/HmallProject/user/login_popup.jsp", "PopupWin", "width=540,height=720");		
+			});
+		});
+		
+		// 로그아웃 , 세션 지우기
+		$(function(){
+			$("#go_logout_popup").click(function(){
+				$.ajax({
+					url : 'http://localhost:8090/HmallProject/HmallServlet?command=logout',
+					type : 'post',
+					dataType : 'json',
+					data : {check : '1'},
+					success:function(res){
+						console.log('success');
+						console.log(res);
+						if(res.session_check == 'delete') {
+							alert("지워짐");
+							location.reload();
+						}else {
+							
+						}
+					},
+					error : function(data, textStatus){
+						console.log('error');
+						console.log(data);
+					}
+				});
 			});
 		});
 	</script>
@@ -656,13 +672,21 @@
 					<h2 class="hiding">유틸메뉴</h2>
 					<!-- 로그인 전 -->
 					<ul>
-						<li><a ga-category="헤더" ga-action="로그인"
-							href="javascript:void(0);" id = "go_login_popup">로그인</a></li>
-						<li><a
-							href="HmallServlet?command=join_menu">회원가입</a></li>
-
-						<li><a ga-category="헤더" ga-action="고객센터"
-							href="javascript:bizSpringTag('/p/cca/main.do','^헤더^고객센터');">고객센터</a></li>
+						<%
+							if(session.getAttribute("user_vo") != null ){
+								
+						%>
+								<li><a ga-category="헤더" ga-action="로그아웃" href="javascript:void(0);" id = "go_logout_popup">로그아웃</a></li>
+						<%
+							} else{
+						%>
+								<li><a ga-category="헤더" ga-action="로그인" href="javascript:void(0);" id = "go_login_popup">로그인</a></li>
+						<%
+							}
+						%>
+						
+						<li><a href="HmallServlet?command=join_menu">회원가입</a></li>
+						<li><a ga-category="헤더" ga-action="고객센터" href="javascript:bizSpringTag('/p/cca/main.do','^헤더^고객센터');">고객센터</a></li>
 					</ul>
 				</div>
 

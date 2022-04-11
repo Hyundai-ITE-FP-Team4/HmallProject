@@ -44,13 +44,13 @@
 				//체크박스 체크 되어 있는지 확인
 				if (checkBox()){ // 체크된 상태
 					if(go_submit()){
-						location.href = "/HmallProject/index.jsp"
+						
 					}
 				}
 				else{ // 체크 안 된 상태
 					if(confirm("이용약관 및 개인정보 수집 동의하셔야" + "\n" + "회원가입이 완료됩니다." + "\n" + "동의하시겠습니까?") == true){
 						if(go_submit()){
-							location.href = "/HmallProject/index.jsp"
+							
 						}
 					}
 				} // end if-else
