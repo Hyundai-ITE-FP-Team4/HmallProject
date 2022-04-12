@@ -66,11 +66,11 @@ public class LoginAction implements Action{
 		Timestamp timestamp = Timestamp.valueOf(localDateTime);
 		System.out.println(timestamp); // 2022년 04월 12일 12시 12분 58초
 		
-		logVO.setUser_no(0);
+		logVO.setUser_no(1);
 		logVO.setUser_id(user_id);
 		logVO.setLogin_date(timestamp);
 		
-		//log_dao.insert(logVO);
+		log_dao.insert(logVO);
 		
 	}
 	

@@ -47,9 +47,6 @@
 		}
 	});
 	function go_login(){
-// 		$("#memberLoginForm").attr("action", "/HmallProject/HmallServlet?command=login_action"); // action 속성 control //attr : element 속성들 control 가능
-// 		$("#memberLoginForm").submit(); // 해당 form이 submit 했을 때
-		
 		var formData = $("#memberLoginForm").serialize();
 		
 			$.ajax({

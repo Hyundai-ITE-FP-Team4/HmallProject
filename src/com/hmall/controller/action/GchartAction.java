@@ -28,14 +28,12 @@ public class GchartAction implements Action {
 		
 		LogDAO log_dao = LogDAO.getInstance();
 		
-		LogVO logVO = new LogVO();
 		List<LogVO> list = log_dao.listLog();
-		logVO = list.get(0);
 		
 		Gson gson = new Gson();
         
         PrintWriter out = response.getWriter();
-		String str = gson.toJson(logVO);
+		String str = gson.toJson(list);
 		out.print(str);
 		System.out.println(str);
 	}

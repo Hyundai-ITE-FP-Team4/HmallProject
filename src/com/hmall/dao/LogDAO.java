@@ -44,7 +44,7 @@ public class LogDAO {
 	public List<LogVO> listLog() {
 
 		List<LogVO> logList = new ArrayList<LogVO>();
-		String sql = "SELECT COUNT(*) as cnt, EXTRACT(MONTH FROM CAST(login_date AS TIMESTAMP)) AS MONTH FROM kimsh.LOG_INFO A GROUP BY EXTRACT(MONTH FROM CAST(login_date AS TIMESTAMP)) ORDER BY MONTH; ";
+		String sql = "SELECT COUNT(*) as cnt, EXTRACT(MONTH FROM CAST(login_date AS TIMESTAMP)) AS MONTH FROM kimsh.LOG_INFO GROUP BY EXTRACT(MONTH FROM CAST(login_date AS TIMESTAMP)) ORDER BY MONTH";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

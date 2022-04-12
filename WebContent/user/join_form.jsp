@@ -17,8 +17,6 @@
 	
 	<script>
 			var check_dup = false;
-// 			$("#registMemberFormNew").attr("action", "/HmallProject/HmallServlet?command=join_action"); // action 속성 control //attr : element 속성들 control 가능
-//	 		$("#registMemberFormNew").submit(); // 해당 form이 submit 했을 때
 			function go_submit(){
 				if( $('#birthday').val().length == 0){ //생년월일 선택사항, 비어있으면 0 기본값으로 회원가입
 					$('#birthday').attr("value", 0);
