@@ -10,29 +10,26 @@ import javax.servlet.http.HttpSession;
 
 import com.hmall.dto.UserVO;
 
-public class MyPageAction implements Action{
+public class QnaPopUp implements Action{
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-
-		String url = "/mypage/mypage.jsp";
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//1:1��� URL
+		String url = "/mypage/qna/qnapopup.jsp";
 		
 		HttpSession session = request.getSession();
-	    UserVO user_vo = (UserVO) session.getAttribute("user_vo");
-	    //System.out.println(user_vo.getUser_id());
-	    
-	    if (user_vo == null) {
-	        url = "user/login_popup.jsp";
-	        
+	    UserVO loginUser = (UserVO) session.getAttribute("loginUser");
+	    /*
+	    if (loginUser == null) {
+	        url = "HmallServlet?command=login_form";
 	      } 
 	    else {
 	    	
-	    	System.out.println(user_vo.getUser_id());
 	    	
 	    }
+		*/
 		
-	    
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

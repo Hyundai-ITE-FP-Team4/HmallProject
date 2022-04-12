@@ -19,15 +19,15 @@ public class LoginAction implements Action{
 		// TODO Auto-generated method stub
 		UserDAO dao = UserDAO.getInstance();
 		
-		//ºê¶ó¿ìÀú ¹Ş¾Æ¿À´Â µ¥ÀÌÅÍ ÇÑ±¹¾î Ã³¸®
+		//ë¸Œë¼ìš°ì € ë°›ì•„ì˜¤ëŠ” ë°ì´í„° í•œêµ­ì–´ ì²˜ë¦¬
 		request.setCharacterEncoding("utf-8");
-		//HTML ÇÑ±¹¾î Ã³¸®
+		//HTML í•œêµ­ì–´ ì²˜ë¦¬
 	    response.setContentType("text/html;charset=utf-8");
 	    
 	    String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		
-		//·Î±×ÀÎ µÇ¾ú´ÂÁö È®ÀÎ
+		//ë¡œê·¸ì¸ ë˜ì—ˆëŠ”ì§€ í™•ì¸
 		UserVO userVO = dao.checkIdPw(user_id, user_pw);
 		
 		response.setContentType("application/json");
@@ -37,16 +37,15 @@ public class LoginAction implements Action{
         PrintWriter out = response.getWriter();
 	
 		if(userVO != null) {
-			System.out.println("·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");
+			System.out.println("ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			HttpSession session =request.getSession(true);
 			session.setMaxInactiveInterval(3600);
 			session.setAttribute("user_vo", userVO);
 			out.print(str);
 			System.out.println(str);
-
 		}
 		else {
-			System.out.println("·Î±×ÀÎ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+			System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			out.print("{\"login_check\":\"error\"}");
 		}
 		

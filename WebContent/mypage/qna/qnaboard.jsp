@@ -1,5 +1,10 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.hmall.dto.QnaVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.hmall.dao.QnaDAO"%>
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!-- 사이드바 내 '1:1상담' -->
 
@@ -7,28 +12,54 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
 <meta name="HandheldFriendly" content="true">
-<meta name="format-detection" content="telephone=no, email=no, address=no">
+<meta name="format-detection"
+	content="telephone=no, email=no, address=no">
 <meta name="apple-mobile-web-app-capable" content=" yes">
 <meta name="robots" content="index,follow">
 <meta name="title" content="https://hmall.com">
 <meta name="author" content="@Hmall">
-<meta name="description" content="백화점, 브랜드, 홈쇼핑까지- 당신의 모든 취향을 읽다. Korean Online Shopping Mall, Worldwide Shipping available, Hyundai Department Store Group in Korea. 韩国现代百货店的线上购物网站正品保障, 海外配送.">
+<meta name="description"
+	content="백화점, 브랜드, 홈쇼핑까지- 당신의 모든 취향을 읽다. Korean Online Shopping Mall, Worldwide Shipping available, Hyundai Department Store Group in Korea. 韩国现代百货店的线上购物网站正品保障, 海外配送.">
 <meta name="keywords" content="">
 <meta http-equiv="imagetoolbar" content="no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>1:1 상담 - 현대Hmall</title>
- 
+
 <!-- includeScript -->
 
 
-<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/plugins/ua/ec.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MZFFDJ8"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script src="https://connect.facebook.net/signals/config/307742333494098?v=2.9.57&amp;r=stable" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script src="https://connect.facebook.net/en_US/sdk.js?hash=27f3f5c9d6408c26328525b89267d1da" async="" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-937000404&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script><script src="https://www.googleoptimize.com/optimize.js?id=OPT-NBGRL7P"></script>
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/analytics.js"></script>
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/plugins/ua/ec.js"></script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script async=""
+	src="https://www.googletagmanager.com/gtm.js?id=GTM-MZFFDJ8"></script>
+<script type="text/javascript" async=""
+	src="https://www.googleadservices.com/pagead/conversion_async.js"></script>
+<script
+	src="https://connect.facebook.net/signals/config/307742333494098?v=2.9.57&amp;r=stable"
+	async=""></script>
+<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+<script
+	src="https://connect.facebook.net/en_US/sdk.js?hash=27f3f5c9d6408c26328525b89267d1da"
+	async="" crossorigin="anonymous"></script>
+<script type="text/javascript" async=""
+	src="https://www.googletagmanager.com/gtag/js?id=AW-937000404&amp;l=dataLayer&amp;cx=c"></script>
+<script type="text/javascript" async=""
+	src="https://www.googleadservices.com/pagead/conversion_async.js"></script>
+<script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT-NBGRL7P"></script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
 <meta name="HandheldFriendly" content="true">
-<meta name="format-detection" content="telephone=no, email=no, address=no"> 
+<meta name="format-detection"
+	content="telephone=no, email=no, address=no">
 <meta name="apple-mobile-web-app-capable" content=" yes">
 <meta name="robots" content="index,follow">
 <meta name="author" content="@Hmall">
@@ -56,27 +87,48 @@
 
 <link rel="shortcut icon" href="https://www.hmall.com/favicon.ico">
 <!-- UI/UX Style -->
-<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/common.css"><!-- 공통 css -->
-<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/layout.css"><!-- 공통 Layout css -->
-<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/popup.css"><!-- 공통 Popup css -->
-<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/jquery-ui.css"><!-- jQuery UI css -->
+<link rel="stylesheet" type="text/css"
+	href="//image.hmall.com/p/css/co/common.css">
+<!-- 공통 css -->
+<link rel="stylesheet" type="text/css"
+	href="//image.hmall.com/p/css/co/layout.css">
+<!-- 공통 Layout css -->
+<link rel="stylesheet" type="text/css"
+	href="//image.hmall.com/p/css/co/popup.css">
+<!-- 공통 Popup css -->
+<link rel="stylesheet" type="text/css"
+	href="//image.hmall.com/p/css/co/jquery-ui.css">
+<!-- jQuery UI css -->
 <style>
-.hidden {display:none !important;}
+.hidden {
+	display: none !important;
+}
 </style>
-<script src="//image.hmall.com/p/js/co/jquery-3.4.1.min.js"></script><!-- jQuery Plugin -->
-<script src="//image.hmall.com/p/js/co/jquery.easing.min.js"></script><!-- jQuery UI Effect -->
-<script src="//image.hmall.com/p/js/co/jquery-ui.1.12.1.min.js"></script><!-- jQuery UI js -->
-<script src="//image.hmall.com/p/js/co/ukDetect.min.js"></script><!-- UI에 사용하는 Detect -->
-<script src="//image.hmall.com/p/js/co/slick.min.js"></script><!-- 공통 Slide 플러그인 -->
-<script src="//image.hmall.com/p/js/co/common.js"></script><!-- UI에 사용하는 기본 js  -->
-<script src="//image.hmall.com/p/js/co/co.js"></script><!-- UI에 사용하는 기본 js  -->
+<script src="//image.hmall.com/p/js/co/jquery-3.4.1.min.js"></script>
+<!-- jQuery Plugin -->
+<script src="//image.hmall.com/p/js/co/jquery.easing.min.js"></script>
+<!-- jQuery UI Effect -->
+<script src="//image.hmall.com/p/js/co/jquery-ui.1.12.1.min.js"></script>
+<!-- jQuery UI js -->
+<script src="//image.hmall.com/p/js/co/ukDetect.min.js"></script>
+<!-- UI에 사용하는 Detect -->
+<script src="//image.hmall.com/p/js/co/slick.min.js"></script>
+<!-- 공통 Slide 플러그인 -->
+<script src="//image.hmall.com/p/js/co/common.js"></script>
+<!-- UI에 사용하는 기본 js  -->
+<script src="//image.hmall.com/p/js/co/co.js"></script>
+<!-- UI에 사용하는 기본 js  -->
 <script src="//image.hmall.com/p/js/co/jquery.cookie.js"></script>
-<script src="//image.hmall.com/p/js/co/commonFunction.js"></script><!-- as-is common.js 상속  -->
-<script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script><!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
+<script src="//image.hmall.com/p/js/co/commonFunction.js"></script>
+<!-- as-is common.js 상속  -->
+<script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script>
+<!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
 
 <!-- Google analytics -->
-<script type="text/javascript" src="//image.hmall.com/p/js/co/GoogleAnalyticsBuilder.js?ver=040709"></script>
-<script type="text/javascript" src="//image.hmall.com/p/js/co/ScreenNameObj.js?ver=040709"></script>
+<script type="text/javascript"
+	src="//image.hmall.com/p/js/co/GoogleAnalyticsBuilder.js?ver=040709"></script>
+<script type="text/javascript"
+	src="//image.hmall.com/p/js/co/ScreenNameObj.js?ver=040709"></script>
 
 
 
@@ -508,8 +560,10 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 
 
 
-</script> <!-- GA Custum lib -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-1066206974"></script>
+</script>
+<!-- GA Custum lib -->
+<script async=""
+	src="https://www.googletagmanager.com/gtag/js?id=AW-1066206974"></script>
 <!-- Google analytics end -->
 
 <script>
@@ -602,7 +656,8 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 </script>
 
 <!-- includeScript -->
-<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/mp/mypage.css">
+<link rel="stylesheet" type="text/css"
+	href="//image.hmall.com/p/css/mp/mypage.css">
 <script type="text/javascript">
 
 jQuery(function($) {
@@ -778,10 +833,677 @@ function srchKwdEventKey(){
 	}	
 }
 </script>
-<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
-.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
-.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}
+<style type="text/css"
+	data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
+.fb_hidden {
+	position: absolute;
+	top: -10000px;
+	z-index: 10001
+}
+
+.fb_reposition {
+	overflow: hidden;
+	position: relative
+}
+
+.fb_invisible {
+	display: none
+}
+
+.fb_reset {
+	background: none;
+	border: 0;
+	border-spacing: 0;
+	color: #000;
+	cursor: auto;
+	direction: ltr;
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1;
+	margin: 0;
+	overflow: visible;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0;
+	text-shadow: none;
+	text-transform: none;
+	visibility: visible;
+	white-space: normal;
+	word-spacing: normal
+}
+
+.fb_reset>div {
+	overflow: hidden
+}
+
+@
+keyframes fb_transform {
+	from {opacity: 0;
+	transform: scale(.95)
+}
+
+to {
+	opacity: 1;
+	transform: scale(1)
+}
+
+}
+.fb_animate {
+	animation: fb_transform .3s forwards
+}
+
+.fb_dialog {
+	background: rgba(82, 82, 82, .7);
+	position: absolute;
+	top: -10000px;
+	z-index: 10001
+}
+
+.fb_dialog_advanced {
+	border-radius: 8px;
+	padding: 10px
+}
+
+.fb_dialog_content {
+	background: #fff;
+	color: #373737
+}
+
+.fb_dialog_close_icon {
+	background:
+		url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
+		no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	display: block;
+	height: 15px;
+	position: absolute;
+	right: 18px;
+	top: 17px;
+	width: 15px
+}
+
+.fb_dialog_mobile .fb_dialog_close_icon {
+	left: 5px;
+	right: auto;
+	top: 5px
+}
+
+.fb_dialog_padding {
+	background-color: transparent;
+	position: absolute;
+	width: 1px;
+	z-index: -1
+}
+
+.fb_dialog_close_icon:hover {
+	background:
+		url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
+		no-repeat scroll 0 -15px transparent
+}
+
+.fb_dialog_close_icon:active {
+	background:
+		url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png)
+		no-repeat scroll 0 -30px transparent
+}
+
+.fb_dialog_iframe {
+	line-height: 0
+}
+
+.fb_dialog_content .dialog_title {
+	background: #6d84b4;
+	border: 1px solid #365899;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0
+}
+
+.fb_dialog_content .dialog_title>span {
+	background:
+		url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif)
+		no-repeat 5px 50%;
+	float: left;
+	padding: 5px 0 7px 26px
+}
+
+body.fb_hidden {
+	height: 100%;
+	left: 0;
+	margin: 0;
+	overflow: visible;
+	position: absolute;
+	top: -10000px;
+	transform: none;
+	width: 100%
+}
+
+.fb_dialog.fb_dialog_mobile.loading {
+	background:
+		url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif)
+		white no-repeat 50% 50%;
+	min-height: 100%;
+	min-width: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	z-index: 10001
+}
+
+.fb_dialog.fb_dialog_mobile.loading.centered {
+	background: none;
+	height: auto;
+	min-height: initial;
+	min-width: initial;
+	width: auto
+}
+
+.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
+	width: 100%
+}
+
+.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
+	background: none
+}
+
+.loading.centered #fb_dialog_loader_close {
+	clear: both;
+	color: #fff;
+	display: block;
+	font-size: 18px;
+	padding-top: 20px
+}
+
+#fb-root #fb_dialog_ipad_overlay {
+	background: rgba(0, 0, 0, .4);
+	bottom: 0;
+	left: 0;
+	min-height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 10000
+}
+
+#fb-root #fb_dialog_ipad_overlay.hidden {
+	display: none
+}
+
+.fb_dialog.fb_dialog_mobile.loading iframe {
+	visibility: hidden
+}
+
+.fb_dialog_mobile .fb_dialog_iframe {
+	position: sticky;
+	top: 0
+}
+
+.fb_dialog_content .dialog_header {
+	background: linear-gradient(from(#738aba), to(#2c4987));
+	border-bottom: 1px solid;
+	border-color: #043b87;
+	box-shadow: white 0 1px 1px -1px inset;
+	color: #fff;
+	font: bold 14px Helvetica, sans-serif;
+	text-overflow: ellipsis;
+	text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0;
+	vertical-align: middle;
+	white-space: nowrap
+}
+
+.fb_dialog_content .dialog_header table {
+	height: 43px;
+	width: 100%
+}
+
+.fb_dialog_content .dialog_header td.header_left {
+	font-size: 12px;
+	padding-left: 5px;
+	vertical-align: middle;
+	width: 60px
+}
+
+.fb_dialog_content .dialog_header td.header_right {
+	font-size: 12px;
+	padding-right: 5px;
+	vertical-align: middle;
+	width: 60px
+}
+
+.fb_dialog_content .touchable_button {
+	background: linear-gradient(from(#4267B2), to(#2a4887));
+	background-clip: padding-box;
+	border: 1px solid #29487d;
+	border-radius: 3px;
+	display: inline-block;
+	line-height: 18px;
+	margin-top: 3px;
+	max-width: 85px;
+	padding: 4px 12px;
+	position: relative
+}
+
+.fb_dialog_content .dialog_header .touchable_button input {
+	background: none;
+	border: none;
+	color: #fff;
+	font: bold 12px Helvetica, sans-serif;
+	margin: 2px -12px;
+	padding: 2px 6px 3px 6px;
+	text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+}
+
+.fb_dialog_content .dialog_header .header_center {
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 18px;
+	text-align: center;
+	vertical-align: middle
+}
+
+.fb_dialog_content .dialog_content {
+	background:
+		url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif)
+		no-repeat 50% 50%;
+	border: 1px solid #4a4a4a;
+	border-bottom: 0;
+	border-top: 0;
+	height: 150px
+}
+
+.fb_dialog_content .dialog_footer {
+	background: #f5f6f7;
+	border: 1px solid #4a4a4a;
+	border-top-color: #ccc;
+	height: 40px
+}
+
+#fb_dialog_loader_close {
+	float: left
+}
+
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
+	visibility: hidden
+}
+
+#fb_dialog_loader_spinner {
+	animation: rotateSpinner 1.2s linear infinite;
+	background-color: transparent;
+	background-image:
+		url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	height: 24px;
+	width: 24px
+}
+
+@
+keyframes rotateSpinner { 0%{
+	transform: rotate(0deg)
+}
+
+100%{
+transform
+:rotate(360deg)
+}
+}
+.fb_iframe_widget {
+	display: inline-block;
+	position: relative
+}
+
+.fb_iframe_widget span {
+	display: inline-block;
+	position: relative;
+	text-align: justify
+}
+
+.fb_iframe_widget iframe {
+	position: absolute
+}
+
+.fb_iframe_widget_fluid_desktop, .fb_iframe_widget_fluid_desktop span,
+	.fb_iframe_widget_fluid_desktop iframe {
+	max-width: 100%
+}
+
+.fb_iframe_widget_fluid_desktop iframe {
+	min-width: 220px;
+	position: relative
+}
+
+.fb_iframe_widget_lift {
+	z-index: 1
+}
+
+.fb_iframe_widget_fluid {
+	display: inline
+}
+
+.fb_iframe_widget_fluid span {
+	width: 100%
+}
+
+.fb_mpn_mobile_landing_page_slide_out {
+	animation-duration: 200ms;
+	animation-name: fb_mpn_landing_page_slide_out;
+	transition-timing-function: ease-in
+}
+
+.fb_mpn_mobile_landing_page_slide_out_from_left {
+	animation-duration: 200ms;
+	animation-name: fb_mpn_landing_page_slide_out_from_left;
+	transition-timing-function: ease-in
+}
+
+.fb_mpn_mobile_landing_page_slide_up {
+	animation-duration: 500ms;
+	animation-name: fb_mpn_landing_page_slide_up;
+	transition-timing-function: ease-in
+}
+
+.fb_mpn_mobile_bounce_in {
+	animation-duration: 300ms;
+	animation-name: fb_mpn_bounce_in;
+	transition-timing-function: ease-in
+}
+
+.fb_mpn_mobile_bounce_out {
+	animation-duration: 300ms;
+	animation-name: fb_mpn_bounce_out;
+	transition-timing-function: ease-in
+}
+
+.fb_mpn_mobile_bounce_out_v2 {
+	animation-duration: 300ms;
+	animation-name: fb_mpn_fade_out;
+	transition-timing-function: ease-in
+}
+
+.fb_customer_chat_bounce_in_v2 {
+	animation-duration: 300ms;
+	animation-name: fb_bounce_in_v2;
+	transition-timing-function: ease-in
+}
+
+.fb_customer_chat_bounce_in_from_left {
+	animation-duration: 300ms;
+	animation-name: fb_bounce_in_from_left;
+	transition-timing-function: ease-in
+}
+
+.fb_customer_chat_bounce_out_v2 {
+	animation-duration: 300ms;
+	animation-name: fb_bounce_out_v2;
+	transition-timing-function: ease-in
+}
+
+.fb_customer_chat_bounce_out_from_left {
+	animation-duration: 300ms;
+	animation-name: fb_bounce_out_from_left;
+	transition-timing-function: ease-in
+}
+
+.fb_invisible_flow {
+	display: inherit;
+	height: 0;
+	overflow-x: hidden;
+	width: 0
+}
+
+@
+keyframes fb_mpn_landing_page_slide_out { 0%{
+	margin: 0 12px;
+	width: 100%- 24px
+}
+
+60%{
+border-radius
+:
+18px
+}
+100%{
+border-radius
+:
+50%;margin
+:
+0
+ 
+24
+px
+;width
+:
+60px
+}
+}
+@
+keyframes fb_mpn_landing_page_slide_out_from_left { 0%{
+	left: 12px;
+	width: 100%- 24px
+}
+
+60%{
+border-radius
+:
+18px
+}
+100%{
+border-radius
+:
+50%;left
+:
+12px;width
+:
+60px
+}
+}
+@
+keyframes fb_mpn_landing_page_slide_up { 0%{
+	bottom: 0;
+	opacity: 0
+}
+
+100%{
+bottom
+:
+24px;opacity
+:
+1
+}
+}
+@
+keyframes fb_mpn_bounce_in { 0%{
+	opacity: .5;
+	top: 100%
+}
+
+100%{
+opacity
+:
+1;top
+:
+0
+}
+}
+@
+keyframes fb_mpn_fade_out { 0%{
+	bottom: 30px;
+	opacity: 1
+}
+
+100%{
+bottom
+:
+0;opacity
+:
+0
+}
+}
+@
+keyframes fb_mpn_bounce_out { 0%{
+	opacity: 1;
+	top: 0
+}
+
+100%{
+opacity
+:
+.5
+;top
+:
+100%
+}
+}
+@
+keyframes fb_bounce_in_v2 { 0%{
+	opacity: 0;
+	transform: scale(0, 0);
+	transform-origin: bottom right
+}
+
+50%{
+transform
+:scale
+(1
+.03
+,
+1
+.03
+);transform-origin
+:bottom
+ 
+right
+}
+100%{
+opacity
+:
+1;transform
+:scale
+(1
+,
+1);
+transform-origin
+:bottom
+ 
+right
+}
+}
+@
+keyframes fb_bounce_in_from_left { 0%{
+	opacity: 0;
+	transform: scale(0, 0);
+	transform-origin: bottom left
+}
+
+50%{
+transform
+:scale
+(1
+.03
+,
+1
+.03
+);transform-origin
+:bottom
+ 
+left
+}
+100%{
+opacity
+:
+1;transform
+:scale
+(1
+,
+1);
+transform-origin
+:bottom
+ 
+left
+}
+}
+@
+keyframes fb_bounce_out_v2 { 0%{
+	opacity: 1;
+	transform: scale(1, 1);
+	transform-origin: bottom right
+}
+
+100%{
+opacity
+:
+0;transform
+:scale
+(0
+,
+0);
+transform-origin
+:bottom
+ 
+right
+}
+}
+@
+keyframes fb_bounce_out_from_left { 0%{
+	opacity: 1;
+	transform: scale(1, 1);
+	transform-origin: bottom left
+}
+
+100%{
+opacity
+:
+0;transform
+:scale
+(0
+,
+0);
+transform-origin
+:bottom
+ 
+left
+}
+}
+@
+keyframes slideInFromBottom { 0%{
+	opacity: .1;
+	transform: translateY(100%)
+}
+
+100%{
+opacity
+:
+1;transform
+:translateY(0)
+}
+}
+@
+keyframes slideInFromBottomDelay { 0%{
+	opacity: 0;
+	transform: translateY(100%)
+}
+97%{
+opacity
+:
+0;transform
+:translateY
+(100%)
+}
+100%{
+opacity
+:
+1;transform
+:translateY(0)
+}
+}
 </style>
 </head>
 
@@ -790,28 +1512,40 @@ function srchKwdEventKey(){
 
 
 <body>
-<div class="wrap consult-main"><!-- wing banner 미노출 시 : wing-none 클래스 추가 -->
-    <div class="nav-skip"><a href="#mainContents">본문 콘텐츠로 건너뛰기</a></div>
+	<div class="wrap consult-main">
+		<!-- wing banner 미노출 시 : wing-none 클래스 추가 -->
+		<div class="nav-skip">
+			<a href="#mainContents">본문 콘텐츠로 건너뛰기</a>
+		</div>
 
-	<!-- gnb setting -->
-	
-
-<!-- header -->
-
-
+		<!-- gnb setting -->
 
 
-
+		<!-- header -->
 
 
 
-<script type="text/javascript" src="//image.hmall.com/gen/js/searchPopKeyWordList.js?ver=040709"></script>
-<script type="text/javascript" src="//image.hmall.com/gen/js/searchADTextList.js?ver=040709" charset="UTF-8"></script>
-<script type="text/javascript" src="//image.hmall.com/gen/js/searchADLinkList.js?ver=040709" charset="UTF-8"></script>
-<script type="text/javascript" src="//image.hmall.com/gen/js/searchSpecialShopLinkList.js?ver=040709" charset="UTF-8"></script>
-<script type="text/javascript" src="//image.hmall.com/gen/js/searchBrndShopLinkList.js?ver=040709" charset="UTF-8"></script>
 
-<script type="text/javascript">
+
+
+
+
+		<script type="text/javascript"
+			src="//image.hmall.com/gen/js/searchPopKeyWordList.js?ver=040709"></script>
+		<script type="text/javascript"
+			src="//image.hmall.com/gen/js/searchADTextList.js?ver=040709"
+			charset="UTF-8"></script>
+		<script type="text/javascript"
+			src="//image.hmall.com/gen/js/searchADLinkList.js?ver=040709"
+			charset="UTF-8"></script>
+		<script type="text/javascript"
+			src="//image.hmall.com/gen/js/searchSpecialShopLinkList.js?ver=040709"
+			charset="UTF-8"></script>
+		<script type="text/javascript"
+			src="//image.hmall.com/gen/js/searchBrndShopLinkList.js?ver=040709"
+			charset="UTF-8"></script>
+
+		<script type="text/javascript">
 
 
 var oneClickFlag = 0;
@@ -1239,14 +1973,18 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 
 
 
-</script> <!-- GA Custum lib -->
-<script type="text/javascript" src="//image.hmall.com/gen/js/new_main_data.js?ver=040709" charset="UTF-8"></script>
+</script>
+		<!-- GA Custum lib -->
+		<script type="text/javascript"
+			src="//image.hmall.com/gen/js/new_main_data.js?ver=040709"
+			charset="UTF-8"></script>
 
 
-<!-- TODO 곽희섭 20170523 통합포인트 추가 -->
-<script type="text/javascript" src="//image.hmall.com/p/js/cu/SsoAjax.js?version=1"></script>
+		<!-- TODO 곽희섭 20170523 통합포인트 추가 -->
+		<script type="text/javascript"
+			src="//image.hmall.com/p/js/cu/SsoAjax.js?version=1"></script>
 
-<script type="text/javascript">
+		<script type="text/javascript">
 	var serverHost       = (location.href.indexOf("final") > 0 || location.href.indexOf("stg") > 0 || location.href.indexOf("dev") > 0 || location.href.indexOf("local") > 0) ? "https://" + location.host : "https://www.hmall.com";
 	var serverHostForSSL = (location.href.indexOf("final") > 0 || location.href.indexOf("stg") > 0 || location.href.indexOf("dev") > 0 || location.href.indexOf("local") > 0) ? "https://" + location.host : "https://www.hmall.com";
 
@@ -2246,25 +2984,29 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 	//# sourceURL= script-for-Top1.js
 </script>
 
-<!-- TODO 곽희섭 20170517 통합포인트 추가 -->
-<form id="loginForm" name="loginForm" method="post" action="https://www.h-point.co.kr/cu/login.nhd" target="sendLogin">
-	<input type="hidden" name="retUrl" value="https://www.hmall.com/p/cob/upntGatePage.do">
-	<input type="hidden" name="retPage" value="">
-	<input type="hidden" name="prtnrId" value="D020" readonly>
-	<input type="hidden" name="chnnlId" value="1102">
-	<input type="hidden" name="htmlYn" value="Y">
-	
-	<input type="hidden" name="ci" value="">
-</form>
-<form id="myPntForm" name="myPntForm" method="post" action="" target="myPntForm">
-	<input type="hidden" name="mcustNo" value="">
-</form>
+		<!-- TODO 곽희섭 20170517 통합포인트 추가 -->
+		<form id="loginForm" name="loginForm" method="post"
+			action="https://www.h-point.co.kr/cu/login.nhd" target="sendLogin">
+			<input type="hidden" name="retUrl"
+				value="https://www.hmall.com/p/cob/upntGatePage.do"> <input
+				type="hidden" name="retPage" value=""> <input type="hidden"
+				name="prtnrId" value="D020" readonly> <input type="hidden"
+				name="chnnlId" value="1102"> <input type="hidden"
+				name="htmlYn" value="Y"> <input type="hidden" name="ci"
+				value="">
+		</form>
+		<form id="myPntForm" name="myPntForm" method="post" action=""
+			target="myPntForm">
+			<input type="hidden" name="mcustNo" value="">
+		</form>
 
-	<!-- skip navigation -->
-	<div class="nav-skip"><a href="#mainContents" id="accessibility">본문 콘텐츠로 건너뛰기</a></div>
+		<!-- skip navigation -->
+		<div class="nav-skip">
+			<a href="#mainContents" id="accessibility">본문 콘텐츠로 건너뛰기</a>
+		</div>
 
 
-<script>
+		<script>
 	function setTopBanner() {
 		try {
 			var TopBannerArr = [top1Json, top2Json, top3Json, top4Json];
@@ -2690,20 +3432,21 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 
 </script>
 
-<%@ include file="../../header.jsp"%>
+		<%@ include file="../../header.jsp"%>
 
 
-	<main class="cmain mypage" role="main" id="mainContents"><!-- 마이페이지 'mypage' 클래스 추가 -->
-        <div class="container">
-            <div class="gird-l2x">
-	        
-
-
-
+		<main class="cmain mypage" role="main" id="mainContents">
+			<!-- 마이페이지 'mypage' 클래스 추가 -->
+			<div class="container">
+				<div class="gird-l2x">
 
 
 
-<script type="text/javascript">
+
+
+
+
+					<script type="text/javascript">
     var upntCustYn = "N";
 $(document).ready(function() {
     $.ajax({
@@ -2747,143 +3490,92 @@ function fn_upntPopupClose(){
     $("#pec001-01").modal().hide();
 }
 </script>
-<!--20170816 박승택 추가 -->
-<form name="upntLeftForm" method="post" target="uPnt">
-    <input type="hidden" name="mcustNo" value="aG9yU0VSSFRXUnVWbkpVVjNCQ1pWVXhjVkZVUWs1U1IxSldWbXhhUzFFeGNFVlJWRlpUVm01Qk1sVXljelZpUjBwSVl6Tm9WMUp0YUhGVU1WcERWakZTYzFWc1ZtdGxha0Ux">
-</form>
-<div class="side-content">
-    <h3 class="side-menu-title"><a href="https://www.hmall.com/p/mpf/selectMyPageMain.do">마이페이지</a></h3>
-    <div class="side-menu-list">
-        <ul>
-            <li>
-                <a href="javascript:;">주문현황</a>
-                <ul class="sub-list">
-	                
-	                    
-	                    
-	                        <li><a href="https://www.hmall.com/p/mpa/selectOrdDlvCrst.do?pageType=ALL">주문/배송현황</a></li>
-	                    
-	                
-                    <li><a href="https://www.hmall.com/p/mpa/selectOrdDlvCrst.do?pageType=D2">취소/반품/교환/AS현황</a></li>
-                    <li><a href="https://www.hmall.com/p/mpa/selectCashTabMainPage.do">영수증/세금계산서</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">쇼핑통장</a>
-                <ul class="sub-list">
-                    <li><a href="https://www.hmall.com/p/mpe/selectCopnList.do">쿠폰</a></li>
-                    <li><a href="https://www.hmall.com/p/mpe/selectUPntTabPage.do">포인트</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">나의 활동</a>
-                <ul class="sub-list">
-                    <li><a href="https://www.hmall.com/p/mpc/sltdItemList.do">찜</a></li>
-                    <li><a href="https://www.hmall.com/p/mpc/bitmAlrimList.do">방송알리미</a></li>
-                    <li><a href="https://www.hmall.com/p/mpe/evntEntryDtl.do">참여이벤트</a></li>
-                    <li><a href="https://www.hmall.com/p/mpb/selectItemEvalAtclListPagingByCondtion.do">나의 상품평</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">회원정보</a>
-                <ul class="sub-list">
-	                
-	                	
-	                	
-	                		<li><a href="https://www.hmall.com/p/mpd/changeMemberInfoForm.do">회원정보관리</a></li><li>
-	                	
-	                                
-                    </li><li><a href="https://www.hmall.com/p/mpd/selectMemberDstnAdr.do">배송지관리</a></li>
-                    <li><a href="javascript:;" onclick="fn_HppManage();">H.Point Pay 관리</a></li>
-                    <li><a href="https://www.hmall.com/p/mpd/selectMemberUseInfo.do">개인정보 이용현황</a></li>
-	                
-	                	
-	                	
-		                	<li><a href="https://www.hmall.com/p/mpd/leaveMemberForm.do">회원탈퇴</a></li>
-		                
-	                
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">고객센터</a>
-                <ul class="sub-list">
-                    <li><a href="https://www.hmall.com/p/ccd/selectCnslOrdReqDtl.do">1:1 상담</a></li>
-                    <li><a href="https://www.hmall.com/p/mpb/selectItemQNAPagingByCondition.do">상품 Q&amp;A</a></li>
-                </ul>
-            </li>
-            
-			
-			    
-			    
-		    	
-			
-        </ul>
-    </div>
-</div>
+					<!--20170816 박승택 추가 -->
+					<form name="upntLeftForm" method="post" target="uPnt">
+						<input type="hidden" name="mcustNo"
+							value="aG9yU0VSSFRXUnVWbkpVVjNCQ1pWVXhjVkZVUWs1U1IxSldWbXhhUzFFeGNFVlJWRlpUVm01Qk1sVXljelZpUjBwSVl6Tm9WMUp0YUhGVU1WcERWakZTYzFWc1ZtdGxha0Ux">
+					</form>
+					
+					<%@ include file="../sidebar.jsp"%>
 
 
-                <div class="contents">
-                    <div class="mypage-consult-wrap">
-                        <h3 class="title22">1:1 상담</h3>
-                        <div class="border-gray-box">
-                            <p class="ctypo15">고객님의 궁금한 사항을 친절히 해결해 드립니다.</p>
-                            <div class="btngroup inline-block">
-                            	<!-- 게시판 상담하기 버튼 수정 필요(황명하) -->
-                                <button class="btn btn-linelgray small34" type="button" onclick="window.open('mypage/qna/qnapopup.jsp','1:1 상담하기','width=430,height=500,location=no,status=no,scrollbars=yes');"><i class="icon write"></i><span>게시판 상담하기</span></button>
-                            </div>
-                        </div>
+					<div class="contents">
+						<div class="mypage-consult-wrap">
+							<h3 class="title22">1:1 상담</h3>
+							<div class="border-gray-box">
+								<p class="ctypo15">고객님의 궁금한 사항을 친절히 해결해 드립니다.</p>
+								<div class="btngroup inline-block">
+									<!-- 게시판 상담하기 버튼 수정 필요(황명하) -->
+									<button class="btn btn-linelgray small34" type="button"
+										onclick="window.open('HmallServlet?command=qna_popup','1:1 상담하기','width=430,height=500,location=no,status=no,scrollbars=yes');">
+										<i class="icon write"></i><span>게시판 상담하기</span>
+									</button>
+								</div>
+							</div>
 
-                        <ul class="ui-tab type-line" role="tablist"> 
-                            <li role="presentation" class="ui-active"><a href="#board" onclick="javascript:location.replace('/p/ccd/selectCnslOrdReqDtl.do')" aria-controls="board" role="tab" data-modules-tab="">게시판 상담</a></li>
-                            <li role="presentation"><a href="#chat" onclick="javascript:location.replace('/p/ccd/selectCnslChatReqDtl.do')" aria-controls="chat" role="tab" data-modules-tab="">채팅상담</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane ui-active" id="board">
-                                <div class="consult-list">
-                                    <div class="filter-box bg-none">
-                           				<form action="/p/ccd/selectCnslOrdReqDtl.do" method="post" name="myOrdReqSearchForm">
-	                                        <input type="hidden" id="condPeriod" name="condPeriod" value="2">
-	                                        <input type="hidden" name="strtDt" id="strtDt" maxlength="8" value="">
-	                                      	<input type="hidden" name="endDt" id="endDt" maxlength="8" value="">
-	                                      	<input type="hidden" name="kwd" id="kwd" value="">   
-	                                    </form>                      				
-                                        <div class="search-filter">
-                                            <ul class="radiolist">
-                                                <li>
-                                                    <input type="radio" name="order" id="order01" aria-checked="&quot;true&quot;" checked="&quot;&quot;">
-                                                    <label for="order01" onclick="setWeekPeriod(0);">최근 14일</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="order" id="order02" aria-checked="&quot;false&quot;">
-                                                    <label for="order02" onclick="setMonthPeriod(0,3);">최근 3개월</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="order" id="order03" aria-checked="&quot;false&quot;">
-                                                    <label for="order03" onclick="setMonthPeriod(0,6);">최근 6개월</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="order" id="order04" aria-checked="&quot;false&quot;" value="2022">
-                                                    <label for="order04" onclick="setYearPeriod(0,0);">2022년</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="order" id="order05" aria-checked="&quot;false&quot;" value="2021">
-                                                    <label for="order05" onclick="setYearPeriod(0,-1);">2021년</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="order" id="order06" aria-checked="&quot;false&quot;" value="2020">
-                                                    <label for="order06" onclick="setYearPeriod(0,-2);">2020년</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="order" id="order07" aria-checked="&quot;false&quot;">
-                                                    <label for="order07" onclick="setAllPeriod(0);">전체</label>
-                                                </li>
-                                            </ul>
-											<div class="inputbox">
-                                                <label class="inplabel icon-find"><input type="text" onkeyup="srchKwdEventKey();" id="srchKwd" value="" placeholder="상품명 검색"></label>
-                                                <button class="btn btn-find" onclick="srchKwd();"><i class="icon find"></i><span class="hiding">검색</span></button>
-                                                <button class="btn ico-clearabled"><i class="icon"></i><span class="hiding">지우기</span></button>
-                                           	</div>												
-											<!--  UX-277 해피톡 고도화 : 상담유형  비노출  
+							<ul class="ui-tab type-line" role="tablist">
+								<li role="presentation" class="ui-active"><a href="#board"
+									onclick="javascript:location.replace('/p/ccd/selectCnslOrdReqDtl.do')"
+									aria-controls="board" role="tab" data-modules-tab="">게시판 상담</a></li>
+								<li role="presentation"><a href="#chat"
+									onclick="javascript:location.replace('/p/ccd/selectCnslChatReqDtl.do')"
+									aria-controls="chat" role="tab" data-modules-tab="">채팅상담</a></li>
+							</ul>
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane ui-active" id="board">
+									<div class="consult-list">
+										<div class="filter-box bg-none">
+											<form action="/p/ccd/selectCnslOrdReqDtl.do" method="post"
+												name="myOrdReqSearchForm">
+												<input type="hidden" id="condPeriod" name="condPeriod"
+													value="2"> <input type="hidden" name="strtDt"
+													id="strtDt" maxlength="8" value=""> <input
+													type="hidden" name="endDt" id="endDt" maxlength="8"
+													value=""> <input type="hidden" name="kwd" id="kwd"
+													value="">
+											</form>
+											<div class="search-filter">
+												<ul class="radiolist">
+													<li><input type="radio" name="order" id="order01"
+														aria-checked="&quot;true&quot;" checked="&quot;&quot;">
+														<label for="order01" onclick="setWeekPeriod(0);">최근
+															14일</label></li>
+													<li><input type="radio" name="order" id="order02"
+														aria-checked="&quot;false&quot;"> <label
+														for="order02" onclick="setMonthPeriod(0,3);">최근
+															3개월</label></li>
+													<li><input type="radio" name="order" id="order03"
+														aria-checked="&quot;false&quot;"> <label
+														for="order03" onclick="setMonthPeriod(0,6);">최근
+															6개월</label></li>
+													<li><input type="radio" name="order" id="order04"
+														aria-checked="&quot;false&quot;" value="2022"> <label
+														for="order04" onclick="setYearPeriod(0,0);">2022년</label>
+													</li>
+													<li><input type="radio" name="order" id="order05"
+														aria-checked="&quot;false&quot;" value="2021"> <label
+														for="order05" onclick="setYearPeriod(0,-1);">2021년</label>
+													</li>
+													<li><input type="radio" name="order" id="order06"
+														aria-checked="&quot;false&quot;" value="2020"> <label
+														for="order06" onclick="setYearPeriod(0,-2);">2020년</label>
+													</li>
+													<li><input type="radio" name="order" id="order07"
+														aria-checked="&quot;false&quot;"> <label
+														for="order07" onclick="setAllPeriod(0);">전체</label></li>
+												</ul>
+												<div class="inputbox">
+													<label class="inplabel icon-find"><input
+														type="text" onkeyup="srchKwdEventKey();" id="srchKwd"
+														value="" placeholder="상품명 검색"></label>
+													<button class="btn btn-find" onclick="srchKwd();">
+														<i class="icon find"></i><span class="hiding">검색</span>
+													</button>
+													<button class="btn ico-clearabled">
+														<i class="icon"></i><span class="hiding">지우기</span>
+													</button>
+												</div>
+												<!--  UX-277 해피톡 고도화 : 상담유형  비노출  
                                             <div class="custom-selectbox sm" data-modules-selectbox>
 	                                        <select name="mCnslCsfCd">
 	                                            <option value="" selected='selected'>상담유형</option>
@@ -2909,27 +3601,72 @@ function fn_upntPopupClose(){
 	                                        </select>
                                             </div>
                                             -->
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                        <div>
-	                                        <div class="nodata">
-		                                        <span class="bgcircle"><i class="icon nodata-type12"></i></span>
-		                                        <p>상담 내역이 없습니다.</p>
-		                                    </div>
-	                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- // .contents -->    
+											</div>
+										</div>
+										<!-- /주문기간 필터 -->
+										
+										<!-- 게시판 목록 -->
+										<%
+										HttpSession user_session = request.getSession();
+									    UserVO user_vo = (UserVO) user_session.getAttribute("user_vo");
+									    
+										QnaDAO qnaDAO = QnaDAO.getInstance();
+										ArrayList<QnaVO> data1 = qnaDAO.listAllQna(user_vo.getUser_id());
+										request.setAttribute("data",data1);
+										%>
+										
+										
+										<c:choose>
+												<c:when test= "${data.size() == 0}">
+													<div>
+														<div class="nodata">
+															<span class="bgcircle"><i class="icon nodata-type12"></i></span>
+															<p>상담 내역이 없습니다.</p>
+														</div>
+													</div>
+												</c:when>
+												
+												<c:otherwise>
+													<ul class="list">
+														<c:forEach var="Qna" items="${data}">
+														<c:set var="date" value = "${Qna.boardDate}"> </c:set>
+														<li>
+														<span class="case" style= "width:150px" > ${Qna.category1} </span>
+														
+														<div class="txt">
+															<p class="name" onclick="doOpenCnslDtlPup('202201290949481','0000000001');"> ${Qna.question } </p>
+															<span class="date"> 
+															<%
+															Timestamp date_t = (Timestamp) pageContext.getAttribute("date");
+															SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+															//System.out.println(sdf.format(date_t));
+															%>
+															
+															<%= sdf.format(date_t) %> </span>
+														</div>
+														
+														<div class="state">
+															<button class="btn btn-linelgray sm" type="button" onclick="doOpenCnslDtlPup('202201290949481','0000000001');">
+																<span>답변보기</span>
+															</button>
+														</div>
+														</li>
+														</c:forEach>
+													</ul>
+												</c:otherwise>
+											
+											</c:choose>
+										<!-- /게시판 목록 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- // .contents -->
+				</div>
 			</div>
-		</div>
-	</main>
+		</main>
 
-<%@ include file="../../footer.jsp"%>
+		<%@ include file="../../footer.jsp"%>
 </body>
 </html>

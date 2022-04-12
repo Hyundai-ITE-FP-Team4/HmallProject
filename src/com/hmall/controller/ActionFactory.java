@@ -3,6 +3,7 @@ package com.hmall.controller;
 import com.hmall.controller.action.Action;
 import com.hmall.controller.action.CategoryAction;
 import com.hmall.controller.action.CategoryTopAction;
+import com.hmall.controller.action.EnrollQuestionAction;
 import com.hmall.controller.action.IdCheckAction;
 import com.hmall.controller.action.IndexAction;
 import com.hmall.controller.action.JoinAction;
@@ -13,16 +14,17 @@ import com.hmall.controller.action.LogoutAction;
 import com.hmall.controller.action.MyPageAction;
 import com.hmall.controller.action.ProductDetailAction;
 import com.hmall.controller.action.QnaBoradAction;
+import com.hmall.controller.action.QnaPopUp;
 
 /*
- * HmallServletï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ş¹ï¿½ï¿½ï¿½ commandï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Action ï¿½ï¿½È¯
+ * HmallServlet ì»¤ë§¨íŠ¸ íŒ¨í„´ , command ë³„ ì•¡ì…˜ ì„¤ì •
  * 
  * */
 public class ActionFactory {
 
 	private static ActionFactory instance = new ActionFactory();
 
-	private ActionFactory() { // ï¿½Ì±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+	private ActionFactory() { 
 		super();
 	}
 
@@ -34,51 +36,61 @@ public class ActionFactory {
 		Action action = null;
 		System.out.println("ActionFactory : " + command);
 
-		// È¨ÆäÀÌÁö ÀÌµ¿
+		// í™ˆí˜ì´ì§€ ì´ë™
 		if (command.equals("index")) {
 			action = new IndexAction();
 		}
-		// ¸¶ÀÌÆäÀÌÁö ÀÌµ¿
+		// ë§ˆì´í˜ì´ì§€ ì´ë™
 		else if (command.equals("mypage")) {
 			action = new MyPageAction();
 		}
-		// »çÀÌµå¹Ù ³» 1:1»ó´ã ÀÌµ¿
+		// ì‚¬ì´ë“œë°” ë‚´ 1:1 ìƒë‹´ ì´ë™
 		else if (command.equals("qnaboard")) {
 			action = new QnaBoradAction();
 		}
-		// È¸¿ø°¡ÀÔ ¸Ş´º
+		// íšŒì›ê°€ì… ë©”ë‰´
 		else if (command.equals("join_menu")) {
 			action = new JoinMenuAction();
 		}
-		// È¸¿ø°¡ÀÔ Æû
+		// íšŒì›ê°€ì… í¼
 		else if (command.equals("join_form")) {
 			action = new JoinFormAction();
 		} else if (command.equals("join_action")) {
 			action = new JoinAction();
 		}
-		// ·Î±×ÀÎ Æû
+		// ë¡œê·¸ì¸ í¼
 		else if (command.equals("login_action")) {
 			action = new LoginAction();
 		}
-		// ¾ÆÀÌµğ Ã¼Å©
+		// ì•„ì•„ë”” ì²´í¬
 		else if (command.equals("id_check")) {
 			action = new IdCheckAction();
 		}
+		// ë¡œê·¸ ì•„ì›ƒ
 		else if (command.equals("logout")) {
 			action = new LogoutAction();
 		}
-		// Ä«Å×°í¸® ÁßºĞ·ùº° ÆäÀÌÁö
+		// ì¹´í…Œê³ ë¦¬ ì¤‘ë¶„ë¥˜ë³„ í˜ì´ì§€
 		else if (command.equals("categoryTop")) {
 			action = new CategoryTopAction();
 		}
-		// Ä«Å×°í¸® ¼ÒºĞ·ùº° ÆäÀÌÁö
+		// ì¹´í…Œê³ ë¦¬ ì†Œë¶„ë¥˜ë³„ í˜ì´ì§€
 		else if (command.equals("category")) {
 			action = new CategoryAction();
 		}
-		// »óÇ° »ó¼¼ÆäÀÌÁö
+		// ìƒí’ˆ ìƒì„¸ í˜ì´ì§€
 		else if (command.equals("product_detail")) {
 			action = new ProductDetailAction();
 		}
+		//1:1ìƒë‹´ ë“±ë¡ í˜ì´ì§€
+		else if (command.equals("qna_popup")) {
+			action = new QnaPopUp();
+		}
+		//1:1 ìƒë‹´ ë“±ë¡
+		else if (command.equals("enroll_question")) {
+			action = new EnrollQuestionAction();
+		}		
+		
 		return action;
 	}
 } // end class

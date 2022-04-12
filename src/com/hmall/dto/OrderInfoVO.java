@@ -3,43 +3,43 @@ package com.hmall.dto;
 import java.sql.Timestamp;
 
 public class OrderInfoVO {
-	private int order_no;
-	private String user_id;
-	private Timestamp order_date;
-	private int product_code;
+	private int orderNo;
+	private String userId;
+	private Timestamp orderDate;
+	private int productCode;
 	private int amount;
 	private String state;
-	
-	
-	public int getOrder_no() {
-		return order_no;
-	}
-	public void setOrder_no(int order_no) {
-		this.order_no = order_no;
+	public int getOrderNo() {
+		return orderNo;
 	}
 	
 	
-	public String getUser_id() {
-		return user_id;
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	
-	
-	public Timestamp getOrder_date() {
-		return order_date;
-	}
-	public void setOrder_date(Timestamp order_date) {
-		this.order_date = order_date;
+	public String getUserId() {
+		return userId;
 	}
 	
 	
-	public int getProduct_code() {
-		return product_code;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
+	public Timestamp getOrderDate() {
+		return orderDate;
+	}
+	
+	
+	public void setOrderDate(Timestamp orderDate) {
+		this.orderDate = orderDate;
+	}
+	
+	
+	public int getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
 	}
 	
 	

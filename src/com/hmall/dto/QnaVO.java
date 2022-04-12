@@ -2,10 +2,10 @@ package com.hmall.dto;
 import java.sql.Timestamp;
 
 public class QnaVO {
-	private int board_no;
-	private int product_code;
-	private String user_id;
-	private Timestamp board_date;
+	private int boardNo;
+	private int productCode;
+	private String userId;
+	private Timestamp boardDate;
 	private String category1;
 	private String category2;
 	private String question;
@@ -13,35 +13,35 @@ public class QnaVO {
 	private String answer;
 	
 	
-	public int getBoard_no() {
-		return board_no;
+	public int getBoardNo() {
+		return boardNo;
 	}
-	public void setBoard_no(int board_no) {
-		this.board_no = board_no;
-	}
-	
-	
-	public int getProduct_code() {
-		return product_code;
-	}
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
 	}
 	
 	
-	public String getUser_id() {
-		return user_id;
+	public int getProductCode() {
+		return productCode;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
 	}
 	
 	
-	public Timestamp getBoard_date() {
-		return board_date;
+	public String getUserId() {
+		return userId;
 	}
-	public void setBoard_date(Timestamp board_date) {
-		this.board_date = board_date;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
+	
+	public Timestamp getBoardDate() {
+		return boardDate;
+	}
+	public void setBoardDate(Timestamp boardDate) {
+		this.boardDate = boardDate;
 	}
 	
 	

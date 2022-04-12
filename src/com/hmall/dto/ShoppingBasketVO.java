@@ -4,34 +4,34 @@ import java.sql.Timestamp;
 
 public class ShoppingBasketVO {
 	
-	private int sb_no;
-	private String user_id;
-	private int product_code;
+	private int sbNo;
+	private String userId;
+	private int productCode;
 	private int amount;
-	private Timestamp sb_date;
+	private Timestamp sbDate;
 	
 	
-	public int getSb_no() {
-		return sb_no;
+	public int getSbNo() {
+		return sbNo;
 	}
-	public void setSb_no(int sb_no) {
-		this.sb_no = sb_no;
-	}
-	
-	
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setSbNo(int sbNo) {
+		this.sbNo = sbNo;
 	}
 	
 	
-	public int getProduct_code() {
-		return product_code;
+	public String getUserId() {
+		return userId;
 	}
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
+	
+	public int getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
 	}
 	
 	
@@ -43,12 +43,14 @@ public class ShoppingBasketVO {
 	}
 	
 	
-	public Timestamp getSb_date() {
-		return sb_date;
+	public Timestamp getSbDate() {
+		return sbDate;
 	}
-	public void setSb_date(Timestamp sb_date) {
-		this.sb_date = sb_date;
+	public void setSbDate(Timestamp sbDate) {
+		this.sbDate = sbDate;
 	}
+	
+	
 	
 	
 	
