@@ -1,4 +1,20 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalTime"%>
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 
+	//현재 날짜/시간 
+	LocalDateTime localDateTime = LocalDateTime.now();
+	System.out.println(localDateTime);
+
+	// LocalDateTime -> Timestamp로 변경
+	Timestamp timestamp2 = Timestamp.valueOf(localDateTime);
+	System.out.println(timestamp2);
+
+
+%>
 <html>
 <html lang="ko">
  

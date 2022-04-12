@@ -16,7 +16,7 @@ import com.hmall.dto.UserVO;
 /*
  * Sevlet
  * 
- * command¿¡ ¸Â´Â ActionÀ» ½ÇÇà½ÃÅ´
+ * commandì— ë§ëŠ” Actionì„ ì‹¤í–‰ì‹œí‚´
  * 
  * */
 @WebServlet("/HmallServlet")
@@ -26,14 +26,14 @@ public class HmallServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// ÆÄ¶ó¹ÌÅÍ °¡Á®¿À±â Àü¿¡ UTF-8 ¼³Á¤
+		// íŒŒë¼ë¯¸í„° ê°€ì ¸ì˜¤ê¸° ì „ì— UTF-8 ì„¤ì •
 		request.setCharacterEncoding("UTF-8");
 		
-		//command Àß ³Ñ¾î¿Ô´ÂÁö È®ÀÎ
+		//command ì˜ ë„˜ì–´ì™”ëŠ”ì§€ í™•ì¸
 		String command = request.getParameter("command");
 		System.out.println("HmallServlet : " + command);
 
-		// ·Î±×ÀÎ ¼¼¼Ç
+		// ë¡œê·¸ì¸ ì„¸ì…˜
 		HttpSession session = request.getSession(true);
 		session.setMaxInactiveInterval(3600);
 		UserVO userVO = new UserVO();
@@ -51,14 +51,14 @@ public class HmallServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// ÆÄ¶ó¹ÌÅÍ °¡Á®¿À±â Àü¿¡ UTF-8 ¼³Á¤
+		// íŒŒë¼ë¯¸í„° ê°€ì ¸ì˜¤ê¸° ì „ì— UTF-8 ì„¤ì •
 		request.setCharacterEncoding("UTF-8");
 
-		// ·Î±×ÀÎ ¼¼¼Ç
+		// ë¡œê·¸ì¸ ì„¸ì…˜
 		HttpSession session = request.getSession(true);
 		session.setMaxInactiveInterval(3600);
 
-		// ÆÄ¶ó¹ÌÅÍ ¹«¾ùÀÌ µé¾î¿À³ª check
+		// íŒŒë¼ë¯¸í„° ë¬´ì—‡ì´ ë“¤ì–´ì˜¤ë‚˜ check
 		Enumeration e = request.getParameterNames();
 		while (e.hasMoreElements()) {
 			String name = (String) e.nextElement();
@@ -68,7 +68,7 @@ public class HmallServlet extends HttpServlet {
 			}
 		}
 
-		// command Àß ³Ñ¾î¿Ô´ÂÁö È®ÀÎ
+		// command ì˜ ë„˜ì–´ì™”ëŠ”ì§€ í™•ì¸
 		String command = request.getParameter("command");
 		System.out.println("HmallServlet : " + command);
 		

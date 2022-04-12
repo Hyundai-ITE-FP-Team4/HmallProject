@@ -22,32 +22,32 @@ public class ProductDetailAction implements Action {
 		String url = "/product/productDetail.jsp";
 		int pCode = Integer.parseInt(request.getParameter("pCode").trim());
 
-		// DAO »ı¼º
+		// DAO ìƒì„±
 		ProductDAO productDAO = ProductDAO.getInstance();
 		CategoryDAO categoryDAO = CategoryDAO.getInstance();
 
-		// product_code·Î »óÇ° »ó¼¼ Á¤º¸ SELECT
+		// product_codeë¡œ ìƒí’ˆ ìƒì„¸ ì •ë³´ SELECT
 		ProductVO productVO = productDAO.getProduct(pCode);
 
-		// »óÇ° category_code·Î Ä«Å×°í¸® Á¤º¸ SELECT
+		// ìƒí’ˆ category_codeë¡œ ì¹´í…Œê³ ë¦¬ ì •ë³´ SELECT
 		String cCode = productVO.getCategoryCode();
 		CategoryVO categoryVO = categoryDAO.getCategory(cCode);
 		String parentCode = categoryVO.getParentCode();
 		CategoryVO parentCategoryVO = categoryDAO.getCategory(parentCode);
 		ArrayList<CategoryVO> categoryList = categoryDAO.getChildCategorys(parentCode);
 
-		// product_code·Î »óÇ° »ó¼¼ ÀÌ¹ÌÁö SELECT
+		// product_codeë¡œ ìƒí’ˆ ìƒì„¸ ì´ë¯¸ì§€ SELECT
 		ProductImageVO productImageVO = productDAO.getProductImages(pCode);
 
-		// »óÇ° °´Ã¼
+		// ìƒí’ˆ ê°ì²´
 		request.setAttribute("productVO", productVO);
-		// »óÇ° Ä«Å×°í¸® °´Ã¼
+		// ìƒí’ˆ ì¹´í…Œê³ ë¦¬ ê°ì²´
 		request.setAttribute("categoryVO", categoryVO);
-		// »óÀ§ Ä«Å×°í¸® °´Ã¼
+		// ìƒìœ„ ì¹´í…Œê³ ë¦¬ ê°ì²´
 		request.setAttribute("parentCategoryVO", parentCategoryVO);
-		// °°Àº ·¹º§ Ä«Å×°í¸®µé ¸®½ºÆ®
+		// ê°™ì€ ë ˆë²¨ ì¹´í…Œê³ ë¦¬ë“¤ ë¦¬ìŠ¤íŠ¸
 		request.setAttribute("categoryList", categoryList);
-		// »óÇ° ÀÌ¹ÌÁö °´Ã¼
+		// ìƒí’ˆ ì´ë¯¸ì§€ ê°ì²´
 		request.setAttribute("productImageVO", productImageVO);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

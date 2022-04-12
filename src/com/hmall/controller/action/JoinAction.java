@@ -20,9 +20,9 @@ public class JoinAction implements Action {
 		// TODO Auto-generated method stub
 		UserDAO dao = UserDAO.getInstance();
 		
-		//ºê¶ó¿ìÀú ¹Ş¾Æ¿À´Â µ¥ÀÌÅÍ ÇÑ±¹¾î Ã³¸®
+		//ë¸Œë¼ìš°ì € ë°›ì•„ì˜¤ëŠ” ë°ì´í„° í•œêµ­ì–´ ì²˜ë¦¬
 		request.setCharacterEncoding("utf-8");
-		//HTML ÇÑ±¹¾î Ã³¸®
+		//HTML í•œêµ­ì–´ ì²˜ë¦¬
 	    response.setContentType("text/html;charset=utf-8");
 	    
 	    response.setContentType("application/json");
@@ -31,7 +31,7 @@ public class JoinAction implements Action {
 	    String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		String user_name = request.getParameter("user_name");
-		// String email = request.getParameter("email"); //»èÁ¦ (¾ÆÀÌµğ, ÀÌ¸ŞÀÏ ÅëÇÕ)
+		// String email = request.getParameter("email"); //ì‚­ì œ (ì•„ì´ë””, ì´ë©”ì¼ í†µí•©)
 		String phone_number = request.getParameter("phone_number");
 		int birth = Integer.parseInt(request.getParameter("birth"));
 		String address = request.getParameter("address");
@@ -49,7 +49,7 @@ public class JoinAction implements Action {
 		userVO.setUser_point(user_point);
 		userVO.setGrade(grade);
 			
-		//µğºñ ÀÔ·Â
+		//ë””ë¹„ ì…ë ¥
 		dao.insertUser(userVO);
 		
 		Gson gson = new Gson();
@@ -59,7 +59,7 @@ public class JoinAction implements Action {
         out.print(str);
         System.out.println(str);
         
-		//Á¶È¸
+		//ì¡°íšŒ
 	    List list = dao.listMember();
 		for (int i = 0; i<list.size(); i++) {
 			userVO = (UserVO)list.get(i);

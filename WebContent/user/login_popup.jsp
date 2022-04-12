@@ -6,29 +6,44 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-
-    <title>로그인 - 현대Hmall</title>
-
-
-<link rel="shortcut icon" href="https://www.hmall.com/favicon.ico" />
-<%@include file = "/component/script.jsp" %>
-
-
-
-
-
-    <link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/login.css">
-
+	<meta charset="UTF-8">
+	<title>로그인 - 현대Hmall</title>
+	<link rel="shortcut icon" href="https://www.hmall.com/favicon.ico" />
+	<%@include file = "/component/script.jsp" %>
+	<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/login.css">
 </head>
 <body>
 <!-- 윈도우 팝업 클래스 popup-win : width:540px , height:702px -->
 
 <script type="text/javascript">
+	
+	function setCookie(cookie_name, value, days) {
+	  var exdate = new Date();
+	  exdate.setDate(exdate.getDate() + days);
+	  // 설정 일수만큼 현재시간에 만료값으로 지정
+
+	  var cookie_value = escape(value) + ((days == null) ? '' : '; expires=' + exdate.toUTCString());
+	  document.cookie = cookie_name + '=' + cookie_value;
+	}
+	
+	function getCookie(cookie_name) {
+		  var x, y;
+		  var val = document.cookie.split(';');
+
+		  for (var i = 0; i < val.length; i++) {
+		    x = val[i].substr(0, val[i].indexOf('='));
+		    y = val[i].substr(val[i].indexOf('=') + 1);
+		    x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+		    if (x == cookie_name) {
+		      return unescape(y); // unescape로 디코딩 후 값 리턴
+		    }
+		  }
+		}
+	
 	function go_login(){
 // 		$("#memberLoginForm").attr("action", "/HmallProject/HmallServlet?command=login_action"); // action 속성 control //attr : element 속성들 control 가능
 // 		$("#memberLoginForm").submit(); // 해당 form이 submit 했을 때
-
+		
 		var formData = $("#memberLoginForm").serialize();
 		
 		$("#memberLoginForm").submit(function(){
@@ -49,6 +64,11 @@
 						else{
 							console.log('성공');
 							console.log(res);
+							if($("#checkbox").is(":checked")){
+								check = true
+								setCookie("user_id", res.user_id, 1);
+							}
+							
 							opener.location.reload(); //팝업창을 불러낸 부모창 새로고침
 							self.close();
 						}
@@ -98,7 +118,7 @@
                                 <div class="login-form">
                                     <div class="inputbox xl">
                                         <label class="inplabel">
-                                                <input type="text" maxlength='30' tabindex="1" name="user_id" placeholder="아이디 또는 이메일 주소 입력" title="아이디 또는 이메일 주소 입력">
+                                                <input type="text" maxlength='30' tabindex="1" name="user_id" id = "user_id" value = "" placeholder="아이디 또는 이메일 주소 입력" title="아이디 또는 이메일 주소 입력">
                                         </label>
                                         <i class="icon person"></i>
                                     </div>
@@ -132,7 +152,7 @@
                                     <div class="checkbox-wrap">
                                         <div class="checkbox">
                                             <label class="chklabel">
-                                                <input type="checkbox" name="idSaveYn" >
+                                                <input type="checkbox" id = "checkbox" name="idSaveYn" >
                                                 <i class="icon"></i>
                                                 <span>아이디 저장</span>
                                             </label>

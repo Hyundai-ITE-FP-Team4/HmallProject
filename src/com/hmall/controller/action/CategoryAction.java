@@ -22,28 +22,28 @@ public class CategoryAction implements Action {
 		String url = "/category/category.jsp";
 		String cCode = request.getParameter("cCode").trim();
 		
-		// DAO »ı¼º
+		// DAO ìƒì„±
 		CategoryDAO categoryDAO = CategoryDAO.getInstance();
 		
-		// category_code·Î Ä«Å×°í¸® Á¤º¸ SELECT
+		// category_codeë¡œ ì¹´í…Œê³ ë¦¬ ì •ë³´ SELECT
 		CategoryVO categoryVO = categoryDAO.getCategory(cCode);
 		
-		// parent_code·Î »óÀ§ Ä«Å×°í¸®, °°Àº ·¹º§ Ä«Å×°í¸® ¸®½ºÆ® SELECT
+		// parent_codeë¡œ ìƒìœ„ ì¹´í…Œê³ ë¦¬, ê°™ì€ ë ˆë²¨ ì¹´í…Œê³ ë¦¬ ë¦¬ìŠ¤íŠ¸ SELECT
 		String parentCode = categoryVO.getParentCode();
 		CategoryVO parentCategoryVO = categoryDAO.getCategory(parentCode);
 		ArrayList<CategoryVO> categoryList = categoryDAO.getChildCategorys(parentCode);
 		
-		// category_code·Î »óÇ°¸®½ºÆ® SELECT
+		// category_codeë¡œ ìƒí’ˆë¦¬ìŠ¤íŠ¸ SELECT
 		ArrayList<ProductVO> products;
 		products = categoryDAO.getProducts(cCode);
 		
-		// Ä«Å×°í¸® °´Ã¼
+		// ì¹´í…Œê³ ë¦¬ ê°ì²´
 		request.setAttribute("categoryVO", categoryVO);
-		// Ä«Å×°í¸®¿¡ ¼ÓÇÑ »óÇ°µé ¸®½ºÆ®
+		// ì¹´í…Œê³ ë¦¬ì— ì†í•œ ìƒí’ˆë“¤ ë¦¬ìŠ¤íŠ¸
 		request.setAttribute("products", products);
-		// »óÀ§ Ä«Å×°í¸® °´Ã¼
+		// ìƒìœ„ ì¹´í…Œê³ ë¦¬ ê°ì²´
 		request.setAttribute("parentCategoryVO", parentCategoryVO);
-		// °°Àº ·¹º§ Ä«Å×°í¸®µé ¸®½ºÆ®
+		// ê°™ì€ ë ˆë²¨ ì¹´í…Œê³ ë¦¬ë“¤ ë¦¬ìŠ¤íŠ¸
 		request.setAttribute("categoryList", categoryList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

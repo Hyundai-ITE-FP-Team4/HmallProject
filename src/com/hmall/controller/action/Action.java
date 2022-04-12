@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
- * Action ÀÎÅÍÆäÀÌ½º
- * ¸ğµç ActionÀº ÀÌ ÀÎÅÍÆäÀÌ½º¸¦ ±¸Çö
+ * Action ì¸í„°í˜ì´ìŠ¤
+ * ëª¨ë“  Actionì€ ì´ ì¸í„°í˜ì´ìŠ¤ë¥¼ êµ¬í˜„
  * 
  * */
 public interface Action {

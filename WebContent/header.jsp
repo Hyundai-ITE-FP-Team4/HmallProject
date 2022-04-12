@@ -8,6 +8,20 @@
 <body>
 	<script>
 	
+		function getCookie(cookie_name) {
+		  var x, y;
+		  var val = document.cookie.split(';');
+
+		  for (var i = 0; i < val.length; i++) {
+		    x = val[i].substr(0, val[i].indexOf('='));
+		    y = val[i].substr(val[i].indexOf('=') + 1);
+		    x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+		    if (x == cookie_name) {
+		      return unescape(y); // unescape로 디코딩 후 값 리턴
+		    }
+		  }
+		}
+	
 		// 로그인 팝업창 띄우기	
 		$(function(){
 			$("#go_login_popup").on('click', function(){
@@ -18,6 +32,8 @@
 		// 로그아웃 , 세션 지우기
 		$(function(){
 			$("#go_logout_popup").click(function(){
+				alert(getCookie("user_id"));
+				
 				$.ajax({
 					url : 'http://localhost:8090/HmallProject/HmallServlet?command=logout',
 					type : 'post',

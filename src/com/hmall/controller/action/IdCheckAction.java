@@ -19,9 +19,9 @@ public class IdCheckAction implements Action {
 		// TODO Auto-generated method stub
 		UserDAO dao = UserDAO.getInstance();
 
-		// ºê¶ó¿ìÀú ¹Ş¾Æ¿À´Â µ¥ÀÌÅÍ ÇÑ±¹¾î Ã³¸®
+		// ë¸Œë¼ìš°ì € ë°›ì•„ì˜¤ëŠ” ë°ì´í„° í•œêµ­ì–´ ì²˜ë¦¬
 		request.setCharacterEncoding("utf-8");
-		// HTML ÇÑ±¹¾î Ã³¸®
+		// HTML í•œêµ­ì–´ ì²˜ë¦¬
 		response.setContentType("text/html;charset=utf-8");
 		
 		response.setContentType("application/json");

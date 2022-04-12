@@ -12,7 +12,7 @@ import util.DBManager;
 
 public class CategoryDAO {
 	private CategoryDAO() {
-	} // ½Ì±ÛÅÏ ÆĞÅÏ Ã³¸®
+	} // ì‹±ê¸€í„´ íŒ¨í„´ ì²˜ë¦¬
 
 	private static CategoryDAO instance = new CategoryDAO();
 
@@ -20,8 +20,8 @@ public class CategoryDAO {
 		return instance;
 	}
 
-	// Ä«Å×°í¸® Á¤º¸ Á¶È¸
-	// Pipelined Table Functions »ç¿ë
+	// ì¹´í…Œê³ ë¦¬ ì •ë³´ ì¡°íšŒ
+	// Pipelined Table Functions ì‚¬ìš©
 	public CategoryVO getCategory(String category_code) {
 		CategoryVO category = null;
 		String sql = "SELECT * FROM TABLE(pkg_category.fn_get_category(?))";
@@ -50,8 +50,8 @@ public class CategoryDAO {
 		return category;
 	}
 	
-	// Ä«Å×°í¸®º° »óÇ°µé Á¶È¸
-	// Pipelined Table Functions »ç¿ë
+	// ì¹´í…Œê³ ë¦¬ë³„ ìƒí’ˆë“¤ ì¡°íšŒ
+	// Pipelined Table Functions ì‚¬ìš©
 	public ArrayList<ProductVO> getProducts(String category_code) {
 		ArrayList<ProductVO> products = new ArrayList<ProductVO>();
 		ProductVO product = null;
@@ -88,8 +88,8 @@ public class CategoryDAO {
 		return products;
 	}
 
-	// ÇÏÀ§ Ä«Å×°í¸® Á¶È¸
-	// Pipelined Table Functions »ç¿ë
+	// í•˜ìœ„ ì¹´í…Œê³ ë¦¬ ì¡°íšŒ
+	// Pipelined Table Functions ì‚¬ìš©
 	public ArrayList<CategoryVO> getChildCategorys(String parent_code) {
 		ArrayList<CategoryVO> categorys = new ArrayList<CategoryVO>();
 		CategoryVO category = null;

@@ -46,7 +46,7 @@ public class UserDAO {
 		}
 	}
 
-	// ·Î±×ÀÎ ÇÏ±â À§ÇØ¼­ ¾ÆÀÌµğ ºñ¹øÀÌ db¿¡ ÀÖ´ÂÁö È®ÀÎ
+	// ë¡œê·¸ì¸ í•˜ê¸° ìœ„í•´ì„œ ì•„ì´ë”” ë¹„ë²ˆì´ dbì— ìˆëŠ”ì§€ í™•ì¸
 	public UserVO checkIdPw(String user_id, String user_pw) {
 		int result = -1;
 		UserVO userVO = null;
@@ -114,7 +114,7 @@ public class UserDAO {
 		return userVO;
 	}
 
-	// Á¶È¸
+	// ì¡°íšŒ
 	public List<UserVO> listMember() {
 
 		List<UserVO> userList = new ArrayList<UserVO>();
@@ -147,7 +147,7 @@ public class UserDAO {
 		return userList;
 	}
 	
-	// ¾ÆÀÌµğ Á¶È¸ (¾ÆÀÌµğ Áßº¹È®ÀÎ ¿ëµµ)
+	// ì•„ì´ë”” ì¡°íšŒ (ì•„ì´ë”” ì¤‘ë³µí™•ì¸ ìš©ë„)
 		public String getId(String user_id) {
 			String sql = "select count(*) as cnt from kimsh.user_info where user_id = ?";
 			Connection conn = null;

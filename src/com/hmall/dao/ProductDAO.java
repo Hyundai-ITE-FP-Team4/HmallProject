@@ -14,7 +14,7 @@ import util.DBManager;
 
 public class ProductDAO {
 	private ProductDAO() {
-	} // ½Ì±ÛÅÏ ÆĞÅÏ Ã³¸®
+	} // ì‹±ê¸€í„´ íŒ¨í„´ ì²˜ë¦¬
 
 	private static ProductDAO instance = new ProductDAO();
 
@@ -22,8 +22,8 @@ public class ProductDAO {
 		return instance;
 	}
 
-	// »óÇ° »ó¼¼ Á¤º¸ Á¶È¸
-	// Pipelined Table Functions »ç¿ë
+	// ìƒí’ˆ ìƒì„¸ ì •ë³´ ì¡°íšŒ
+	// Pipelined Table Functions ì‚¬ìš©
 	public ProductVO getProduct(int product_code) {
 		ProductVO product = null;
 		String sql = "SELECT * FROM TABLE(pkg_product.fn_get_product(?))";
@@ -57,8 +57,8 @@ public class ProductDAO {
 		return product;
 	}
 	
-	// »óÇ° »ó¼¼ÀÌ¹ÌÁö Á¶È¸
-	// Pipelined Table Functions »ç¿ë
+	// ìƒí’ˆ ìƒì„¸ì´ë¯¸ì§€ ì¡°íšŒ
+	// Pipelined Table Functions ì‚¬ìš©
 	public ProductImageVO getProductImages(int product_code) {
 		ProductImageVO productImages = null;
 		String sql = "SELECT * FROM TABLE(pkg_product.fn_get_productImg(?))";
