@@ -8,6 +8,7 @@ import com.hmall.controller.action.BasketUpdateAction;
 import com.hmall.controller.action.CategoryAction;
 import com.hmall.controller.action.CategoryTopAction;
 import com.hmall.controller.action.EnrollQuestionAction;
+import com.hmall.controller.action.GchartAction;
 import com.hmall.controller.action.IdCheckAction;
 import com.hmall.controller.action.IndexAction;
 import com.hmall.controller.action.JoinAction;
@@ -110,6 +111,10 @@ public class ActionFactory {
 		else if (command.equals("basket_update")) {
 			action = new BasketUpdateAction();
 		}
+		// 구글 차트
+		else if (command.equals("google_chart")) {
+			action = new GchartAction();
+		} 
 
 		return action;
 	}

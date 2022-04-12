@@ -50,7 +50,7 @@ public class JoinAction implements Action {
 		userVO.setGrade(grade);
 			
 		//디비 입력
-		dao.insertUser(userVO);
+		dao.insertUser_proc(userVO);
 		
 		Gson gson = new Gson();
         String str = gson.toJson(userVO);

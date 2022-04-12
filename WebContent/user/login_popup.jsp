@@ -39,14 +39,19 @@
 		    }
 		  }
 		}
-	
+	$(function(){
+		var data = getCookie("user_id");
+		if (data != null){
+			$('#user_id').val(data);
+			$('#checkbox').prop('checked', true);
+		}
+	});
 	function go_login(){
 // 		$("#memberLoginForm").attr("action", "/HmallProject/HmallServlet?command=login_action"); // action 속성 control //attr : element 속성들 control 가능
 // 		$("#memberLoginForm").submit(); // 해당 form이 submit 했을 때
 		
 		var formData = $("#memberLoginForm").serialize();
 		
-		$("#memberLoginForm").submit(function(){
 			$.ajax({
 				url : 'http://localhost:8090/HmallProject/HmallServlet?command=login_action',
 				type : 'post',
@@ -67,6 +72,8 @@
 							if($("#checkbox").is(":checked")){
 								check = true
 								setCookie("user_id", res.user_id, 1);
+							}else{
+								setCookie("user_id", "", 0);
 							}
 							
 							opener.location.reload(); //팝업창을 불러낸 부모창 새로고침
@@ -85,8 +92,6 @@
 					console.log(data);
 				}
 			});
-		});
-		
 	}
 </script>
 

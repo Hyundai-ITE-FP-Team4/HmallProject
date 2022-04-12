@@ -1,5 +1,6 @@
 package com.hmall.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +33,6 @@ public class UserDAO {
 			pstmt.setString(1, userVO.getUser_id());
 			pstmt.setString(2, userVO.getUser_pw());
 			pstmt.setString(3, userVO.getUser_name());
-//			pstmt.setString(4, userVO.getEmail());
 			pstmt.setString(4, userVO.getPhone_number());
 			pstmt.setInt(5, userVO.getBirth());
 			pstmt.setString(6, userVO.getAddress());
@@ -43,6 +43,29 @@ public class UserDAO {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
+		}
+	}
+	
+	public void insertUser_proc(UserVO userVO) {
+		String sql = "{call test_pro(?,?,?,?,?,?,?,?)}";
+		CallableStatement cstmt = null;
+		Connection conn = null;
+		try {
+			conn = DBManager.getConnection();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setString(1, userVO.getUser_id());
+			cstmt.setString(2, userVO.getUser_pw());
+			cstmt.setString(3, userVO.getUser_name());
+			cstmt.setString(4, userVO.getPhone_number());
+			cstmt.setInt(5, userVO.getBirth());
+			cstmt.setString(6, userVO.getAddress());
+			cstmt.setInt(7, userVO.getUser_point());
+			cstmt.setString(8, userVO.getGrade());
+			cstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, cstmt);
 		}
 	}
 
@@ -131,7 +154,6 @@ public class UserDAO {
 				userVO.setUser_id(rs.getString("user_id"));
 				userVO.setUser_pw(rs.getString("user_pw"));
 				userVO.setUser_name(rs.getString("user_name"));
-//				userVO.setEmail(rs.getString("email"));
 				userVO.setPhone_number(rs.getString("phone_number"));
 				userVO.setBirth(rs.getInt("birth"));
 				userVO.setAddress(rs.getString("address"));

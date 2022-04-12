@@ -17,16 +17,30 @@
 	
 	<script>
 			var check_dup = false;
+// 			$("#registMemberFormNew").attr("action", "/HmallProject/HmallServlet?command=join_action"); // action 속성 control //attr : element 속성들 control 가능
+//	 		$("#registMemberFormNew").submit(); // 해당 form이 submit 했을 때
 			function go_submit(){
-				var test;
 				if( $('#birthday').val().length == 0){ //생년월일 선택사항, 비어있으면 0 기본값으로 회원가입
 					$('#birthday').attr("value", 0);
 				}
-				$("#registMemberFormNew").attr("action", "/HmallProject/HmallServlet?command=join_action"); // attr : element 속성들 control 가능
-				$("#registMemberFormNew").submit(); // 해당 form이 submit 했을 때
-				
-				return true;
+				var formData = $("#registMemberFormNew").serialize();
+					$.ajax({
+						url : 'http://localhost:8090/HmallProject/HmallServlet?command=join_action',
+						type : 'post',
+						dataType : 'json',
+						data : formData,
+						async: false,
+						success:function(){
+							location.href = "/HmallProject/index.jsp";
+						},
+						error : function(data, textStatus){
+							console.log('error');
+							console.log(data);
+						}
+					});
 			}
+			
+			
 			
 			//회원가입 함수
 			function go_join(){
@@ -43,15 +57,11 @@
 								
 				//체크박스 체크 되어 있는지 확인
 				if (checkBox()){ // 체크된 상태
-					if(go_submit()){
-						
-					}
+					go_submit();
 				}
 				else{ // 체크 안 된 상태
 					if(confirm("이용약관 및 개인정보 수집 동의하셔야" + "\n" + "회원가입이 완료됩니다." + "\n" + "동의하시겠습니까?") == true){
-						if(go_submit()){
-							
-						}
+						go_submit();
 					}
 				} // end if-else
 			}

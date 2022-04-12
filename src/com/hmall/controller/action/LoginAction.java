@@ -70,7 +70,7 @@ public class LoginAction implements Action{
 		logVO.setUser_id(user_id);
 		logVO.setLogin_date(timestamp);
 		
-		log_dao.insert(logVO);
+		//log_dao.insert(logVO);
 		
 	}
 	
