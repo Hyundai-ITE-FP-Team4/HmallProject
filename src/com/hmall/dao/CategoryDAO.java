@@ -74,7 +74,7 @@ public class CategoryDAO {
 				product.setDiscountPrice(rs.getInt("discount_price"));
 				product.setProductImg(rs.getString("product_img"));
 				product.setDeliveryCompany(rs.getString("delivery_company"));
-				product.setBuyCount(rs.getInt("buy_count"));
+				product.setBasketCount(rs.getInt("basket_count"));
 				product.setCategoryCode(rs.getString("category_code"));
 				
 				products.add(product);

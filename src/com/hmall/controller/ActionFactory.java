@@ -1,6 +1,10 @@
 package com.hmall.controller;
 
 import com.hmall.controller.action.Action;
+import com.hmall.controller.action.BasketAction;
+import com.hmall.controller.action.BasketDeleteAction;
+import com.hmall.controller.action.BasketInsertAction;
+import com.hmall.controller.action.BasketUpdateAction;
 import com.hmall.controller.action.CategoryAction;
 import com.hmall.controller.action.CategoryTopAction;
 import com.hmall.controller.action.EnrollQuestionAction;
@@ -24,7 +28,7 @@ public class ActionFactory {
 
 	private static ActionFactory instance = new ActionFactory();
 
-	private ActionFactory() { 
+	private ActionFactory() {
 		super();
 	}
 
@@ -82,15 +86,31 @@ public class ActionFactory {
 		else if (command.equals("product_detail")) {
 			action = new ProductDetailAction();
 		}
-		//1:1상담 등록 페이지
+		// 1:1상담 등록 페이지
 		else if (command.equals("qna_popup")) {
 			action = new QnaPopUp();
 		}
-		//1:1 상담 등록
+		// 1:1 상담 등록
 		else if (command.equals("enroll_question")) {
 			action = new EnrollQuestionAction();
-		}		
-		
+		}
+		// 장바구니 페이지
+		else if (command.equals("basket")) {
+			action = new BasketAction();
+		}
+		// 장바구니 추가
+		else if (command.equals("basket_insert")) {
+			action = new BasketInsertAction();
+		}
+		// 장바구니 삭제
+		else if (command.equals("basket_delete")) {
+			action = new BasketDeleteAction();
+		}
+		// 장바구니 수정
+		else if (command.equals("basket_update")) {
+			action = new BasketUpdateAction();
+		}
+
 		return action;
 	}
 } // end class

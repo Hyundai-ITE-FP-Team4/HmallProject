@@ -8,7 +8,7 @@ public class ProductVO {
 	private int discountPrice;
 	private String productImg;
 	private String deliveryCompany;
-	private int buyCount;
+	private int basketCount;
 	private String categoryCode;
 	
 	public int getProductCode() {
@@ -53,11 +53,11 @@ public class ProductVO {
 	public void setDeliveryCompany(String deliveryCompany) {
 		this.deliveryCompany = deliveryCompany;
 	}
-	public int getBuyCount() {
-		return buyCount;
+	public int getBasketCount() {
+		return basketCount;
 	}
-	public void setBuyCount(int buyCount) {
-		this.buyCount = buyCount;
+	public void setBasketCount(int basketCount) {
+		this.basketCount = basketCount;
 	}
 	public String getCategoryCode() {
 		return categoryCode;

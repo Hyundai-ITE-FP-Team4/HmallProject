@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ page import="com.hmall.dao.BasketDAO"%>
+<%@ page import="com.hmall.dto.BasketVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -4263,221 +4264,79 @@ function asctAddCart() {
  */
 function addCart(obj, asctYn, esOptYn, layerYn) {
     
-    //특정대상 전용상품
-    if(!exclItemTrgtGbcdChk('cart')){
-        return;
-    }
+    
+       $("#itemInfForm input[name='uitmInf'], #itemInfForm input[name='uitmCdInf'], #itemInfForm input[name='addCmpsInf'], #itemInfForm input[name='ordQty'], #itemInfForm input[name='uitmCd'], #itemInfForm input[name='baseCmpsInf'], #itemInfForm input[name='dlvHopeDt'], #itemInfForm input[name='asctSlitmUitmInf']").remove();
 
-    if(dealYn == "Y") {
-        var result = checkItem();
-        if(!result) {
-            return;
-        }
-        
-        if((notBaskGim != null && notBaskGim == 'Y')) {
-            alert("해당 상품은 장바구니 담기가 불가합니다");
-            return;
-        }
-        
-        var sectId = "2731484";
-        
-        $('#cartForm').find("input[name='slitmInf']").each(function(index, obj) {
-            $(obj).remove();
-        });
-        
-        var slitmCdsData = []
-        $(".product-option-wrap .select-product-list .pditem").each(function() {
-            var slitmCd = $(this).find("input[name=slitmCd]").val();
-            var uitmCd = $(this).find("input[name=uitmCd]").val();
-            var uitmQty = $(this).find("input[name=ordQty]").val();
-            
-            var val = slitmCd +':'+ uitmCd +':'+ sectId+':'+ uitmQty;
-            var val_input = '<input type="hidden" name="slitmInf" value="'+ val +'" />';
-            
-            $('#cartForm').append(val_input);
-            
-            //ga 데이터 수집을 위한 데이터 추출
-            slitmCdsData.push(slitmCd);
-        });
-        
-        
-        if(isLogin() != 'true') {
-            openLoginPopup("addToBasket");
-            return;
-        }
+/*        var result = checkItem();
+       if(!result) {
+           return;
+       } */
+       
+       //setSelectItem();
+       
+       /* if(isLogin() != 'true') {
+           openLoginPopup("addToBasket");
+           return;
+       } */
 
-        $("form[name='cartForm']").ajaxSubmit({
-            url: "/p/odb/addBaskt.do"
-            , dataType: "json"
-            , success: function(data) {
-                if (data.needLogin) {
-                    openLoginPopup("addToBasket");
-                } else {
-                    if(!isEmpty(data.errorMessages)) {
-                        alert(data.errorMessages);
-                    } else {
-                        if(data.isAddOk) {
-                            $("#basktMessage").text("장바구니에 상품을 담았습니다.");
-                            setKoostInf("CART"); // 상품추천 서비스 수집 (장바구니)
-                        } else {
-                            $("#basktMessage").text("이미 장바구니에 담긴 상품입니다.");
-                        }
-                        if(asctYn == "Y") {
-                            setBizSpring("asctAddCart");
-                        } else if(esOptYn == "Y") {
-                            setBizSpring("esOptAddCart");
-                        } else if(layerYn == "Y") {
-                            setBizSpring("layerAddCart");
-                        } else {
-                            setBizSpring("addCart");
-                        }
-                        
-                        /* 2019.01.30 스토어픽팝업에서 장바구니 담기후 스토업픽 레이어 팝업 hide 처리 */
-                        var stpicCartYn = $("#cartForm input[name=stpicCartYn]").val();
-                        if(stpicCartYn == "Y"){ 
-                            // guide_close('storepick-popup-content');
-                            $("#modalStorePick").modal().hide();
-                            $("#cartForm input[name=stpicCartYn]").val("N");
-                        }
-                        zindexInit();
-                        $('#modalShopBasket').modal().show();
-                        <!-- 2019.03.15 Facebook Pixel Code 삽입 -->
-                        fbq('track', 'AddToCart', {
-                                content_ids: ['2135294542'],
-                                content_type: 'product',
-                                value: 151240,
-                                currency: 'KRW'
-                        });
-                        
-                        <!-- 2019.06.26 Naver Premium Log -->
-                        var _nasa={};
-                        _nasa["cnv"] = wcs.cnv("3", "151240");
-                        wcs_do(_nasa);
-                        
-                        <!-- GA -->
-                        try {
-                            var product_array = [];
-                            
-                            for(var i=0 ; i < slitmCdsData.length ; i++){
-                                $(".product-option-wrap .sel-prduct .dropdown-menu .item-box-list ul li").each(function(){
-                                    if(slitmCdsData[i] == $(this).find("input[name=optSlitmCd]").val()){
-                                        product_array.push(
-                                            {
-                                                'id': $(this).find("input[name='optSlitmCd']").val(),
-                                                'name': $(this).find("input[name='selectptSlitmNm']").val(),
-                                                'brand': $(this).find("input[name='brndNm']").val(),
-                                                'category' : $(this).find("input[name='gaCategory']").val()
-                                            }
-                                        );
-                                        return false;
-                                    }
-                                });
-                            }
-                            
-                            setGaDataSend_Event(GAEcommerceStepKey.Add,product_array);
-                        } catch (e) {
-                            console.log("google analytics 실패");
-                        }
-                    }
-                }
-            }
-            , error: function(xhr, status, error) {
+       /* $("form[name='itemInfForm']").ajaxSubmit({
+           url: "/p/odb/addBaskt.do"
+           , dataType: "json"
+           , success: function(data) {
+               if (data.needLogin) {
+                   openLoginPopup("addToBasket");
+               } else {
+                   if(!isEmpty(data.errorMessages)) {
+                       alert(data.errorMessages);
+                   } else {
+                       if(data.isAddOk) {
+                           $("#basktMessage").text("장바구니에 상품을 담았습니다.");
+                           setKoostInf("CART"); // 상품추천 서비스 수집 (장바구니)
+                       } else {
+                           $("#basktMessage").text("이미 장바구니에 담긴 상품입니다.");
+                       }
+                       if(asctYn == "Y") {
+                           setBizSpring("asctAddCart");
+                       } else if(esOptYn == "Y") {
+                           setBizSpring("esOptAddCart");
+                       } else if(layerYn == "Y") {
+                           setBizSpring("layerAddCart");
+                       } else {
+                           setBizSpring("addCart");
+                       }
+                       
+                       zindexInit();
+                       $('#modalShopBasket').modal().show();   
+                   }
+               }
+           }
+           , error: function(xhr, status, error) {
 
-            }
-        });
-    } else {
-        $("#itemInfForm input[name='uitmInf'], #itemInfForm input[name='uitmCdInf'], #itemInfForm input[name='addCmpsInf'], #itemInfForm input[name='ordQty'], #itemInfForm input[name='uitmCd'], #itemInfForm input[name='baseCmpsInf'], #itemInfForm input[name='dlvHopeDt'], #itemInfForm input[name='asctSlitmUitmInf']").remove();
+           }
+       }); */
+       $("form[name='itemInfForm']").ajaxSubmit({
+           url: "/p/odb/addBaskt.do"
+           , dataType: "json"
+           , success: function(data) {
+               if (data.needLogin) {
+                   openLoginPopup("addToBasket");
+               } else {
+                   if(!isEmpty(data.errorMessages)) {
+                       alert(data.errorMessages);
+                   } else {
+                        $("#basktMessage").text("장바구니에 상품을 담았습니다.");
+                        setKoostInf("CART"); // 상품추천 서비스 수집 (장바구니)
+                      	setBizSpring("addCart");
+                      	
+                       	zindexInit();
+                       	$('#modalShopBasket').modal().show();   
+                   }
+               }
+           }
+           , error: function(xhr, status, error) {
 
-        var result = checkItem();
-        if(!result) {
-            return;
-        }
-        
-        setSelectItem();
-        
-        if(isLogin() != 'true') {
-            openLoginPopup("addToBasket");
-            return;
-        }else{
-           	var itemGbcd = "00";
-           	var itemDScfCd = "S7050904";
-           	var tmItemYn = "N";
-           	
-           	if(itemGbcd == "01" && itemDScfCd == "07020702" && tmItemYn =="Y"){
-           		alert("현대렌탈케어 판매인을 통한 비회원 구매만 가능합니다.");
-           		return false;
-           	}
-        }
-        
-        if((notBaskGim != null && notBaskGim == 'Y')) {
-            alert("해당 상품은 장바구니 담기가 불가합니다");
-            return;
-        }
-
-        $("form[name='itemInfForm']").ajaxSubmit({
-            url: "/p/odb/addBaskt.do"
-            , dataType: "json"
-            , success: function(data) {
-                if (data.needLogin) {
-                    openLoginPopup("addToBasket");
-                } else {
-                    if(!isEmpty(data.errorMessages)) {
-                        alert(data.errorMessages);
-                    } else {
-                        if(data.isAddOk) {
-                            $("#basktMessage").text("장바구니에 상품을 담았습니다.");
-                            setKoostInf("CART"); // 상품추천 서비스 수집 (장바구니)
-                        } else {
-                            $("#basktMessage").text("이미 장바구니에 담긴 상품입니다.");
-                        }
-                        if(asctYn == "Y") {
-                            setBizSpring("asctAddCart");
-                        } else if(esOptYn == "Y") {
-                            setBizSpring("esOptAddCart");
-                        } else if(layerYn == "Y") {
-                            setBizSpring("layerAddCart");
-                        } else {
-                            setBizSpring("addCart");
-                        }
-                        
-                        /* 2019.01.30 스토어픽팝업에서 장바구니 담기후 스토업픽 레이어 팝업 hide 처리 */
-                        var stpicCartYn = $("#itemInfForm input[name=stpicCartYn]").val();
-                        if(stpicCartYn == "Y"){  
-                            // guide_close('storepick-popup-content');
-                            $("#modalStorePick").modal().hide();
-                            $("#itemInfForm input[name=stpicCartYn]").val("N");
-                        }
-                        
-                        <!-- GA -->
-                        try {
-                            var product_array = [];
-                            //옵션을 선택한 만큼 데이터 쌓는다.
-                            $(".product-option-wrap .select-product-list .pditem").each(function(index) {
-                                product_array.push(
-                                        {
-                                            'id': $("form[name='itemInfForm'] input[name='slitmCd']").val(),
-                                            'name': "[나이키] W 에어맥스 97 DH8016-100",
-                                            'brand': "나이키코리아",
-                                            'category' : $("form[name='itemInfForm'] input[name='gaCategory']").val()
-                                        }
-                                    );
-                            });
-                            
-                            setGaDataSend_Event(GAEcommerceStepKey.Add,product_array);
-                        } catch (e) {
-                            console.log("google analytics 실패");
-                        }
-                        
-                        zindexInit();
-                        $('#modalShopBasket').modal().show();   
-                    }
-                }
-            }
-            , error: function(xhr, status, error) {
-
-            }
-        });
-    }
+           }
+       });
 }
 
 function storepick() {
@@ -7905,6 +7764,16 @@ _TRK_PI="PDV";
 _TRK_PNC="2135294542";
 _TRK_PNC_NM='[나이키] W 에어맥스 97 DH8016-100';
 _TRK_PNG="2731484";
+
+// 장바구니 추가 함수(박주영)
+function addBasket() {
+	var ordQty = $('input[name=ordQty]').val();
+	$('input[name=amount]').attr('value', ordQty);
+	
+	document.basketForm.action = "HmallServlet?command=basket_insert";
+	document.basketForm.submit();
+}
+
 </script>
 
 
@@ -7917,251 +7786,251 @@ _TRK_PNG="2731484";
 		<main class="cmain main" role="main" id="mainContents">
 			<!-- 메인페이지 'main' 클래스 추가 -->
 			<div class="container">
-									<!-- 로케이션 메뉴 시작 -->
-					<!-- .location -->
-					<div class="location">
-						<!-- .location-menu -->
-						<ul class="location-menu" data-modules-menus="">
+				<!-- 로케이션 메뉴 시작 -->
+				<!-- .location -->
+				<div class="location">
+					<!-- .location-menu -->
+					<ul class="location-menu" data-modules-menus="">
 
-							<li data-menu="" class="home"><a
-								href="https://www.hmall.com">홈</a></li>
+						<li data-menu="" class="home"><a href="https://www.hmall.com">홈</a></li>
 
-							<!-- 로케이션정보 -->
-							<li data-menu="" class=""><a
-								href="HmallServlet?command=categoryTop&cCode=${ parentCategoryVO.categoryCode }"
-								class="cate">${ parentCategoryVO.categoryName }</a>
+						<!-- 로케이션정보 -->
+						<li data-menu="" class=""><a
+							href="HmallServlet?command=categoryTop&cCode=${ parentCategoryVO.categoryCode }"
+							class="cate">${ parentCategoryVO.categoryName }</a>
 
-								<div class="category-wrap" data-submenu="">
-									<ul class="category-list">
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A01B01">여성의류</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A01B02">남성의류</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A01B03">캐주얼의류</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A01B04">언더웨어</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A02B01">가방/지갑</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A02B02">신발</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A02B03">패션소품/ACC</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A02B04">명품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A03B01">스킨케어</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A03B02">헤어케어</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A03B03">바디케어</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A03B04">메이크업</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A03B05">향수</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A03B06">기기/소품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A04B01">보석</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A04B02">반지</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A04B03">목걸이/귀걸이</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A04B04">팔찌/발찌</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A04B05">시계</a></li>
-										
-									</ul>
-									<ul class="category-list">
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A04B06">기타
-												ACC</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B01">스포츠
-												의류</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B02">스포츠신발</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B03">스포츠잡화</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B04">골프용품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B05">골프의류</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B06">구기/라켓/격투</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B07">등산/
-												아웃도어</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B08">캠핑</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B09">낚시</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B10">헬스/요가</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B11">수영/물놀이</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B12">스키/스노보드</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B13">자전거/인라인/퀵보드</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A05B14">자동차</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B01">임신/출산</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B02">기저귀/물티슈</a></li>
-									</ul>
+							<div class="category-wrap" data-submenu="">
+								<ul class="category-list">
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A01B01">여성의류</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A01B02">남성의류</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A01B03">캐주얼의류</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A01B04">언더웨어</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A02B01">가방/지갑</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A02B02">신발</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A02B03">패션소품/ACC</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A02B04">명품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A03B01">스킨케어</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A03B02">헤어케어</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A03B03">바디케어</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A03B04">메이크업</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A03B05">향수</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A03B06">기기/소품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A04B01">보석</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A04B02">반지</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A04B03">목걸이/귀걸이</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A04B04">팔찌/발찌</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A04B05">시계</a></li>
 
-									<ul class="category-list">
+								</ul>
+								<ul class="category-list">
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A04B06">기타
+											ACC</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B01">스포츠
+											의류</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B02">스포츠신발</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B03">스포츠잡화</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B04">골프용품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B05">골프의류</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B06">구기/라켓/격투</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B07">등산/
+											아웃도어</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B08">캠핑</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B09">낚시</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B10">헬스/요가</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B11">수영/물놀이</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B12">스키/스노보드</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B13">자전거/인라인/퀵보드</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A05B14">자동차</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B01">임신/출산</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B02">기저귀/물티슈</a></li>
+								</ul>
 
-										
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B03">스킨케어/위생/소독</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B04">유아
-												침구/가구/매트</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B05">유모차/카시트/외출용품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B06">유아
-												의류/잡화</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B07">완구</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A06B08">유아동
-												도서</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A07B01">조리용기
-												/ 도구</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A07B02">식기/접시/홈세트</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A07B03">수납정리/소품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A07B04">보관용기</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A07B05">와인/커피용품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A07B06">주방가전</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A08B01">세제/세정/탈취제</a></li>
-										<li><a href=HmallServlet?command=categoryTop&cCode=A08B02>바디/헤어/구강</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A08B03">휴지/생리대/마스크</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A08B04">수납/청소/생활잡화</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A08B05">건강관리/안마/실버</a></li>
-
-									</ul>
-									<ul class="category-list">
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B01">농산</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B02">축산</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B03">수산</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B04">간편식/반찬</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B05">면/캔/오일/소스</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B06">떡/베이커리/과자</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B07">유제품/유아식</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B08">홍삼/전통건강식품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B09">커피/차</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B10">유산균/이너뷰티/다이어트</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B11">생수/음료</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B12">비타민/영양제</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A09B13">팔도식도락</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B01">거실가구</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B02">침실가구/드레스룸</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B03">주방가구/테이블</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B04">학생/서재가구</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B05">리모델링
-												시공/DIY</a></li>
-
-									</ul>
-									<ul class="category-list">
-
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B06">침구</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B07">커튼/카페트</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A10B08">인테리어소품</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B01">생활/미용가전</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B02">주방가전</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B03">계절가전</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B04">영상/음향
-												가전</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B05">카메라/렌즈/캠코더</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B06">노트북/PC/게임</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B07">스마트기기/OA</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A11B08">리퍼
-												가전</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A12B01">반려동물(H펫샵)</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A13B01">여행/숙박</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A13B02">서비스/e쿠폰/상품권</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A13B03">도서/음반</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A13B04">원예/꽃배달</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A14B01">렌탈</a></li>
-										<li><a
-											href="HmallServlet?command=categoryTop&cCode=A14B02">보험/상조</a></li>
-									</ul>
+								<ul class="category-list">
 
 
-								</div></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B03">스킨케어/위생/소독</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B04">유아
+											침구/가구/매트</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B05">유모차/카시트/외출용품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B06">유아
+											의류/잡화</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B07">완구</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A06B08">유아동
+											도서</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A07B01">조리용기
+											/ 도구</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A07B02">식기/접시/홈세트</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A07B03">수납정리/소품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A07B04">보관용기</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A07B05">와인/커피용품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A07B06">주방가전</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A08B01">세제/세정/탈취제</a></li>
+									<li><a href=HmallServlet?command=categoryTop&cCode=A08B02>바디/헤어/구강</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A08B03">휴지/생리대/마스크</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A08B04">수납/청소/생활잡화</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A08B05">건강관리/안마/실버</a></li>
+
+								</ul>
+								<ul class="category-list">
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B01">농산</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B02">축산</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B03">수산</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B04">간편식/반찬</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B05">면/캔/오일/소스</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B06">떡/베이커리/과자</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B07">유제품/유아식</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B08">홍삼/전통건강식품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B09">커피/차</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B10">유산균/이너뷰티/다이어트</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B11">생수/음료</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B12">비타민/영양제</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A09B13">팔도식도락</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B01">거실가구</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B02">침실가구/드레스룸</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B03">주방가구/테이블</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B04">학생/서재가구</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B05">리모델링
+											시공/DIY</a></li>
+
+								</ul>
+								<ul class="category-list">
+
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B06">침구</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B07">커튼/카페트</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A10B08">인테리어소품</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B01">생활/미용가전</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B02">주방가전</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B03">계절가전</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B04">영상/음향
+											가전</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B05">카메라/렌즈/캠코더</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B06">노트북/PC/게임</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B07">스마트기기/OA</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A11B08">리퍼 가전</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A12B01">반려동물(H펫샵)</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A13B01">여행/숙박</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A13B02">서비스/e쿠폰/상품권</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A13B03">도서/음반</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A13B04">원예/꽃배달</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A14B01">렌탈</a></li>
+									<li><a
+										href="HmallServlet?command=categoryTop&cCode=A14B02">보험/상조</a></li>
+								</ul>
 
 
-							<!-- 로케이션 소분류 -->
-							<li data-menu="" class=""><a
-								href="HmallServlet?command=category&cCode=${ categoryVO.categoryCode }" class="cate"> ${ categoryVO.categoryName }</a>
+							</div></li>
 
 
-								<div class="category-wrap" data-submenu="" style="">
-									<ul class="category-list">
-										<c:forEach var="category" items="${ categoryList }">
-											<li><a href="HmallServlet?command=category&cCode=${ category.categoryCode }">${ category.categoryName }</a></li>
-										</c:forEach>
-									</ul>
-								</div></li>
+						<!-- 로케이션 소분류 -->
+						<li data-menu="" class=""><a
+							href="HmallServlet?command=category&cCode=${ categoryVO.categoryCode }"
+							class="cate"> ${ categoryVO.categoryName }</a>
 
 
-							<!-- //로케이션정보 -->
+							<div class="category-wrap" data-submenu="" style="">
+								<ul class="category-list">
+									<c:forEach var="category" items="${ categoryList }">
+										<li><a
+											href="HmallServlet?command=category&cCode=${ category.categoryCode }">${ category.categoryName }</a></li>
+									</c:forEach>
+								</ul>
+							</div></li>
 
-						</ul>
-						<!-- // .location-menu -->
-					</div>
-					<!-- //.location -->
-					<!-- //로케이션 메뉴 끝 -->
+
+						<!-- //로케이션정보 -->
+
+					</ul>
+					<!-- // .location-menu -->
+				</div>
+				<!-- //.location -->
+				<!-- //로케이션 메뉴 끝 -->
 				<!-- contents -->
 				<div class="contents">
 					<!-- 본문 컨텐츠 영역 -->
@@ -8541,6 +8410,7 @@ _TRK_PNG="2731484";
 									<div class="btngroup prdBtnBoxGroup type00"></div>
 									<!-- // 총 상품 금액 -->
 									<!-- 버튼 그룹 -->
+									<form method="post" name="basketForm">
 									<div
 										class="btngroup prdBtnBoxGroup pd_shipping_type_nomral type04">
 										<button class="btn btn-linelgray large btn-like"
@@ -8549,12 +8419,15 @@ _TRK_PNG="2731484";
 											onclick="goChioceProcess('','015318','DH8016-100','2135294542', event);"> -->
 											<i class="icon"></i> <span class="count">0</span>
 										</button>
-										<button class="btn btn-linelgray large btn-cart"
-											onclick="location.href='do_not.html';">
-											<!-- <button class="btn btn-linelgray large btn-cart"
-											onclick="addCart(this);"> -->
-											<span>장바구니</span>
-										</button>
+										<!-- <button class="btn btn-linelgray large btn-cart"
+											onclick="location.href='do_not.html';"> -->
+										
+										<input type="hidden" name="pCode" value="${productVO.productCode}">
+										<input type="hidden" name="amount" value="1">
+										<button class="btn btn-linelgray large btn-cart" 
+										onclick="addBasket();"><span>장바구니</span></button>
+											
+										
 										<button class="btn btn-linelgray large btn-gift"
 											onclick="location.href='do_not.html';">
 											<!-- <button class="btn btn-linelgray large btn-gift"
@@ -8568,6 +8441,7 @@ _TRK_PNG="2731484";
 											<span>바로구매</span>
 										</button>
 									</div>
+									</form>
 									<!-- // 버튼 그룹 -->
 								</div>
 								<!-- // 우측메뉴 -->
@@ -8626,8 +8500,7 @@ _TRK_PNG="2731484";
 															<td><c:forEach var="img"
 																	items="${ productImageVO.imgs }">
 																	<img src="product_images/${ img }.jpg" />
-																</c:forEach>
-															</td>
+																</c:forEach></td>
 														</tr>
 													</tbody>
 												</table>
@@ -8743,7 +8616,7 @@ _TRK_PNG="2731484";
 															11.0pt;="" mso-bidi-font-size:=""
 															115%;="" line-height:="" red;="" color:="" 고딕\?;="" 맑은=""><span
 															style="COLOR: #123456">&nbsp;&nbsp;&nbsp; ※ <span
-																style="FONT-SIZE: 10pt; FONT-FAMILY: &amp; amp; amp; amp; amp; amp; amp; amp; amp; amp; quot; 맑은 고딕&amp;amp; amp; amp; amp; amp; amp; amp; amp; amp; quot;; COLOR: red; LINE-HEIGHT: 115%; mso-bidi-font-size: 11.0pt; mso-ascii-theme-font: minor-latin; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &amp;amp; amp; amp; amp; amp; amp; amp; amp; amp; quot; Times New Roman&amp;amp; amp; amp; amp; amp; amp; amp; amp; amp; quot;; mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA"><span
+																style="FONT-SIZE: 10pt; FONT-FAMILY: &amp; amp; amp; amp; amp; amp; amp; amp; amp; amp; amp; quot; 맑은 고딕&amp;amp; amp; amp; amp; amp; amp; amp; amp; amp; amp; quot;; COLOR: red; LINE-HEIGHT: 115%; mso-bidi-font-size: 11.0pt; mso-ascii-theme-font: minor-latin; mso-fareast-theme-font: minor-fareast; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &amp;amp; amp; amp; amp; amp; amp; amp; amp; amp; amp; quot; Times New Roman&amp;amp; amp; amp; amp; amp; amp; amp; amp; amp; amp; quot;; mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-US; mso-fareast-language: KO; mso-bidi-language: AR-SA"><span
 																	style="COLOR: #123456">단</span><span lang="EN-US"
 																	style="COLOR: #123456">, </span><span
 																	style="COLOR: #123456">식품의 경우</span><span lang="EN-US"
