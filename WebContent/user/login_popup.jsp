@@ -165,38 +165,12 @@
                                 <!-- <div class="btngroup btnlen1"> -->
                                 <button id="loginCheck" class="btn btn-login btn-default" onclick="go_login()" ><span>로그인</span></button>
                                 <!-- </div> -->
-
+								<div></div>
                                 <ul class="login-find">
                                     <li><a href="javascript:;" onclick="findId(); return false;">아이디 찾기</a></li>
                                     <li><a href="javascript:;" onclick="findPwd(); return false;">비밀번호 찾기</a></li>
                                     <li><a href="../HmallServlet?command=join_form">회원가입</a></li>
                                 </ul>
-
-                                <!-- Hmall 아이디 로그인에서만 노출 -->
-
-                                <div class="btngroup btnlen2">
-                                    <button type="button" type="button" class="btn btn-naver" onclick="naverLogin();"><i class="icon"></i><span>네이버 로그인</span></button>
-                                    <button type="button" type="button" class="btn btn-kakao" onclick="kakaoLogin();"><i class="icon"></i><span>카카오톡 로그인</span></button>
-                                </div>
-
-
-                                <div class="login-ad">
-                                    <a href="#" onclick="GA_Event('로그인' , '휴대폰 번호로 로그인' , '');loginPlus();">
-                                        <img src="//image.hmall.com/p/img/co/sample/img-login-ad-2x.png" alt="휴대폰 번호로 로그인">
-                                    </a>
-                                </div>
-
-                                <div class="btngroup btnlen1">
-                                    <button class="btn btn-linelgray" onclick="GA_Event('로그인' , '비회원 주문조회' , '');nonMemberOrderLookup(); return false;"><span>비회원 주문조회</span></button>
-                                </div>
-                                <div class="login-help-wrap">
-                                    <span class="txt">회원가입이 어려우시다면?</span>
-                                    <div class="btn btn-round xs">
-                                    	<span class="bold">080-077-0000</span>
-                                    </div>
-                                </div>
-
-                                <!-- //Hmall 아이디 로그인에서만 노출 -->
 
                             </div>
                          </form>
@@ -234,7 +208,6 @@
                                   <!--<span>아이디 또는 비밀번호를 다시 확인해 주세요<br>Hmall 간편회원이시면 상단의 'Hmall 간편회원'을 선택해 주세요.</span>-->
                               </p>
                           </div>
-
                           <div class="login-relate">
                               <div class="checkbox-wrap">
                                   <div class="checkbox">
@@ -247,7 +220,7 @@
                           </div>
 
                           <button id="hpointLoginCheck" class="btn btn-login btn-default" onclick="memberLoginByHpoint('ajax');return false;"><span>로그인</span></button>
-
+							
                           <ul class="login-find">
 		                     <li><a href="https://www.h-point.co.kr/cu/config/findCustId.nhd">아이디 찾기</a></li>
 		                     <li><a href="https://www.h-point.co.kr/cu/config/findCustPwd.nhd">비밀번호 찾기</a></li>

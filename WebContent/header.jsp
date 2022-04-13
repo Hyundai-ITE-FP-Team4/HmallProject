@@ -25,7 +25,7 @@
 		// 로그인 팝업창 띄우기	
 		$(function(){
 			$("#go_login_popup").on('click', function(){
-				window.open("/HmallProject/user/login_popup.jsp", "PopupWin", "width=540,height=720");		
+				window.open("/HmallProject/user/login_popup.jsp", "PopupWin", "width=540,height=650");		
 			});
 		});
 		

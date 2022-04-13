@@ -6241,40 +6241,6 @@ function onAirTimer2SkySc(){
         </a>
         <div class="recent-view-area" id="skyScOnAirArea">
 
-            <a class="recent-view-title">ON AIR</a>
-            <ul id="banner-onair">
-                
-                    
-	                <li>
-	                    
-		                    <a href="javascript:;" class="tv-shopping" onclick="gaTagging(this, &quot;/p/pda/itemPtc.do?sectId=1003&amp;slitmCd=2133367971&amp;bfmtNo=202204123011&amp;brodDt=20220412&amp;brodStrtDtm=16:40&amp;brodType=P&quot;, &quot;etvhm_etv&quot;, &quot;eTV온에어^영상상품^팔레오 고칼슘 산양유 프로틴 패밀리 구성 (18통)&quot;)" ga-custom-title="메인>홈쇼핑" ga-custom-name="메인_홈쇼핑탭" ga-custom-position="TV쇼핑" ga-custom-creative="방송상품" ga-custom-id="2133367971_팔레오 고칼슘 산양유 프로틴 패밀리 구성 (18통)" ga-custom-etc="home">
-		                        <img src="https://image.hmall.com/static/9/7/36/33/2133367971_0.jpg?RS=140x140&amp;AR=0" alt="팔레오 고칼슘 산양유 프로틴 패밀리 구성 (18통)" onerror="noImage(this, 'https://image.hmall.com/p/img/co/noimg-thumb.png?RS=140x140&amp;AR=0')">
-		                        <span class="over-box">
-		                            <strong class="onair-kind shopping">TV쇼핑</strong>
-		                            <em class="onair-time" id="onAirHtime" data-brodenddtm="20220412174000">00:00:00</em>
-		                        </span>
-	  	                    </a>
-  	                    
-	                    
-	                </li>
-                
-                
-                    
-	                <li>
-	                    
-		                    <a href="javascript:;" class="tv-shopping" onclick="gaTagging(this, &quot;/p/pda/itemPtc.do?sectId=1003&amp;slitmCd=2138796321&amp;bfmtNo=202204125025&amp;brodDt=20220412&amp;brodStrtDtm=17:00&amp;brodType=P&quot;, &quot;etvhm_etv&quot;, &quot;eTV온에어^영상상품^더스텐 통5중 플록스 냄비 풀세트&quot;)" ga-custom-title="메인>홈쇼핑" ga-custom-name="메인_홈쇼핑탭" ga-custom-position="TV쇼핑" ga-custom-creative="방송상품" ga-custom-id="2138796321_더스텐 통5중 플록스 냄비 풀세트" ga-custom-etc="home">
-		                        <img src="https://image.hmall.com/static/3/6/79/38/2138796321_0.jpg?RS=140x140&amp;AR=0" alt="더스텐 통5중 플록스 냄비 풀세트" onerror="noImage(this, 'https://image.hmall.com/p/img/co/noimg-thumb.png?RS=140x140&amp;AR=0')">
-		                        <span class="over-box">
-		                            <strong class="onair-kind shop">TV+샵</strong>
-		                            <em class="onair-time" id="onAirHdtime" data-brodenddtm="20220412173959">00:00:00</em>
-		                        </span>
-		                    </a>
-	                    
-	                    
-	                </li>
-                
-            </ul>
-        
     </div>
         <div class="qr_view_area">
             <span class="qr_txt">쇼핑라이브</span>
