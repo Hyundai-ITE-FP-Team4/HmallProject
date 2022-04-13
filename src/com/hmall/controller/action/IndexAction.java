@@ -1,14 +1,18 @@
 package com.hmall.controller.action;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.DBManager;
+
 /*
- * index.jsp·Î ÀÌµ¿½ÃÅ°´Â Action
+ * index.jspï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½Å°ï¿½ï¿½ Action
  * 
  * */
 public class IndexAction implements Action {
@@ -17,6 +21,21 @@ public class IndexAction implements Action {
 		  
 		String url = "/index.jsp";
 
+		Connection con = null;
+
+		try {
+			con = DBManager.getConnection();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

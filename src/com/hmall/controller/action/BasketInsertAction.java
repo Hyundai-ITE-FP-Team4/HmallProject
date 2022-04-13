@@ -1,6 +1,7 @@
 package com.hmall.controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +19,13 @@ public class BasketInsertAction implements Action {
 
 		HttpSession session = request.getSession();
 		UserVO user_vo = (UserVO) session.getAttribute("user_vo");
-		String userId = user_vo.getUser_id();
-		String url = "HmallServlet?command=basket&userId=" + userId;
-		
-		if(userId == null) {
-			url = "HmallServlet?command=login";
+		if (user_vo == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 후 이용해주세요.'); history.back(); </script>");
 		} else {
+			String userId = user_vo.getUser_id();
+			String url = "HmallServlet?command=basket&userId=" + userId;
 			// DAO ����
 			BasketDAO basketDAO = BasketDAO.getInstance();
 			// VO ����
@@ -31,11 +33,11 @@ public class BasketInsertAction implements Action {
 			basketVO.setUserId(userId);
 			basketVO.setProductCode(Integer.parseInt(request.getParameter("pCode")));
 			basketVO.setAmount(Integer.parseInt(request.getParameter("amount")));
-			
+
 			basketDAO.insertBasket(basketVO);
+			
+			response.sendRedirect(url);
 		}
-		
-		response.sendRedirect(url);
 	}
 
 } // end class

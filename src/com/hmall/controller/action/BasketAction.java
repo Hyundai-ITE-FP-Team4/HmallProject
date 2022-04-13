@@ -1,6 +1,7 @@
 package com.hmall.controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -22,17 +23,25 @@ public class BasketAction implements Action {
 
 		HttpSession session = request.getSession();
 		UserVO user_vo = (UserVO) session.getAttribute("user_vo");
-		String userId = user_vo.getUser_id();
+		if(user_vo == null) {
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('로그인 후 이용해주세요.'); history.back(); </script>");
+		} else {
+			String userId = user_vo.getUser_id();
 
-		// DAO ����
-		BasketDAO basketDAO = BasketDAO.getInstance();
-		ArrayList<BasketVO> basketList = basketDAO.getBasketList(userId);
+			// DAO ����
+			BasketDAO basketDAO = BasketDAO.getInstance();
+			ArrayList<BasketVO> basketList = basketDAO.getBasketList(userId);
 
-		// ��ٱ��� ����Ʈ
-		request.setAttribute("basketList", basketList);
+			// ��ٱ��� ����Ʈ
+			request.setAttribute("basketList", basketList);
+			
+	        
+			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);
+		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
 	}
 
 } // end class
