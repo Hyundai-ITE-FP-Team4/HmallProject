@@ -60,7 +60,7 @@ public class JoinAction implements Action {
         System.out.println(str);
         
 		//조회
-	    List list = dao.listMember();
+	    List list = dao.listUser();
 		for (int i = 0; i<list.size(); i++) {
 			userVO = (UserVO)list.get(i);
 			user_id = userVO.getUser_id();

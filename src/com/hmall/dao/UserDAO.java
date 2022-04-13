@@ -138,7 +138,7 @@ public class UserDAO {
 	}
 
 	// 조회
-	public List<UserVO> listMember() {
+	public List<UserVO> listUser() {
 
 		List<UserVO> userList = new ArrayList<UserVO>();
 		String sql = "select * from kimsh.user_info ";
