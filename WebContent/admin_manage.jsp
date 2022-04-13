@@ -45,11 +45,13 @@
 				padding : 40px;
 				border: 1px solid #666;
 			}
-			.userList tr {
+			.userList th {
 				background-color: #ff5340;
+				color: #444;
 			}
 			.userList th, td {
-				padding: 5px;
+				padding: 7px;
+				border: 1px solid #666;
 			}
 			.main .chart {
 				padding: 10px;
@@ -74,9 +76,9 @@
 			<table class="userList">
 				<caption>회원 정보</caption>
 			    <tr align="center">
-			      <td width="7%"><b>아이디</b></td>
-			      <td width="7%"><b>비밀번호</b></td>
-			      <td width="5%" ><b>이름</b></td>
+			      <th width="7%">아이디</th>
+			      <th width="7%"><b>비밀번호</b></th>
+			      <th width="5%" ><b>이름</b></th>
 				</tr>
 		 		<c:forEach var = "user" items="${userList}"  >	
 			   	<tr align="center">
@@ -122,7 +124,7 @@
 										'title': title,
 										'vAxis': {'title': '로그인 횟수',
 											'minValue': 0,
-											'ticks': [0, 5, 10, 15, 20]
+											'ticks': [0, 5, 10, 15, 20, 25, 30]
 											},
 										'hAxis': {'title': '월',
 												'maxValue': 12,
