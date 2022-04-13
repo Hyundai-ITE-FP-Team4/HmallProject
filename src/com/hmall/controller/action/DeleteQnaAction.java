@@ -13,6 +13,15 @@ import com.hmall.dao.QnaDAO;
 import com.hmall.dto.QnaVO;
 import com.hmall.dto.UserVO;
 
+/*************************************************************
+파일명: DeleteQnaAction.java
+기능: 작성한 1:1상담  상담글 상세 페이지에서 '삭제'버튼을 누를 시 해당 글을 DB에서 삭제
+시켜주는 기능
+작성자: 황명하
+
+코멘트: command == delete_question 인경우 해당 Action 파일로 이동
+*************************************************************/
+
 public class DeleteQnaAction implements Action {
 
 	@Override

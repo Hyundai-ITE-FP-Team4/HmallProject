@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<!--------------------------------------------------------------
+파일명: qnapopup.jsp
+기능: 1:1상담 작성 팝업 페이지
+작성자: 황명하
+
+코멘트: 현대몰 내 게시글 등록 html 코드 참조, 카테고리1,2 설정 후 답변방법, 답변 연락처를 
+입력해 게시글 등록
+ -------------------------------------------------------------->
+
 <html lang="ko" class="desktop winos chrome x64 mobile">
 <head>
 <meta charset="UTF-8">
@@ -20,28 +29,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>1:1 상담신청 - 현대Hmall</title>
 
-<!-- includeScript -->
-
-
-
-
-
-
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript" async=""
-	src="https://www.googleadservices.com/pagead/conversion_async.js"></script>
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/plugins/ua/ec.js"></script>
-<script type="text/javascript" async=""
-	src="https://www.googletagmanager.com/gtag/js?id=AW-937000404&amp;l=dataLayer&amp;cx=c"></script>
-<script type="text/javascript" async=""
-	src="https://www.googleadservices.com/pagead/conversion_async.js"></script>
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script async=""
-	src="https://www.googletagmanager.com/gtm.js?id=GTM-MZFFDJ8"></script>
-<script src="https://www.googleoptimize.com/optimize.js?id=OPT-NBGRL7P"></script>
-
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
@@ -57,28 +44,6 @@
 
 
 
-
-
-
-
-
-
-<script type="application/ld+json">
-{
-"@context": "http://schema.org",
-"@type": "Organization",
-"name": "hmall",
-"url": "https://www.hmall.com",
-"sameAs": [
-"https://www.facebook.com/hyundaiHmall",
-"https://www.youtube.com/c/%ED%9B%85%ED%8B%B0%EB%B9%84",
-"https://www.instagram.com/hyundai.homeshopping/",
-"https://itunes.apple.com/kr/app/id870397981",
-"https://play.google.com/store/apps/details?id=com.hmallapp&hl=ko",
-"http://myhmall.tistory.com"
-]
-}
-</script>
 
 <link rel="shortcut icon" href="https://www.hmall.com/favicon.ico">
 <!-- UI/UX Style -->
@@ -119,536 +84,7 @@
 <script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script>
 <!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
 
-<!-- Google analytics -->
-<script type="text/javascript"
-	src="//image.hmall.com/p/js/co/GoogleAnalyticsBuilder.js?ver=041014"></script>
-<script type="text/javascript"
-	src="//image.hmall.com/p/js/co/ScreenNameObj.js?ver=041014"></script>
 
-
-
-<script type="text/javascript">
-
-
-var oneClickFlag = 0;
-function setDimension(){
-	
-	if(oneClickFlag != 0){
-        return false;
-    }
-	
-	oneClickFlag = 1;
-    
-    if(location.pathname.indexOf("/p/cob/memberLogin.do") > -1){
-        return;
-    }
-	var GA_info = {};
-	
-	
-	GA_info = setDimenData(GA_info);
-
-	
-	GA_Init(GA_info);
-
-    
-    if(location.pathname.replace("//", "/") == '/m/pda/smItemDetailR.do' || location.pathname.replace("//", "/") == '/p/pda/itemPtc.do' && pdaItemPtcCnt == 0){
-    	pdaItemPtcCnt = 1;
-        var	product_array = [];
-        product_array.push(
-            {
-                'id':'',
-                'name':'',
-                'brand': '',
-                'category' : '',
-                'dimension51': 'default',
-                'dimension52':'',
-                'dimension53':'',
-                'dimension54':'',
-                'dimension55':'',
-                'dimension56':'',
-                'dimension57':'',
-                'dimension58':'',
-                'dimension59':'',
-                'dimension60':'',
-                
-                'dimension62':'',
-                'dimension63':'',
-                'dimension64':''
-            }
-        );
-
-        var ecommerce_hit = new Object();
-        ecommerce_hit[GAHitKey.NonInteraction] = '1';
-        var action_obj = new Object();
-
-        
-        GADataSend_Ecommerce(GAEcommerceStepKey.Detail, action_obj, product_array, ecommerce_hit);
-
-    }else if(location.pathname == '/p/oda/orderComplete.do' && ordCompleteCnt == 0){
-    	ordCompleteCnt = 1;
-        var	product_array = [];
-        
-        
-
-        var ecommerce_hit = new Object();
-        ecommerce_hit[GAHitKey.NonInteraction] = '1';
-        ecommerce_hit[GAHitKey.currencyCode] = 'KRW';
-        
-        
-
-        ecommerce_hit[GACustomKey.Metric1] = 0;
-        
-        ecommerce_hit[GACustomKey.Metric2] = 0;
-        
-        
-        ecommerce_hit['dimension74'] = '';
-        ecommerce_hit['dimension75'] = '';
-
-
-
-        var action_obj = new Object();
-        action_obj[GAActionFieldKey.TransactionID]='';
-        action_obj[GAActionFieldKey.TransactionRevenue]='0';
-        action_obj[GAActionFieldKey.TransactionShipping]='0';
-        
-        action_obj[GAActionFieldKey.TransactionCouponCode]='';
-
-
-
-
-
-
-        
-        GADataSend_Ecommerce(GAEcommerceStepKey.Purchase, action_obj, product_array, ecommerce_hit);
-        oneClickFlag = 0;
-    }
-}
-
-
-function setDimenData(GA_info){
-	var _ga = getCookieGA('_ga');
-	if(_ga != null){
-		GA_info[GACustomKey.Dimension1] = _ga;
-	}
-
-	var uid = "";
-    if(getCookieGA('ENCEHCustNO') != null && getCookieGA('ENCEHCustNO') != ""){
-    	uid = getCookieGA('ENCEHCustNO');
-    }
-	
-	if(uid == "" || uid.length != 32){
-        
-    }else{
-		GA_info[GACustomKey.Dimension2] = uid;
-        GA_info[GAHitKey.UserId] = uid;
-
-        
-	}
-
-     GA_info[GACustomKey.Dimension3] = "20201119"; 
-     GA_info[GACustomKey.Dimension4] = "일반"; 
-     GA_info[GACustomKey.Dimension5] = "0eb00191b11cfa7666ed2d0ff76f0334"; 
-    	GA_info[GACustomKey.Dimension6] = "Y"; 
-     GA_info[GACustomKey.Dimension7] = "Y"; 
-     GA_info[GACustomKey.Dimension8] = "20220116"; 
-     GA_info[GACustomKey.Dimension9] = "20220410"; 
-    
-    var _gaid = getCookieGA('GAID');
-    if(_gaid != null){GA_info[GACustomKey.Dimension11] = _gaid;}
-    
-        GA_info[GACustomKey.Dimension12] = "Y";
-        GA_info[GACustomKey.Dimension24] = "1";
-    
-    
-     GA_info[GACustomKey.Dimension13] = "M"; 
-     GA_info[GACustomKey.Dimension14] = "2"; 
-     GA_info[GACustomKey.Dimension15] = "실버"; 
-
-     GA_info[GACustomKey.Dimension22] = "동시가입"; 
-     GA_info[GACustomKey.Dimension23] = "20201119"; 
-     GA_info[GACustomKey.Dimension25] = "20201119"; 
-     GA_info[GACustomKey.Dimension26] = "20220203"; 
-     GA_info[GACustomKey.Dimension27] = "20201119"; 
-     GA_info[GACustomKey.Dimension28] = "20220203"; 
-     GA_info[GACustomKey.Dimension29] = "20220203"; 
-     GA_info[GACustomKey.Dimension30] = "N"; 
-     GA_info[GACustomKey.Dimension36] = "1천P이상"; 
-     GA_info[GACustomKey.Dimension37] = "0"; 
-     GA_info[GACustomKey.Dimension38] = "N"; 
-     GA_info[GACustomKey.Dimension39] = "종합(방송+일반)"; 
-     GA_info[GACustomKey.Dimension40] = "상담원"; 
-     GA_info[GACustomKey.Dimension41] = "PCWEB"; 
-     GA_info[GACustomKey.Dimension47] = "N"; 
-     GA_info[GACustomKey.Dimension78] = "KrOjwEoXHxMwNBSZSW04/w=="; 
-
-    if(location.pathname == '/p/pde/search.do'){
-        
-        
-        
-        
-        
-        GA_info[GACustomKey.Dimension19] = "N";
-        
-        
-    }
-
-	GA_info[GACustomKey.Dimension16] = "PCWEB";
-	
-	GA_info[GACustomKey.Dimension35] = location.href.replace("http://", "").replace("https://", "");
-
-	return GA_info;
-}
-
-
-
-function setGaDataSend_Event(evntType,product_array){
-	/* var product_array = [];
-	if(product_array_param != null && product_array_param != undefined){
-		product_array = product_array_param;
-	} */
-    var ecommerce_hit = new Object();
-    var action_obj = new Object();
-	
-    
-    if(location.pathname == '/m/pda/smItemDetailR.do' || location.pathname == '/p/pda/itemPtc.do'){
-        
-        if(evntType == GAEcommerceStepKey.Checkout){
-            action_obj[GAActionFieldKey.CheckoutStep] = '1';
-            GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
-        }else{
-            ecommerce_hit[GAHitKey.NonInteraction] = '1';
-            GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
-        }
-        
-    }else if(location.pathname == '/p/oda/order.do'){
-        
-        try {
-        	var itemGbcd = ""; // 무형상품체크, 유/무형 상품 같이 구매 불가하므로..
-            
-        } catch (e) {
-           
-        }
-
-        if(evntType == GAEcommerceStepKey.Checkout){
-        	var ecommerce_hit = new Object();
-            var action_obj = new Object();
-            action_obj[GAActionFieldKey.CheckoutStep] = '2';
-
-            var selOrderType = $("input[name='payType']:checked").val();
-
-            if(selOrderType == '10'  ){
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '01 카드';
-                ecommerce_hit['dimension75'] = '01 카드';
-            }else if(selOrderType == '20'){
-                action_obj[GAActionFieldKey.CheckoutOptions] = '02 현금';
-                ecommerce_hit['dimension75'] = '02 현금';
-            }else if(selOrderType == '40'){
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '12 휴대폰결제';
-                ecommerce_hit['dimension75'] = '12 휴대폰결제';
-            }else if(selOrderType == '91'){
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '15 페이코';
-                ecommerce_hit['dimension75'] = '15 페이코';
-            }else if(selOrderType == '30'){
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '20 현금(실시간)';
-                ecommerce_hit['dimension75'] = '20 현금(실시간)';
-            }else if(selOrderType == '95'){
-                action_obj[GAActionFieldKey.CheckoutOptions] = '21 네이버페이';
-                ecommerce_hit['dimension75'] = '21 네이버페이';
-            }else if(selOrderType == '96'){
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '22 스마일페이';
-                ecommerce_hit['dimension75'] = '22 스마일페이';
-            }else if(selOrderType == '97'){
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '23 카카오페이';
-                ecommerce_hit['dimension75'] = '23 카카오페이';
-            }else if(selOrderType == '81'){
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '25 토스';
-                ecommerce_hit['dimension75'] = '25 토스';
-            }else if(selOrderType == '99') {
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '24 현금간편결제';
-                ecommerce_hit['dimension75'] = '24 현금간편결제';
-            }else if(selOrderType == '50') {
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '98 카드+현금';
-                ecommerce_hit['dimension75'] = '98 카드+현금';
-            }else if(selOrderType == '93') {
-                action_obj[GAActionFieldKey.CheckoutOptions]  = '99 삼성페이';
-                ecommerce_hit['dimension75'] = '99 삼성페이';
-            }else {
-                action_obj[GAActionFieldKey.CheckoutOptions]  = 'default';
-                ecommerce_hit['dimension75'] = 'default';
-            }
-            
-            // 무형상품이면 고정 - 이호정선임요청 2021.01.28 김기호
-            if (itemGbcd == "04") {
-                console.log("무형상품이므로 Dimension75:무형상품");
-                action_obj[GAActionFieldKey.CheckoutOptions] = '무형상품';
-                ecommerce_hit[GACustomKey.Dimension75] = '무형상품';
-            } else {
-                
-                ecommerce_hit[GACustomKey.Dimension74] = '일반구매';
-                
-            }
-            GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
-        }
-    }else{
-        GADataSend_Ecommerce(evntType, action_obj, product_array, ecommerce_hit);
-    }
-
-}
-
-
-
-function sendSlitmClick(slitmNm, slitmCd, tabNm){
-
-    if(slitmNm == "" || slitmCd == "" || tabNm == "")
-        return;
-
-    var product_array = [];
-    product_array.push({'id': slitmCd, 'name': slitmNm});
-
-    var action_obj = new Object();
-    action_obj[GAActionFieldKey.ProductActionList] = tabNm;
-
-    var ecommerce_hit = new Object();
-    GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj, product_array, ecommerce_hit);
-}
-
-
-
-function getParameterByName(url, name) {
-	if(url == "" || name == "" || url == undefined || name == undefined){
-		return;
-	}
-	
-	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(url);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-function setGaPromotion(title, name, position, creative, id){
-	var action_obj = new Object();
-    var ecommerce_hit = new Object();
-    var tabNm = title;
-    if (tabNm.length > 0) { 
-        tabNm = tabNm.substring(tabNm.indexOf(">")+1, tabNm.length);
-    }
-    
-    ecommerce_hit[GAHitKey.Title] = title;
-    
-    action_obj["promo1"] = {};
-    action_obj["promo1"][GAActionFieldKey.PromotionName] = name;
-    action_obj["promo1"][GAActionFieldKey.PromotionPosition] = position;
-    action_obj["promo1"][GAActionFieldKey.PromotionCreative] = creative;
-    action_obj["promo1"][GAActionFieldKey.PromotionID] = id;
-    
-    if(name.substring(0, name.indexOf("_")) == "메인"){
-    	console.log("setGaPromotion()................4");
-    	ecommerce_hit[GACustomKey.Dimension31] = '메인';
-    	ecommerce_hit[GACustomKey.Dimension32] = '메인>'+ tabNm;
-    	ecommerce_hit[GACustomKey.Dimension33] = '메인>'+ tabNm;
-    	ecommerce_hit[GACustomKey.Dimension34] = '메인>'+ tabNm;	
-    }
-    
-    GADataSend_Ecommerce(GAEcommerceStepKey.PromotionClick, action_obj, null, ecommerce_hit);
-}
-
-function getCookieGA(name) {
-    var cname = name + "=";
-    var dc = document.cookie;
-    if (dc.length > 0) {
-        begin = dc.indexOf(cname);
-        if (begin != -1) {
-            begin += cname.length;
-            end = dc.indexOf(";", begin);
-            if (end == -1) end = dc.length;
-            if ( "EHCustName" == name || "LAST_SECT" == name) {
-                return decodeURIComponent(dc.substring(begin, end));
-            }
-            else {
-                return unescape(dc.substring(begin, end)).replace('GA1.2.','');
-            }
-        }
-    }
-    return null;
-}
-
-function sendSlitmClickGo(slitmNm, slitmCd, tabNm,url){
-
-    if(slitmNm == "" || slitmCd == "" || tabNm == "" || url =="")
-        return;
-
-    var product_array = [];
-    product_array.push({'id': slitmCd, 'name': slitmNm});
-
-    var action_obj = new Object();
-    action_obj[GAActionFieldKey.ProductActionList] = tabNm;
-
-    var ecommerce_hit = new Object();
-    GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj, product_array, ecommerce_hit);
-
-    document.location.href = url;
-}
-function sendSlitmClickNewWin(slitmNm, slitmCd, tabNm, url){
-
-    if(slitmNm == "" || slitmCd == "" || tabNm == "" || url =="")
-        return;
-
-    var product_array = [];
-    product_array.push({'id': slitmCd, 'name': slitmNm});
-
-    var action_obj = new Object();
-    action_obj[GAActionFieldKey.ProductActionList] = tabNm;
-
-    var ecommerce_hit = new Object();
-    GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj, product_array, ecommerce_hit);
-
-    try {
-        _trk_flashEnvView('_TRK_PI=LYRNWN');
-    } catch(e) {}
-
-    try {
-        _trk_clickTrace("EVT", "상품리스트_새창");
-    } catch (e) {}
-    window.open(url, '_blank');
-}
-
-function bizSpringTagForHome(url, tag, pathVal){
-    
-	location.href = url
-}
-
-function gaTagging(obj_GA, msg1, msg2, msg3){
-    console.log("gaTagging()................");
-    var title =     $(obj_GA).attr("ga-custom-title") == undefined ? "" : $(obj_GA).attr("ga-custom-title");            
-    var name =      $(obj_GA).attr("ga-custom-name") == undefined ? "" : $(obj_GA).attr("ga-custom-name");  
-    var position =  $(obj_GA).attr("ga-custom-position") == undefined ? "" : $(obj_GA).attr("ga-custom-position");
-    var creative =  $(obj_GA).attr("ga-custom-creative") == undefined ? "" : $(obj_GA).attr("ga-custom-creative");
-    var id =        $(obj_GA).attr("ga-custom-id") == undefined ? "" : $(obj_GA).attr("ga-custom-id");
-    var etc =       $(obj_GA).attr("ga-custom-etc") == undefined ? "" : $(obj_GA).attr("ga-custom-etc");
-    var etc2 =      $(obj_GA).attr("ga-custom-etc2") == undefined ? "" : $(obj_GA).attr("ga-custom-etc2");
-    
-    setGaPromotion(title, name, position, creative, id);
-    //마케팅플랫폼 전용 >>> 마케팅 플랫폼은 Tab명이 다르기 때문에 if문 처리
-    /*
-    if(gaForTabNm != "" && gaForTabNm != null && gaForTabNm != undefined && etc2 == "Y"){
-        title = "메인>"+gaForTabNm;
-        name = "메인_"+gaForTabNm+"탭";
-    }
-    
-    if(etc2 == "N"){//마케팅플랫폼 전용 >>> 마케팅플랫폼 jsp가 기획전에도 쓰이기 때문에 if문 처리.(mainTabYn)
-        //추후 이곳에 마케팅플랫폼 기획전일 경우 분기분 넣는다...
-        
-    }else{
-        console.log("setGaPromotion()................1");
-        setGaPromotion(title, name, position, creative, id);    
-    }
-*/
-
-    if (etc == "home"){
-        bizSpringTagForHome(msg1, msg2, msg3);
-    } else {
-    	if (msg1 != null && msg1 != "" && msg1.length > 0) {
-            location.href = msg1;
-    	}
-    }
-}
-
-
-
-</script>
-<!-- GA Custum lib -->
-<script async=""
-	src="https://www.googletagmanager.com/gtag/js?id=AW-1066206974"></script>
-<!-- Google analytics end -->
-
-<script>
-	
-	$.fn.size = function() {
-	    return this.length;
-	}
-	
-    /**
-     * 팝업 관련  함수(아래 링크를 참고하고 있음)
-     * as-is https://image.hmall.com/pc/js/hmall/co/common.js
-     * serverHost indexof local이 없어 추가-> 추후 as-is js 생성 필요
-     * 2020.09.21 http -> https 로 던지도록 변경
-     */
-    document.domain = "hmall.com";
-    var locationHref = document.location.href;
-    var imageServer = "https://image.hmall.com";
-    var serverHost = (location.href.indexOf("final") > 0 || location.href.indexOf("stg") > 0 || location.href.indexOf("dev") > 0 || location.href.indexOf("local") > 0) ? "https://" + location.host : "https://www.hmall.com";
-    var serverHostForSSL = (location.href.indexOf("final") > 0 || location.href.indexOf("stg") > 0 || location.href.indexOf("dev") > 0 || location.href.indexOf("local")>0) ? "https://" + location.host : "https://www.hmall.com";
-    var switch_serverHost;
-
-    if (locationHref.indexOf("https") > -1) {
-        switch_serverHost = serverHostForSSL;
-        imageServer = "https://image.hmall.com";
-    } else if (locationHref.indexOf("http") > -1) {
-        switch_serverHost = serverHost;
-        imageServer = "https://image.hmall.com";
-    }
-
-
-
-    try{
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-1066206974');
-      gtag('config', 'AW-937000404');
-  }catch(e){}
-
-  //Google Analytics
-  var init_Obj = new Object();
-
-  $(window).on("load",function() {
-      // $("body").prepend('hello new UI');
-
-      //GA 맞춤측정 데이터 전송 및 클릭이벤트 초기화
-      console.log("setDimension and useWindload 호출");
-      setDimension();
-      useWinload();
-      
-  });
-
-
-    // GNB - 바로가기 링크
-    function setQuicklink(jsonData){
-        var _data = jsonData;
-        var _html = "";
-
-        $(_data).each(function(_idx){
-            var _label = this.dispNm.toString();
-            var _dispUrl = this.dispUrl.toString();
-            var _item = "";
-
-            if(_idx == 0) _item = "<li class='first'>";
-            else _item = "<li>";
-
-            var _bizParam = _dispUrl.indexOf("?") >= 0 ? "&_IC_=tab"+(_idx+1) : "?_IC_=tab"+(_idx+1);
-
-            _item += "<a href='" + _dispUrl + _bizParam + "' class='gp_className' ga-category='메인 홈' ga-action='상단탭' ga-label='" + _label + "'>" + _label + "</a>" + "</li>";
-
-            _html += _item;
-        });
-
-        $('.quicklink.ql-left').empty().append(_html);
-    }
-/*    
-    function gaTagging(obj_GA, msg1, msg2, msg3){
-    	location.href = msg1;    	
-    }
-*/
-    function getClickUrl(url){
-        if(url == ''){
-            return false;       
-        }else{
-            document.location.href = url;
-            
-        }
-    }
-
-</script>
 
 <!-- includeScript -->
 <link rel="stylesheet" type="text/css"
@@ -876,58 +312,6 @@ function byteLength(input){
 }
 
 
-function deleteImg(target){
-    //$("#attachImg"+target.id).removeClass("attach");
-    //$("#thumbnail"+target.id).remove(); 
-    var thumbnailSize = $("img[id^='thumbnail']").length;
-    
-    if (target.id == "1") {
-    	
-        if (thumbnailSize == 3) { 
-            $("#thumbnail1")[0].src = $("#thumbnail2")[0].src;
-            $("#thumbnail2")[0].src = $("#thumbnail3")[0].src;
-            $("#thumbnail1")[0].title = $("#thumbnail2")[0].title;
-            $("#thumbnail2")[0].title = $("#thumbnail3")[0].title;
-
-            $("#attachImg3").removeClass("attach");
-            $("#thumbnail3").remove(); 
-            $("#3").css("display","none");
-        } else if (thumbnailSize == 2) { 
-            $("#thumbnail1")[0].src = $("#thumbnail2")[0].src;
-            $("#thumbnail1")[0].title = $("#thumbnail2")[0].title;
-
-            $("#attachImg2").removeClass("attach");
-            $("#thumbnail2").remove(); 
-            $("#2").css("display","none");
-        } else {
-
-            $("#attachImg1").removeClass("attach");
-            $("#thumbnail1").remove(); 
-            $("#1").css("display","none");
-        }
-        
-    } else if (target.id == "2") { 
-    	
-    	if (thumbnailSize == 3) { 
-            $("#thumbnail2")[0].src = $("#thumbnail3")[0].src;
-            $("#thumbnail2")[0].title = $("#thumbnail3")[0].title;
-
-            $("#attachImg3").removeClass("attach");
-            $("#thumbnail3").remove(); 
-            $("#3").css("display","none");
-        } else if (thumbnailSize == 2) { 
-            $("#attachImg2").removeClass("attach");
-            $("#thumbnail2").remove(); 
-            $("#2").css("display","none");
-        } 
-    } else {
-        $("#attachImg3").removeClass("attach");
-        $("#thumbnail3").remove(); 
-        $("#3").css("display","none");
-    }
-}
-
-
 
 function choiceProductCallBack(data) {
     window.resizeTo(700,930);
@@ -938,22 +322,6 @@ function choiceProductCallBack(data) {
 	$("div.popup-win")[0].classList.add("product-delete");
 }
 
-//1:1 상담
-function openCnslAcptPup(){
-    var cnslCsfCd = $("select[name='cnslCsfCd']").val();
-    var url = "/p/ccd/selectCnslAcptView.do"
-    		+"?cnslCsfCd="+cnslCsfCd 
-    		+"&page="+changeChk
-    		+"&mCnslCsfNm="+$("select[name='mCnslCsfCd'] option:checked").text();
-
-	if(ordNo != '' ){
-		url += "&ordNo="+ordNo;
-	}		
-    
-    var popName = "selectCnslAcptView";
-    var popOption = "fullscreen=no, location=no, scrollbars=yes, menubar=no, toolbar=no, titlebar=no, directories=no, resizable=no";
-    window.open(url,popName,popOption);
-}
 
 // 상담 분야 별 뷰 설정
 
@@ -1097,440 +465,6 @@ function openCnslOrdReq(){
 	window.close();
 }
 
-/*
- * 웹 이미지 업로드
- *  - 업로드 전에 HTML에서 이미지 압축까지해서 서버로 전송
- */
- function uploadImgIe(obj){
-	var imgSeq = Number(obj.attr('id').replace("attachImg", ""));
-	var imgId = "#getfile_" + imgSeq;
-	var file = document.querySelector(imgId);
-	
-	var max_size = 0;
-	var min_size = 0;
-	var width = 0;
-	var height = 0;
-	var orientation = 0;
-	var dataURIRotate;
-	
-	$(imgId).trigger('click');
-
-	var files2 = file.files.length;
-
-	if(files2 > 0) {
-           $("#attachImg"+ imgSeq).addClass("attach");
-	//file.onchange = function () {
-		var fileList = file.files ;
-
-		// 읽기
-		var reader = new FileReader();
-		reader.readAsDataURL(fileList [0]);
-
-		//로드 한 후
-		reader.onload = function  () {
-			if(imgSeq < 4) {
-				
-				if(fileList [0].size > 10000000) {
-		    		alert('10MB 이하크기의 사진만 등록이 가능합니다.');
-		    		return false;
-		    	} 
-				
-				var fne = fileList[0].name.substring(fileList[0].name.lastIndexOf(".")+1,fileList[0].name.length).toLowerCase();
-				if(filechk(fne)) {
-					if ($.browser.msie) { // ie 일때 input[type=file] 
-		    		     $("#getfile_" + imgSeq).replaceWith( $(imgId).clone(true) ); 
-		    		} else { // other browser 일때 input[type=file] init. 
-		    			$("#getfile_" + imgSeq).val(""); 
-		    		}
-					
-					$("#attachImg"+ imgSeq).removeClass("attach");
-					
-					alert(fne+" 형식 파일은 등록이 불가합니다.\nJPG,PNG,GIF 형식으로 등록해주세요.");
-					
-					return false;
-				}
-				
-				//썸네일 이미지 생성
-				var tempImage = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
-				tempImage.src = reader.result; //data-uri를 이미지 객체에 주입
-				
-				tempImage.onload = function () {
-					
-					//사진 EXIF 정보 가져오기
-					window.EXIF.getData(tempImage, function () {
-			            orientation = window.EXIF.getTag(this, "Orientation");
-			        });
-					
-					//리사이즈를 위해 캔버스 객체 생성
-					var canvas = document.createElement('canvas');
-					max_size = 800;
-					width = tempImage.width;
-					height = tempImage.height;
-					
-					if(width < 300 || height < 300){
-						alert("300x300 사이즈 이상 이미지로 등록해주세요.");
-						$("#getfile_" + imgSeq).replaceWith( $("#getfile_" + imgSeq).clone(true) ); 
-						$("#attachImg"+ imgSeq).removeClass("attach");
-						return false;
-					}
-
-					if (width > height) {
-						if (width > max_size) {
-							height *= max_size / width;
-							width = max_size;
-						}
-					} else {
-						if (height > max_size) {
-							width *= max_size / height;
-							height = max_size;
-						}
-					}
-								
-					canvas.width = width;
-					canvas.height = height;
-					canvas.getContext('2d').drawImage(tempImage, 0, 0, width, height);
-					var dataUrl = canvas.toDataURL('image/jpeg');
-					//var dataUrl = canvas.toDataURL('image/jpeg', 0.90);   // 이미지 퀄리티 조절도 가능...
-					 
-					//캔버스에 그린 이미지를 다시 data-uri 형태로 변환
-					var dataURI = canvas.toDataURL("image/jpeg");
-	
-					// store current data to an image
-					myImage = new Image();
-					myImage.src = dataURI;
-	
-					myImage.onload = function () {
-						// reset the canvas with new dimensions
-						
-						switch(orientation){
-						case 6:
-						case 8:
-							canvas.width = height;
-							canvas.height = width;
-							width = canvas.width;
-							height = canvas.height;
-		
-							canvas.getContext('2d').save();
-							if(orientation == 6){
-								canvas.getContext('2d').translate(width, 0);
-								canvas.getContext('2d').rotate(90 * Math.PI / 180);
-							}else{
-								canvas.getContext('2d').translate(0, height);
-								canvas.getContext('2d').rotate(-90 * Math.PI / 180);
-							}
-						break;
-						
-						case 1:
-						case 3:
-							canvas.width = width;
-							canvas.height = height;
-							width = canvas.height;
-							height = canvas.width;
-							
-							if(orientation == 3){
-								canvas.getContext('2d').translate(height, width );
-								canvas.getContext('2d').rotate(180 * Math.PI / 180);
-							}
-						}
-							
-						// draw the previows image, now rotated
-						canvas.getContext('2d').drawImage(myImage, 0, 0);
-						canvas.getContext('2d').restore();
-						
-						dataURIRotate = canvas.toDataURL("image/jpeg");
-						
-						var imgId = "thumbnail" + imgSeq;
-						//var srcImg = "<img class='addImg' src='' id=" + imgId +" />";
-						var srcImg = "<img src='' id=" + imgId +" onerror=noImage(this, 'https://image.hmall.com/hmall/pd/no_image_100x100.jpg')/>";
-						
-						var thumnailId = "attachImg" + imgSeq;
-				    	$("#"+ thumnailId).append(srcImg);
-				        //$("#"+ thumnailId).find("a._delimg").show();
-				        
-				      	//썸네일 이미지 보여주기
-						document.querySelector('#' + imgId).src = dataURIRotate;
-				      
-						callAjax(dataURIRotate,imgId,imgSeq, fileList [0].name,"1");
-					};
-				}; //tempImage.onload
-			}
-		};
-	}
-}
-
-function uploadImgCh(obj){
-	var imgSeq = Number(obj.attr('id').replace("attachImg", ""));
-	var imgId = "#getfile_" + imgSeq;
-	var file = document.querySelector(imgId);
-	
-	var max_size = 0;
-	var width = 0;
-	var height = 0;
-	var orientation;
-	var dataURIRotate;
-	
-	$(imgId).trigger('click');
-	
-	file.onchange = function () {
-   		$("#attachImg"+ imgSeq).addClass("attach");
-		var fileList = file.files ;
-
-		// 읽기
-		var reader = new FileReader();
-		reader.readAsDataURL(fileList [0]);
-
-		//로드 한 후
-		reader.onload = function  () {
-			if(imgSeq < 4) {
-				if(fileList [0].size > 10000000) {
-		    		alert('10MB 이하크기의 사진만 등록이 가능합니다.');
-		    		return false;
-		    	} 
-				
-				var fne = fileList[0].name.substring(fileList[0].name.lastIndexOf(".")+1,fileList[0].name.length).toLowerCase();
-				if(filechk(fne)) {
-					if ($.browser.msie) { // ie 일때 input[type=file] 
-		    		     $("#getfile_" + imgSeq).replaceWith( $(imgId).clone(true) ); 
-		    		} else { // other browser 일때 input[type=file] init. 
-		    			$("#getfile_" + imgSeq).val(""); 
-		    		}
-					
-					$("#attachImg"+ imgSeq).removeClass("attach");
-					
-					alert(fne+" 형식 파일은 등록이 불가합니다.\nJPG,PNG,GIF 형식으로 등록해주세요.");
-					
-					return false;
-				}
-				
-				//썸네일 이미지 생성
-				var tempImage = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
-				tempImage.src = reader.result; //data-uri를 이미지 객체에 주입
-				
-				tempImage.onload = function () {
-					
-					//사진 EXIF 정보 가져오기
-					window.EXIF.getData(tempImage, function () {
-			            orientation = window.EXIF.getTag(this, "Orientation");
-			        });
-					
-					//리사이즈를 위해 캔버스 객체 생성
-					var canvas = document.createElement('canvas');
-					max_size = 800;
-					width = tempImage.width;
-					height = tempImage.height;
-					
-					if(width < 300 || height < 300){
-						alert("300x300 사이즈 이상 이미지로 등록해주세요.");
-						$("#getfile_" + imgSeq).val(""); 
-						$("#attachImg"+ imgSeq).removeClass("attach");
-						return false;
-						return false;
-					}
-					
-					if (width > height) {
-						if (width > max_size) {
-							height *= max_size / width;
-							width = max_size;
-						}
-					} else {
-						if (height > max_size) {
-							width *= max_size / height;
-							height = max_size;
-						}
-					}
-								
-					canvas.width = width;
-					canvas.height = height;
-					canvas.getContext('2d').drawImage(tempImage, 0, 0, width, height);
-					var dataUrl = canvas.toDataURL('image/jpeg');
-					//var dataUrl = canvas.toDataURL('image/jpeg', 0.90);   // 이미지 퀄리티 조절도 가능...
-					 
-					//캔버스에 그린 이미지를 다시 data-uri 형태로 변환
-					var dataURI = canvas.toDataURL("image/jpeg");
-	
-					// store current data to an image
-					myImage = new Image();
-					myImage.src = dataURI;
-	
-					myImage.onload = function () {
-						// reset the canvas with new dimensions
-						
-						switch(orientation){
-						case 6:
-						case 8:
-							canvas.width = height;
-							canvas.height = width;
-							width = canvas.width;
-							height = canvas.height;
-		
-							canvas.getContext('2d').save();
-							if(orientation == 6){
-								canvas.getContext('2d').translate(width, 0);
-								canvas.getContext('2d').rotate(90 * Math.PI / 180);
-							}else{
-								canvas.getContext('2d').translate(0, height);
-								canvas.getContext('2d').rotate(-90 * Math.PI / 180);
-							}
-						break;
-						
-						case 1:
-						case 3:
-							canvas.width = width;
-							canvas.height = height;
-							width = canvas.height;
-							height = canvas.width;
-							
-							if(orientation == 3){
-								canvas.getContext('2d').translate(height, width );
-								canvas.getContext('2d').rotate(180 * Math.PI / 180);
-							}
-						}
-							
-						// draw the previows image, now rotated
-						canvas.getContext('2d').drawImage(myImage, 0, 0);
-						canvas.getContext('2d').restore();
-						
-						dataURIRotate = canvas.toDataURL("image/jpeg");
-						
-						var imgId = "thumbnail" + imgSeq;
-						//var srcImg = "<img class='addImg' src='' id=" + imgId +" />";
-						var srcImg = "<img src='' id=" + imgId +" onerror=noImage(this, 'https://image.hmall.com/hmall/pd/no_image_100x100.jpg') />";
-						
-						var thumnailId = "attachImg" + imgSeq;
-				    	$("#"+ thumnailId).append(srcImg);
-				        //$("#"+ thumnailId).find("a._delimg").show();
-				        
-				      //썸네일 이미지 보여주기
-						document.querySelector('#' + imgId).src = dataURIRotate;
-				      
-						var theimg = document.getElementById("thumbnail1");    //?
-						
-						callAjax(dataURIRotate,imgId,imgSeq, fileList [0].name,"1");
-					};
-				}; //tempImage.onload
-			}
-			
-		}; //reader.onload
-	}
-}
-
-/*
- * 웹 이미지 업로드
- *  - 업로드 전에 HTML에서 이미지 압축까지해서 서버로 전송
- */
-function uploadImg(obj){
-    var imgSeq = Number(obj.attr('id').replace("attachImg", ""));
-    
-    
-    if (obj.find("img").length != 0) {
-        $(this).removeClass("attach").children("img").remove();
-        return;
-    }
-    
-    
-    var imgId = "#getfile_" + imgSeq;
-    //var imgId = "#getfile_1";
-    var file = document.querySelector(imgId);
-    file.value='';
-    var canvas = document.createElement('canvas');
-    
-    var max_size = 0;
-    var width = 0;
-    var height = 0;
-    var orientation = 0;
-    var dataURIRotate;
-    
-    $(imgId).trigger('click');
-    
-    file.onchange = function () {
-                	
-        var fileList = file.files ;
-        
-        if($("img[id^='thumbnail']").length + fileList.length>3){
-            alert("이미지는 3장이상 추가할 수 없습니다");
-            return;
-        }else{
-            var thumbSize = $("img[id^='thumbnail']").length;
-            
-            for(var i=0; i< fileList.length;i++){
-                var f = fileList[i];
-                var idx = thumbSize + i + 1;
-                var imgId = "thumbnail" + idx;  
-                if(!f.type.match('image')) continue;
-                
-                $("#"+idx).css("display","block");
-                
-                var picReader = {};
-                picReader[i] = new FileReader();
-                
-                picReader[i].addEventListener("load", picCallback.bind(null, some_other_func,f,idx,imgId),false);
-                picReader[i].readAsDataURL(f);
-            }
-        }
-        
-    } //file.onchange
-}
-
-
-/*
- * 웹 이미지 업로드
- *  - 업로드 전에 HTML에서 이미지 압축까지해서 서버로 전송
- */
-function uploadImgIEcase(obj){
-    var imgSeq = Number(obj.attr('id').replace("attachImg", ""));
-    
-    
-    if (obj.find("img").length != 0) {
-        $(this).removeClass("attach").children("img").remove();
-        return;
-    }
-    
-    
-    var imgId = "#getfile_" + imgSeq;
-    //var imgId = "#getfile_1";
-    var file = document.querySelector(imgId);
-    
-    var canvas = document.createElement('canvas');
-    
-    var max_size = 0;
-    var width = 0;
-    var height = 0;
-    var orientation = 0;
-    var dataURIRotate;
-    
-    $(imgId).trigger('click');
-    
-    var files2 = file.files.length;
-
-    if(files2 > 0) {
-    //file.onchange = function () {
-                    
-        var fileList = file.files ;
-        
-        if($("img[id^='thumbnail']").length + fileList.length>3){
-            alert("이미지는 3장이상 추가할 수 없습니다");
-            return;
-        }else{
-            var thumbSize = $("img[id^='thumbnail']").length;
-            
-            for(var i=0; i< fileList.length;i++){
-                var f = fileList[i];
-                var idx = thumbSize + i + 1;
-                var imgId = "thumbnail" + idx;  
-                if(!f.type.match('image')) continue;
-                
-                $("#"+idx).css("display","block");
-                
-                var picReader = {};
-                picReader[i] = new FileReader();
-                
-                picReader[i].addEventListener("load", picCallback.bind(null, some_other_func,f,idx,imgId),false);
-                picReader[i].readAsDataURL(f);
-            }
-        }
-        
-    } //file.onchange
-}
 
 function picCallback(otherFunc,f,idx,imgId,event){
     otherFunc(f,idx,imgId,event);
@@ -1555,39 +489,6 @@ function filechk(fileDir){
 	}
 	
 	return rtnVal;
-}
-
-function callAjax(dataURIRotate,imgId,imgSeq,filename,atflGbcd) {
-	//page_loading();
-	//파일 전송
-    var blob = dataURItoBlob(dataURIRotate);
-    var formData = new FormData();
-    formData.append(filename, blob);
-    formData.append("atflGbcd",atflGbcd);
-    formData.append("csYn","Y");
-
-	$.ajax({
-        url: '/p/pdc/insertResizeImg.do',
-        type: "post",
-        dataType: "json",
-		data : formData,
-        // cache: false,
-        processData: false,
-        contentType: false,
-        success: function(data, textStatus, jqXHR) {
-        	var returnPath = data.returnPath;
-            document.querySelector('#' + imgId).src = returnPath;
-            $("#attachImg"+ imgSeq).addClass("attach");
-            //remove_page_loading();
-            //remove_page_dim();
-        }, error: function(jqXHR, textStatus, errorThrown) {
-        	alert('사진 업로드에 실패하였습니다. error');
-        	$("#attachImg"+ imgSeq).removeClass("attach");
-        	location.reload();
-        	//remove_page_loading();
-        	//remove_page_dim();
-        }
-    });	
 }
 
 //html5의 Canvas를 사용해서 이미지 리사이징이 가능한지 판별하는 메소드
@@ -1618,33 +519,12 @@ function dataURItoBlob(dataURI){
     return bb;
 }
 
-//1:1 채팅 상담 시작하기 클릭시 게시판 상담쪽으로 이동(그안에 채팅버튼노출)
-function openCnslChat(){
-	openAlert();
-	
-   if(isLogin() == 'true'){
-        
-           alert("채팅 가능 시간이 아닙니다") ;
-           return false;
-        
-        
-        
-   }
-   formCheckSubmitSellerChat();
-
-}
-
-
-//1:1채팅상담 서비스점검 alert
-function openAlert() {
- 
-}
-
 /**
  * 입력한 문자열의 바이트를 계산한다.
  * @param obj
  * @param limitByte
  */
+ 
 function checkCntn(obj, limitByte) {    
     
     $obj = $(obj);
@@ -1667,11 +547,6 @@ function checkCntn(obj, limitByte) {
 }
 
 
-/**
- * 바이트 계산
- * @param sChar
- * @returns {Number}
- */
 function calculateByte(sChar) {
 	
 	var byte = 0;
@@ -1713,8 +588,6 @@ function formCheckSubmitSellerChat(obj) {
             console.log("json fail");
         }
     });
-
-    
 }
 
 </script>
@@ -1750,7 +623,7 @@ function formCheckSubmitSellerChat(obj) {
 									<select name="mCnslCsfCd" class="cu_select" id="mCnslCsfCd">
 
 
-
+										
 										<option value="">상담 분야 선택</option>
 										 <!-- 미구현할 기능 주석 처리 (황명하)
 										<option value="0405">취소신청</option>
@@ -1857,7 +730,6 @@ function formCheckSubmitSellerChat(obj) {
 						<!--choice-item-->
 						<div id="choiceItemDiv">
 							<script type="text/javascript">
-								
 							if ("" != "") {
 								    alert("");
 								    try {
@@ -1867,8 +739,6 @@ function formCheckSubmitSellerChat(obj) {
 								}
 								
 								$(function () {
-								
-								    
 								    $("textarea[name=cntn]").keyup(function () {
 								        $("#writeBytes").text(getByteLength(this.value));
 								    });
@@ -1888,20 +758,17 @@ function formCheckSubmitSellerChat(obj) {
 								    	alert("개인정보 수집 및 이용에 모두 동의해주세요.");
 								    	return false;
 								    }
-								    
-								
+
 								    if (isEmpty(cntn.val())) {
 								        alert("문의내용을 입력해 주세요 ");
 								        cntn.focus();
 								        return false;
 								    }
-								
 								    if (getByteLength(cntn.val()) > 1000) {
 								        alert("내용은 1000자(한글 500자)이내로 입력하세요.");
 								        cntn.focus();
 								        return false;
 								    }
-								    
 								    if(answReqnGbcd == "3"){
 								    	if (isEmpty(email.val())) {
 								            alert("이메일 입력해 주세요 ");
@@ -1937,8 +804,7 @@ function formCheckSubmitSellerChat(obj) {
 								        $("#hpIntmNo").val(mobilePhone1);
 								        $("#hpBckNo").val(mobilePhone2);
 								    }
-								
-								    
+
 								    if(answReqnGbcd == "1" || answReqnGbcd == "2"){
 								
 								    	var mobileDddOrg = $("input[name='mobileDdd']").val(); // $("select[name=mobileDdd]");
@@ -1970,7 +836,7 @@ function formCheckSubmitSellerChat(obj) {
 								        $("#hpIntmNo").val(mobilePhone1);
 								        $("#hpBckNo").val(mobilePhone2);
 								    }
-								
+
 								    //계좌번호
 								    var decBnkac = "04";
 								    //환불계좌
@@ -2019,14 +885,10 @@ function formCheckSubmitSellerChat(obj) {
 								    reqCntnJson.val(JSON.stringify(reqCntnStrJson));
 								    console.log(reqCntnStr);
 								    
-								    
-								    
 								    $("#frm").submit();
-									
-								    
+
 								}
-								
-								
+
 								$("input[name='answReqnGbcd']").change(function(){
 									var checked = $("input[name='answReqnGbcd']:checked").val();
 									if(checked == '3'){//이메일
@@ -2037,7 +899,6 @@ function formCheckSubmitSellerChat(obj) {
 										$("#phoneConsultDiv").css("display","block");
 									}
 								});
-								
 								var mCnslCsfCd = $("select[name='mCnslCsfCd']").val();
 								document.cnslAcptForm.cnslCsfCd.value=mCnslCsfCd;
 
@@ -2084,7 +945,7 @@ function formCheckSubmitSellerChat(obj) {
 								<!--//consult-form-wrap-->
 
 								<!--consult-form-wrap-->
-								<div class="consult-form-wrap">
+								<div class="consult-form-wrap" style="display: none">
 									<h3>사진 첨부</h3>
 									<!--pickmov-add-->
 									<div class="picmov-add" id="attachImageD1">
@@ -2220,8 +1081,6 @@ function formCheckSubmitSellerChat(obj) {
 							</form>
 						</div>
 						<!--//choice-item -->
-
-
 
 						<form id="cnslAcptPupForm">
 							<input type="hidden" name="cnslCsfCd"> 

@@ -12,11 +12,17 @@ import com.hmall.dto.QnaVO;
 
 import util.DBManager;
 
+/*************************************************************
+파일명: QnaDAO.java
+기능: QNA 테이블에 대한 데이터 접근을 위한 객체
+작성자: 황명하
+
+코멘트: 유저별 게시판 조회기능과 글 상세정보 조회 기능, 1:1상담 게시 기능, 게시글 삭제 기능
+*************************************************************/
+
 public class QnaDAO {
 	private QnaDAO() {  } //싱글톤 패턴
 	private static  QnaDAO instance = new QnaDAO();
-	
-	
 	public static QnaDAO getInstance() {
 	return instance;
 	}
@@ -25,7 +31,7 @@ public class QnaDAO {
 	// 유저 별 등록한 게시판 전체 조회 구현 (황명하)
 	public ArrayList<QnaVO> listAllQna(String user_id) {
 		ArrayList<QnaVO> qnaList = new ArrayList<QnaVO>();
-
+		
 		String sql = "select board_no, product_code, user_id, to_char(board_date, 'YYYY-MM-DD HH24:MI:SS') as board_date, category1, category2, question, image, answer from qna_t where user_id = '"+ user_id +"' order by board_date desc";
 
 		Connection conn = null;
@@ -61,16 +67,14 @@ public class QnaDAO {
 		return qnaList;
 	}
 	
-	// 작성 글 상세 조회 (황명하)
+	// 작성 글 상세 조회 
 	public QnaVO getQna(int board_no) {
 		QnaVO qna = null;
 		String sql = "select * from ghkd2676.qna where board_no=?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 		try {
-
 			con = DBManager.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, board_no);
@@ -91,7 +95,6 @@ public class QnaDAO {
 				qna.setContactChannel(rs.getString("contact_channel"));
 				qna.setContactAddress(rs.getString("contact_address"));
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -100,7 +103,7 @@ public class QnaDAO {
 		return qna;
 	}
 	
-	// 1:1 게시판 글 작성 구현 (황명하)
+	// 1:1 게시판 글 작성 구현
 	public void enrollQna(QnaVO qnaVO, String session_id) {
 		Connection conn = null;
 		CallableStatement cstmt = null;
@@ -117,7 +120,7 @@ public class QnaDAO {
             cstmt.setString(6, qnaVO.getImage());
             cstmt.setString(7, qnaVO.getContactChannel());
             cstmt.setString(8, qnaVO.getContactAddress());
-            
+        
             cstmt.execute();
             
 		}catch (Exception e) {
@@ -127,7 +130,7 @@ public class QnaDAO {
 		}
 		
 	}
-
+	//게시글 삭제 기능 구현
 	public void deleteQna(int board_num, String user_id) {
 		// TODO Auto-generated method stub
 		Connection conn = null;

@@ -1,6 +1,13 @@
 package com.hmall.dto;
 import java.sql.Timestamp;
 
+/*************************************************************
+파일명: QnaVO.java
+기능: QNA 테이블에 대한 데이터 객체
+작성자: 황명하
+*************************************************************/
+
+
 public class QnaVO {
 	private int boardNo;
 	private int productCode;

@@ -13,6 +13,14 @@ import com.hmall.dao.QnaDAO;
 import com.hmall.dto.QnaVO;
 import com.hmall.dto.UserVO;
 
+/*************************************************************
+파일명: ViewQnaAction.java
+기능: 1:1상담 게시글의 상제 정보 조회
+작성자: 황명하
+
+코멘트: command == view_qna 인경우 해당 Action 파일로 이동
+*************************************************************/
+
 public class ViewQnaAction implements Action {
 
 	@Override
@@ -32,7 +40,6 @@ public class ViewQnaAction implements Action {
 	    	response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 	    	out.println("<script>alert('로그인 후 이용해주세요.'); self.close()'; </script>");
-	        
 	      } 
 	    
 	    else {
@@ -40,7 +47,6 @@ public class ViewQnaAction implements Action {
 	    	// 해당 글 가져오는 수행 시작
 			QnaDAO qnaDAO = QnaDAO.getInstance();
 			QnaVO qnaVO = qnaDAO.getQna(board_num);
-
 			request.setAttribute("qnaVO", qnaVO);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);

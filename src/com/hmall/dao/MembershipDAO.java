@@ -9,6 +9,14 @@ import com.hmall.dto.QnaVO;
 
 import util.DBManager;
 
+/*************************************************************
+파일명: MembershipDAO.java
+기능: v_membership 뷰 테이블에 대한 데이터 접근을 위한 객체
+작성자: 황명하
+
+코멘트: 원하는 회원의 멤버쉽 정보를 얻는 기능
+*************************************************************/
+
 public class MembershipDAO {
 	private MembershipDAO() {}
 	private static MembershipDAO instance = new MembershipDAO();
@@ -17,10 +25,9 @@ public class MembershipDAO {
 		return instance;
 	}
 	
+	//원하는 회원의 멤버쉽 정보를 얻는 기능 구현
 	public MembershipVO getMemership(String user_id) {
-		
 		MembershipVO membershipVO = null;
-		
 		Connection con = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
@@ -37,7 +44,6 @@ public class MembershipDAO {
 				membershipVO.setUser_point(rs.getInt("user_point"));
 				membershipVO.setGrade(rs.getString("grade"));
 			}
-            
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {

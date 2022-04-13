@@ -13,6 +13,14 @@ import com.hmall.dao.QnaDAO;
 import com.hmall.dto.QnaVO;
 import com.hmall.dto.UserVO;
 
+/*************************************************************
+파일명: EnrollQuestion.java
+기능: 1:1상담 게시글을 등록하는 기능
+작성자: 황명하
+
+코멘트: command == enroll_question 인경우 해당 Action 파일로 이동
+*************************************************************/
+
 public class EnrollQuestionAction implements Action{
 
 	@Override
@@ -37,7 +45,7 @@ public class EnrollQuestionAction implements Action{
 			String contact_channel = "";
 			String contact_address = "";
 			
-			//상담분야, 삼당사유
+			//상담코드로 상담분야, 삼당사유 설정
 			if(cnslCsfCd.contentEquals("071201")) {
 				category1 = "시스템오류";
 				category2 = "시스템오류/불편사항";
@@ -50,7 +58,7 @@ public class EnrollQuestionAction implements Action{
 			System.out.println("상담분야: " + category1);
 			System.out.println("상담사유: " + category2);
 			
-			//문의 내용 
+			//문의 내용 가져오기
 			String question = request.getParameter("cntn");
 			System.out.println("문의 내용: " + question);
 			
@@ -58,6 +66,7 @@ public class EnrollQuestionAction implements Action{
 			String answReqnGbcd = "";
 			String mobileNum = null;
 			String email = null;
+			
 			//답변 방법  1: SMS 3: 이메일 2: 전화상담 (황명하)
 			switch(request.getParameter("answReqnGbcd")) {
 			case "1":
@@ -87,6 +96,7 @@ public class EnrollQuestionAction implements Action{
 			System.out.println("이메일: " + email);
 			
 			String msg = "게시판 작성 프로세싱,,,";
+			//글 등록 로직 수행 시작
 			try {
 				QnaVO qnaVO = new QnaVO();
 				qnaVO.setCategory1(category1);
@@ -95,7 +105,7 @@ public class EnrollQuestionAction implements Action{
 				qnaVO.setContactChannel(contact_channel);
 				qnaVO.setContactAddress(contact_address);
 				
-				// 글 등록 로직 수행 시작
+				// 글 등록 기능  수행
 				QnaDAO qnaDAO = QnaDAO.getInstance();
 				qnaDAO.enrollQna(qnaVO, user_vo.getUser_id());
 				msg = user_vo.getUser_id() + " 님의 게시판 작성 완료!";
@@ -112,7 +122,5 @@ public class EnrollQuestionAction implements Action{
 				System.out.println(msg);
 			}
 	    }
-
 	}
-	
 }

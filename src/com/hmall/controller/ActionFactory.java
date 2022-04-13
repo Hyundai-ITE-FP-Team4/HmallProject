@@ -19,7 +19,7 @@ import com.hmall.controller.action.LogoutAction;
 import com.hmall.controller.action.MyPageAction;
 import com.hmall.controller.action.ProductDetailAction;
 import com.hmall.controller.action.QnaBoradAction;
-import com.hmall.controller.action.QnaPopUp;
+import com.hmall.controller.action.QnaPopUpAction;
 import com.hmall.controller.action.ViewQnaAction;
 
 /*
@@ -88,7 +88,7 @@ public class ActionFactory {
 		}
 		// 1:1상담 등록 페이지
 		else if (command.equals("qna_popup")) {
-			action = new QnaPopUp();
+			action = new QnaPopUpAction();
 		}
 		// 1:1 상담 등록
 		else if (command.equals("enroll_question")) {
