@@ -1,5 +1,4 @@
 package com.hmall.controller.action;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -12,31 +11,29 @@ import com.google.gson.Gson;
 import com.hmall.dao.UserDAO;
 import com.hmall.dto.UserVO;
 
+/*************************************************************
+파일명: JoinAction.java
+기능: 회원가입 폼에서 받은 값으로 회원가입을 수행한다.
+작성자: 김승환
+
+[코멘트: x]
+*************************************************************/
 
 public class JoinAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		UserDAO dao = UserDAO.getInstance();
-		
-		//브라우저 받아오는 데이터 한국어 처리
-		request.setCharacterEncoding("utf-8");
-		//HTML 한국어 처리
-	    response.setContentType("text/html;charset=utf-8");
 	    
-	    response.setContentType("application/json");
-	    
-	
+	    // 요청하여 받은 parameters 들을 가져온다. (회원 정보)
 	    String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		String user_name = request.getParameter("user_name");
 		String phone_number = request.getParameter("phone_number");
 		int birth = Integer.parseInt(request.getParameter("birth"));
 		String address = request.getParameter("address");
-
 		
-
+		// 받은 값들을 userVO 객체에 set
 		UserVO userVO=new UserVO();
 		userVO.setUser_id(user_id);
 		userVO.setUser_pw(user_pw);
@@ -45,24 +42,17 @@ public class JoinAction implements Action {
 		userVO.setBirth(birth);
 		userVO.setAddress(address);
 			
-		//디비 입력
+		//user_info 테이블에 insert
 		dao.insertUser_proc(userVO);
 		
+		// gson 라이브러리. java object -> json object 로 변환
 		Gson gson = new Gson();
         String str = gson.toJson(userVO);
         PrintWriter out = response.getWriter();
         
+        // response
         out.print(str);
         System.out.println(str);
-        
-		//조회
-	    List list = dao.listUser();
-		for (int i = 0; i<list.size(); i++) {
-			userVO = (UserVO)list.get(i);
-			user_id = userVO.getUser_id();
-			
-			System.out.println(user_id);
-		}
 	}
 
 }

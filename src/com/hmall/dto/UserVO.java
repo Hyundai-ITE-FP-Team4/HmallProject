@@ -1,5 +1,13 @@
 package com.hmall.dto;
 
+/*************************************************************
+파일명: UserVO.java
+기능: user 정보 getter, setter
+작성자: 김승환
+
+[코멘트: x]
+*************************************************************/
+
 public class UserVO {
 	private String user_id;
 	private String user_pw;

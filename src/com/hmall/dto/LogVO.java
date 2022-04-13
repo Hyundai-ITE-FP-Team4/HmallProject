@@ -1,6 +1,13 @@
 package com.hmall.dto;
-
 import java.sql.Timestamp;
+
+/*************************************************************
+파일명: LogVO.java
+기능: 로그 정보 getter, setter
+작성자: 김승환
+
+[코멘트: x]
+*************************************************************/
 
 public class LogVO {
 	private int user_no;

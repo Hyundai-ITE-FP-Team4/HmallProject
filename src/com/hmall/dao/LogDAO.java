@@ -1,5 +1,4 @@
 package com.hmall.dao;
-
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,18 +10,24 @@ import com.hmall.dto.LogVO;
 
 import util.DBManager;
 
+/*************************************************************
+파일명: LogDAO.java
+기능: db/테이블 접근 및 기능 수행 -> 로그 저장, 월별 로그인 횟수 조회, 시간별 로그인 횟수 조회
+작성자: 김승환, 박주영
+
+[코멘트: x]
+*************************************************************/
+
 public class LogDAO {
-	private LogDAO() {
-		
-	}
-	
+	// 싱글톤 패턴
+	private LogDAO() {}
 	private static LogDAO instance = new LogDAO();
-	
-	public static LogDAO getInstance() {
+	public static LogDAO getInstance() { // 객체 가져오기
 		return instance;
 	}
 	
-	public void insert(LogVO logVO) {
+	// 로그인한 시간 및 로그인한 아이디 로그를 테이블에 insert
+	public void insertLog(LogVO logVO) {
 		String sql = "{call pkg_user.proc_insertLog(?, ?)}";
 		CallableStatement cstmt = null;
 		Connection conn = null;
@@ -40,7 +45,7 @@ public class LogDAO {
 	}
 	
 	// 월별 로그인횟수 조회
-	public List<LogVO> listLog() {
+	public List<LogVO> listMonthLog() {
 
 		List<LogVO> logList = new ArrayList<LogVO>();
 		String sql = "select * from v_monthLog";

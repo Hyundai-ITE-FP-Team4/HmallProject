@@ -1,5 +1,4 @@
 package com.hmall.dao;
-
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,18 +9,23 @@ import com.hmall.dto.UserVO;
 
 import util.DBManager;
 
+/*************************************************************
+파일명: UserDAO.java
+기능: db/테이블 접근 및 기능 수행 -> 회원가입, 로그인, 회원 정보 조회, 아이디 중복 확인
+작성자: 김승환
+
+[코멘트: x]
+*************************************************************/
+
 public class UserDAO {
-	private UserDAO() {
-
-	}
-
+	// 싱글톤 패턴
+	private UserDAO() {} 
 	private static UserDAO instance = new UserDAO();
-
-	public static UserDAO getInstance() {
+	public static UserDAO getInstance() { // 객체 가져오기
 		return instance;
 	}
 
-	// 회원 가입
+	// 회원가입 (user 정보 테이블에 insert)
 	public void insertUser_proc(UserVO userVO) {
 		String sql = "{call proc_insertUser(?,?,?,?,?,?)}";
 		CallableStatement cstmt = null;
@@ -43,7 +47,7 @@ public class UserDAO {
 		}
 	}
 
-	// 로그인 하기 위해서 아이디 비번이 db에 있는지 확인
+	// 로그인 하기 위해서 아이디 비번이 user 테이블에 있는지 확인
 	public UserVO checkIdPw(String user_id, String user_pw) {
 		UserVO userVO = null;
 		String sql = "select * from table(pkg_user.fn_get_checkidpw(?, ?))";
@@ -74,8 +78,7 @@ public class UserDAO {
 		return userVO;
 	}
 
-
-	// 조회
+	// user 정보 테이블 모두 조회
 	public List<UserVO> listUser() {
 
 		List<UserVO> userList = new ArrayList<UserVO>();
@@ -105,7 +108,7 @@ public class UserDAO {
 		return userList;
 	}
 	
-	// 아이디 조회 (아이디 중복확인 용도)
+		// 아이디 중복확인
 		public int checkId(String user_id) {
 			String sql = "select pkg_user.fn_checkId(?) as cnt from dual";
 			Connection conn = null;
