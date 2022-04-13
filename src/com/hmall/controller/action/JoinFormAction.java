@@ -17,7 +17,4 @@ public class JoinFormAction implements Action{
 		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
 		dispatcher.forward(req, res);
 	}
-	
-	
-
 }

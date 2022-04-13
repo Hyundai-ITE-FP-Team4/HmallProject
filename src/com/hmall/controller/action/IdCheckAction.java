@@ -28,7 +28,7 @@ public class IdCheckAction implements Action {
 		String user_id = request.getParameter("user_id");
 		
 		UserVO user = new UserVO();
-        user.setCnt(dao.getId(user_id));
+        user.setCnt(dao.checkId(user_id));
 
         Gson gson = new Gson();
         String str = gson.toJson(user);

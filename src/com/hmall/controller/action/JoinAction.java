@@ -31,12 +31,10 @@ public class JoinAction implements Action {
 	    String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		String user_name = request.getParameter("user_name");
-		// String email = request.getParameter("email"); //삭제 (아이디, 이메일 통합)
 		String phone_number = request.getParameter("phone_number");
 		int birth = Integer.parseInt(request.getParameter("birth"));
 		String address = request.getParameter("address");
-		int user_point = Integer.parseInt(request.getParameter("user_point"));
-		String grade = request.getParameter("grade");
+
 		
 
 		UserVO userVO=new UserVO();
@@ -46,8 +44,6 @@ public class JoinAction implements Action {
 		userVO.setPhone_number(phone_number);
 		userVO.setBirth(birth);
 		userVO.setAddress(address);
-		userVO.setUser_point(user_point);
-		userVO.setGrade(grade);
 			
 		//디비 입력
 		dao.insertUser_proc(userVO);

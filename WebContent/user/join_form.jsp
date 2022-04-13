@@ -29,7 +29,7 @@
 						data : formData,
 						async: false,
 						success:function(){
-							location.href = "/HmallProject/index.jsp";
+							location.href = "/HmallProject/index.html";
 						},
 						error : function(data, textStatus){
 							console.log('error');
@@ -120,14 +120,14 @@
 				});
 				
 				//생일 입력 오류 체크
-				$('#birthday').on('blur', function(){
-					if(!this.value){
-						$('#alertBirthday').css('display', 'block');
-					}
-					else{
-						$('#alertBirthday').css('display', 'none');
-					}
-				});
+// 				$('#birthday').on('blur', function(){
+// 					if(!this.value){
+// 						$('#alertBirthday').css('display', 'block');
+// 					}
+// 					else{
+// 						$('#alertBirthday').css('display', 'none');
+// 					}
+// 				});
 				
 				//아이디 중복 확인하기
 				$('#id_check').on('click', function(){
@@ -265,8 +265,6 @@
                         
                         <!-- 히든 입력 -->
                         <input type="hidden" name = "address" value = "test">
-                        <input type="hidden" name = "user_point" value = "500">
-                        <input type="hidden" name = "grade" value = "test">
 					</form>
 
 				</div>

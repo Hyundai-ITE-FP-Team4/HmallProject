@@ -1,5 +1,6 @@
 package com.hmall.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,20 +23,19 @@ public class LogDAO {
 	}
 	
 	public void insert(LogVO logVO) {
-		String sql = "insert into kimsh.log_info(user_no, login_date, user_id) "
-				+ "values(log_info_seq.nextval,?, ?) ";
+		String sql = "{call pkg_user.proc_insertLog(?, ?)}";
+		CallableStatement cstmt = null;
 		Connection conn = null;
-		PreparedStatement pstmt = null;
 		try {
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setTimestamp(1, logVO.getLogin_date());
-			pstmt.setString(2, logVO.getUser_id());
-			pstmt.executeUpdate();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setTimestamp(1, logVO.getLogin_date());
+			cstmt.setString(2, logVO.getUser_id());
+			cstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, cstmt);
 		}
 	}
 	
@@ -43,7 +43,7 @@ public class LogDAO {
 	public List<LogVO> listLog() {
 
 		List<LogVO> logList = new ArrayList<LogVO>();
-		String sql = "SELECT COUNT(*) as cnt, EXTRACT(MONTH FROM CAST(login_date AS TIMESTAMP)) AS MONTH FROM kimsh.LOG_INFO GROUP BY EXTRACT(MONTH FROM CAST(login_date AS TIMESTAMP)) ORDER BY MONTH";
+		String sql = "select * from v_monthLog";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -69,7 +69,7 @@ public class LogDAO {
 	public List<LogVO> listHourLog() {
 
 		List<LogVO> logList = new ArrayList<LogVO>();
-		String sql = "SELECT count(*) as cnt, to_char(login_date, 'HH24') as hour FROM log_t WHERE to_char(login_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD') GROUP BY to_char(login_date, 'HH24') ORDER BY to_char(login_date, 'HH24')";
+		String sql = "select * from v_hourLog";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

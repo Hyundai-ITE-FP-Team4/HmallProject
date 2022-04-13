@@ -7,9 +7,7 @@ public class UserVO {
 	private String phone_number;
 	private int birth;
 	private String address;
-	private int user_point;
-	private String grade;
-	private String cnt;
+	private int cnt;
 	
 	public String getUser_id() {
 		return user_id;
@@ -47,24 +45,11 @@ public class UserVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getUser_point() {
-		return user_point;
-	}
-	public void setUser_point(int user_point) {
-		this.user_point = user_point;
-	}
-	public String getGrade() {
-		return grade;
-	}
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
-	public String getCnt() {
+	public int getCnt() {
 		return cnt;
 	}
-	public void setCnt(String cnt) {
+	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	
 	
 }
