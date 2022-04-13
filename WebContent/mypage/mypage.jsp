@@ -3022,10 +3022,10 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 						<div class="myinfo-area silver-lv">
 							<div>
 								<p class="myname">
-									<a href="/p/mpd/changeMemberInfoForm.do" class="btn-link"><em>${user_vo.user_name}님</em></a>
+									<a href="/p/mpd/changeMemberInfoForm.do" class="btn-link"><em>${membershipVO.user_name}님</em></a>
 								</p>
 								<div class="rating">
-									<span class="silver-lv"><i class="icon"></i><em>${user_vo.grade}</em></span>
+									<span class="silver-lv"><i class="icon"></i><em>${membershipVO.grade}</em></span>
 									<div class="btngroup">
 										<a href="https://www.hmall.com/pevent/eva/evntFamilyZoneMain.do"
 											class="btn btn-benefit sm"><span>혜택보기</span></a>
@@ -3038,7 +3038,7 @@ function gaTagging(obj_GA, msg1, msg2, msg3){
 										class="link"><b>0</b>장</span> <span class="txt">보유 쿠폰</span>
 								</a></li>
 								<li><a href="javascript://" onclick="doSearchUPntMainPop()">
-										<span class="link"> <b>${user_vo.user_point}</b>P
+										<span class="link"> <b>${membershipVO.user_point}</b>P
 									</span> <span class="txt">포인트</span>
 								</a></li>
 								<li><a

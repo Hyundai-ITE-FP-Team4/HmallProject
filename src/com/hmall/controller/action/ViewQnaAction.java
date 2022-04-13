@@ -19,12 +19,15 @@ public class ViewQnaAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//게시글 상세정보 URL
 		String url = "mypage/qna/qnaDetail.jsp";
 		
+		// 세션에 저장된 유저 정보 받아오기
 		HttpSession session = request.getSession();
 	    UserVO user_vo = (UserVO) session.getAttribute("user_vo");
-	    //System.out.println(user_vo.getUser_id());
 	    
+	    //유저 정보가 없으면 접근 못하도록 설정
 	    if (user_vo == null) {
 	    	response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -34,7 +37,7 @@ public class ViewQnaAction implements Action {
 	    
 	    else {
 	    	int board_num =  Integer.parseInt(request.getParameter("board_num"));
-			
+	    	// 해당 글 가져오는 수행 시작
 			QnaDAO qnaDAO = QnaDAO.getInstance();
 			QnaVO qnaVO = qnaDAO.getQna(board_num);
 

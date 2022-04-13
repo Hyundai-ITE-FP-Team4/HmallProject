@@ -16,16 +16,18 @@ public class QnaPopUp implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//1:1��� URL
+		//1:1게시판 팝업  URL
 		String url = "/mypage/qna/qnapopup.jsp";
 		
+		// 세션에 저장된 유저 정보 받아오기
 		HttpSession session = request.getSession();
 	    UserVO user_vo = (UserVO) session.getAttribute("user_vo");
+	    
+	  //유저 정보가 없으면 접근 못하도록 설정
 	    if (user_vo == null) {
 	    	response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 	    	out.println("<script>alert('로그인 후 이용해주세요.'); location.href = 'HmallServlet?command=index'; </script>");
-	        //url = "user/login_popup.jsp";
 	        
 	      } 
 	    else {

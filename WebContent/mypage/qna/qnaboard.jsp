@@ -3612,10 +3612,10 @@ function fn_upntPopupClose(){
 									    UserVO user_vo = (UserVO) user_session.getAttribute("user_vo");
 									    
 										QnaDAO qnaDAO = QnaDAO.getInstance();
+										//해당유저의 게시판 글 목록을 가져오는 로직 수행 시작(황명하)
 										ArrayList<QnaVO> data1 = qnaDAO.listAllQna(user_vo.getUser_id());
 										request.setAttribute("data",data1);
 										%>
-										
 										
 										<c:choose>
 												<c:when test= "${data.size() == 0}">

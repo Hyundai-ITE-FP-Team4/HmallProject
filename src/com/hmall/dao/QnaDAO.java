@@ -16,12 +16,13 @@ public class QnaDAO {
 	private QnaDAO() {  } //싱글톤 패턴
 	private static  QnaDAO instance = new QnaDAO();
 	
+	
 	public static QnaDAO getInstance() {
 	return instance;
 	}
 	
 	
-	// 유저 별 등록한 게시판 전체 조회 구현 필요(황명하)
+	// 유저 별 등록한 게시판 전체 조회 구현 (황명하)
 	public ArrayList<QnaVO> listAllQna(String user_id) {
 		ArrayList<QnaVO> qnaList = new ArrayList<QnaVO>();
 
@@ -36,7 +37,8 @@ public class QnaDAO {
 			pstmt = conn.prepareStatement(sql);
 			//pstmt.setString(1, user_id);
 			rs = pstmt.executeQuery();
-
+			
+			//쿼리 실행문으로 받아온 로우에 대한 리스트 생성
 			while (rs.next()) {
 				QnaVO qnaVO = new QnaVO();
 				qnaVO.setBoardNo(rs.getInt("board_no"));
@@ -53,9 +55,9 @@ public class QnaDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} /*
-			 * finally { DBManager.close(conn, pstmt, rs); }
-			 */
+		} finally { DBManager.close(conn, pstmt, rs); 
+		}
+
 		return qnaList;
 	}
 	
@@ -73,7 +75,8 @@ public class QnaDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, board_no);
 			rs = pstmt.executeQuery();
-
+			
+			//받아온 게시글에 대한 정보 삽입
 			if (rs.next()) {
 				qna = new QnaVO();
 				qna.setBoardNo(rs.getInt("board_no"));
@@ -94,7 +97,6 @@ public class QnaDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
-
 		return qna;
 	}
 	
@@ -102,10 +104,11 @@ public class QnaDAO {
 	public void enrollQna(QnaVO qnaVO, String session_id) {
 		Connection conn = null;
 		CallableStatement cstmt = null;
-		
+
 		try {
 			conn = DBManager.getConnection();
-            cstmt = conn.prepareCall("{call proc_enrollQuestion(?,?,?,?,?,?,?,?)}");
+			//게시글 등록하는 프로시저 실행 쿼리문 작성
+			cstmt = conn.prepareCall("{call proc_enrollQuestion(?,?,?,?,?,?,?,?)}");
             cstmt.setInt(1, qnaVO.getProductCode());
             cstmt.setString(2, session_id);
             cstmt.setString(3, qnaVO.getCategory1());
@@ -129,21 +132,18 @@ public class QnaDAO {
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "delete from qna_t where board_no = ? and  user_id = ?";
 		try {
-			
+			//원하는 게시글에 대한 삭제 쿼리문 작성
+			String sql = "delete from qna_t where board_no = ? and  user_id = ?";
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, board_num);
             pstmt.setString(2, user_id);
             pstmt.execute();
-            
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			DBManager.close(conn, pstmt);
 		}
 	}
-		
-	
 }
