@@ -42,8 +42,8 @@
 	$(function(){
 		var data = getCookie("user_id");
 		if (data != null){
-			$('#user_id').val(data);
-			$('#checkbox').prop('checked', true);
+			$('#user_id').val("");
+			$('#checkbox').prop('checked', false);
 		}
 	});
 	function go_login(){
@@ -60,7 +60,7 @@
 					console.log(res);
 					if(res!= null) {
 						if(res.user_id == 'admin'){
-							window.opener.document.location.href = '/HmallProject/admin/admin_manage.jsp';
+							window.opener.document.location.href = '/HmallProject/admin_manage.jsp';
 							self.close();
 						}
 						else{

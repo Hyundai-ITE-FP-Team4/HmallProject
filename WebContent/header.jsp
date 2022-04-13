@@ -43,7 +43,7 @@
 						console.log(res);
 						if(res.session_check == 'delete') {
 							alert("로그아웃 되었습니다.");
-							location.reload();
+							location.href = "";
 						}else {
 							
 						}
