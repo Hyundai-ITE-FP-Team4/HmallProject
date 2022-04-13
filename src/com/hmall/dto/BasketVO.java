@@ -2,6 +2,13 @@ package com.hmall.dto;
 
 import java.sql.Timestamp;
 
+/*************************************************************
+파일명: BasketVO.java
+기능: 장바구니 객체 getter, setter
+작성자: 박주영
+
+[코멘트: x]
+*************************************************************/
 public class BasketVO {
 	private int sbNo;
 	private String userId;

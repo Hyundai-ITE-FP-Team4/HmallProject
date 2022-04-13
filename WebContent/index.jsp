@@ -6314,19 +6314,7 @@ function onAirTimer2SkySc(){
 		                </li>
 		            
 	            </ul>
-	            <!-- 페이징 -->
-	            
-		            <div class="pagination">
-		                <button class="btn btn-prev"><span>이전</span></button>
-		                <span class="numbering"><strong class="current">1</strong> / <em class="total">2</em></span>
-		                <button class="btn btn-next"><span>다음</span></button>
-		            </div>
-	            
-	            
-            
-            
-            
-                <!-- // 페이징 -->
+
     </div>
         <!-- // .wing-slide -->
     

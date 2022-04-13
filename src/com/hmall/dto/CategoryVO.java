@@ -1,5 +1,12 @@
 package com.hmall.dto;
 
+/*************************************************************
+파일명: CategoryVO.java
+기능: 카테고리 객체 getter, setter
+작성자: 박주영
+
+[코멘트: x]
+*************************************************************/
 public class CategoryVO {
 	
 	private String categoryCode;

@@ -2,6 +2,13 @@ package com.hmall.dto;
 
 import java.util.ArrayList;
 
+/*************************************************************
+파일명: ProductImageVO.java
+기능: 상품 상세이미지 객체 getter, setter
+작성자: 박주영
+
+[코멘트: x]
+*************************************************************/
 public class ProductImageVO {
 	
 	private int imgNo;

@@ -24,15 +24,16 @@ public class GchartAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// LogDAO 생성 (싱글톤)
 		LogDAO log_dao = LogDAO.getInstance();
 		
 		// 월별 로그인 횟수가 담긴 객체 리스트 (김승환)
 		List<LogVO> monthLogList = log_dao.listMonthLog();
 		
-		
+		// 시간별 로그인 횟수가 담긴 객체 리스트 (박주영)
 		List<LogVO> hourLogList = log_dao.listHourLog();
 		
-		
+		// 모든 데이터가 담긴 리스트 생성
 		List<LogVO> list = new ArrayList<LogVO>();
 		for(LogVO data : monthLogList) {
 			list.add(data);

@@ -1,661 +1,78 @@
+<%-- 
+	파일명: categoryTop.jsp
+	기능: 카테고리 중분류별 페이지
+	작성자: 박주영
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
-
 <head>
-<title>${ categoryVO.categoryName } - 현대Hmall</title>
-
-
-
-
-
-
-
-
-
-<meta name="title" content="${ categoryVO.categoryName } - 현대Hmall">
-
-
-
-<meta name="description" content="Hmall > ${ categoryVO.categoryName }">
-<meta name="keywords" content="Hmall > ${ categoryVO.categoryName }">
-
-
-
-
-
-<!-- script -->
-
-
-
-
-
-
-<script src="https://www.googleoptimize.com/optimize.js?id=OPT-NBGRL7P"></script>
-
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
-<meta name="HandheldFriendly" content="true">
-<meta name="format-detection"
-	content="telephone=no, email=no, address=no">
-<meta name="apple-mobile-web-app-capable" content=" yes">
-<meta name="robots" content="index,follow">
-<meta name="author" content="@Hmall">
-<meta http-equiv="imagetoolbar" content="no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-
-
-
-
-
-
-
-
-<script type="application/ld+json">
-{
-"@context": "http://schema.org",
-"@type": "Organization",
-"name": "hmall",
-"url": "https://www.hmall.com",
-"sameAs": [
-"https://www.facebook.com/hyundaiHmall",
-"https://www.youtube.com/c/%ED%9B%85%ED%8B%B0%EB%B9%84",
-"https://www.instagram.com/hyundai.homeshopping/",
-"https://itunes.apple.com/kr/app/id870397981",
-"https://play.google.com/store/apps/details?id=com.hmallapp&hl=ko",
-"http://myhmall.tistory.com"
-]
-}
-</script>
-
-<link rel="shortcut icon" href="https://www.hmall.com/favicon.ico" />
-<!-- UI/UX Style -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/common.css">
-<!-- 공통 css -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/layout.css">
-<!-- 공통 Layout css -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/popup.css">
-<!-- 공통 Popup css -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/co/jquery-ui.css">
-<!-- jQuery UI css -->
-<style>
-.hidden {
-	display: none !important;
-}
-</style>
-<script src="//image.hmall.com/p/js/co/jquery-3.4.1.min.js"></script>
-<!-- jQuery Plugin -->
-<script src="//image.hmall.com/p/js/co/jquery.easing.min.js"></script>
-<!-- jQuery UI Effect -->
-<script src="//image.hmall.com/p/js/co/jquery-ui.1.12.1.min.js"></script>
-<!-- jQuery UI js -->
-<script src="//image.hmall.com/p/js/co/ukDetect.min.js"></script>
-<!-- UI에 사용하는 Detect -->
-<script src="//image.hmall.com/p/js/co/slick.min.js"></script>
-<!-- 공통 Slide 플러그인 -->
-<script src="//image.hmall.com/p/js/co/common.js"></script>
-<!-- UI에 사용하는 기본 js  -->
-<script src="//image.hmall.com/p/js/co/co.js"></script>
-<!-- UI에 사용하는 기본 js  -->
-<script src="//image.hmall.com/p/js/co/jquery.cookie.js"></script>
-<script src="//image.hmall.com/p/js/co/commonFunction.js"></script>
-<!-- as-is common.js 상속  -->
-<script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script>
-<!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
-
-<!-- Google analytics -->
-<script type="text/javascript"
-	src="//image.hmall.com/p/js/co/GoogleAnalyticsBuilder.js?ver=040516"></script>
-<script type="text/javascript"
-	src="//image.hmall.com/p/js/co/ScreenNameObj.js?ver=040516"></script>
-
-
-
-<script type="text/javascript">
-	var oneClickFlag = 0;
-	function setDimension() {
-
-		if (oneClickFlag != 0) {
-			return false;
-		}
-
-		oneClickFlag = 1;
-
-		if (location.pathname.indexOf("/p/cob/memberLogin.do") > -1) {
-			return;
-		}
-		var GA_info = {};
-
-		GA_info = setDimenData(GA_info);
-
-		GA_Init(GA_info);
-
-		if (location.pathname.replace("//", "/") == '/m/pda/smItemDetailR.do'
-				|| location.pathname.replace("//", "/") == '/p/pda/itemPtc.do'
-				&& pdaItemPtcCnt == 0) {
-			pdaItemPtcCnt = 1;
-			var product_array = [];
-			product_array.push({
-				'id' : '',
-				'name' : '',
-				'brand' : '',
-				'category' : '',
-				'dimension51' : 'default',
-				'dimension52' : '',
-				'dimension53' : '',
-				'dimension54' : '',
-				'dimension55' : '',
-				'dimension56' : '',
-				'dimension57' : '',
-				'dimension58' : '',
-				'dimension59' : '',
-				'dimension60' : '',
-
-				'dimension62' : '',
-				'dimension63' : '',
-				'dimension64' : ''
-			});
-
-			var ecommerce_hit = new Object();
-			ecommerce_hit[GAHitKey.NonInteraction] = '1';
-			var action_obj = new Object();
-
-			GADataSend_Ecommerce(GAEcommerceStepKey.Detail, action_obj,
-					product_array, ecommerce_hit);
-
-		} else if (location.pathname == '/p/oda/orderComplete.do'
-				&& ordCompleteCnt == 0) {
-			ordCompleteCnt = 1;
-			var product_array = [];
-
-			var ecommerce_hit = new Object();
-			ecommerce_hit[GAHitKey.NonInteraction] = '1';
-			ecommerce_hit[GAHitKey.currencyCode] = 'KRW';
-
-			ecommerce_hit[GACustomKey.Metric1] = 0;
-
-			ecommerce_hit[GACustomKey.Metric2] = 0;
-
-			ecommerce_hit['dimension74'] = '';
-			ecommerce_hit['dimension75'] = '';
-
-			var action_obj = new Object();
-			action_obj[GAActionFieldKey.TransactionID] = '';
-			action_obj[GAActionFieldKey.TransactionRevenue] = '0';
-			action_obj[GAActionFieldKey.TransactionShipping] = '0';
-
-			action_obj[GAActionFieldKey.TransactionCouponCode] = '';
-
-			GADataSend_Ecommerce(GAEcommerceStepKey.Purchase, action_obj,
-					product_array, ecommerce_hit);
-			oneClickFlag = 0;
-		}
+	<title>${ categoryVO.categoryName } - 현대Hmall</title>
+	
+	<!-- script -->
+	
+	<script src="https://www.googleoptimize.com/optimize.js?id=OPT-NBGRL7P"></script>
+	
+	<link rel="shortcut icon" href="https://www.hmall.com/favicon.ico" />
+	<!-- UI/UX Style -->
+	<link rel="stylesheet" type="text/css"
+		href="//image.hmall.com/p/css/co/common.css">
+	<!-- 공통 css -->
+	<link rel="stylesheet" type="text/css"
+		href="//image.hmall.com/p/css/co/layout.css">
+	<!-- 공통 Layout css -->
+	<link rel="stylesheet" type="text/css"
+		href="//image.hmall.com/p/css/co/popup.css">
+	<!-- 공통 Popup css -->
+	<link rel="stylesheet" type="text/css"
+		href="//image.hmall.com/p/css/co/jquery-ui.css">
+	<!-- jQuery UI css -->
+	<style>
+	.hidden {
+		display: none !important;
 	}
-
-	function setDimenData(GA_info) {
-		var _ga = getCookieGA('_ga');
-		if (_ga != null) {
-			GA_info[GACustomKey.Dimension1] = _ga;
-		}
-
-		var uid = "";
-		if (getCookieGA('ENCEHCustNO') != null
-				&& getCookieGA('ENCEHCustNO') != "") {
-			uid = getCookieGA('ENCEHCustNO');
-		}
-
-		if (uid == "" || uid.length != 32) {
-
-		} else {
-			GA_info[GACustomKey.Dimension2] = uid;
-			GA_info[GAHitKey.UserId] = uid;
-
-			$.ajax({
-				type : "post",
-				url : "/p/GA_getDimension.do",
-				data : "",
-				dataType : "json",
-				async : true,
-				success : function(data) {
-					console.log("ajax Return");
-				}
-			});
-
-		}
-
-		var _gaid = getCookieGA('GAID');
-		if (_gaid != null) {
-			GA_info[GACustomKey.Dimension11] = _gaid;
-		}
-
-		GA_info[GACustomKey.Dimension12] = "N";
-
-		if (location.pathname == '/p/pde/search.do') {
-
-			GA_info[GACustomKey.Dimension19] = "N";
-
-		}
-
-		GA_info[GACustomKey.Dimension16] = "PCWEB";
-
-		GA_info[GACustomKey.Dimension35] = location.href.replace("http://", "")
-				.replace("https://", "");
-
-		return GA_info;
-	}
-
-	function setGaDataSend_Event(evntType, product_array) {
-		/* var product_array = [];
-		if(product_array_param != null && product_array_param != undefined){
-			product_array = product_array_param;
-		} */
-		var ecommerce_hit = new Object();
-		var action_obj = new Object();
-
-		if (location.pathname == '/m/pda/smItemDetailR.do'
-				|| location.pathname == '/p/pda/itemPtc.do') {
-
-			if (evntType == GAEcommerceStepKey.Checkout) {
-				action_obj[GAActionFieldKey.CheckoutStep] = '1';
-				GADataSend_Ecommerce(evntType, action_obj, product_array,
-						ecommerce_hit);
-			} else {
-				ecommerce_hit[GAHitKey.NonInteraction] = '1';
-				GADataSend_Ecommerce(evntType, action_obj, product_array,
-						ecommerce_hit);
-			}
-
-		} else if (location.pathname == '/p/oda/order.do') {
-
-			try {
-				var itemGbcd = ""; // 무형상품체크, 유/무형 상품 같이 구매 불가하므로..
-
-			} catch (e) {
-
-			}
-
-			if (evntType == GAEcommerceStepKey.Checkout) {
-				var ecommerce_hit = new Object();
-				var action_obj = new Object();
-				action_obj[GAActionFieldKey.CheckoutStep] = '2';
-
-				var selOrderType = $("input[name='payType']:checked").val();
-
-				if (selOrderType == '10') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '01 카드';
-					ecommerce_hit['dimension75'] = '01 카드';
-				} else if (selOrderType == '20') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '02 현금';
-					ecommerce_hit['dimension75'] = '02 현금';
-				} else if (selOrderType == '40') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '12 휴대폰결제';
-					ecommerce_hit['dimension75'] = '12 휴대폰결제';
-				} else if (selOrderType == '91') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '15 페이코';
-					ecommerce_hit['dimension75'] = '15 페이코';
-				} else if (selOrderType == '30') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '20 현금(실시간)';
-					ecommerce_hit['dimension75'] = '20 현금(실시간)';
-				} else if (selOrderType == '95') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '21 네이버페이';
-					ecommerce_hit['dimension75'] = '21 네이버페이';
-				} else if (selOrderType == '96') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '22 스마일페이';
-					ecommerce_hit['dimension75'] = '22 스마일페이';
-				} else if (selOrderType == '97') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '23 카카오페이';
-					ecommerce_hit['dimension75'] = '23 카카오페이';
-				} else if (selOrderType == '81') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '25 토스';
-					ecommerce_hit['dimension75'] = '25 토스';
-				} else if (selOrderType == '99') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '24 현금간편결제';
-					ecommerce_hit['dimension75'] = '24 현금간편결제';
-				} else if (selOrderType == '50') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '98 카드+현금';
-					ecommerce_hit['dimension75'] = '98 카드+현금';
-				} else if (selOrderType == '93') {
-					action_obj[GAActionFieldKey.CheckoutOptions] = '99 삼성페이';
-					ecommerce_hit['dimension75'] = '99 삼성페이';
-				} else {
-					action_obj[GAActionFieldKey.CheckoutOptions] = 'default';
-					ecommerce_hit['dimension75'] = 'default';
-				}
-
-				// 무형상품이면 고정 - 이호정선임요청 2021.01.28 김기호
-				if (itemGbcd == "04") {
-					console.log("무형상품이므로 Dimension75:무형상품");
-					action_obj[GAActionFieldKey.CheckoutOptions] = '무형상품';
-					ecommerce_hit[GACustomKey.Dimension75] = '무형상품';
-				} else {
-
-					ecommerce_hit[GACustomKey.Dimension74] = '일반구매';
-
-				}
-				GADataSend_Ecommerce(evntType, action_obj, product_array,
-						ecommerce_hit);
-			}
-		} else {
-			GADataSend_Ecommerce(evntType, action_obj, product_array,
-					ecommerce_hit);
-		}
-
-	}
-
-	function sendSlitmClick(slitmNm, slitmCd, tabNm) {
-
-		if (slitmNm == "" || slitmCd == "" || tabNm == "")
-			return;
-
-		var product_array = [];
-		product_array.push({
-			'id' : slitmCd,
-			'name' : slitmNm
-		});
-
-		var action_obj = new Object();
-		action_obj[GAActionFieldKey.ProductActionList] = tabNm;
-
-		var ecommerce_hit = new Object();
-		GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj,
-				product_array, ecommerce_hit);
-	}
-
-	function getParameterByName(url, name) {
-		if (url == "" || name == "" || url == undefined || name == undefined) {
-			return;
-		}
-
-		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex
-				.exec(url);
-		return results === null ? "" : decodeURIComponent(results[1].replace(
-				/\+/g, " "));
-	}
-
-	function setGaPromotion(title, name, position, creative, id) {
-		var action_obj = new Object();
-		var ecommerce_hit = new Object();
-		var tabNm = title;
-		if (tabNm.length > 0) {
-			tabNm = tabNm.substring(tabNm.indexOf(">") + 1, tabNm.length);
-		}
-
-		ecommerce_hit[GAHitKey.Title] = title;
-
-		action_obj["promo1"] = {};
-		action_obj["promo1"][GAActionFieldKey.PromotionName] = name;
-		action_obj["promo1"][GAActionFieldKey.PromotionPosition] = position;
-		action_obj["promo1"][GAActionFieldKey.PromotionCreative] = creative;
-		action_obj["promo1"][GAActionFieldKey.PromotionID] = id;
-
-		if (name.substring(0, name.indexOf("_")) == "메인") {
-			console.log("setGaPromotion()................4");
-			ecommerce_hit[GACustomKey.Dimension31] = '메인';
-			ecommerce_hit[GACustomKey.Dimension32] = '메인>' + tabNm;
-			ecommerce_hit[GACustomKey.Dimension33] = '메인>' + tabNm;
-			ecommerce_hit[GACustomKey.Dimension34] = '메인>' + tabNm;
-		}
-
-		GADataSend_Ecommerce(GAEcommerceStepKey.PromotionClick, action_obj,
-				null, ecommerce_hit);
-	}
-
-	function getCookieGA(name) {
-		var cname = name + "=";
-		var dc = document.cookie;
-		if (dc.length > 0) {
-			begin = dc.indexOf(cname);
-			if (begin != -1) {
-				begin += cname.length;
-				end = dc.indexOf(";", begin);
-				if (end == -1)
-					end = dc.length;
-				if ("EHCustName" == name || "LAST_SECT" == name) {
-					return decodeURIComponent(dc.substring(begin, end));
-				} else {
-					return unescape(dc.substring(begin, end)).replace('GA1.2.',
-							'');
-				}
-			}
-		}
-		return null;
-	}
-
-	function sendSlitmClickGo(slitmNm, slitmCd, tabNm, url) {
-
-		if (slitmNm == "" || slitmCd == "" || tabNm == "" || url == "")
-			return;
-
-		var product_array = [];
-		product_array.push({
-			'id' : slitmCd,
-			'name' : slitmNm
-		});
-
-		var action_obj = new Object();
-		action_obj[GAActionFieldKey.ProductActionList] = tabNm;
-
-		var ecommerce_hit = new Object();
-		GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj,
-				product_array, ecommerce_hit);
-
-		document.location.href = url;
-	}
-	function sendSlitmClickNewWin(slitmNm, slitmCd, tabNm, url) {
-
-		if (slitmNm == "" || slitmCd == "" || tabNm == "" || url == "")
-			return;
-
-		var product_array = [];
-		product_array.push({
-			'id' : slitmCd,
-			'name' : slitmNm
-		});
-
-		var action_obj = new Object();
-		action_obj[GAActionFieldKey.ProductActionList] = tabNm;
-
-		var ecommerce_hit = new Object();
-		GADataSend_Ecommerce(GAEcommerceStepKey.Click, action_obj,
-				product_array, ecommerce_hit);
-
-		try {
-			_trk_flashEnvView('_TRK_PI=LYRNWN');
-		} catch (e) {
-		}
-
-		try {
-			_trk_clickTrace("EVT", "상품리스트_새창");
-		} catch (e) {
-		}
-		window.open(url, '_blank');
-	}
-
-	function bizSpringTagForHome(url, tag, pathVal) {
-
-		location.href = url
-	}
-
-	function gaTagging(obj_GA, msg1, msg2, msg3) {
-		console.log("gaTagging()................");
-		var title = $(obj_GA).attr("ga-custom-title") == undefined ? "" : $(
-				obj_GA).attr("ga-custom-title");
-		var name = $(obj_GA).attr("ga-custom-name") == undefined ? "" : $(
-				obj_GA).attr("ga-custom-name");
-		var position = $(obj_GA).attr("ga-custom-position") == undefined ? ""
-				: $(obj_GA).attr("ga-custom-position");
-		var creative = $(obj_GA).attr("ga-custom-creative") == undefined ? ""
-				: $(obj_GA).attr("ga-custom-creative");
-		var id = $(obj_GA).attr("ga-custom-id") == undefined ? "" : $(obj_GA)
-				.attr("ga-custom-id");
-		var etc = $(obj_GA).attr("ga-custom-etc") == undefined ? "" : $(obj_GA)
-				.attr("ga-custom-etc");
-		var etc2 = $(obj_GA).attr("ga-custom-etc2") == undefined ? "" : $(
-				obj_GA).attr("ga-custom-etc2");
-
-		setGaPromotion(title, name, position, creative, id);
-		//마케팅플랫폼 전용 >>> 마케팅 플랫폼은 Tab명이 다르기 때문에 if문 처리
-		/*
-		if(gaForTabNm != "" && gaForTabNm != null && gaForTabNm != undefined && etc2 == "Y"){
-		    title = "메인>"+gaForTabNm;
-		    name = "메인_"+gaForTabNm+"탭";
-		}
-		
-		if(etc2 == "N"){//마케팅플랫폼 전용 >>> 마케팅플랫폼 jsp가 기획전에도 쓰이기 때문에 if문 처리.(mainTabYn)
-		    //추후 이곳에 마케팅플랫폼 기획전일 경우 분기분 넣는다...
-		    
-		}else{
-		    console.log("setGaPromotion()................1");
-		    setGaPromotion(title, name, position, creative, id);    
-		}
-		 */
-
-		if (etc == "home") {
-			bizSpringTagForHome(msg1, msg2, msg3);
-		} else {
-			if (msg1 != null && msg1 != "" && msg1.length > 0) {
-				location.href = msg1;
-			}
-		}
-	}
-</script>
-<!-- GA Custum lib -->
-<script async
-	src="https://www.googletagmanager.com/gtag/js?id=AW-1066206974"></script>
-<!-- Google analytics end -->
-
-<script>
-	$.fn.size = function() {
-		return this.length;
-	}
-
-	/**
-	 * 팝업 관련  함수(아래 링크를 참고하고 있음)
-	 * as-is https://image.hmall.com/pc/js/hmall/co/common.js
-	 * serverHost indexof local이 없어 추가-> 추후 as-is js 생성 필요
-	 * 2020.09.21 http -> https 로 던지도록 변경
-	 */
-	document.domain = "hmall.com";
-	var locationHref = document.location.href;
-	var imageServer = "https://image.hmall.com";
-	var serverHost = (location.href.indexOf("final") > 0
-			|| location.href.indexOf("stg") > 0
-			|| location.href.indexOf("dev") > 0 || location.href
-			.indexOf("local") > 0) ? "https://" + location.host
-			: "https://www.hmall.com";
-	var serverHostForSSL = (location.href.indexOf("final") > 0
-			|| location.href.indexOf("stg") > 0
-			|| location.href.indexOf("dev") > 0 || location.href
-			.indexOf("local") > 0) ? "https://" + location.host
-			: "https://www.hmall.com";
-	var switch_serverHost;
-
-	if (locationHref.indexOf("https") > -1) {
-		switch_serverHost = serverHostForSSL;
-		imageServer = "https://image.hmall.com";
-	} else if (locationHref.indexOf("http") > -1) {
-		switch_serverHost = serverHost;
-		imageServer = "https://image.hmall.com";
-	}
-
-	try {
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'AW-1066206974');
-		gtag('config', 'AW-937000404');
-	} catch (e) {
-	}
-
-	//Google Analytics
-	var init_Obj = new Object();
-
-	$(window).on("load", function() {
-		// $("body").prepend('hello new UI');
-
-		//GA 맞춤측정 데이터 전송 및 클릭이벤트 초기화
-		console.log("setDimension and useWindload 호출");
-		setDimension();
-		useWinload();
-
-	});
-
-	// GNB - 바로가기 링크
-	function setQuicklink(jsonData) {
-		var _data = jsonData;
-		var _html = "";
-
-		$(_data)
-				.each(
-						function(_idx) {
-							var _label = this.dispNm.toString();
-							var _dispUrl = this.dispUrl.toString();
-							var _item = "";
-
-							if (_idx == 0)
-								_item = "<li class='first'>";
-							else
-								_item = "<li>";
-
-							var _bizParam = _dispUrl.indexOf("?") >= 0 ? "&_IC_=tab"
-									+ (_idx + 1)
-									: "?_IC_=tab" + (_idx + 1);
-
-							_item += "<a href='" + _dispUrl + _bizParam + "' class='gp_className' ga-category='메인 홈' ga-action='상단탭' ga-label='" + _label + "'>"
-									+ _label + "</a>" + "</li>";
-
-							_html += _item;
-						});
-
-		$('.quicklink.ql-left').empty().append(_html);
-	}
-	/*    
-	 function gaTagging(obj_GA, msg1, msg2, msg3){
-	 location.href = msg1;    	
-	 }
-	 */
-	function getClickUrl(url) {
-		if (url == '') {
-			return false;
-		} else {
-			document.location.href = url;
-
-		}
-	}
-</script>
-
-<!-- //script -->
-
-<script type="text/javascript"
-	src="https://image.hmall.com/pc/js/hmall/co/section_store.js"></script>
-
-<!-- Main Contents css = Contents css부분은 각페이지마다 다르게 해당되는 css가 호출 됨(폴더 구조별)  -->
-<link rel="stylesheet" type="text/css"
-	href="//image.hmall.com/p/css/dp/display.css">
-
-<link href="//image.hmall.com/p/css/co/video-js.css" rel="stylesheet">
-<script src="//image.hmall.com/p/js/co/video.js"></script>
-<script src="//image.hmall.com/p/js/co/videojs-http-streaming.js"></script>
+	</style>
+	<script src="//image.hmall.com/p/js/co/jquery-3.4.1.min.js"></script>
+	<!-- jQuery Plugin -->
+	<script src="//image.hmall.com/p/js/co/jquery.easing.min.js"></script>
+	<!-- jQuery UI Effect -->
+	<script src="//image.hmall.com/p/js/co/jquery-ui.1.12.1.min.js"></script>
+	<!-- jQuery UI js -->
+	<script src="//image.hmall.com/p/js/co/ukDetect.min.js"></script>
+	<!-- UI에 사용하는 Detect -->
+	<script src="//image.hmall.com/p/js/co/slick.min.js"></script>
+	<!-- 공통 Slide 플러그인 -->
+	<script src="//image.hmall.com/p/js/co/common.js"></script>
+	<!-- UI에 사용하는 기본 js  -->
+	<script src="//image.hmall.com/p/js/co/co.js"></script>
+	<!-- UI에 사용하는 기본 js  -->
+	<script src="//image.hmall.com/p/js/co/jquery.cookie.js"></script>
+	<script src="//image.hmall.com/p/js/co/commonFunction.js"></script>
+	<!-- as-is common.js 상속  -->
+	<script src="//image.hmall.com/p/js/co/reDirectExceptUrlList.js"></script>
+	<!-- 로그인버튼 click 리다이렉트 예외 url리스트  -->
+	
+	<script type="text/javascript"
+		src="https://image.hmall.com/pc/js/hmall/co/section_store.js"></script>
+	
+	<!-- Main Contents css = Contents css부분은 각페이지마다 다르게 해당되는 css가 호출 됨(폴더 구조별)  -->
+	<link rel="stylesheet" type="text/css"
+		href="//image.hmall.com/p/css/dp/display.css">
+	
+	<link href="//image.hmall.com/p/css/co/video-js.css" rel="stylesheet">
+	<script src="//image.hmall.com/p/js/co/video.js"></script>
+	<script src="//image.hmall.com/p/js/co/videojs-http-streaming.js"></script>
 
 </head>
 
 <body>
 	<div class="wrap exhibition-depth2">
 	
-		<!-- header -->
+		<!-- 페이지 header(박주영) -->
 		<%@ include file="../header.jsp"%>
 		
 		<main class="cmain main" role="main" id="mainContents">
@@ -876,19 +293,20 @@
 										<li><a
 											href="HmallServlet?command=categoryTop&cCode=A14B02">보험/상조</a></li>
 									</ul>
-
-
 								</div></li>
 
-							<!-- 로케이션 소분류 -->
+							<!-- 로케이션 소분류 (박주영) -->
+							<!-- DB에서 중분류 카테고리의 하위 카테고리 리스트를 가져와서 띄움 -->
 							<li data-menu="">
 								<a href="javascript://" class="cate">선택하세요.</a>
 
 								<div class="category-wrap" data-submenu="" style="">
 									<ul class="category-list">
+										<!-- 카테고리 리스트마다 url 넣어줌 -->
 										<c:forEach var="category" items="${ categoryList }">
 											<li><a href="HmallServlet?command=category&cCode=${ category.categoryCode }">${ category.categoryName }</a></li>
 										</c:forEach>
+										<!-- //로케이션 소분류 -->	
 									</ul>
 								</div></li>				
 					</ul>
@@ -901,10 +319,12 @@
 					});
 				</script>
 				<!--로케이션 메뉴 끝 -->
+				
 				<!-- contents -->
 				<div class="contents">
 					<!-- depth2Wrap -->
 					<div class="depth2Wrap">
+						<!-- 카테고리 이름 (박주영) -->
 						<h2> ${ categoryVO.categoryName } </h2>
 						<!-- 상단 메뉴 와 slick 및 이 카테고리를 본 고객님들이 본 상품 -->
 						<div class="depth2Top">
@@ -918,6 +338,8 @@
 											<a href="#">카테고리</a>
 										</dt><br>
 										<!-- 좌측영역 LOOP2 -->
+										<!-- 카테고리 리스트 구현(박주영) -->
+											<!-- 소분류 카테고리 리스트를 받아와 url 설정 -->
 										<c:forEach var="category" items="${ categoryList }">
 												<dd>
 													<ul>
@@ -1963,182 +1385,236 @@
 			</div>
 			<!-- // container -->
 		</main>
-
-		<!-- footer -->
-		<footer class="footer">
-			<div class="link-area">
-				<div class="link-area-in">
-					<h2 class="hiding">푸터메뉴</h2>
-					<div class="short-menu">
-						<ul>
-							<li><a href="http://www.ehyundai.com/newPortal/ir/main.do"
-								target="_blank">현대백화점그룹</a></li>
-							<li><a href="http://www.ehyundai.com/newPortal/index.jsp"
-								target="_blank">현대백화점소개</a></li>
-							<li><a href="https://company.hyundaihmall.com/"
-								target="_blank">현대홈쇼핑소개</a></li>
-							<li><a
-								href="https://company.hyundaihmall.com/html/company/company_ethics-2.html"
-								target="_blank">윤리경영</a></li>
-							<li><a
-								href="https://company.hyundaihmall.com/html/investment/investment_stock.html"
-								target="_blank">IR</a></li>
-							<li><a href="https://recruit.ehyundai.com/index.nhd"
-								target="_blank">채용안내</a></li>
-							<li><a
-								href="https://company.hyundaihmall.com/html/affiliate/affiliate_contract-1.html"
-								target="_blank">신규입점</a></li>
-							<li><a
-								href="https://company.hyundaihmall.com/html/affiliate/affiliate_marketing-1.html"
-								target="_blank">마케팅/제휴안내/광고</a></li>
-							<li><a href="/p/oda/massOrdReq.do" target="_blank">대량주문</a></li>
-						</ul>
-					</div>
-					<!-- // .short-menu -->
-
-					<!-- on 클래스 추가 시 select layer 노출 -->
-					<div class="family-site">
-						<div class="select-label"
-							data-modules-customtoggle="parent:.family-site;activeClass:on;">Family
-							Site</div>
-						<!-- 디자인 반영 전 -->
-						<div class="select-layer">
-							<h3 class="group">쇼핑몰 Site</h3>
-							<ul>
-								<li><a href="http://www.thehyundai.com" target="_blank"
-									title="더현대닷컴">더현대닷컴</a></li>
-								<li><a
-									href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00003014"
-									target="_blank" title="현대백화점 DUTY FREE">현대백화점 DUTY FREE</a></li>
-								<li><a href="http://esuper.ehyundai.com" target="_blank"
-									title="e수퍼마켓">e수퍼마켓</a></li>
-								<li><a href="http://www.thehansome.com" target="_blank"
-									title="더한섬">더한섬</a></li>
-								<li><a href="http://mall.hyundailivart.co.kr"
-									target="_blank" title="현대리바트몰">현대리바트몰</a></li>
-								<li><a href="http://www.hyundairentalcare.co.kr"
-									target="_blank" title="현대렌탈케어">현대렌탈케어</a></li>
-								<li><a href="http://www.hfashionmall.com" target="_blank"
-									title="H패션몰">H패션몰</a></li>
-								<li><a href="https://tohome.thehyundai.com" target="_blank"
-									title="현대백화점 식품관">현대백화점 식품관</a></li>
-								<li><a href="https://www.greating.co.kr" target="_blank"
-									title="그리팅">그리팅</a></li>
-								<li><a href="https://www.eqlstore.com/main" target="_blank"
-									title="한섬EQL">한섬EQL</a></li>
-								<li><a href="https://www.hyundailnc.com" target="_blank"
-									title="현대L&amp;C몰">현대L&amp;C몰</a></li>
-							</ul>
-							<h3 class="group">관계사 Site</h3>
-							<ul>
-								<li><a href="http://www.ehyundai.com/newPortal/ir"
-									target="_blank" title="현대백화점 그룹">현대백화점 그룹</a></li>
-								<li><a href="http://www.ehyundai.com" target="_blank"
-									title="현대백화점">현대백화점</a></li>
-								<li><a href="http://www.hyundaigreenfood.com"
-									target="_blank" title="현대그린푸드">현대그린푸드</a></li>
-								<li><a href="http://www.thehansome.com" target="_blank"
-									title="한섬">한섬</a></li>
-								<li><a href="http://www.hyundailivart.co.kr"
-									target="_blank" title="현대리바트">현대리바트</a></li>
-								<li><a href="http://www.hyundairentalcare.co.kr"
-									target="_blank" title="현대렌탈케어">현대렌탈케어</a></li>
-								<li><a href="http://www.hyundaidreamtour.com"
-									target="_blank" title="현대드림투어">현대드림투어</a></li>
-								<li><a href="http://www.everdigm.com" target="_blank"
-									title="에버다임">에버다임</a></li>
-								<li><a href="http://www.cnsfoodsystem.co.kr"
-									target="_blank" title="씨엔에스푸드시스템">씨엔에스푸드시스템</a></li>
-								<li><a href="http://www.hyundaicatering.co.kr"
-									target="_blank" title="현대캐터링시스템">현대캐터링시스템</a></li>
-								<li><a href="http://www.hyundai-ite.com" target="_blank"
-									title="현대IT&amp;E">현대IT&amp;E</a></li>
-							</ul>
-						</div>
-						<!-- // .select-layer -->
-					</div>
-					<!-- // .family-site -->
-				</div>
-				<!-- // .link-area-in -->
-			</div>
-			<!-- // .link-area -->
-
-			<div class="footer-contents">
-				<div class="footer-logo">
-					<img src="//image.hmall.com/p/img/co/footer-logo.jpg" alt="HYUNDAI">
-				</div>
-				<div class="info-area">
-					<div class="policy-link-list">
-						<ul>
-							<li><a href="/p/cod/shmlTcnd.do">이용약관</a></li>
-							<li><a href="/p/cod/psnHndl.do"><strong>개인정보
-										처리방침</strong></a></li>
-							<li><a
-								href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=2118676540"
-								target="_blank">사업자정보확인</a></li>
-							<li><a
-								href="https://company.hyundaihmall.com/html/company/company_ethics-1.html"
-								target="_blank">공정거래 자율준수</a></li>
-							<li><a href="/p/cod/psnHdhsInnerCntrl.do">보험대리점 내부통제기준</a></li>
-						</ul>
-					</div>
-					<!-- // .policy-link-list -->
-
-					<!-- on 클래스 추가 시 노출 -->
-					<div class="footer-info">
-						<button class="btn-footer"
-							data-modules-customtoggle="parent:.footer-info;activeClass:on;">
-							<strong>(주)현대홈쇼핑</strong>
-						</button>
-						<div class="footer-info-box">
-							<div class="hmall-info">
-								<div class="list-contents">
-									<p>
-										<span>대표이사 : 임대규</span><span>주소 : 서울특별시 강동구 올림픽로70길 34
-											(주)현대홈쇼핑</span>
-									</p>
-									<p>
-										<span>고객센터 TEL : 1600-0000(유료)</span><span>고객만족사업부 FAX
-											: 02-2143-2731</span>
-									</p>
-									<p>
-										<span>기타문의 : <a href="mailto:webmaster@hmall.com">webmaster@hmall.com</a></span><span>사업자등록번호
-											: 211-86-76540</span>
-									</p>
-									<p>
-										<span>통신판매업 신고 : 제 25-3133호</span><span>부가통신 신고번호 :
-											3787</span>
-									</p>
-									<p>
-										<span>정보보호최고책임자 : 정보보호담당 오권호</span><span>청소년보호책임자 :
-											Hmall사업부 홍성일</span>
-									</p>
-									<p>
-										<span>호스팅서비스 : (주)현대홈쇼핑</span>
-									</p>
-								</div>
-							</div>
-							<!-- // .hamall-info -->
-
-							<div class="service-info-wrap">
-								<p class="safe-info">
-									우리은행 구매안전 서비스 <a href="#"
-										onclick="window.open('https://www.hmall.com/static/html/popup/2013/11/woori_escrow.html','','left=300,top=150,scrollbars=yes,resizable=no,width=558,height=580'); return false;"
-										target="_blank">가입사실 확인</a> 고객님은 안전거래를 위해 현금 결제 시 저희 쇼핑몰에서 가입한
-									우리은행의 구매안전 서비스를 이용하실 수 있습니다.
-								</p>
-								<div class="cs-link">
-									<a href="/p/cod/hdhsArs.do">ARS안내</a> <a
-										href="/p/ccc/faqList.do?faqLCsfNo=&amp;ancmCntn=카카오톡&amp;sort=false&amp;faqMCsfNo="
-										onclick="javascript:bizSpringTag('','^푸터^카톡주문안내');"
-										name="shopGuide">카톡주문안내</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!--//footer -->
 	</div>
+	
+	<!-- 페이지 footer(박주영) -->
+	<%@ include file="../footer.jsp"%>
+	
+	
+	<!-- 스카이스크래퍼 -->
+	<script type="text/javascript">
+
+	var skySclbrodEndTime = "";
+	var skyScldtvEndTime = "";
+	
+	function setOnAirSkySc(){
+		try {
+			$.ajax({
+		        type: "get"
+		        ,url: "https://wwwca.hmall.com/p/coe/onAirList.do?time=040809"
+		        ,dataType: "html"
+		        ,async: true
+		        ,success : function(data) {
+		           $('#skyScOnAirArea').append(data);
+		           
+		           if ($('#onAirHtime').length > 0) {
+		        	   skySclbrodEndTime = "" + $('#onAirHtime').data("brodenddtm");
+		        	   onAirTimerSkySc();
+		           }
+		
+		           if ($('#onAirHdtime').length > 0) {
+		        	   skyScldtvEndTime = "" + $('#onAirHdtime').data("brodenddtm");
+		        	   
+		        	   // TV+샵은 마직막이 '00' 으로 끝남
+		        	   if (skyScldtvEndTime != "" && skyScldtvEndTime.length > 12) 
+		        		   skyScldtvEndTime = skyScldtvEndTime.substring(0,12) + "00";
+		        	   
+		        	   onAirTimer2SkySc();
+		           } 
+		           
+		           // 카드 프로모션 
+		           setCardPromotion();
+		           
+		      }
+		      ,error : function(e) {
+		    	  
+		    	  if ("https://wwwca.hmall.com" == "")  
+		    		  return;
+		    	  
+		    	  $.ajax({
+		              type: "get"
+		              ,url: "/p/coe/onAirList.do?time=040809"
+		              ,dataType: "html"
+		              ,async: true
+		              ,success : function(data) {
+		                 $('#skyScOnAirArea').append(data);
+		                 
+		                 if ($('#onAirHtime').length > 0) {
+		                     skySclbrodEndTime = "" + $('#onAirHtime').data("brodenddtm");
+		                     onAirTimerSkySc();
+		                 }
+		      
+		                 if ($('#onAirHdtime').length > 0) {
+		                     skyScldtvEndTime = "" + $('#onAirHdtime').data("brodenddtm");
+		                     
+		                     // TV+샵은 마직막이 '00' 으로 끝남
+		                     if (skyScldtvEndTime != "" && skyScldtvEndTime.length > 12) 
+		                         skyScldtvEndTime = skyScldtvEndTime.substring(0,12) + "00";
+		                     
+		                     onAirTimer2SkySc();
+		                 } 
+		                 
+		                 // 카드 프로모션 
+		                 setCardPromotion();
+		                 
+		            }
+		            ,error : function(e) {
+		            }
+		         });
+		      }
+		   });
+	    } catch (err){}
+	}
+	
+	function setCardPromotion() {
+	    try {
+	        $.ajax({
+	            type: "get"
+	            ,url: "https://wwwca.hmall.com/p/coe/onAirCardPrmoList.do?time=040809"
+	            ,dataType: "html"
+	            ,async: true
+	            ,success : function(data) {
+	               $('#skyScCardArea').append(data);
+	               $('body').commonUi('initLibrary'); //PC인경우
+	             }
+	            ,error : function(e) {
+	
+	                if ("https://wwwca.hmall.com" == "")  
+	                    return;
+	                
+	            	$.ajax({
+	                    type: "get"
+	                    ,url: "/p/coe/onAirCardPrmoList.do?time=040809"
+	                    ,dataType: "html"
+	                    ,async: true
+	                    ,success : function(data) {
+	                       $('#skyScCardArea').append(data);
+	                       $('body').commonUi('initLibrary'); //PC인경우
+	                     }
+	                    ,error : function(e) {
+	                        
+	                    } 
+	               });
+	            } 
+	       });
+	    } catch (err){}
+	}
+	
+	function onAirTimerSkySc(){
+	    var now = new Date();
+	    var lbrdEndTime = new Date();
+	    lbrdEndTime.setHours(skySclbrodEndTime.substring(8,10));
+	    lbrdEndTime.setMinutes(skySclbrodEndTime.substring(10,12));
+	    lbrdEndTime.setSeconds(skySclbrodEndTime.substring(12,14));
+	
+	    var gap = (lbrdEndTime.getTime() - now.getTime())/1000;
+	    var leftTime = "";
+	
+	    if(gap <= 0){
+	        leftTime = "00:00:00";
+	        $("#onAirHtime").text(leftTime);
+	        return;
+	    }
+	
+	    var hour = parseInt(gap/3600);
+	    var min = parseInt((gap%3600)/60);
+	    var sec = parseInt(gap%60);
+	
+	    leftTime += ((hour < 10) ? "0":"") + hour;
+	    leftTime += ((min < 10) ? ":0":":") + min;
+	    leftTime += ((sec < 10) ? ":0":":") + sec;
+	
+	    $("#onAirHtime").text(leftTime);
+	    setTimeout("onAirTimerSkySc()", 1000);
+	    
+	}
+	
+	function onAirTimer2SkySc(){
+	    var now = new Date();
+	    var lbrdEndTime = new Date();
+	    lbrdEndTime.setHours(skyScldtvEndTime.substring(8,10));
+	    lbrdEndTime.setMinutes(skyScldtvEndTime.substring(10,12));
+	    lbrdEndTime.setSeconds(skyScldtvEndTime.substring(12,14));
+	
+	    var gap = (lbrdEndTime.getTime() - now.getTime())/1000;
+	    var leftTime = "";
+	
+	    if(gap <= 0){
+	        leftTime = "00:00:00";
+	        $("#onAirHdtime").text(leftTime);
+	        return;
+	    }
+	
+	    var hour = parseInt(gap/3600);
+	    var min = parseInt((gap%3600)/60);
+	    var sec = parseInt(gap%60);
+	
+	    leftTime += ((hour < 10) ? "0":"") + hour;
+	    leftTime += ((min < 10) ? ":0":":") + min;
+	    leftTime += ((sec < 10) ? ":0":":") + sec;
+	
+	    $("#onAirHdtime").text(leftTime);
+	    setTimeout("onAirTimer2SkySc()", 1000);
+	}
+
+</script>
+
+	<!-- 스카이 스크래퍼 -->
+	<div class="sticky-ui-wrapper wing-banner-sticky">
+		<div class="sticky-placeholder" style=""></div>
+		<div class="wing-banner banner-right ui-break"
+			data-modules-sticky="padding:0;breakPoint:.header-menu-wrap;className:wing-banner-sticky"
+			style="top: 123px;">
+			<!-- fixed 클래스 추가 시 고정 -->
+			<a href="/pevent/eva/evntTmplDivideView.do?prmoNo=00049341">
+				<div class="visit-indicator">
+					바로접속 <span class="visit-staus on" style="margin-left: 0px">ON</span>
+				</div>
+			</a>
+			<div class="recent-view-area" id="skyScOnAirArea">
+			</div>
+			<div class="qr_view_area">
+				<span class="qr_txt">쇼핑라이브</span> <span class="img_qr"><img
+					src="https://image.hmall.com/p/img/co/img-qr.jpg" alt="쇼핑라이브 qr이미지"></span>
+			</div>
+			<div class="wing-slide exhibition01" id="skyScCardArea">
+				<ul>
+					<li style=""><a
+						href="https://www.hmall.com/p/dpa/crdDmndDcPrmo.do?prmoNo=P202203299704">
+							<span class="img"><img
+								src="//image.hmall.com/p/img/ev/icon/ico-card-nh.png"
+								alt="NH농협카드"></span> <span class="card-txt"> <strong
+								class="card-name">NH농협카드</strong> <span class="benefit-txt">
+									<em class="point-red"> 7% </em> 즉시 할인
+							</span>
+						</span>
+					</a></li>
+					<li style="display: none;"><a
+						href="https://www.hmall.com/p/dpa/crdDmndDcPrmo.do?prmoNo=P202203299554">
+							<span class="img"><img
+								src="//image.hmall.com/p/img/ev/icon/ico-card-lotte.png"
+								alt="롯데카드"></span> <span class="card-txt"> <strong
+								class="card-name">롯데카드</strong> <span class="benefit-txt">
+									<em class="point-red"> 5% </em> 즉시 할인
+							</span>
+						</span>
+					</a></li>
+				</ul>
+			</div>
+			<!-- // .wing-slide -->
+
+			<div class="btn-top">
+				<a href="javascript:;">TOP</a>
+			</div>
+		</div>
+	</div>
+	<!-- // 스카이 스크래퍼 -->
+	<script type="text/javascript">
+    
+    setTimeout(function() { 
+    	setOnAirSkySc();
+    }, 100);
+    
+	</script>
+	<!-- 스카이스크래퍼 -->
 </body>

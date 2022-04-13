@@ -1,5 +1,12 @@
 package com.hmall.dto;
 
+/*************************************************************
+파일명: ProductVO.java
+기능: 상품 객체 getter, setter
+작성자: 박주영
+
+[코멘트: x]
+*************************************************************/
 public class ProductVO {
 	private int productCode;
 	private String productName;

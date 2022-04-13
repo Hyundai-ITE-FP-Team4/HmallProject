@@ -13,12 +13,13 @@ import javax.servlet.http.HttpSession;
 import com.hmall.controller.action.Action;
 import com.hmall.dto.UserVO;
 
-/*
- * Sevlet
- * 
- * command에 맞는 Action을 실행시킴
- * 
- * */
+/*************************************************************
+파일명: HmallServlet.java
+기능: 요청(command)에 따라 처리 클래스(Action)를 호출하여 수행 
+작성자: 
+
+[코멘트: x]
+*************************************************************/
 @WebServlet("/HmallServlet")
 public class HmallServlet extends HttpServlet {
 
@@ -26,6 +27,7 @@ public class HmallServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		// 파라미터 가져오기 전에 UTF-8 설정
 		request.setCharacterEncoding("UTF-8");
 		
@@ -47,10 +49,12 @@ public class HmallServlet extends HttpServlet {
 		if (action != null) {
 			action.execute(request, response);
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		// 파라미터 가져오기 전에 UTF-8 설정
 		request.setCharacterEncoding("UTF-8");
 
@@ -78,6 +82,7 @@ public class HmallServlet extends HttpServlet {
 		if (action != null) {
 			action.execute(request, response);
 		}
+		
 	}
 
 } // end class

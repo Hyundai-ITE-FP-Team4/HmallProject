@@ -141,9 +141,6 @@
 										}
 										
 								};
-								
-				/* 				var chart = new google.visualization.BarChart(
-										document.getElementById('hourChartDiv')); */
 								var chart = new google.visualization.ColumnChart(
 											document.getElementById('monthChartDiv'));
 								chart.draw(data, opt);

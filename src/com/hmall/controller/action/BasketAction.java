@@ -14,33 +14,47 @@ import com.hmall.dao.BasketDAO;
 import com.hmall.dto.BasketVO;
 import com.hmall.dto.UserVO;
 
+/*************************************************************
+파일명: BasketAction.java
+기능: 장바구니 페이지로 이동
+작성자: 박주영
+
+[코멘트: 로그인 세션 있을 시에만 이동]
+*************************************************************/
 public class BasketAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "/basket/basket.jsp";
-
+		// 세션에서 user_id 받아옴
 		HttpSession session = request.getSession();
 		UserVO user_vo = (UserVO) session.getAttribute("user_vo");
-		if(user_vo == null) {
+		
+		if(user_vo == null) { // 세션에 없을 경우, 알림창 띄우기
+			
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('로그인 후 이용해주세요.'); history.back(); </script>");
-		} else {
+	        
+		} else { // 세션에 있을 경우, 받아와서 forward
+			
 			String userId = user_vo.getUser_id();
 
-			// DAO ����
+			// BasketDAO 생성 (싱글톤)
 			BasketDAO basketDAO = BasketDAO.getInstance();
+			// userId BasketList 받아오기
 			ArrayList<BasketVO> basketList = basketDAO.getBasketList(userId);
 
-			// ��ٱ��� ����Ʈ
-			request.setAttribute("basketList", basketList);
+			// basket.jsp로 이동
+			String url = "/basket/basket.jsp";
 			
+			// request에 값 설정
+			request.setAttribute("basketList", basketList);
 	        
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
-		}
+			
+		} // end if
 		
 	}
 
