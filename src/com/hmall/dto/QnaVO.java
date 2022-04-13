@@ -11,8 +11,21 @@ public class QnaVO {
 	private String question;
 	private String image;
 	private String answer;
+	private String contactChannel;
+	private String contactAddress;
 	
-	
+	public String getContactChannel() {
+		return contactChannel;
+	}
+	public void setContactChannel(String contactChannel) {
+		this.contactChannel = contactChannel;
+	}
+	public String getContactAddress() {
+		return contactAddress;
+	}
+	public void setContactAddress(String contactAddress) {
+		this.contactAddress = contactAddress;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}

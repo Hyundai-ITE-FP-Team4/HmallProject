@@ -85,6 +85,8 @@ public class QnaDAO {
 				qna.setQuestion(rs.getNString("question"));
 				qna.setImage(rs.getString("image"));
 				qna.setAnswer(rs.getString("answer"));
+				qna.setContactChannel(rs.getString("contact_channel"));
+				qna.setContactAddress(rs.getString("contact_address"));
 			}
 
 		} catch (Exception e) {
@@ -103,13 +105,15 @@ public class QnaDAO {
 		
 		try {
 			conn = DBManager.getConnection();
-            cstmt = conn.prepareCall("{call enrollQuestion(?,?,?,?,?,?)}");
+            cstmt = conn.prepareCall("{call proc_enrollQuestion(?,?,?,?,?,?,?,?)}");
             cstmt.setInt(1, qnaVO.getProductCode());
             cstmt.setString(2, session_id);
             cstmt.setString(3, qnaVO.getCategory1());
             cstmt.setString(4, qnaVO.getCategory2());
             cstmt.setString(5, qnaVO.getQuestion());
             cstmt.setString(6, qnaVO.getImage());
+            cstmt.setString(7, qnaVO.getContactChannel());
+            cstmt.setString(8, qnaVO.getContactAddress());
             
             cstmt.execute();
             
@@ -119,6 +123,26 @@ public class QnaDAO {
 			DBManager.close(conn, cstmt);
 		}
 		
+	}
+
+	public void deleteQna(int board_num, String user_id) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from qna_t where board_no = ? and  user_id = ?";
+		try {
+			
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+            pstmt.setString(2, user_id);
+            pstmt.execute();
+            
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 		
 	

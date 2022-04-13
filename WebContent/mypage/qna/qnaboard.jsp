@@ -3489,6 +3489,7 @@ function fn_upntPopupOpen(){
 function fn_upntPopupClose(){
     $("#pec001-01").modal().hide();
 }
+
 </script>
 					<!--20170816 박승택 추가 -->
 					<form name="upntLeftForm" method="post" target="uPnt">
@@ -3634,7 +3635,7 @@ function fn_upntPopupClose(){
 														<span class="case" style= "width:150px" > ${Qna.category1} </span>
 														
 														<div class="txt">
-															<p class="name" onclick="doOpenCnslDtlPup('202201290949481','0000000001');"> ${Qna.question } </p>
+															<p class="name" onclick="window.open('HmallServlet?command=view_qna&board_num=${Qna.boardNo}','1:1 상담하기','width=520, height=670, location=no,status=no,scrollbars=yes');"> ${Qna.question } </p>
 															<span class="date"> 
 															<%
 															Timestamp date_t = (Timestamp) pageContext.getAttribute("date");
@@ -3646,7 +3647,7 @@ function fn_upntPopupClose(){
 														</div>
 														
 														<div class="state">
-															<button class="btn btn-linelgray sm" type="button" onclick="doOpenCnslDtlPup('202201290949481','0000000001');">
+															<button class="btn btn-linelgray sm" type="button" onclick="window.open('HmallServlet?command=view_qna&board_num=${Qna.boardNo}','1:1 상담하기','width=520, height=670, location=no,status=no,scrollbars=yes');">
 																<span>답변보기</span>
 															</button>
 														</div>
@@ -3666,7 +3667,13 @@ function fn_upntPopupClose(){
 				</div>
 			</div>
 		</main>
-
+		
+		
 		<%@ include file="../../footer.jsp"%>
+
+<script type="text/javascript" async="" src="//image.hmall.com/p/js/co/901_Insight_WebAnalytics.js"></script>
+<script type="text/javascript" async="" src="//image.hmall.com/p/js/co/tagging.collector-1.3.min.js"></script>
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+		
 </body>
 </html>

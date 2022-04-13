@@ -7,6 +7,7 @@ import com.hmall.controller.action.BasketInsertAction;
 import com.hmall.controller.action.BasketUpdateAction;
 import com.hmall.controller.action.CategoryAction;
 import com.hmall.controller.action.CategoryTopAction;
+import com.hmall.controller.action.DeleteQnaAction;
 import com.hmall.controller.action.EnrollQuestionAction;
 import com.hmall.controller.action.GchartAction;
 import com.hmall.controller.action.IdCheckAction;
@@ -19,6 +20,7 @@ import com.hmall.controller.action.MyPageAction;
 import com.hmall.controller.action.ProductDetailAction;
 import com.hmall.controller.action.QnaBoradAction;
 import com.hmall.controller.action.QnaPopUp;
+import com.hmall.controller.action.ViewQnaAction;
 
 /*
  * HmallServlet 커맨트 패턴 , command 별 액션 설정
@@ -111,7 +113,15 @@ public class ActionFactory {
 		// 구글 차트
 		else if (command.equals("google_chart")) {
 			action = new GchartAction();
-		} 
+		}
+		// QnA 게시글 뷰 페이지
+		else if (command.equals("view_qna")) {
+			action = new ViewQnaAction();
+		}  
+		//Qna 게시글 샥제
+		else if (command.equals("delete_qna")) {
+			action = new DeleteQnaAction();
+		}
 
 		return action;
 	}

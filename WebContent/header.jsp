@@ -32,7 +32,6 @@
 		// 로그아웃 , 세션 지우기
 		$(function(){
 			$("#go_logout_popup").click(function(){
-				alert(getCookie("user_id"));
 				
 				$.ajax({
 					url : 'http://localhost:8090/HmallProject/HmallServlet?command=logout',
@@ -43,7 +42,7 @@
 						console.log('success');
 						console.log(res);
 						if(res.session_check == 'delete') {
-							alert("지워짐");
+							alert("로그아웃 되었습니다.");
 							location.reload();
 						}else {
 							

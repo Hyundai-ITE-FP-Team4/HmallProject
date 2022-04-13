@@ -2019,8 +2019,11 @@ function formCheckSubmitSellerChat(obj) {
 								    reqCntnJson.val(JSON.stringify(reqCntnStrJson));
 								    console.log(reqCntnStr);
 								    
+								    
+								    
 								    $("#frm").submit();
-								
+									
+								    
 								}
 								
 								
@@ -2344,8 +2347,6 @@ function formCheckSubmitSellerChat(obj) {
 			</button>
 		</div>
 	</div>
-
-
 </body>
 <whale-quicksearch translate="no"></whale-quicksearch>
 </html>

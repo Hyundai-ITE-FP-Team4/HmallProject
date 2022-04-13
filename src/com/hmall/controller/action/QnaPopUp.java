@@ -1,6 +1,7 @@
 package com.hmall.controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,19 +20,19 @@ public class QnaPopUp implements Action{
 		String url = "/mypage/qna/qnapopup.jsp";
 		
 		HttpSession session = request.getSession();
-	    UserVO loginUser = (UserVO) session.getAttribute("loginUser");
-	    /*
-	    if (loginUser == null) {
-	        url = "HmallServlet?command=login_form";
+	    UserVO user_vo = (UserVO) session.getAttribute("user_vo");
+	    if (user_vo == null) {
+	    	response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+	    	out.println("<script>alert('로그인 후 이용해주세요.'); location.href = 'HmallServlet?command=index'; </script>");
+	        //url = "user/login_popup.jsp";
+	        
 	      } 
 	    else {
-	    	
-	    	
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);
 	    }
-		*/
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
 	}
 	
 

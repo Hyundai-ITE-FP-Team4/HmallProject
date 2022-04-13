@@ -4,7 +4,7 @@
 
 			<div class="side-content">
 					<h3 class="side-menu-title">
-						<a href="javascript:;">마이페이지</a>
+						<a href="HmallServlet?command=mypage">마이페이지</a>
 					</h3>
 					<div class="side-menu-list">
 						<ul>
