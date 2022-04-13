@@ -7,45 +7,29 @@
 
 <body>
 	<script>
-	
-		function getCookie(cookie_name) {
-		  var x, y;
-		  var val = document.cookie.split(';');
-
-		  for (var i = 0; i < val.length; i++) {
-		    x = val[i].substr(0, val[i].indexOf('='));
-		    y = val[i].substr(val[i].indexOf('=') + 1);
-		    x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
-		    if (x == cookie_name) {
-		      return unescape(y); // unescape로 디코딩 후 값 리턴
-		    }
-		  }
-		}
-	
-		// 로그인 팝업창 띄우기	
+		// 로그인 팝업창 띄우기 (김승환)
 		$(function(){
-			$("#go_login_popup").on('click', function(){
-				window.open("/HmallProject/user/login_popup.jsp", "PopupWin", "width=540,height=650");		
+			$("#go_login_popup").on('click', function(){ // 로그인 클릭 이벤트
+				window.open("/HmallProject/user/login_popup.jsp", "PopupWin", "width=540,height=650"); // 팝업창 오픈
 			});
 		});
 		
-		// 로그아웃 , 세션 지우기
+		// 로그아웃 요청, 세션 지우기 (김승환)
 		$(function(){
-			$("#go_logout_popup").click(function(){
-				
+			$("#go_logout_popup").click(function(){ // 로그아웃 클릭 이벤트
+				// logout 요청
 				$.ajax({
-					url : 'http://localhost:8090/HmallProject/HmallServlet?command=logout',
+					url : '/HmallProject/HmallServlet?command=logout',
 					type : 'post',
 					dataType : 'json',
-					data : {check : '1'},
-					success:function(res){
-						console.log('success');
-						console.log(res);
-						if(res.session_check == 'delete') {
+					data : {check : 'true'},
+					async: false,
+					success:function(res){ // response가 성공적으로 되면
+						if(res.session_check == 'delete') { // 세션 삭제 response 메시지가 왔으면
 							alert("로그아웃 되었습니다.");
-							location.href = "";
+							location.href = "/HmallProject/HmallServlet?command=index"; // 로그아웃 후 첫 화면으로 이동
 						}else {
-							
+							alert("로그인 실패");
 						}
 					},
 					error : function(data, textStatus){
@@ -58,7 +42,6 @@
 	</script>
 	
 	<header class="header">
-
 		<div class="header-top">
 			<h1 class="logo">
 				<a href="HmallServlet?command=index" title="현대Hmall">Hmall</a>
@@ -178,7 +161,6 @@
 			<script>
 				// 2020.12.24 검색 DOM 로드후 javascript 실행을 위해 옮김
 				// 2020.12.17 icj : 텍스트 광고 입력이 없을시 재노출 (하선윤)
-				mySearchList();
 				$("#gnbSearchKeyword").focus(function() {
 					$(".header .search").addClass("selected");
 					if ($("#gnbSearchKeyword").val() == gv_gnbHomeBnnrTitl) {
@@ -685,22 +667,23 @@
 				<!-- 유틸메뉴 -->
 				<div class="header-util">
 					<h2 class="hiding">유틸메뉴</h2>
-					<!-- 로그인 전 -->
+					<!-- 로그인 세션 유지 시 화면 & 로그아웃 하여 세션 삭제 시 화면 (김승환) -->
 					<ul>
 						<%
 							if(session.getAttribute("user_vo") != null ){
 								
 						%>
 								<li><a ga-category="헤더" ga-action="로그아웃" href="javascript:void(0);" id = "go_logout_popup">로그아웃</a></li>
+								
 						<%
 							} else{
 						%>
 								<li><a ga-category="헤더" ga-action="로그인" href="javascript:void(0);" id = "go_login_popup">로그인</a></li>
+								<li><a href="HmallServlet?command=join_form">회원가입</a></li>
 						<%
 							}
 						%>
 						
-						<li><a href="HmallServlet?command=join_form">회원가입</a></li>
 						<li><a ga-category="헤더" ga-action="고객센터" href="javascript:bizSpringTag('/p/cca/main.do','^헤더^고객센터');">고객센터</a></li>
 					</ul>
 				</div>

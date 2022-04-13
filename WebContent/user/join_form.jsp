@@ -1,43 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	/*************************************************************
+	파일명: join_form.jsp
+	기능: 회원가입 폼에서 정보를 입력하고 회원가입을 요청 / 회원가입 폼 화면 디자인
+	작성자: 김승환
 	
+	[코멘트: 구현한 기능 외 기본 디자인은 실제 사이트 참조]
+	*************************************************************/
+%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title> 회원가입 - 현대Hmall</title>
-	
-	<%@include file = "/component/script.jsp" %>
-   		
-   		
-   		<script>
-
-   		</script>
+		<%@include file = "/component/script.jsp" %>
 	</head>
 	<body class = "cbody">
-	
 	<script>
 			var check_dup = false;
-			function go_submit(){
+			
+			function go_submit(){ 
 				if( $('#birthday').val().length == 0){ //생년월일 선택사항, 비어있으면 0 기본값으로 회원가입
 					$('#birthday').attr("value", 0);
 				}
 				var formData = $("#registMemberFormNew").serialize();
-					$.ajax({
-						url : 'http://localhost:8090/HmallProject/HmallServlet?command=join_action',
-						type : 'post',
-						dataType : 'json',
-						data : formData,
-						async: false,
-						success:function(){
-							location.href = "/HmallProject/index.html";
-						},
-						error : function(data, textStatus){
-							console.log('error');
-							console.log(data);
-						}
-					});
+				
+				$.ajax({
+					url : 'http://localhost:8090/HmallProject/HmallServlet?command=join_action',
+					type : 'post',
+					dataType : 'json',
+					data : formData,
+					async: false,
+					success:function(){
+						location.href = "/HmallProject/index.html";
+					},
+					error : function(data, textStatus){
+						console.log('error');
+						console.log(data);
+					}
+				});
 			}
-			
 			
 			
 			//회원가입 함수
@@ -119,16 +121,6 @@
 					}
 				});
 				
-				//생일 입력 오류 체크
-// 				$('#birthday').on('blur', function(){
-// 					if(!this.value){
-// 						$('#alertBirthday').css('display', 'block');
-// 					}
-// 					else{
-// 						$('#alertBirthday').css('display', 'none');
-// 					}
-// 				});
-				
 				//아이디 중복 확인하기
 				$('#id_check').on('click', function(){
 					var param = {
@@ -167,11 +159,6 @@
 				
 			});
 			
-			// 아이디 입력 오류 체크 (validation)
-			
-			// 비밀번호 입력 오류 체크 (validation)
-			
-			// 휴대폰 입력 오류 체크 (validation)
 			
 			// 필수 동의 했는지 여부 체크
 			function checkBox(){

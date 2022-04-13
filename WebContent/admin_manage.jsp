@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<%
+<% // 스크립트릿 - 회원정보 객체 리스트 가져오기 (김승환)
 	request.setCharacterEncoding("UTF-8");
 	UserDAO dao = UserDAO.getInstance();
 	List userList = dao.listUser();
@@ -70,6 +70,8 @@
 	<body>
 		<!-- 페이지 header -->
 		<%@ include file="../header.jsp"%>
+		
+		<!-- 로그인 로그 표 (김승환) -->
 		<div class="adminContent">
 			<h1 align="center">Hmall 관리자 페이지</h1>
 			<h2 align="center">회원 정보</h2>
@@ -77,30 +79,32 @@
 				<caption>회원 정보</caption>
 			    <tr align="center">
 			      <th width="7%">아이디</th>
-			      <th width="7%"><b>비밀번호</b></th>
-			      <th width="5%" ><b>이름</b></th>
+			      <th width="5%"><b>이름</b></th>
+			      <th width="7%" ><b>폰 번호</b></th>
 				</tr>
 		 		<c:forEach var = "user" items="${userList}"  >	
 			   	<tr align="center">
 			      <td>${user.user_id}</td>
-			      <td>${user.user_pw}</td>
 			      <td>${user.user_name}</td>
+			      <td>${user.phone_number}</td>
 			   </tr>
 		 	   </c:forEach>
 			</table>
+			
+			<!-- 차트 리스트 (박주영, 김승환) -->
 			<h2 align="center">차트 리스트</h2>
 			<script>
 				google.load('visualization', '1.0', {'packages':['corechart']});
 				google.setOnLoadCallback(drawMonthChart);
 				google.setOnLoadCallback(drawHourChart);
 				
-				// 시간별 로그인 횟수 차트
+				// 월별 로그인 횟수 차트
 				function drawMonthChart(){
-					$.ajax({
+					$.ajax({ // 월별 로그인 횟수 차트 요청
 						url : '/HmallProject/HmallServlet?command=google_chart',
 						type : 'post',
 						dataType : 'json',
-						data : {name: "test"},
+						data : {name: "month"},
 						async: false,
 						success:function(res){
 							console.log('success');

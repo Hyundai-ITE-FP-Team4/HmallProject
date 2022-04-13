@@ -2,6 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	/*************************************************************
+	파일명: login_popup.jsp
+	기능: 로그인 요청 및 수행, 쿠키 활용 아이디 저장, 로그인 팝업창 화면 
+	작성자: 김승환
+	
+	[코멘트: 구현한 기능 외 기본 디자인은 실제 사이트 참조]
+	*************************************************************/
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,19 +22,19 @@
 	<link rel="stylesheet" type="text/css" href="//image.hmall.com/p/css/co/login.css">
 </head>
 <body>
-<!-- 윈도우 팝업 클래스 popup-win : width:540px , height:702px -->
+<!-- 윈도우 팝업 클래스 popup-win : width:540px , height:650px -->
 
 <script type="text/javascript">
 	
+	//쿠키 set
 	function setCookie(cookie_name, value, days) {
 	  var exdate = new Date();
-	  exdate.setDate(exdate.getDate() + days);
-	  // 설정 일수만큼 현재시간에 만료값으로 지정
-
+	  exdate.setDate(exdate.getDate() + days); // 설정 일수만큼 현재시간에 만료값으로 지정
 	  var cookie_value = escape(value) + ((days == null) ? '' : '; expires=' + exdate.toUTCString());
 	  document.cookie = cookie_name + '=' + cookie_value;
 	}
 	
+	// 쿠키 값 가져오기
 	function getCookie(cookie_name) {
 		  var x, y;
 		  var val = document.cookie.split(';');
@@ -39,17 +48,24 @@
 		    }
 		  }
 		}
+	
+	// 쿠키에 user 아이디 값이 있으면 
 	$(function(){
 		var data = getCookie("user_id");
-		if (data != null){
+		if (data == null){
 			$('#user_id').val("");
 			$('#checkbox').prop('checked', false);
+		}else{
+			$('#user_id').val(data);
+			$('#checkbox').prop('checked', true);
 		}
 	});
+	
+	// 로그인 요청 함수
 	function go_login(){
 		var formData = $("#memberLoginForm").serialize();
 		
-			$.ajax({
+			$.ajax({ // 로그인 요청
 				url : 'http://localhost:8090/HmallProject/HmallServlet?command=login_action',
 				type : 'post',
 				dataType : 'json',
@@ -58,23 +74,21 @@
 				success:function(res){
 					console.log('success');
 					console.log(res);
-					if(res!= null) {
+					if(res.user_id!= null) {
 						if(res.user_id == 'admin'){
 							window.opener.document.location.href = '/HmallProject/admin_manage.jsp';
 							self.close();
 						}
 						else{
-							console.log('성공');
-							console.log(res);
-							if($("#checkbox").is(":checked")){
+							if($("#checkbox").is(":checked")){ // 아이디 저장을 체크했을 경우
 								check = true
-								setCookie("user_id", res.user_id, 1);
-							}else{
-								setCookie("user_id", "", 0);
+								setCookie("user_id", res.user_id, 1); // 쿠키 user 아이디, 1일 유지 set
+							}else{ // 아이디 저장 체크를 풀었을 때
+								setCookie("user_id", "", 0); // 쿠키 값 초기화
 							}
 							
 							opener.location.reload(); //팝업창을 불러낸 부모창 새로고침
-							self.close();
+							self.close(); // 팝업창 닫기
 						}
 						
 					}else {
@@ -108,12 +122,6 @@
                     <div class="tab-content">
                     <div role="tabpanel" class="tab-pane ui-active" id="hmallLogin">
                         <form id = "memberLoginForm" name="memberLoginForm" method="post">
-                           <!--  <input type="hidden" name="popupYn" value="Y"/>
-                            <input type="hidden" name="redirectUrl" value="https://www.hmall.com/p/index.do"/>
-                            <input type="hidden" name="errorMessage" value=""/>
-                            <input type="hidden" name="loginPupYn" value ="Y"/>
-                            <input type="hidden" name="autoCheck" value ="F8494C61A45003157469541D54745563"/>
-                            <input type="hidden" name="august" value ="A891FAC63306538A727CC3D25EBDD87B"/> -->
 
                             
                             <div role="tabpanel" class="tab-pane ui-active" id="hmall">
@@ -167,95 +175,14 @@
                                 <!-- </div> -->
 								<div></div>
                                 <ul class="login-find">
-                                    <li><a href="javascript:;" onclick="findId(); return false;">아이디 찾기</a></li>
-                                    <li><a href="javascript:;" onclick="findPwd(); return false;">비밀번호 찾기</a></li>
+                                    <li><a href="javascript:;" onclick="">아이디 찾기</a></li>
+                                    <li><a href="javascript:;" onclick="">비밀번호 찾기</a></li>
                                     <li><a href="../HmallServlet?command=join_form">회원가입</a></li>
                                 </ul>
 
                             </div>
                          </form>
                      </div>
-                     <div role="tabpanel" class="tab-pane" id="hpointLogin">
-                          <div class="login-form">
-
-                              <div class="inputbox xl">
-                                  <label class="inplabel">
-                                      
-                                          <input type="text" name="hpointId" id="hpointId" placeholder="H.Point 통합회원 아이디" title="H.Point 통합회원 아이디">
-                                  </label>
-                                  <button class="btn ico-clearabled"><i class="icon"></i><span class="hiding">지우기</span></button>
-                                  <i class="icon person"></i>
-                              </div>
-
-                              <div class="inputbox xl">
-                                  <label class="inplabel">
-                                        <input type="password"  name="hpointPwd"  onkeypress="javascript:capslockByhpoint(event);" id="hpointPwd" placeholder="비밀번호" title="비밀번호 입력"
-                                            onkeydown="javascript:if(event.keyCode==13){$('#hpointLoginCheck').click(); return false;}"
-                                  ></label>
-                                  <button class="btn ico-clearabled"><i class="icon"></i><span class="hiding">지우기</span></button>
-                                  <i class="icon lock"></i>
-                              </div>
-
-                              <div class="toast arrtl" style="display: none;" id ="alertCapsLockByHpoint">
-                                  <p><i class="icon"></i> <strong>&lt;Caps Lock&gt;</strong>이 켜져 있습니다.</p>
-                              </div>
-
-                              <!-- 입력 실패 메세지 -->
-                              <p class="failed-msg" style="display:none;" id = "alertByHpointLogin">
-                                  <i class="icon error"></i>
-                                  <span>아이디를 입력해 주세요.</span>
-                                  <!--<span>비밀번호를 입력해 주세요.</span>-->
-                                  <!--<span>아이디 또는 비밀번호를 다시 확인해 주세요<br>Hmall 간편회원이시면 상단의 'Hmall 간편회원'을 선택해 주세요.</span>-->
-                              </p>
-                          </div>
-                          <div class="login-relate">
-                              <div class="checkbox-wrap">
-                                  <div class="checkbox">
-                                      <label class="chklabel">
-                                        <input type="checkbox" name="save_id_hp" id ="idSaveYn1" >
-                                            <i class="icon"></i><span>아이디 저장</span>
-                                      </label>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <button id="hpointLoginCheck" class="btn btn-login btn-default" onclick="memberLoginByHpoint('ajax');return false;"><span>로그인</span></button>
-							
-                          <ul class="login-find">
-		                     <li><a href="https://www.h-point.co.kr/cu/config/findCustId.nhd">아이디 찾기</a></li>
-		                     <li><a href="https://www.h-point.co.kr/cu/config/findCustPwd.nhd">비밀번호 찾기</a></li>
-		                     <li><a href="javascript:;" class="btn alink" onclick ="doSearchUPntRegPop();">회원가입</a></li>
-                          </ul>
-
-                          <div class="login-btn">
-                              <a href="javascript:;" class="btn alink" onclick ="otpLogin();"><span>OTP 인증번호 로그인</span></a>
-                          </div>
-                      </div>
-                      <div role="tabpanel" class="tab-pane" id="hpoint-otp">
-                          <div class="login-form">
-
-                              <div class="inputbox xl">
-                                  <label class="inplabel"><input type="text" maxlength='8' id= "otpNum" name="otpNum" placeholder="OTP 인증번호 입력" title="OTP 인증번호 입력"></label>
-                                  <button class="btn ico-clearabled"><i class="icon"></i><span class="hiding">지우기</span></button>
-                                  <i class="icon person"></i>
-                              </div>
-
-                              <p class="otp-txt">H.Point 앱을 실행하여, 설정 메뉴의 로그인/회원 설정 항목에서 ‘OTP 인증번호 발급’을 누른 후 발급되는 일회용 인증번호를 입력해 주세요.</p>
-
-                              <!-- 입력 실패 메세지 -->
-                              <p class="failed-msg" style="display: none;" id= "alertByOtp"> 
-                                  <i class="icon error"></i>
-                                  <span>OTP 인증번호를 입력해 주세요.</span>
-                                  <!--<span>OTP 인증번호를 다시 확인해 주세요.</span>-->
-                              </p>
-                          </div>
-
-                          <button class="btn btn-login btn-default" onclick="memberLoginByOtp('ajax');return false;"><span>로그인</span></button>
-
-                          <div class="login-btn">
-                              <a href="javascript:;" class="btn alink" onclick ="hpointLogin()"><span>아이디/비밀번호 로그인</span></a>
-                          </div>
-                      </div>
                     </div>
                 </div>
                 <!-- //.tabgroup -->
@@ -265,10 +192,6 @@
     </div>
 </div>
 
-
-
-
 </body>
 
-</body>
 </html>
