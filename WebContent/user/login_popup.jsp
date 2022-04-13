@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="inputbox xl">
                                         <label class="inplabel">
-                                            <input type="text" tabindex="2" size='30' maxlength='30' name="user_pw" placeholder="비밀번호" title="비밀번호 입력"
+                                            <input type="password" tabindex="2" size='30' maxlength='30' name="user_pw" placeholder="비밀번호" title="비밀번호 입력"
                                                   >
                                         </label>
                                         <i class="icon lock"></i>
@@ -169,7 +169,7 @@
                                 <ul class="login-find">
                                     <li><a href="javascript:;" onclick="findId(); return false;">아이디 찾기</a></li>
                                     <li><a href="javascript:;" onclick="findPwd(); return false;">비밀번호 찾기</a></li>
-                                    <li><a href="../HmallServlet?command=join_menu">회원가입</a></li>
+                                    <li><a href="../HmallServlet?command=join_form">회원가입</a></li>
                                 </ul>
 
                                 <!-- Hmall 아이디 로그인에서만 노출 -->

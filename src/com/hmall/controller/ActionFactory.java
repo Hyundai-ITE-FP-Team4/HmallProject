@@ -13,7 +13,6 @@ import com.hmall.controller.action.IdCheckAction;
 import com.hmall.controller.action.IndexAction;
 import com.hmall.controller.action.JoinAction;
 import com.hmall.controller.action.JoinFormAction;
-import com.hmall.controller.action.JoinMenuAction;
 import com.hmall.controller.action.LoginAction;
 import com.hmall.controller.action.LogoutAction;
 import com.hmall.controller.action.MyPageAction;
@@ -53,14 +52,12 @@ public class ActionFactory {
 		else if (command.equals("qnaboard")) {
 			action = new QnaBoradAction();
 		}
-		// 회원가입 메뉴
-		else if (command.equals("join_menu")) {
-			action = new JoinMenuAction();
-		}
 		// 회원가입 폼
 		else if (command.equals("join_form")) {
 			action = new JoinFormAction();
-		} else if (command.equals("join_action")) {
+		}
+		// 회원가입 수행
+		else if (command.equals("join_action")) {
 			action = new JoinAction();
 		}
 		// 로그인 폼

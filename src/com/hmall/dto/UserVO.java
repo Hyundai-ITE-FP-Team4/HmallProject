@@ -4,7 +4,6 @@ public class UserVO {
 	private String user_id;
 	private String user_pw;
 	private String user_name;
-//	private String email;
 	private String phone_number;
 	private int birth;
 	private String address;

@@ -701,7 +701,7 @@
 							}
 						%>
 						
-						<li><a href="HmallServlet?command=join_menu">회원가입</a></li>
+						<li><a href="HmallServlet?command=join_form">회원가입</a></li>
 						<li><a ga-category="헤더" ga-action="고객센터" href="javascript:bizSpringTag('/p/cca/main.do','^헤더^고객센터');">고객센터</a></li>
 					</ul>
 				</div>
