@@ -7459,53 +7459,6 @@ function onAirTimer2SkySc(){
 				</a>
 				<div class="recent-view-area" id="skyScOnAirArea">
 
-
-
-
-
-
-
-
-
-					<a class="recent-view-title">ON AIR</a>
-					<ul id="banner-onair">
-
-
-						<li><a href="javascript:;" class="tv-shopping"
-							onclick="gaTagging(this, &quot;/p/pda/itemPtc.do?sectId=1003&amp;slitmCd=2138673777&amp;bfmtNo=202204113011&amp;brodDt=20220411&amp;brodStrtDtm=16:05&amp;brodType=P&quot;, &quot;etvhm_etv&quot;, &quot;eTV온에어^영상상품^[1+1]유한양행 와이즈바이옴 패밀리 유산균 (총 12박스)&quot;)"
-							ga-custom-title="메인>홈쇼핑" ga-custom-name="메인_홈쇼핑탭"
-							ga-custom-position="TV쇼핑" ga-custom-creative="방송상품"
-							ga-custom-id="2138673777_[1+1]유한양행 와이즈바이옴 패밀리 유산균 (총 12박스)"
-							ga-custom-etc="home"> <img
-								src="https://image.hmall.com/static/7/3/67/38/2138673777_0.jpg?RS=140x140&amp;AR=0"
-								alt="[1+1]유한양행 와이즈바이옴 패밀리 유산균 (총 12박스)"
-								onerror="noImage(this, 'https://image.hmall.com/p/img/co/noimg-thumb.png?RS=140x140&amp;AR=0')">
-								<span class="over-box"> <strong
-									class="onair-kind shopping">TV쇼핑</strong> <em
-									class="onair-time" id="onAirHtime"
-									data-brodenddtm="20220411171000">00:42:07</em>
-							</span>
-						</a></li>
-
-
-
-						<li><a href="javascript:;" class="tv-shopping"
-							onclick="gaTagging(this, &quot;/p/pda/itemPtc.do?sectId=1003&amp;slitmCd=2135698808&amp;bfmtNo=202204115012&amp;brodDt=20220411&amp;brodStrtDtm=16:20&amp;brodType=P&quot;, &quot;etvhm_etv&quot;, &quot;eTV온에어^영상상품^[미식백과] 염경환의 국내산 오곡누룽지 60g x 75봉 + 무료체험 2봉&quot;)"
-							ga-custom-title="메인>홈쇼핑" ga-custom-name="메인_홈쇼핑탭"
-							ga-custom-position="TV쇼핑" ga-custom-creative="방송상품"
-							ga-custom-id="2135698808_[미식백과] 염경환의 국내산 오곡누룽지 60g x 75봉 + 무료체험 2봉"
-							ga-custom-etc="home"> <img
-								src="https://image.hmall.com/static/8/8/69/35/2135698808_0.jpg?RS=140x140&amp;AR=0"
-								alt="[미식백과] 염경환의 국내산 오곡누룽지 60g x 75봉 + 무료체험 2봉"
-								onerror="noImage(this, 'https://image.hmall.com/p/img/co/noimg-thumb.png?RS=140x140&amp;AR=0')">
-								<span class="over-box"> <strong class="onair-kind shop">TV+샵</strong>
-									<em class="onair-time" id="onAirHdtime"
-									data-brodenddtm="20220411171959">00:51:07</em>
-							</span>
-						</a></li>
-
-					</ul>
-
 				</div>
 				<div class="qr_view_area">
 					<span class="qr_txt">쇼핑라이브</span> <span class="img_qr"><img

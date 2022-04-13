@@ -7914,51 +7914,6 @@ function onAirTimer2SkySc(){
 			<div class="recent-view-area" id="skyScOnAirArea">
 
 
-
-
-
-
-
-
-
-				<a class="recent-view-title">ON AIR</a>
-				<ul id="banner-onair">
-
-
-					<li><a href="javascript:;" class="tv-shopping"
-						onclick="gaTagging(this, &quot;/p/pda/itemPtc.do?sectId=1003&amp;slitmCd=2139269103&amp;bfmtNo=202204083003&amp;brodDt=20220408&amp;brodStrtDtm=08:15&amp;brodType=P&quot;, &quot;etvhm_etv&quot;, &quot;eTV온에어^영상상품^뉴케어 당플랜 프로 144팩(230ml*24팩*6박스) + 당플랜 볶음밥 세트(렌틸콩소고기2ea+ 퀴노아닭가슴살 2ea)&quot;)"
-						ga-custom-title="메인>홈쇼핑" ga-custom-name="메인_홈쇼핑탭"
-						ga-custom-position="TV쇼핑" ga-custom-creative="방송상품"
-						ga-custom-id="2139269103_뉴케어 당플랜 프로 144팩(230ml*24팩*6박스) + 당플랜 볶음밥 세트(렌틸콩소고기2ea+ 퀴노아닭가슴살 2ea)"
-						ga-custom-etc="home"> <img
-							src="https://image.hmall.com/static/1/9/26/39/2139269103_0.jpg?RS=140x140&amp;AR=0"
-							alt="뉴케어 당플랜 프로 144팩(230ml*24팩*6박스) + 당플랜 볶음밥 세트(렌틸콩소고기2ea+ 퀴노아닭가슴살 2ea)"
-							onerror="noImage(this, 'https://image.hmall.com/p/img/co/noimg-thumb.png?RS=140x140&amp;AR=0')">
-							<span class="over-box"> <strong
-								class="onair-kind shopping">TV쇼핑</strong> <em class="onair-time"
-								id="onAirHtime" data-brodenddtm="20220408092500">00:00:00</em>
-						</span>
-					</a></li>
-
-
-
-					<li><a href="javascript:;" class="tv-shopping"
-						onclick="gaTagging(this, &quot;/p/pda/itemPtc.do?sectId=1003&amp;slitmCd=2129353515&amp;bfmtNo=202204085004&amp;brodDt=20220408&amp;brodStrtDtm=08:40&amp;brodType=P&quot;, &quot;etvhm_etv&quot;, &quot;eTV온에어^영상상품^오토모 무선 물걸레 청소기&quot;)"
-						ga-custom-title="메인>홈쇼핑" ga-custom-name="메인_홈쇼핑탭"
-						ga-custom-position="TV쇼핑" ga-custom-creative="방송상품"
-						ga-custom-id="2129353515_오토모 무선 물걸레 청소기" ga-custom-etc="home">
-							<img
-							src="https://image.hmall.com/static/5/3/35/29/2129353515_0.jpg?RS=140x140&amp;AR=0"
-							alt="오토모 무선 물걸레 청소기"
-							onerror="noImage(this, 'https://image.hmall.com/p/img/co/noimg-thumb.png?RS=140x140&amp;AR=0')">
-							<span class="over-box"> <strong class="onair-kind shop">TV+샵</strong>
-								<em class="onair-time" id="onAirHdtime"
-								data-brodenddtm="20220408093959">00:07:33</em>
-						</span>
-					</a></li>
-
-				</ul>
-
 			</div>
 			<div class="qr_view_area">
 				<span class="qr_txt">쇼핑라이브</span> <span class="img_qr"><img

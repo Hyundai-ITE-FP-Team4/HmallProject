@@ -2,6 +2,7 @@ package com.hmall.controller.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,13 +29,25 @@ public class GchartAction implements Action {
 		
 		LogDAO log_dao = LogDAO.getInstance();
 		
-		List<LogVO> list = log_dao.listLog();
+		List<LogVO> monthLogList = log_dao.listLog();
+		List<LogVO> hourLogList = log_dao.listHourLog();
+		
+		List<LogVO> list = new ArrayList<LogVO>();
+		
+		for(LogVO data : monthLogList) {
+			list.add(data);
+		}
+		for(LogVO data : hourLogList) {
+			list.add(data);
+		}
 		
 		Gson gson = new Gson();
         
         PrintWriter out = response.getWriter();
-		String str = gson.toJson(list);
+		
+        String str = gson.toJson(list);
 		out.print(str);
+		
 		System.out.println(str);
 	}
 

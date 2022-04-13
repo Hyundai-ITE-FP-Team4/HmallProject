@@ -1,4 +1,5 @@
 <%@page import="java.util.List"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.hmall.dao.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -20,77 +21,217 @@
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<%@include file = "/component/script.jsp" %>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>관리자 - Hmall</title>
+		
+		<style type="text/css">
+			.main {
+				padding: 20px;
+			}
+			.adminContent {
+				text-align: center;
+				width: 1100px;
+				margin: auto;
+				color: #666;
+				font-family: "맑은 고딕", Malgun Gothic, "돋움", Dotum, Applegothic,sans-serif;
+				letter-spacing: -0.6px;  
+			}
+			.adminContent h1, h2 {
+				margin: 100px 30px 30px 30px;
+			}
+			.userList {
+				width:900px;
+				margin:auto;
+				text-algin:center;
+				padding : 40px;
+				border: 1px solid #666;
+			}
+			.userList tr {
+				background-color: #ff5340;
+			}
+			.userList th, td {
+				padding: 5px;
+			}
+			.main .chart {
+				padding: 10px;
+				margin-right: 10px;
+			}
+			.main .main-box {
+				margin: 20px;
+			}
+			
+			h3 {
+				color: #ff5340;
+			}
+		</style>
 		
 	</head>
 	<body>
-		<h1 align="center">회원 정보</h1>
-		<table border="1"  align="center" >
-			<caption>회원 정보</caption>
-		    <tr align="center" bgcolor="lightgreen">
-		      <td width="7%"><b>아이디</b></td>
-		      <td width="7%"><b>비밀번호</b></td>
-		      <td width="5%" ><b>이름</b></td>
-			</tr>
-	 		<c:forEach var = "user" items="${userList}"  >	
-		   	<tr align="center">
-		      <td>${user.user_id}</td>
-		      <td>${user.user_pw}</td>
-		      <td>${user.user_name}</td>
-		   </tr>
-	 	   </c:forEach>
-		</table>
-		<script>
-			google.load('visualization', '1.0', {'packages':['corechart']});
-			google.setOnLoadCallback(prt_test);
-			function show_chart(res){
-				var data = new google.visualization.DataTable();
-				data.addColumn('number', '월 ');
-				data.addColumn('number', ' 로그인 횟수 ');
-				for(key in res){
-					data.addRows([
-						[res[key].cnt, res[key].month]
-					]);
-				    console.log(res[key].cnt);
-				}
-				var opt = {
-						'title': '월별 로그인 횟수 ',
-						'width': 600, 'height': 400,
-				};
+		<!-- 페이지 header -->
+		<%@ include file="../header.jsp"%>
+		<div class="adminContent">
+			<h1 align="center">Hmall 관리자 페이지</h1>
+			<h2 align="center">회원 정보</h2>
+			<table class="userList">
+				<caption>회원 정보</caption>
+			    <tr align="center">
+			      <td width="7%"><b>아이디</b></td>
+			      <td width="7%"><b>비밀번호</b></td>
+			      <td width="5%" ><b>이름</b></td>
+				</tr>
+		 		<c:forEach var = "user" items="${userList}"  >	
+			   	<tr align="center">
+			      <td>${user.user_id}</td>
+			      <td>${user.user_pw}</td>
+			      <td>${user.user_name}</td>
+			   </tr>
+		 	   </c:forEach>
+			</table>
+			<h2 align="center">차트 리스트</h2>
+			<script>
+				google.load('visualization', '1.0', {'packages':['corechart']});
+				google.setOnLoadCallback(drawMonthChart);
+				google.setOnLoadCallback(drawHourChart);
 				
-				var chart = new google.visualization.BarChart(
-						document.getElementById('chart_div'));
-				chart.draw(data, opt);
-			}
-			function get_chart(){
-				$.ajax({
-					url : '/HmallProject/HmallServlet?command=google_chart',
-					type : 'post',
-					dataType : 'json',
-					data : {name: "test"},
-					async: false,
-					success:function(res){
-						console.log('success');
-						console.log(res);
-						if(res!= null) {
-							show_chart(res);	
-						}else {
-							console.log('실패');
+				// 시간별 로그인 횟수 차트
+				function drawMonthChart(){
+					$.ajax({
+						url : '/HmallProject/HmallServlet?command=google_chart',
+						type : 'post',
+						dataType : 'json',
+						data : {name: "test"},
+						async: false,
+						success:function(res){
+							console.log('success');
 							console.log(res);
-							alert("로그인 실패");
-							
+							if(res!= null) {
+								var data = new google.visualization.DataTable();
+								data.addColumn('string', '월');
+								data.addColumn('number', '로그인 횟수 ');
+								for(key in res){
+									if(res[key].month != 0) {
+										var month = res[key].month + '월'
+										data.addRows([
+											[month, res[key].monthCnt]
+										]);
+									    console.log(res[key].monthCnt);
+									}
+								}
+								var today = new Date();
+								var title = '월별 로그인 횟수'; 
+								var opt = {
+										'title': title,
+										'vAxis': {'title': '로그인 횟수',
+											'minValue': 0,
+											'ticks': [0, 5, 10, 15, 20]
+											},
+										'hAxis': {'title': '월',
+												'maxValue': 12,
+												'minValue': 1
+												},
+										'width': 1000,
+										'height': 400,
+										'series': {
+								            0: { 'color': '#ff5340' }
+										}
+										
+								};
+								
+				/* 				var chart = new google.visualization.BarChart(
+										document.getElementById('hourChartDiv')); */
+								var chart = new google.visualization.ColumnChart(
+											document.getElementById('monthChartDiv'));
+								chart.draw(data, opt);
+							}else {
+								console.log('실패');
+								console.log(res);
+								alert("로그인 실패");
+								
+							}
+						},
+						error : function(data, textStatus){
+							console.log('error');
+							console.log(data);
 						}
-					},
-					error : function(data, textStatus){
-						console.log('error');
-						console.log(data);
-					}
-				});
-			}
-		</script>
-		<div class="login-btn">
-             <a href="javascript:;" class="btn alink" onclick ="get_chart()"><span>클릭하면 차트 뜸</span></a>
-       	</div>
-       	<div id="chart_div"></div>
+					});
+				}
+				
+				// 시간별 로그인 횟수 차트
+				function drawHourChart(){
+					$.ajax({
+						url : '/HmallProject/HmallServlet?command=google_chart',
+						type : 'post',
+						dataType : 'json',
+						data : {name: "test"},
+						async: false,
+						success:function(res){
+							console.log('success');
+							console.log(res);
+							if(res!= null) {
+								var data = new google.visualization.DataTable();
+								data.addColumn('string', '시간');
+								data.addColumn('number', '로그인 횟수 ');
+								for(key in res){
+									if(res[key].hour != 0) {
+										var hour = res[key].hour + '시';
+										data.addRows([
+											[hour, res[key].hourCnt]
+										]);
+									    console.log(res[key].hourCnt);
+									}
+								}
+								var today = new Date();
+								var title = today.getFullYear() + '년 ' + (today.getMonth()+1) + '월 ' + today.getDate() + '일 시간별 로그인 횟수'; 
+								var opt = {
+										'title': title,
+										'vAxis': {'title': '로그인 횟수'},
+										'hAxis': {'title': '시간'},
+										'width': 1000,
+										'height': 400,
+										'lineWidth': 8,
+										'series': {
+								            0: { 'color': '#ff5340' }
+										}
+										
+								};
+								
+								var chart = new google.visualization.AreaChart(
+											document.getElementById('hourChartDiv'));
+								chart.draw(data, opt);
+							}else {
+								console.log('실패');
+								console.log(res);
+								alert("로그인 실패");
+								
+							}
+						},
+						error : function(data, textStatus){
+							console.log('error');
+							console.log(data);
+						}
+					});
+				}
+			</script>
+			
+			<div class="main" align="center">
+				<div class="main-box">
+					<div class="chart">
+						<h3>월별 로그인횟수 차트</h3>
+		             	<div id="monthChartDiv"></div>
+					</div>
+		       	</div>
+		       
+		       	<div class="main-box">
+	       			<div class="chart">
+	       				<h3>시간별 로그인횟수 차트</h3>
+		             	<div id="hourChartDiv"></div>
+	       			</div>
+		       	</div>
+		       	
+	       	</div>
+	    </div>
+       	
+       	
+       	<!-- 페이지 footer -->
+		<%@ include file="../footer.jsp"%>
 	</body>
 </html>

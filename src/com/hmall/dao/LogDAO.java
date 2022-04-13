@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hmall.dto.LogVO;
-import com.hmall.dto.UserVO;
 
 import util.DBManager;
 
@@ -40,7 +39,7 @@ public class LogDAO {
 		}
 	}
 	
-	// 조회
+	// 월별 로그인횟수 조회
 	public List<LogVO> listLog() {
 
 		List<LogVO> logList = new ArrayList<LogVO>();
@@ -54,8 +53,34 @@ public class LogDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				LogVO logVO = new LogVO();
-				logVO.setCnt(rs.getInt("cnt"));
+				logVO.setMonthCnt(rs.getInt("cnt"));
 				logVO.setMonth(rs.getInt("month"));
+				logList.add(logVO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return logList;
+	}
+	
+	// 시간별 로그인횟수 조회
+	public List<LogVO> listHourLog() {
+
+		List<LogVO> logList = new ArrayList<LogVO>();
+		String sql = "SELECT count(*) as cnt, to_char(login_date, 'HH24') as hour FROM log_t WHERE to_char(login_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD') GROUP BY to_char(login_date, 'HH24') ORDER BY to_char(login_date, 'HH24')";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				LogVO logVO = new LogVO();
+				logVO.setHourCnt(rs.getInt("cnt"));
+				logVO.setHour(rs.getInt("hour"));
 				logList.add(logVO);
 			}
 		} catch (Exception e) {

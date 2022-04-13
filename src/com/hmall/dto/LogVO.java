@@ -6,15 +6,11 @@ public class LogVO {
 	private int user_no;
 	private String user_id;
 	private Timestamp login_date;
-	private int cnt;
+	private int monthCnt;
 	private int month;
+	private int hourCnt;
+	private int hour;
 	
-	public int getCnt() {
-		return cnt;
-	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
-	}
 	public int getUser_no() {
 		return user_no;
 	}
@@ -33,11 +29,28 @@ public class LogVO {
 	public void setLogin_date(Timestamp login_date) {
 		this.login_date = login_date;
 	}
+	public int getMonthCnt() {
+		return monthCnt;
+	}
+	public void setMonthCnt(int monthCnt) {
+		this.monthCnt = monthCnt;
+	}
 	public int getMonth() {
 		return month;
 	}
 	public void setMonth(int month) {
 		this.month = month;
 	}
-
+	public int getHourCnt() {
+		return hourCnt;
+	}
+	public void setHourCnt(int hourCnt) {
+		this.hourCnt = hourCnt;
+	}
+	public int getHour() {
+		return hour;
+	}
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
 }
