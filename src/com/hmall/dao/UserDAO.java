@@ -27,7 +27,7 @@ public class UserDAO {
 
 	// 회원가입 (user 정보 테이블에 insert)
 	public void insertUser_proc(UserVO userVO) {
-		String sql = "{call proc_insertUser(?,?,?,?,?,?)}";
+		String sql = "{call pkg_user.proc_insertUser(?,?,?,?,?,?)}";
 		CallableStatement cstmt = null;
 		Connection conn = null;
 		try {
