@@ -27,7 +27,7 @@ public class UserDAO {
 
 	// 회원가입 (user 정보 테이블에 insert)
 	public void insertUser_proc(UserVO userVO) {
-		String sql = "{call proc_insertUser(?,?,?,?,?,?)}";
+		String sql = "{call pkg_user.proc_insertUser(?,?,?,?,?,?)}";
 		CallableStatement cstmt = null;
 		Connection conn = null;
 		try {
@@ -110,6 +110,7 @@ public class UserDAO {
 	
 		// 아이디 중복확인
 		public int checkId(String user_id) {
+			// 매핑된 아이디 개수를 조회 / 1 이면 로그인 성공을 의미
 			String sql = "select pkg_user.fn_checkId(?) as cnt from dual";
 			Connection conn = null;
 			CallableStatement cstmt = null;

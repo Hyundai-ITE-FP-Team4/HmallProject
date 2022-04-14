@@ -4,7 +4,7 @@
  <Resource name="jdbc/myoracle" auth="Container"
            type="javax.sql.DataSource"
            driverClassName="oracle.jdbc.OracleDriver"
-           url="jdbc:oracle:thin:@iteproject1_high?TNS_ADMIN=D:\\etc\\Wallet_iteproject1"
-           username="ghkd2676" password="Hyundaiite2676" maxTotal="20"
+           url="jdbc:oracle:thin:@iteproject1_high?TNS_ADMIN=C:\\dev\\OracleWallet\\Wallet_iteproject1"
+           username="kimsh" password="xxxxxxAt21cc" maxTotal="20"
            maxIdle="10" maxWaitMillis="-1"/>
 </Context>

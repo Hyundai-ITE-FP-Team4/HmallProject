@@ -22,11 +22,11 @@ import com.hmall.dto.UserVO;
 public class IdCheckAction implements Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	public void execute(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		UserDAO dao = UserDAO.getInstance();
 		
-		// request로 보내진 user_id (아이디)를 갖고와서 중복인지 확인한다.
+		// request로 보내진 param을 갖고와서 아이디 중복인지 확인
 		String user_id = request.getParameter("user_id"); 
 		UserVO user = new UserVO();
         user.setCnt(dao.checkId(user_id)); 
@@ -40,5 +40,5 @@ public class IdCheckAction implements Action {
         out.print(str);
 		
 	}
-	
 }
+

@@ -13,7 +13,7 @@
 	UserDAO dao = UserDAO.getInstance();
 	List userList = dao.listUser();
 %>
-<c:set var="userList" value = "<%= userList %>"/>
+
 
 <html>
 	<head>
@@ -70,8 +70,8 @@
 	<body>
 		<!-- 페이지 header -->
 		<%@ include file="../header.jsp"%>
-		
-		<!-- 로그인 로그 표 (김승환) -->
+		<c:set var="userList" value = "<%= userList %>"/>
+		<!-- 회원정보 표 (김승환) -->
 		<div class="adminContent">
 			<h1 align="center">Hmall 관리자 페이지</h1>
 			<h2 align="center">회원 정보</h2>
@@ -82,7 +82,7 @@
 			      <th width="5%"><b>이름</b></th>
 			      <th width="7%" ><b>폰 번호</b></th>
 				</tr>
-		 		<c:forEach var = "user" items="${userList}"  >	
+		 		<c:forEach var = "user" items="${userList}">	
 			   	<tr align="center">
 			      <td>${user.user_id}</td>
 			      <td>${user.user_name}</td>
@@ -100,7 +100,7 @@
 				
 				// 월별 로그인 횟수 차트
 				function drawMonthChart(){
-					$.ajax({ // 월별 로그인 횟수 차트 요청
+					$.ajax({ // 월별 로그인 횟수 데이터 요청
 						url : '/HmallProject/HmallServlet?command=google_chart',
 						type : 'post',
 						dataType : 'json',
@@ -160,7 +160,7 @@
 				
 				// 시간별 로그인 횟수 차트
 				function drawHourChart(){
-					$.ajax({
+					$.ajax({ // 시간별 로그인 횟수 데이터 요청
 						url : '/HmallProject/HmallServlet?command=google_chart',
 						type : 'post',
 						dataType : 'json',

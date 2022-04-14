@@ -27,11 +27,12 @@ import com.hmall.dto.UserVO;
 public class LoginAction implements Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		UserDAO dao = UserDAO.getInstance();
 		PrintWriter out = response.getWriter();
 
-		// 요청하여 받은 parameters 들을 가져온다. (아이디, 비밀번호)
+		// 요청하여 받은 parameters 들을 가져옴. (아이디, 비밀번호)
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 

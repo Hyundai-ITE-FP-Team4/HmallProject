@@ -25,12 +25,12 @@
 <!-- 윈도우 팝업 클래스 popup-win : width:540px , height:650px -->
 
 <script type="text/javascript">
-	
 	//쿠키 set
 	function setCookie(cookie_name, value, days) {
 	  var exdate = new Date();
 	  exdate.setDate(exdate.getDate() + days); // 설정 일수만큼 현재시간에 만료값으로 지정
-	  var cookie_value = escape(value) + ((days == null) ? '' : '; expires=' + exdate.toUTCString());
+	  var cookie_value = escape(value) + ((days == null) ? '' : '; expires=' 
+	  + exdate.toUTCString());
 	  document.cookie = cookie_name + '=' + cookie_value;
 	}
 	
@@ -64,16 +64,13 @@
 	// 로그인 요청 함수
 	function go_login(){
 		var formData = $("#memberLoginForm").serialize();
-		
 			$.ajax({ // 로그인 요청
-				url : 'http://localhost:8090/HmallProject/HmallServlet?command=login_action',
+				url : '/HmallProject/HmallServlet?command=login_action',
 				type : 'post',
 				dataType : 'json',
 				data : formData,
 				async: false,
 				success:function(res){
-					console.log('success');
-					console.log(res);
 					if(res.user_id!= null) {
 						if(res.user_id == 'admin'){
 							window.opener.document.location.href = '/HmallProject/admin_manage.jsp';
@@ -86,19 +83,15 @@
 							}else{ // 아이디 저장 체크를 풀었을 때
 								setCookie("user_id", "", 0); // 쿠키 값 초기화
 							}
-							
 							opener.location.reload(); //팝업창을 불러낸 부모창 새로고침
 							self.close(); // 팝업창 닫기
 						}
 						
 					}else {
-						console.log('실패');
-						console.log(res);
 						alert("로그인 실패");
-						
 					}
 				},
-				error : function(data, textStatus){
+				error : function(data, textStatus){ // 응답 실패
 					console.log('error');
 					console.log(data);
 				}

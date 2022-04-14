@@ -22,10 +22,11 @@ import com.hmall.dto.UserVO;
 public class JoinAction implements Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		UserDAO dao = UserDAO.getInstance();
 	    
-	    // 요청하여 받은 parameters 들을 가져온다. (회원 정보)
+	    // 요청하여 받은 parameters 들을 가져옴. (회원 정보)
 	    String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		String user_name = request.getParameter("user_name");

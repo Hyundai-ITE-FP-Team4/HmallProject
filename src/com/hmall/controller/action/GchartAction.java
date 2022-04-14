@@ -23,7 +23,8 @@ import com.hmall.dto.LogVO;
 public class GchartAction implements Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// LogDAO 생성 (싱글톤)
 		LogDAO log_dao = LogDAO.getInstance();
 		

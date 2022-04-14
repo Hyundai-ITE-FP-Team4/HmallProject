@@ -17,15 +17,18 @@
 	</head>
 	<body class = "cbody">
 	<script>
-			var check_dup = false;
+			var check_dup = false; 
 			
-			function go_submit(){ 
-				if( $('#birthday').val().length == 0){ //생년월일 선택사항, 비어있으면 0 기본값으로 회원가입
+			// 회원가입 폼 전송
+			function go_submit(){
+				//생년월일 선택사항, 비어있으면 0 기본값으로 회원가입
+				if( $('#birthday').val().length == 0){ 
 					$('#birthday').attr("value", 0);
 				}
-				var formData = $("#registMemberFormNew").serialize();
+				// 폼에 입력된 모든 데이터들을 문자열 데이터에 serialize
+				var formData = $("#registMemberFormNew").serialize(); 
 				
-				$.ajax({
+				$.ajax({ // 회원가입 요청
 					url : '/HmallProject/HmallServlet?command=join_action',
 					type : 'post',
 					dataType : 'json',
@@ -41,7 +44,6 @@
 				});
 			}
 			
-			
 			//회원가입 함수
 			function go_join(){
 				
@@ -53,7 +55,6 @@
 					alert("아이디 중복 확인하세요.");
 					return
 				}
-				
 								
 				//체크박스 체크 되어 있는지 확인
 				if (checkBox()){ // 체크된 상태
@@ -66,6 +67,7 @@
 				} // end if-else
 			}
 			
+			// 입력 칸이 비어있는지 확인
 			function check_input(){
 				theForm = document.registMemberFormNew;
 				if($("#user_id").val().length==0 || $("#user_pw").val().length==0 || $("#user_pw_check").val().length==0 || $("#user_pw_check").val().length==0){
@@ -124,12 +126,11 @@
 				//아이디 중복 확인하기
 				$('#id_check').on('click', function(){
 					var param = {
-						user_id : $('#user_id').val()
+						user_id : $('#user_id').val() // 입력 값을 json 형태로
 					}
-					console.log(param);
 					
-					$.ajax({
-						url : 'http://localhost:8090/HmallProject/HmallServlet?command=id_check',
+					$.ajax({ // 아이디 중복 요청
+						url : '/HmallProject/HmallServlet?command=id_check',
 						type : 'post',
 						dataType : 'json',
 						data : param,
@@ -153,7 +154,7 @@
 				//비밀번호 입력칸, 비밀번호 확인 입력칸 동일한지 확인
 				$('#user_pw_check').blur(function(){
 					if($('#user_pw').val() != $('#user_pw_check').val()){
-						alert("no 일치");
+						alert("비밀번호가 일치하지 않습니다.");
 					}
 				});
 				

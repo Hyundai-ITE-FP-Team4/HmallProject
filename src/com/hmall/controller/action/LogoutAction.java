@@ -18,7 +18,8 @@ import javax.servlet.http.HttpSession;
 public class LogoutAction implements Action{
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
 		// 세션 내용 삭제
 		HttpSession session = request.getSession(true); // 세션 있으면 get
