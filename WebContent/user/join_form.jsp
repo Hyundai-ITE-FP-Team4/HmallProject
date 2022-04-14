@@ -26,7 +26,7 @@
 				var formData = $("#registMemberFormNew").serialize();
 				
 				$.ajax({
-					url : 'http://localhost:8090/HmallProject/HmallServlet?command=join_action',
+					url : '/HmallProject/HmallServlet?command=join_action',
 					type : 'post',
 					dataType : 'json',
 					data : formData,
