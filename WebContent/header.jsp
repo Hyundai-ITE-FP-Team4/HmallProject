@@ -159,8 +159,7 @@
 			<!-- // 검색 영역 -->
 
 			<script>
-				// 2020.12.24 검색 DOM 로드후 javascript 실행을 위해 옮김
-				// 2020.12.17 icj : 텍스트 광고 입력이 없을시 재노출 (하선윤)
+
 				$("#gnbSearchKeyword").focus(function() {
 					$(".header .search").addClass("selected");
 					if ($("#gnbSearchKeyword").val() == gv_gnbHomeBnnrTitl) {
@@ -185,7 +184,7 @@
 					$("#search-autowrap").show();
 					//퀵 메뉴 숨김 처리
 					$('.quick-menu-more').removeClass('on');
-					// 2020.12.17 icj : 텍스트 광고 입력이 없을시 재노출 (하선윤)
+
 				}).focusout(function() {
 					var $keyword = $("#gnbSearchKeyword");
 					if ($keyword.val() == '') {

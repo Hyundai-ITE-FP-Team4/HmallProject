@@ -50,7 +50,7 @@ public class JoinAction implements Action {
 		Gson gson = new Gson();
         String str = gson.toJson(userVO);
         PrintWriter out = response.getWriter();
-        
+        	
         // response
         out.print(str);
         System.out.println(str);
