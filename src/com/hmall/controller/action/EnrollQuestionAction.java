@@ -54,13 +54,9 @@ public class EnrollQuestionAction implements Action{
 				category1 = "시스템문의";
 				category2 = "이벤트문의(문화공연/일반)";
 			}
-			System.out.println("상담코드: " + cnslCsfCd);
-			System.out.println("상담분야: " + category1);
-			System.out.println("상담사유: " + category2);
 			
 			//문의 내용 가져오기
 			String question = request.getParameter("cntn");
-			System.out.println("문의 내용: " + question);
 			
 			//답변채널, 답변 연락처 변수  설정
 			String answReqnGbcd = "";
@@ -91,9 +87,6 @@ public class EnrollQuestionAction implements Action{
 				contact_address = email;
 			}
 			
-			System.out.println("답변방법 : " + answReqnGbcd);
-			System.out.println("휴대폰 번호 : " + mobileNum);
-			System.out.println("이메일: " + email);
 			
 			String msg = "게시판 작성 프로세싱,,,";
 			//글 등록 로직 수행 시작

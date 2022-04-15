@@ -134,7 +134,7 @@
 							<div class="border-gray-box">
 								<p class="ctypo15">고객님의 궁금한 사항을 친절히 해결해 드립니다.</p>
 								<div class="btngroup inline-block">
-									<!-- 게시판 상담하기 버튼 수정 필요(황명하) -->
+									<!-- 게시판 상담하기 버튼 (황명하) -->
 									<button class="btn btn-linelgray small34" type="button"
 										onclick="window.open('HmallServlet?command=qna_popup','1:1 상담하기','width=430,height=500,location=no,status=no,scrollbars=yes');">
 										<i class="icon write"></i><span>게시판 상담하기</span>
@@ -243,7 +243,8 @@
 														
 														<div class="txt">
 															<!-- 게시글에 대한 상세 정보를 보여주는 페이지로 이동(황명하) -->
-															<p class="name" onclick="window.open('HmallServlet?command=view_qna&board_num=${Qna.boardNo}','1:1 상담하기','width=520, height=670, location=no,status=no,scrollbars=yes');"> ${Qna.question } </p>
+															<p class="name" onclick="window.open('HmallServlet?command=view_qna&board_num=${Qna.boardNo}',
+															'1:1 상담하기','width=520, height=670, location=no,status=no,scrollbars=yes');"> ${Qna.question } </p>
 															<!-- 게시글 작성 시간 출력(황명하) -->
 															<span class="date"> 
 															<%
@@ -268,6 +269,9 @@
 											
 											</c:choose>
 										<!-- /게시판 목록 -->
+										
+										
+										
 									</div>
 								</div>
 							</div>

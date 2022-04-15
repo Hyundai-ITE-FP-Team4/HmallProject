@@ -42,8 +42,6 @@ public class QnaBoradAction implements Action{
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 	    }
-		
 	}
-	
-
 }
+
