@@ -27,7 +27,7 @@ public class BasketDeleteAction implements Action {
 		// BasketDAO 생성 (싱글톤)
 		BasketDAO basketDAO = BasketDAO.getInstance();
 		
-		int sbNo = Integer.parseInt(request.getParameter("sbNo").trim());
+		int sbNo = Integer.parseInt(request.getParameter("no").trim());
 		String allYn = request.getParameter("allYn").trim();
 		
 		if(allYn.equals("n")) {	// 해당 장바구니만 삭제

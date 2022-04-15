@@ -112,9 +112,13 @@
 	    if(isEmpty(minCnt)) {
 	        minCnt = 0;
 	    }
+	    
+	    // 수량이 0보다 작으면 리턴 (박주영)
+	    if((ordQty - 1) < 1) {
+	    	return;
+	    }
 	   
 	    var sellPrc = $(obj).parents("div.quantity").find("input[name='sellPrc']").val();
-	    
 	    
 	    var prc = Number(sellPrc) * (ordQty - 1);
 	    $(obj).parent().parent().find("div.pdprice").find("em").text(gfn_appendComma(prc));
@@ -408,9 +412,10 @@
 	}
 	
 	// 장바구니 삭제 (박주영)
-	function deleteBasket() {
+	function deleteBasket(obj) {
 		if(confirm('장바구니에서 삭제하시겠습니까?')) {
-			document.totBasktForm.action = "HmallServlet?command=basket_delete&allYn=n";
+			var no = $(obj).siblings('input[name=sbNo]').val();
+			document.totBasktForm.action = "HmallServlet?command=basket_delete&allYn=n&no=" + no;
 			document.totBasktForm.submit();
 		}
 	}
@@ -554,7 +559,7 @@
 															</div>
 															<!-- 장바구니 삭제 (박주영) -->
 																<input type="hidden" name="sbNo" value="${ basket.sbNo }">
-																<button class="btn btn-cart-del" onclick="deleteBasket();">
+																<button class="btn btn-cart-del" onclick="deleteBasket(this);">
 																	<i class="icon cart-del"></i>
 																	<span class="hiding">삭제</span>
 																</button>
